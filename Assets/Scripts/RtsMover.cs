@@ -19,7 +19,10 @@ public class RtsMover : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        if(Input.GetMouseButtonDown(0))
+        {
+            MouseClick();
+        }
         
 		
 	}
@@ -29,7 +32,7 @@ public class RtsMover : MonoBehaviour {
         Gizmos.DrawSphere(new Vector3(originalPosition.x, 0, originalPosition.z), 1.0f);
     }
 
-    private void OnMouseDown()
+    private void MouseClick()
     {
         if (ActiveUnit != null)
         {
@@ -38,10 +41,10 @@ public class RtsMover : MonoBehaviour {
             RaycastHit hit;
             if(Physics.Raycast(ray, out hit, mask))
             {
-                if (hit.collider.gameObject.tag == "Floor")
-                {
+               // if (hit.collider.gameObject.tag == "Floor")
+             //   {
                     originalPosition = hit.point;
-                }
+              //  }
             }
             
             //originalPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
