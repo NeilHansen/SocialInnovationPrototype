@@ -10,6 +10,7 @@ public class InteractableArea : MonoBehaviour {
     public bool isInteracting;
     public bool isComplete;
     public AreaType areaType;
+    public int foodServings;
 
     private GameObject interactingUnit;
 
@@ -42,6 +43,7 @@ public class InteractableArea : MonoBehaviour {
             case AreaType.CookingArea:
                 startTime = 3;
                 feedbackSlider.maxValue = 3;
+                foodServings = 0;
                 isComplete = false;
                 break;
             case AreaType.SinkArea:
@@ -52,6 +54,11 @@ public class InteractableArea : MonoBehaviour {
             case AreaType.ServingArea:
                 startTime = 2;
                 feedbackSlider.maxValue = 2;
+                isComplete = false;
+                break;
+            case AreaType.DirtyDishReturn:
+                startTime = 0.5f;
+                feedbackSlider.maxValue = 0.5f;
                 isComplete = false;
                 break;
         }
@@ -112,7 +119,7 @@ public class InteractableArea : MonoBehaviour {
     public IEnumerator FlashFeedback()
     {
         interactingUnit.gameObject.GetComponent<UnitTaskController>().exclamationPoint.SetActive(true);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(1);
         interactingUnit.gameObject.GetComponent<UnitTaskController>().exclamationPoint.SetActive(false);
         StopCoroutine("FlashFeedback");
     }
@@ -124,60 +131,97 @@ public class InteractableArea : MonoBehaviour {
         if(other.gameObject.tag == "Player")
         {
             interactingUnit = other.gameObject;
-            if (!isInteracting && !isComplete)//maybe have to move inside of cases
-            {
+            //if (!isInteracting && !isComplete)//maybe have to move inside of cases
+            //{
                 switch (areaType)
                 {
                     case AreaType.None:
                        // StartCoroutine("FlashFeedback");
                         break;
                     case AreaType.PreperationArea:
-                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
+                        if (!isInteracting && !isComplete)
+                        {
+                            if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
+                            {
+                                isInteracting = true;
+                                interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
+                                interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
+                                interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.RawFood;
+                            }
+                        }
+                        break;
+                    case AreaType.CookingArea:
+                    if (!isInteracting && !isComplete)
+                    {
+                         if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.RawFood && foodServings < 3)
                         {
                             isInteracting = true;
                             interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
                             interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
-                            interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.RawFood;
+                            interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
+                            Debug.Log("Added Food!!");
+                            foodServings += 1;
                         }
-                        break;
-                    case AreaType.CookingArea:
-                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.CleanPlate)
+                        //else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.CleanPlate)
+                        //{
+                        //    isInteracting = true;
+                        //    interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
+                        //    interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
+                        //    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.CookedFood;
+                        //}
+                    }
+                    else if(!isInteracting && isComplete)
+                    {
+                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.CleanPlate && foodServings > 0)
                         {
                             isInteracting = true;
                             interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
                             interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
                             interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.CookedFood;
+                            foodServings -= 1;
+                            isComplete = false;
                         }
-                        else if(interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.RawFood)
+                    }
+                    break;
+                    case AreaType.SinkArea:
+                        if (!isInteracting && !isComplete)
                         {
-                            interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
-                            interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
-                            interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
-                            Debug.Log("RawFood!!");
+                            if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.DirtyPlate)
+                            {
+                                isInteracting = true;
+                                interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
+                                interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
+                                interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.Washing;
+                            }
+                            else
+                            {
+                                Debug.Log("Cant wash nothing!!");
+                            }
                         }
                         break;
-                    case AreaType.SinkArea:
-                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.DirtyPlate)
+                    case AreaType.ServingArea:
+                    if (!isInteracting && !isComplete)
+                    {
+                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.CookedFood)
                         {
                             isInteracting = true;
                             interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
                             interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
-                            interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.Washing;
+                            interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
                         }
-                        else
-                        {
-                            Debug.Log("Cant wash nothing!!");
-                        }
-                        break;
-                    case AreaType.ServingArea:
-                        break;
+                    }
+                    break;
                     case AreaType.DirtyDishReturn:
-                        interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
-                        interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
-                        interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.DirtyPlate;
+                        if (!isInteracting && !isComplete)
+                        {
+                            isInteracting = true;
+                            interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
+                            interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
+                            interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.DirtyPlate;
+                        }
                         break;
                 }
-            }
+           // }
         }
     }
 
