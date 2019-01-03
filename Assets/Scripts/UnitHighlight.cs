@@ -43,6 +43,7 @@ public class UnitHighlight : MonoBehaviour {
 
     private void OnMouseDown()
     {
+      
         isClicked = true;
         this.gameObject.GetComponent<Renderer>().material = Green;
         if (rtsMover.ActiveUnit != null)
