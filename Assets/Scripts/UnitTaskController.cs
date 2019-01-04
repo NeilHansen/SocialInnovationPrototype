@@ -12,6 +12,7 @@ public class UnitTaskController : MonoBehaviour {
     public GameObject dirtyPlate;
     public GameObject cleanPlate;
     public GameObject filledPlate;
+    public GameObject rawFood;
 
     public TaskType CurrentTaskType
     {
@@ -71,43 +72,51 @@ public class UnitTaskController : MonoBehaviour {
                 cleanPlate.SetActive(false);
                 dirtyPlate.SetActive(false);
                 filledPlate.SetActive(false);
+                rawFood.SetActive(false);
                 isInteracting = false;
                 break;
             case TaskType.CleanPlate:
                 cleanPlate.SetActive(true);
                 dirtyPlate.SetActive(false);
                 filledPlate.SetActive(false);
+                rawFood.SetActive(false);
                 break;
             case TaskType.DirtyPlate:
                 cleanPlate.SetActive(false);
                 dirtyPlate.SetActive(true);
                 filledPlate.SetActive(false);
+                rawFood.SetActive(false);
                 break;
             case TaskType.Interacting:
                 cleanPlate.SetActive(false);
                 dirtyPlate.SetActive(false);
                 filledPlate.SetActive(false);
+                rawFood.SetActive(false);
                 isInteracting = true;
                 break;
             case TaskType.CookedFood:
                 cleanPlate.SetActive(false);
                 dirtyPlate.SetActive(false);
                 filledPlate.SetActive(true);
+                rawFood.SetActive(false);
                 break;
             case TaskType.Washing:
                 cleanPlate.SetActive(false);
                 dirtyPlate.SetActive(false);
                 filledPlate.SetActive(false);
+                rawFood.SetActive(false);
                 break;
             case TaskType.RawFood:
                 cleanPlate.SetActive(false);
                 dirtyPlate.SetActive(false);
                 filledPlate.SetActive(false);
+                rawFood.SetActive(true);
                 break;
             case TaskType.Serving:
                 cleanPlate.SetActive(false);
                 dirtyPlate.SetActive(false);
                 filledPlate.SetActive(false);
+                rawFood.SetActive(false);
                 break;
         }
     }
