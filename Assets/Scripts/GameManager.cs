@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour {
     {
         currentFoodValue = defaultFoodValue * satisfactionMeter.value;
         playerScore += currentFoodValue;
-        scoreText.text = "" + (int)playerScore;
+        scoreText.text = "Score: " + (int)playerScore;
     }
 
 }
