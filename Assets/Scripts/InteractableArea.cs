@@ -18,6 +18,8 @@ public class InteractableArea : MonoBehaviour {
     public GameObject fillLevel1;
     public GameObject fillLevel2;
     public GameObject fillLevel3;
+
+    public GameManager Gm;
     public enum AreaType
     {
         None,
@@ -234,6 +236,8 @@ public class InteractableArea : MonoBehaviour {
                     {
                         if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.CookedFood)
                         {
+                            Gm.AddScore();
+                            Gm.StartNewCustomer();
                             isInteracting = true;
                             interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
                             interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
