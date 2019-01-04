@@ -15,7 +15,9 @@ public class InteractableArea : MonoBehaviour {
     private GameObject interactingUnit;
 
     public Slider feedbackSlider;
-    
+    public GameObject fillLevel1;
+    public GameObject fillLevel2;
+    public GameObject fillLevel3;
     public enum AreaType
     {
         None,
@@ -84,6 +86,33 @@ public class InteractableArea : MonoBehaviour {
 
             timer = 0.0f;
         }
+        if (this.gameObject.name == "CookingInteractableArea")
+        {
+            switch (foodServings)
+            {
+                case 0:
+                    fillLevel1.SetActive(false);
+                    fillLevel2.SetActive(false);
+                    fillLevel3.SetActive(false);
+                    break;
+                case 1:
+                    fillLevel1.SetActive(true);
+                    fillLevel2.SetActive(false);
+                    fillLevel3.SetActive(false);
+                    break;
+                case 2:
+                    fillLevel1.SetActive(false);
+                    fillLevel2.SetActive(true);
+                    fillLevel3.SetActive(false);
+                    break;
+                case 3:
+                    fillLevel1.SetActive(false);
+                    fillLevel2.SetActive(false);
+                    fillLevel3.SetActive(true);
+                    break;
+            }
+        }
+
 	}
 
     void Complete()
@@ -162,26 +191,27 @@ public class InteractableArea : MonoBehaviour {
                             Debug.Log("Added Food!!");
                             foodServings += 1;
                         }
-                        //else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.CleanPlate)
-                        //{
-                        //    isInteracting = true;
-                        //    interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
-                        //    interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
-                        //    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.CookedFood;
-                        //}
-                    }
-                    else if(!isInteracting && isComplete)
-                    {
-                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.CleanPlate && foodServings > 0)
+                        else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.CleanPlate && foodServings > 0)
                         {
                             isInteracting = true;
                             interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
                             interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
                             interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.CookedFood;
                             foodServings -= 1;
-                            isComplete = false;
                         }
                     }
+                    //else if(!isInteracting && !isComplete)
+                    //{
+                    //    if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.CleanPlate && foodServings > 0)
+                    //    {
+                    //        isInteracting = true;
+                    //        interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
+                    //        interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
+                    //        interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.CookedFood;
+                    //        foodServings -= 1;
+                    //        isComplete = false;
+                    //    }
+                    //}
                     break;
                     case AreaType.SinkArea:
                         if (!isInteracting && !isComplete)
@@ -230,6 +260,7 @@ public class InteractableArea : MonoBehaviour {
         if (other.gameObject.tag == "Player")
         {
             isInteracting = false;
+            isComplete = false;
         }
    
     }

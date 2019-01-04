@@ -6,8 +6,12 @@ public class UnitTaskController : MonoBehaviour {
 
     public bool isInteracting = false;
     public TaskType currentTaskType;
-
+    
     public GameObject exclamationPoint;
+
+    public GameObject dirtyPlate;
+    public GameObject cleanPlate;
+    public GameObject filledPlate;
 
     public TaskType CurrentTaskType
     {
@@ -64,22 +68,46 @@ public class UnitTaskController : MonoBehaviour {
         switch (currentTaskType)
         {
             case TaskType.None:
+                cleanPlate.SetActive(false);
+                dirtyPlate.SetActive(false);
+                filledPlate.SetActive(false);
                 isInteracting = false;
                 break;
             case TaskType.CleanPlate:
+                cleanPlate.SetActive(true);
+                dirtyPlate.SetActive(false);
+                filledPlate.SetActive(false);
                 break;
             case TaskType.DirtyPlate:
+                cleanPlate.SetActive(false);
+                dirtyPlate.SetActive(true);
+                filledPlate.SetActive(false);
                 break;
             case TaskType.Interacting:
+                cleanPlate.SetActive(false);
+                dirtyPlate.SetActive(false);
+                filledPlate.SetActive(false);
                 isInteracting = true;
                 break;
             case TaskType.CookedFood:
+                cleanPlate.SetActive(false);
+                dirtyPlate.SetActive(false);
+                filledPlate.SetActive(true);
                 break;
             case TaskType.Washing:
+                cleanPlate.SetActive(false);
+                dirtyPlate.SetActive(false);
+                filledPlate.SetActive(false);
                 break;
             case TaskType.RawFood:
+                cleanPlate.SetActive(false);
+                dirtyPlate.SetActive(false);
+                filledPlate.SetActive(false);
                 break;
             case TaskType.Serving:
+                cleanPlate.SetActive(false);
+                dirtyPlate.SetActive(false);
+                filledPlate.SetActive(false);
                 break;
         }
     }
