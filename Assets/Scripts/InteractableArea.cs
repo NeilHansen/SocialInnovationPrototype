@@ -15,6 +15,7 @@ public class InteractableArea : MonoBehaviour {
     private GameObject interactingUnit;
 
     public Slider feedbackSlider;
+    public Slider feedbackSlider2;
     public GameObject fillLevel1;
     public GameObject fillLevel2;
     public GameObject fillLevel3;
@@ -27,7 +28,8 @@ public class InteractableArea : MonoBehaviour {
         CookingArea,
         SinkArea,
         ServingArea,
-        DirtyDishReturn
+        DirtyDishReturn,
+        TrashCan
     }
 
 
@@ -266,22 +268,55 @@ public class InteractableArea : MonoBehaviour {
                         interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.DirtyPlate;
                     }
                     break;
+                case AreaType.TrashCan:
+                    startTime = 0.5f;
+                    feedbackSlider.maxValue = 0.5f;
+                    isInteracting = true;
+                    interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
+                    interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
+                    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
+                    break;
             }
-            if (isInteracting && !isComplete)
+            if (other.gameObject.name == "Unit1")
             {
-                feedbackSlider.gameObject.SetActive(true);
-                
-                feedbackSlider.value = timer;
-                timer += Time.deltaTime;
-                if (timer >= startTime)
+                if (isInteracting && !isComplete)
                 {
-                    Complete();
+
+
+                    feedbackSlider.gameObject.SetActive(true);
+
+                    feedbackSlider.value = timer;
+                    timer += Time.deltaTime;
+                    if (timer >= startTime)
+                    {
+                        Complete();
+                    }
                 }
-            }
-            else
+                else
+                {
+                    feedbackSlider.gameObject.SetActive(false);
+                    timer = 0.0f;
+                }
+            }else if(other.gameObject.name =="Unit2")
             {
-                feedbackSlider.gameObject.SetActive(false);
-                timer = 0.0f;
+                if (isInteracting && !isComplete)
+                {
+
+
+                    feedbackSlider2.gameObject.SetActive(true);
+
+                    feedbackSlider2.value = timer;
+                    timer += Time.deltaTime;
+                    if (timer >= startTime)
+                    {
+                        Complete();
+                    }
+                }
+                else
+                {
+                    feedbackSlider2.gameObject.SetActive(false);
+                    timer = 0.0f;
+                }
             }
             Debug.Log(feedbackSlider.maxValue);
             // }

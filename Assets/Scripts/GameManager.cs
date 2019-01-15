@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour {
 
         if (hasCustomer)
         {
-            satisfactionMeter.value -= Time.deltaTime * 0.35f;
+            satisfactionMeter.value -= Time.deltaTime * 0.035f;
         }
 
     }
