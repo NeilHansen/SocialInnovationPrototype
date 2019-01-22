@@ -13,6 +13,7 @@ public class UnitTaskController : MonoBehaviour {
     public GameObject cleanPlate;
     public GameObject filledPlate;
     public GameObject rawFood;
+    public Canvas convoCanvas;
 
     public TaskType CurrentTaskType
     {
@@ -43,12 +44,18 @@ public class UnitTaskController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-       
+        
 	}
 
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            Instantiate(convoCanvas, transform.position + new Vector3(0.0f, 1.8f, 0.0f), convoCanvas.transform.rotation);
+            convoCanvas.GetComponent<SliderCanvas>().player = gameObject;
+        }
+
         if (!isInteracting)
         {
             DoTask();

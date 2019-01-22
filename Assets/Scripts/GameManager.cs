@@ -27,8 +27,7 @@ public class GameManager : MonoBehaviour {
         timerText.text = "" + (int)timeValue;
         timerTextBG.text = "" + (int)timeValue;
         satisfactionMeter.maxValue = defautlSatisfactionLevel;
-        StartNewCustomer();
-
+        //StartNewCustomer();
     }
 
 
@@ -47,9 +46,13 @@ public class GameManager : MonoBehaviour {
 
         if (hasCustomer)
         {
-            satisfactionMeter.value -= Time.deltaTime * 0.035f;
+            satisfactionMeter.value -= Time.deltaTime * 0.35f;
         }
+    }
 
+    public void Test()
+    {
+        Debug.Log("test");
     }
 
     public void StartNewCustomer()

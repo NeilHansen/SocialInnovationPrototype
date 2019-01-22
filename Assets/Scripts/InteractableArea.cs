@@ -75,7 +75,6 @@ public class InteractableArea : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        Debug.Log(isInteracting + " " + isComplete);
         
         //if (isInteracting && !isComplete)
         //{
