@@ -8,6 +8,7 @@ public class SliderCanvas : MonoBehaviour {
     public GameObject player;
     public Button positiveButton;
     public Button negativeButton;
+ 
 
     private Vector3 offset;
     private GameObject specialCustomer;
@@ -43,4 +44,6 @@ public class SliderCanvas : MonoBehaviour {
     {
         specialCustomer.GetComponent<Customer>().status.sprite = specialCustomer.GetComponent<Customer>().sprite[1];
     }
+
+    
 }
