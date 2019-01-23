@@ -25,7 +25,7 @@ public class UnitTaskController : MonoBehaviour {
         set
         {
             currentTaskType = value;
-            StartCoroutine("FlashFeedback");
+            //StartCoroutine("FlashFeedback");
         }
     }
 
