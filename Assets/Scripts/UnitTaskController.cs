@@ -37,7 +37,8 @@ public class UnitTaskController : MonoBehaviour {
        Washing,
        CookedFood,
        RawFood,
-       Serving
+       Serving,
+       Counter
     }
 
 
@@ -50,11 +51,11 @@ public class UnitTaskController : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            Instantiate(convoCanvas, transform.position + new Vector3(0.0f, 1.8f, 0.0f), convoCanvas.transform.rotation);
-            convoCanvas.GetComponent<SliderCanvas>().player = gameObject;
-        }
+        //if(Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    Instantiate(convoCanvas, transform.position + new Vector3(0.0f, 1.8f, 0.0f), convoCanvas.transform.rotation);
+        //    convoCanvas.GetComponent<SliderCanvas>().player = gameObject;
+        //}
 
         if (!isInteracting)
         {
@@ -120,6 +121,12 @@ public class UnitTaskController : MonoBehaviour {
                 rawFood.SetActive(true);
                 break;
             case TaskType.Serving:
+                cleanPlate.SetActive(false);
+                dirtyPlate.SetActive(false);
+                filledPlate.SetActive(false);
+                rawFood.SetActive(false);
+                break;
+            case TaskType.Counter:
                 cleanPlate.SetActive(false);
                 dirtyPlate.SetActive(false);
                 filledPlate.SetActive(false);

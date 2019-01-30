@@ -36,7 +36,7 @@ public class RtsMover : MonoBehaviour {
     {
         if (ActiveUnit != null)
         {
-            Debug.Log(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            //Debug.Log(Camera.main.ScreenToWorldPoint(Input.mousePosition));
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if(Physics.Raycast(ray, out hit, mask))
@@ -56,8 +56,4 @@ public class RtsMover : MonoBehaviour {
     {
         ActiveUnit.GetComponent<NavMeshAgent>().SetDestination(newPos);
     }
-
-    
-
-    
 }

@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class SliderCanvas : MonoBehaviour {
 
-    public GameObject player;
+    
     public Button positiveButton;
     public Button negativeButton;
- 
+    public GameObject player;
 
     private Vector3 offset;
     private GameObject specialCustomer;
@@ -17,8 +17,11 @@ public class SliderCanvas : MonoBehaviour {
 	void Start () {
         offset = transform.position - player.transform.position;
 
-        positiveButton.onClick.AddListener(PositiveRespond);
-        negativeButton.onClick.AddListener(NegativeRespond);
+        positiveButton.gameObject.SetActive(false);
+        negativeButton.gameObject.SetActive(false);
+
+        //positiveButton.onClick.AddListener(PositiveRespond);
+        //negativeButton.onClick.AddListener(NegativeRespond);
 	}
 	
 	// Update is called once per frame
@@ -27,23 +30,20 @@ public class SliderCanvas : MonoBehaviour {
 
         specialCustomer = GameObject.FindGameObjectWithTag("SpecialCustomer");
 
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            positiveButton.enabled = true;
-            negativeButton.enabled = true;
-        }
+        //if(Vector3.Distance(specialCustomer.transform.position, transform.position) < 5.0f)
+        //{
+        //    positiveButton.gameObject.SetActive(true);
+        //    negativeButton.gameObject.SetActive(true);
+        //}
     }
 
     void PositiveRespond()
     {
-        Debug.Log(specialCustomer.GetComponent<Customer>().sprite[0].name);
         specialCustomer.GetComponent<Customer>().PositiveRespond();
     }
 
     void NegativeRespond()
     {
-        specialCustomer.GetComponent<Customer>().status.sprite = specialCustomer.GetComponent<Customer>().sprite[1];
+        specialCustomer.GetComponent<Customer>().NegativeRespond();
     }
-
-    
 }

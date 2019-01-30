@@ -22,31 +22,47 @@ public class Customer : MonoBehaviour {
     private Vector3 playerDirection;
     private Vector3 velocity;
 
+    //Spherecast stuff
     public GameObject currentHitObject;
     private float currentHitDistance;
-
     public float maxRaycastDistance;
     public float sphereRadius;
     public LayerMask layerMask;
-
     private Vector3 origin;
     private Vector3 direction;
+
+    //For dialogue
+    private SliderCanvas[] playerCanvas;
+    private int talkStage = 0;
+    private int talkTimes = 0;
 
     // Use this for initialization
     void Start () {
 		customerPath = FindObjectOfType<CustomerMovePath>();
         gameManager = FindObjectOfType<GameManager>();
+        playerCanvas = FindObjectsOfType<SliderCanvas>();
         status = FindObjectOfType<Image>();
         pathLength = customerPath.Length;
         curPathIndex = 0;
         velocity = transform.forward;
+
+        if (gameObject.tag == "SpecialCustomer")
+        {
+            foreach (SliderCanvas sC in playerCanvas)
+            {
+                sC.positiveButton.onClick.AddListener(PositiveRespond);
+                sC.negativeButton.onClick.AddListener(NegativeRespond);
+            }
+        }
     }
 	
 	// Update is called once per frame
 	void Update () {
         
         CheckSpherecast();
-
+        TriggerDialogue();
+        CheckCustomerStatus();
+        
         if (currentHitDistance < 2.5f && (currentHitObject.gameObject.tag == "Customer" || currentHitObject.gameObject.tag == "SpecialCustomer"))
             isMoving = false;
 
@@ -78,14 +94,72 @@ public class Customer : MonoBehaviour {
         }
     }
 
+    void TriggerDialogue()
+    {
+        if(gameObject.tag == "SpecialCustomer")
+        {
+            foreach (SliderCanvas sC in playerCanvas)
+            {
+                if(Vector3.Distance(sC.gameObject.transform.position, transform.position) < 5.0f)
+                {
+                    sC.positiveButton.gameObject.SetActive(true);
+                    //sC.positiveButton.onClick.AddListener(PositiveRespond);
+                    sC.negativeButton.gameObject.SetActive(true);
+                    //sC.negativeButton.onClick.AddListener(NegativeRespond);
+                }
+                else
+                {
+                    sC.positiveButton.gameObject.SetActive(false);
+                    sC.negativeButton.gameObject.SetActive(false);
+                }
+            }
+            
+        }
+    }
+
+    void CheckCustomerStatus()
+    {
+        if (gameObject.tag == "SpecialCustomer")
+        {
+            switch (talkStage)
+            {
+                case 0:
+                    status.sprite = sprite[0];
+                    break;
+                case 1:
+                    status.sprite = sprite[1];
+                    break;
+                case 2:
+                    status.sprite = sprite[2];
+                    break;
+                case -1:
+                    status.sprite = sprite[3];
+                    break;
+                case -2:
+                    status.sprite = sprite[4];
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
     public void PositiveRespond()
     {
-        status.sprite = sprite[0];
+        if(talkTimes < 2)
+        {
+            talkStage++;
+            talkTimes++;
+        }
     }
 
     public void NegativeRespond()
     {
-        status.sprite = sprite[1];
+        if(talkTimes < 2)
+        {
+            talkStage--;
+            talkTimes++;
+        }
     }
     
     private void OnTriggerEnter(Collider other)
@@ -122,7 +196,6 @@ public class Customer : MonoBehaviour {
             currentHitObject = null;
         }
     }
-
 
     void AutoMove()
     {

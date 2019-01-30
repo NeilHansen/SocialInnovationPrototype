@@ -7,7 +7,8 @@ public class CustomerSpawn : MonoBehaviour {
     public GameObject customerPrefab;
     public GameObject specialCustomerPrefab;
     public GameObject spawnPoint;
-    private GameObject[] customers;
+
+    private GameObject[] customers, specialCustomers;
     private float spawnTime = 2.0f;
     private float timeElapsed = 0.0f;
     private int maxCustomer = 4;
@@ -22,8 +23,9 @@ public class CustomerSpawn : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         customers = GameObject.FindGameObjectsWithTag("Customer");
-        
-        if(customers.Length < maxCustomer)
+        specialCustomers = GameObject.FindGameObjectsWithTag("SpecialCustomer");
+
+        if ((customers.Length + specialCustomers.Length) < maxCustomer)
         {
             timeElapsed += Time.deltaTime;
         }
@@ -33,11 +35,11 @@ public class CustomerSpawn : MonoBehaviour {
             Spawn();
             timeElapsed = 0.0f;
         }
-	}
+	} 
 
     void Spawn()
     {
-        if(customerCount%4 == 0)
+        if(customerCount%3 == 0)
             Instantiate(specialCustomerPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
         else
             Instantiate(customerPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);

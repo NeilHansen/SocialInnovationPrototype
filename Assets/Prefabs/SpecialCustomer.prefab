@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 223093458038581820}
   - component: {fileID: 114661210241384614}
   - component: {fileID: 114575436429472686}
-  - component: {fileID: 114781270499234714}
+  - component: {fileID: 114938818339011176}
   m_Layer: 5
   m_Name: CustomerCanvas
   m_TagString: Untagged
@@ -121,7 +121,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1466831249542532}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.5088874, y: 2.2400445e-16, z: -10.088264}
+  m_LocalPosition: {x: -6.732003, y: 3.303828e-16, z: -14.87912}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4287312375071608}
@@ -272,7 +272,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 372cff60c50e56545b9534a87a501726, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f2e5a5eebe5661a43b3fe1aa54d267ce, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -317,7 +317,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &114781270499234714
+--- !u!114 &114938818339011176
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -325,12 +325,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1686443717912422}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe538fb7031a2404291a666baedd8f71, type: 3}
+  m_Script: {fileID: 11500000, guid: f99bbeb477abb6545983e2d3a225c82a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1851288591845290}
-  positiveButton: {fileID: 0}
-  negativeButton: {fileID: 0}
 --- !u!114 &114987931621270020
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -345,7 +343,10 @@ MonoBehaviour:
   customerPath: {fileID: 0}
   gameManager: {fileID: 0}
   sprite:
+  - {fileID: 21300000, guid: f2e5a5eebe5661a43b3fe1aa54d267ce, type: 3}
   - {fileID: 21300000, guid: 23bf71e9e1b7827479d3f21720d96260, type: 3}
+  - {fileID: 21300000, guid: 29243aa2d1cacb345a7aebd01dc29e65, type: 3}
+  - {fileID: 21300000, guid: 372cff60c50e56545b9534a87a501726, type: 3}
   - {fileID: 21300000, guid: 0cc46b8ec004e08468f7f606ebba83fc, type: 3}
   status: {fileID: 114167866477569604}
   currentHitObject: {fileID: 0}
