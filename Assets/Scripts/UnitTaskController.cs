@@ -41,22 +41,25 @@ public class UnitTaskController : MonoBehaviour {
        Counter
     }
 
+    // Put things on the table
+    public enum ObjectHeld
+    {
+        None,
+        DirtyPlate,
+        CleanPlate,
+        FilledPlate,
+        RawFood
+    }
+    public ObjectHeld objectHolding;
 
-
-	// Use this for initialization
-	void Start () {
-        
+    // Use this for initialization
+    void Start () {
+        objectHolding = ObjectHeld.None;
 	}
 
     // Update is called once per frame
     void Update()
     {
-        //if(Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    Instantiate(convoCanvas, transform.position + new Vector3(0.0f, 1.8f, 0.0f), convoCanvas.transform.rotation);
-        //    convoCanvas.GetComponent<SliderCanvas>().player = gameObject;
-        //}
-
         if (!isInteracting)
         {
             DoTask();
@@ -81,6 +84,7 @@ public class UnitTaskController : MonoBehaviour {
                 dirtyPlate.SetActive(false);
                 filledPlate.SetActive(false);
                 rawFood.SetActive(false);
+                objectHolding = ObjectHeld.None;
                 isInteracting = false;
                 break;
             case TaskType.CleanPlate:
@@ -88,12 +92,14 @@ public class UnitTaskController : MonoBehaviour {
                 dirtyPlate.SetActive(false);
                 filledPlate.SetActive(false);
                 rawFood.SetActive(false);
+                objectHolding = ObjectHeld.CleanPlate;
                 break;
             case TaskType.DirtyPlate:
                 cleanPlate.SetActive(false);
                 dirtyPlate.SetActive(true);
                 filledPlate.SetActive(false);
                 rawFood.SetActive(false);
+                objectHolding = ObjectHeld.DirtyPlate;
                 break;
             case TaskType.Interacting:
                 cleanPlate.SetActive(false);
@@ -107,30 +113,28 @@ public class UnitTaskController : MonoBehaviour {
                 dirtyPlate.SetActive(false);
                 filledPlate.SetActive(true);
                 rawFood.SetActive(false);
+                objectHolding = ObjectHeld.FilledPlate;
                 break;
             case TaskType.Washing:
                 cleanPlate.SetActive(false);
                 dirtyPlate.SetActive(false);
                 filledPlate.SetActive(false);
                 rawFood.SetActive(false);
+                objectHolding = ObjectHeld.None;
                 break;
             case TaskType.RawFood:
                 cleanPlate.SetActive(false);
                 dirtyPlate.SetActive(false);
                 filledPlate.SetActive(false);
                 rawFood.SetActive(true);
+                objectHolding = ObjectHeld.RawFood;
                 break;
             case TaskType.Serving:
                 cleanPlate.SetActive(false);
                 dirtyPlate.SetActive(false);
                 filledPlate.SetActive(false);
                 rawFood.SetActive(false);
-                break;
-            case TaskType.Counter:
-                cleanPlate.SetActive(false);
-                dirtyPlate.SetActive(false);
-                filledPlate.SetActive(false);
-                rawFood.SetActive(false);
+                objectHolding = ObjectHeld.None;
                 break;
         }
     }
