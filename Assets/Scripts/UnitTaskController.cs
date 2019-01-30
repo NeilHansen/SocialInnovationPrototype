@@ -51,12 +51,6 @@ public class UnitTaskController : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        //if(Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    Instantiate(convoCanvas, transform.position + new Vector3(0.0f, 1.8f, 0.0f), convoCanvas.transform.rotation);
-        //    convoCanvas.GetComponent<SliderCanvas>().player = gameObject;
-        //}
-
         if (!isInteracting)
         {
             DoTask();

@@ -59,7 +59,7 @@ public class UnitHighlight : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "InteractableAre")
+        if (other.gameObject.tag == "InteractableAre")
         {
             if(other.gameObject.GetComponent<InteractableArea>().isInteracting == false)
             {
@@ -71,6 +71,23 @@ public class UnitHighlight : MonoBehaviour {
                 //this.GetComponent<NavMeshAgent>().isStopped = false;
             }
 
+        }
+
+        if (other.gameObject.tag == "SpecialCustomer")
+        {
+         //   this.GetComponent<NavMeshAgent>().isStopped = true;
+           // this.GetComponent<NavMeshAgent>().enabled = false;
+            rtsMover.ActiveUnit = null;
+            isClicked = false;
+            other.gameObject.GetComponent<SphereCollider>().enabled = false;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "SpecialCustomer")
+        {
+            other.gameObject.GetComponent<SphereCollider>().enabled = true;
         }
     }
 }
