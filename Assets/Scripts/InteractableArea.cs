@@ -16,6 +16,7 @@ public class InteractableArea : MonoBehaviour {
 
     public Slider feedbackSlider;
     public Slider feedbackSlider2;
+    
 
     //Player UI status
     public Image Status;
@@ -50,8 +51,15 @@ public class InteractableArea : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+        Gm = GameObject.FindObjectOfType<GameManager>();
         counterSpace = gameObject.GetComponent<CounterSpace>();
         InvokeRepeating("TestDebug", 0.0f, 1.0f);
+        feedbackSlider = GameObject.FindGameObjectWithTag("PlayerCanvas1").transform.GetChild(0).GetComponent<Slider>();
+        feedbackSlider2 = GameObject.FindGameObjectWithTag("Player Canvas2").transform.GetChild(0).GetComponent<Slider>();
+
+        Status = GameObject.FindGameObjectWithTag("PlayerCanvas1").transform.GetChild(1).GetComponent<Image>();
+        Status2 = GameObject.FindGameObjectWithTag("Player Canvas2").transform.GetChild(1).GetComponent<Image>();
+
     }
 
     // Update is called once per frame
