@@ -45,7 +45,7 @@ public class InteractableArea : MonoBehaviour {
     private bool isOnCounter = false;
     private CounterSpace counterSpace;
     private bool dirtyPlateOn, cleanPlateOn, filledPlateOn, rawFoodOn;
-    UnitTaskController.ObjectHeld objectOnCounter;
+    UnitTaskController.ObjectHeld objectPlayerHolding;
     
     // Use this for initialization
     void Start ()
@@ -57,6 +57,7 @@ public class InteractableArea : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
+        Debug.Log(objectPlayerHolding);
         if (gameObject.name == "CookingInteractableArea")
         {
             switch (foodServings)
@@ -84,16 +85,17 @@ public class InteractableArea : MonoBehaviour {
             }
         }
 
-        if (counterSpace != null)
+        if (dirtyPlateOn && cleanPlateOn && filledPlateOn && rawFoodOn)
+            isOnCounter = true;
+        else
+            isOnCounter = false;
+
+        if (counterSpace != null && interactingUnit != null)
         {
-            if (isOnCounter)
+            if (!isOnCounter) //If there's nothing on the counter
             {
-                //switch (interactingUnit.GetComponent<UnitTaskController>().objectHolding)
-                switch (objectOnCounter)
+                switch (objectPlayerHolding)
                 {
-                    case UnitTaskController.ObjectHeld.None:
-                        counterSpace.ObjectNone();
-                        break;
                     case UnitTaskController.ObjectHeld.DirtyPlate:
                         counterSpace.ObjectDirtyPlate();
                         dirtyPlateOn = true;
@@ -111,35 +113,90 @@ public class InteractableArea : MonoBehaviour {
                         rawFoodOn = true;
                         break;
                 }
+                interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
                 interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
             }
-            else
+            else //If there's something on the counter
             {
-                if (dirtyPlateOn)
+                //If player holds nothing, simply make player do the object task and disable the object on counter
+                if (objectPlayerHolding == UnitTaskController.ObjectHeld.None)
                 {
-                    Debug.Log("1");
-                    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.DirtyPlate;
-                    dirtyPlateOn = false;
+                    if (dirtyPlateOn)
+                    {
+                        interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
+                        interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.DirtyPlate;
+                        dirtyPlateOn = false;
+                    }
+                    else if (cleanPlateOn)
+                    {
+                        interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
+                        interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.CleanPlate;
+                        cleanPlateOn = false;
+                    }
+                    else if (filledPlateOn)
+                    {
+                        interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
+                        interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.CookedFood;
+                        filledPlateOn = false;
+                    }
+                    else if (rawFoodOn)
+                    {
+                        interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
+                        interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.RawFood;
+                        rawFoodOn = false;
+                    }
                 }
-                else if(cleanPlateOn)
+                else //If player holds something
                 {
-                    Debug.Log("2");
-                    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.CleanPlate;
-                    cleanPlateOn = false;
+                    switch (objectPlayerHolding)
+                    {
+                        case UnitTaskController.ObjectHeld.DirtyPlate:
+                            if (dirtyPlateOn)
+                                break;
+                            else
+                            {
+                                if (cleanPlateOn)
+                                {
+                                    counterSpace.ObjectCleanPlate();
+                                    cleanPlateOn = true;
+                                    interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
+                                    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.CleanPlate;
+                                }
+                                else if (filledPlateOn)
+                                {
+                                    counterSpace.ObjectFilledPlate();
+                                    filledPlateOn = true;
+                                    interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
+                                    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.CookedFood;
+                                }
+                                else if (rawFoodOn)
+                                {
+                                    counterSpace.ObjectRawFood();
+                                    rawFoodOn = true;
+                                    interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
+                                    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.RawFood;
+                                }
+                                dirtyPlateOn = false;
+                            }
+                            break;
+                            //case UnitTaskController.ObjectHeld.DirtyPlate:
+                            //    counterSpace.ObjectDirtyPlate();
+                            //    dirtyPlateOn = true;
+                            //    break;
+                            //case UnitTaskController.ObjectHeld.CleanPlate:
+                            //    counterSpace.ObjectCleanPlate();
+                            //    cleanPlateOn = true;
+                            //    break;
+                            //case UnitTaskController.ObjectHeld.FilledPlate:
+                            //    counterSpace.ObjectFilledPlate();
+                            //    filledPlateOn = true;
+                            //    break;
+                            //case UnitTaskController.ObjectHeld.RawFood:
+                            //    counterSpace.ObjectRawFood();
+                            //    rawFoodOn = true;
+                            //    break;
+                    }
                 }
-                else if(filledPlateOn)
-                {
-                    Debug.Log("3");
-                    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.CookedFood;
-                    filledPlateOn = false;
-                }
-                else if(rawFoodOn)
-                {
-                    Debug.Log("4");
-                    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.RawFood;
-                    rawFoodOn = false;
-                }
-                counterSpace.ObjectNone();
             }
         } 
 	}
@@ -203,10 +260,6 @@ public class InteractableArea : MonoBehaviour {
 
             case AreaType.Counter:
                 interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.Counter;
-                if (isOnCounter)
-                    isOnCounter = false;
-                else
-                    isOnCounter = true;
                 break;
         }
 
@@ -268,7 +321,7 @@ public class InteractableArea : MonoBehaviour {
                             isInteracting = true;
                             interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
                             interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
-                           // interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.RawFood;
+                            interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.RawFood;
                         }
                         else
                         {
@@ -468,7 +521,7 @@ public class InteractableArea : MonoBehaviour {
             switch(areaType)
             {
                 case AreaType.Counter:
-                    objectOnCounter = interactingUnit.gameObject.GetComponent<UnitTaskController>().objectHolding;
+                    objectPlayerHolding = interactingUnit.gameObject.GetComponent<UnitTaskController>().objectHolding;
                     break;
                 default:
                     break;
