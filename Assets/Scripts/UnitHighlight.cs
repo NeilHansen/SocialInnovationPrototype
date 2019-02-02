@@ -43,17 +43,17 @@ public class UnitHighlight : MonoBehaviour {
 
     private void OnMouseDown()
     {
-      
-        isClicked = true;
-        this.gameObject.GetComponent<Renderer>().material = Green;
-        if (rtsMover.ActiveUnit != null)
-        {
-            rtsMover.ActiveUnit.GetComponent<UnitHighlight>().isClicked = false;
-            rtsMover.ActiveUnit.GetComponent<Renderer>().material = Red;
-        }
-        rtsMover.ActiveUnit = this.gameObject;
-        this.GetComponent<NavMeshAgent>().enabled = true;
-        this.GetComponent<NavMeshAgent>().isStopped = false;
+        PossesUnit();
+        //isClicked = true;
+        //this.gameObject.GetComponent<Renderer>().material = Green;
+        //if (rtsMover.ActiveUnit != null)
+        //{
+        //    rtsMover.ActiveUnit.GetComponent<UnitHighlight>().isClicked = false;
+        //    rtsMover.ActiveUnit.GetComponent<Renderer>().material = Red;
+        //}
+        //rtsMover.ActiveUnit = this.gameObject;
+        //this.GetComponent<NavMeshAgent>().enabled = true;
+        //this.GetComponent<NavMeshAgent>().isStopped = false;
     }
 
 
@@ -72,5 +72,22 @@ public class UnitHighlight : MonoBehaviour {
             }
 
         }
+    }
+
+    public void PossesUnit()
+    {
+        
+            isClicked = true;
+            this.gameObject.GetComponent<Renderer>().material = Green;
+            if (rtsMover.ActiveUnit != null)
+            {
+                rtsMover.ActiveUnit.GetComponent<UnitHighlight>().isClicked = false;
+                rtsMover.ActiveUnit.GetComponent<Renderer>().material = Red;
+            }
+            rtsMover.ActiveUnit = this.gameObject;
+            this.GetComponent<NavMeshAgent>().enabled = true;
+            this.GetComponent<NavMeshAgent>().isStopped = false;
+        
+        
     }
 }

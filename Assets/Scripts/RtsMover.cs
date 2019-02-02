@@ -23,9 +23,19 @@ public class RtsMover : MonoBehaviour {
         {
             MouseClick();
         }
-        
-		
-	}
+        //Posses unit on number key presses
+        if (Input.GetKeyDown("1"))
+        {
+            Unit1.gameObject.GetComponent<UnitHighlight>().PossesUnit();
+        }
+
+        if (Input.GetKeyDown("2"))
+        {
+            Unit2.gameObject.GetComponent<UnitHighlight>().PossesUnit();
+        }
+
+
+    }
 
     private void OnDrawGizmos()
     {
@@ -36,7 +46,7 @@ public class RtsMover : MonoBehaviour {
     {
         if (ActiveUnit != null)
         {
-            Debug.Log(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+           // Debug.Log(Camera.main.ScreenToWorldPoint(Input.mousePosition));
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if(Physics.Raycast(ray, out hit, mask))
