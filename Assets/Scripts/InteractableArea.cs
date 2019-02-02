@@ -263,26 +263,7 @@ public class InteractableArea : MonoBehaviour {
                 break;
         }
 
-        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Washing)
-        {
-           // interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.CleanPlate;
-        }
-        else if(interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
-        {
-            
-            // interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.Serving;
-            // StartCoroutine("FlashFeedback");
-        }
-
-        //if(interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.CookedFood)
-        //{
-        //    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.Serving;
-        //}
-        //else
-        //{
-        //    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
-        //    StartCoroutine("FlashFeedback");
-        //}
+        
     }
 
     public IEnumerator FlashFeedback(Image Player,Sprite image)
@@ -314,14 +295,14 @@ public class InteractableArea : MonoBehaviour {
                 case AreaType.PreperationArea:
                     if (!isInteracting && !isComplete)
                     {
-                        startTime = 4;
-                        feedbackSlider.maxValue = 4;
+                       // startTime = 4;
+                      //  feedbackSlider.maxValue = 4;
                         if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
                         {
                             isInteracting = true;
                             interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
                             interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
-                            interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.RawFood;
+                           // interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.RawFood;
                         }
                         else
                         {
@@ -335,8 +316,8 @@ public class InteractableArea : MonoBehaviour {
                 case AreaType.CookingArea:
                     if (!isInteracting && !isComplete)
                     {
-                        startTime = 3;
-                        feedbackSlider.maxValue = 3;
+                      //  startTime = 3;
+                      //  feedbackSlider.maxValue = 3;
                         if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.RawFood && foodServings < 3)
                         {
                             isInteracting = true;
@@ -362,24 +343,13 @@ public class InteractableArea : MonoBehaviour {
                             }
                         }
                     }
-                    //else if(!isInteracting && !isComplete)
-                    //{
-                    //    if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.CleanPlate && foodServings > 0)
-                    //    {
-                    //        isInteracting = true;
-                    //        interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
-                    //        interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
-                    //        interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.CookedFood;
-                    //        foodServings -= 1;
-                    //        isComplete = false;
-                    //    }
-                    //}
+                    
                     break;
                 case AreaType.SinkArea:
                     if (!isInteracting && !isComplete)
                     {
-                        startTime = 3;
-                        feedbackSlider.maxValue = 3;
+                       // startTime = 3;
+                       // feedbackSlider.maxValue = 3;
                         if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.DirtyPlate)
                         {
                             isInteracting = true;
@@ -400,8 +370,8 @@ public class InteractableArea : MonoBehaviour {
                 case AreaType.ServingArea:
                     if (!isInteracting && !isComplete)
                     {
-                        startTime = 2;
-                        feedbackSlider.maxValue = 2;
+                       // startTime = 2;
+                       // feedbackSlider.maxValue = 2;
                         if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.CookedFood)
                         {
                             Gm.AddScore();
@@ -424,25 +394,45 @@ public class InteractableArea : MonoBehaviour {
                 case AreaType.DirtyDishReturn:
                     if (!isInteracting && !isComplete)
                     {
-                        startTime = 0.5f;
-                        feedbackSlider.maxValue = 0.5f;
-                        isInteracting = true;
-                        interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
-                        interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
-                        interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.DirtyPlate;
+                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
+                        {
+                            //  startTime = 0.5f;
+                            //   feedbackSlider.maxValue = 0.5f;
+                            isInteracting = true;
+                            interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
+                            interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
+                            interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.DirtyPlate;
+                        }
+                        else
+                        {
+                            if (FeedBackFiredAlready == false)
+                            {
+                                NegativeFeedback(other);
+                            }
+                        }
                     }
                     break;
                 case AreaType.TrashCan:
-                    startTime = 0.5f;
-                    feedbackSlider.maxValue = 0.5f;
-                    isInteracting = true;
-                    interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
-                    interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
-                    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
+                    if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType != UnitTaskController.TaskType.None)
+                    {
+                        // startTime = 0.5f;
+                        // feedbackSlider.maxValue = 0.5f;
+                        isInteracting = true;
+                        interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
+                        interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
+                        interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
+                    }
+                    else
+                    {
+                        if (FeedBackFiredAlready == false)
+                        {
+                            NegativeFeedback(other);
+                        }
+                    }
                     break;
                 case AreaType.Counter:
-                    startTime = 0.5f;
-                    feedbackSlider.maxValue = 0.5f;
+                   // startTime = 0.5f;
+                  //  feedbackSlider.maxValue = 0.5f;
                     isInteracting = true;
                     interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
                     interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
@@ -455,6 +445,7 @@ public class InteractableArea : MonoBehaviour {
                 if (isInteracting && !isComplete)
                 {
                     feedbackSlider.gameObject.SetActive(true);
+                    feedbackSlider.maxValue = startTime;
                     //setImage
                     Status.gameObject.SetActive(true);
                     SwitchImage(FeedbackSprites[0], Status);
@@ -478,6 +469,7 @@ public class InteractableArea : MonoBehaviour {
                 if (isInteracting && !isComplete)
                 {
                     feedbackSlider2.gameObject.SetActive(true);
+                    feedbackSlider2.maxValue = startTime;
                     Status2.gameObject.SetActive(true);
                     SwitchImage(FeedbackSprites[0], Status2);
 
@@ -491,7 +483,7 @@ public class InteractableArea : MonoBehaviour {
                 else
                 {
                     feedbackSlider2.gameObject.SetActive(false);
-                    Status2.gameObject.SetActive(false);
+                  //  Status2.gameObject.SetActive(false);
                     timer = 0.0f;
                 }
             }
