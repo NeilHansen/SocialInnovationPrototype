@@ -7,11 +7,12 @@ public class Customer : MonoBehaviour {
 
     public CustomerMovePath customerPath;
     public GameManager gameManager;
+    public bool leaveWhenMeterReachZero = false;
 
     public Sprite[] sprite;
     public Image status;
 
-    private bool isMoving = true;
+    public bool isMoving = true;
     private float mass = 1.0f;
     private float speed = 3.0f;
     private bool isLooping = false;
@@ -175,7 +176,7 @@ public class Customer : MonoBehaviour {
     {
         if (other.gameObject.tag == "CustomerWaitArea")
         {
-            if (gameManager.satisfactionMeter.value == gameManager.satisfactionMeter.minValue)
+            if (gameManager.satisfactionMeter.value == gameManager.satisfactionMeter.minValue && leaveWhenMeterReachZero)
                 isMoving = true;
         }
     }
