@@ -22,8 +22,32 @@ public class UnitHighlight : MonoBehaviour {
         {
             this.gameObject.GetComponent<Renderer>().material = Red;
         }
-           
-	}
+
+        if (Input.GetKeyDown("1"))
+        {
+            if (rtsMover.ActiveUnit == rtsMover.Unit2 || rtsMover.ActiveUnit == null)
+            {
+               rtsMover.Unit1.gameObject.GetComponent<UnitHighlight>().PossesUnit();
+            }
+            else
+            {
+
+            }
+        }
+
+        if (Input.GetKeyDown("2"))
+        {
+            if (rtsMover.ActiveUnit == rtsMover.Unit1 || rtsMover.ActiveUnit == null)
+            {
+                rtsMover.Unit2.gameObject.GetComponent<UnitHighlight>().PossesUnit();
+            }
+            else
+            {
+
+            }
+        }
+
+    }
 
     private void OnMouseEnter()
     {
@@ -33,16 +57,19 @@ public class UnitHighlight : MonoBehaviour {
     private void OnMouseOver()
     {
         this.gameObject.GetComponent<Renderer>().material = Green;
+        this.rtsMover.enabled = false;
     }
 
 
     private void OnMouseExit()
     {
+        this.rtsMover.enabled = true;
         this.gameObject.GetComponent<Renderer>().material = Red;
     }
 
     private void OnMouseDown()
     {
+        if(rtsMover.ActiveUnit != this.gameObject)
         PossesUnit();
         //isClicked = true;
         //this.gameObject.GetComponent<Renderer>().material = Green;
@@ -63,7 +90,7 @@ public class UnitHighlight : MonoBehaviour {
         {
             if(other.gameObject.GetComponent<InteractableArea>().isInteracting == false)
             {
-               // isInteracting = true;
+                isInteracting = true;
                 this.GetComponent<NavMeshAgent>().isStopped = true;
                 this.GetComponent<NavMeshAgent>().enabled = false;
                 rtsMover.ActiveUnit = null;
@@ -75,11 +102,10 @@ public class UnitHighlight : MonoBehaviour {
 
         if (other.gameObject.tag == "SpecialCustomer")
         {
-         //   this.GetComponent<NavMeshAgent>().isStopped = true;
-           // this.GetComponent<NavMeshAgent>().enabled = false;
             rtsMover.ActiveUnit = null;
             isClicked = false;
             other.gameObject.GetComponent<SphereCollider>().enabled = false;
+            Debug.Log(this.gameObject.name + " is talking to special customer");
         }
     }
 
