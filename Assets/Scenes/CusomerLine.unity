@@ -762,6 +762,11 @@ Prefab:
       propertyPath: Gm
       value: 
       objectReference: {fileID: 1875669972}
+    - target: {fileID: 114609569544456894, guid: cdf0891066c99c847bc321a80fb81b5e,
+        type: 2}
+      propertyPath: startTime
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdf0891066c99c847bc321a80fb81b5e, type: 2}
   m_IsPrefabAsset: 0
@@ -5837,8 +5842,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2111048413}
-  - {fileID: 1174803485}
   - {fileID: 984983983}
+  - {fileID: 1174803485}
   - {fileID: 789038843}
   m_Father: {fileID: 625079150}
   m_RootOrder: 6
@@ -8477,7 +8482,10 @@ MonoBehaviour:
   feedbackSlider2: {fileID: 1178898740}
   Status: {fileID: 36039040}
   Status2: {fileID: 1710414609}
-  FeedbackSprites: []
+  FeedbackSprites:
+  - {fileID: 21300000, guid: 170b97eb43c1f804790c9f7dc52db046, type: 3}
+  - {fileID: 21300000, guid: cb9ad482dbfd41e47af8cc575ea6add6, type: 3}
+  - {fileID: 21300000, guid: d0e7f14f3855473479e6fbbc5871f81c, type: 3}
   fillLevel1: {fileID: 0}
   fillLevel2: {fileID: 0}
   fillLevel3: {fileID: 0}

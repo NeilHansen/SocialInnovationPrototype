@@ -14,6 +14,7 @@ public class InteractableArea : MonoBehaviour
     public int foodServings;
 
     private GameObject interactingUnit;
+    private Customer[] customers;
 
     public Slider feedbackSlider;
     public Slider feedbackSlider2;
@@ -66,6 +67,7 @@ public class InteractableArea : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        customers = FindObjectsOfType<Customer>();
         if (gameObject.name == "CookingInteractableArea")
         {
             switch (foodServings)
@@ -146,6 +148,10 @@ public class InteractableArea : MonoBehaviour
                 Gm.AddScore();
                 Gm.StartNewCustomer();
                 interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.Washing;
+                foreach (Customer c in customers)
+                {
+                    c.isMoving = true;
+                }
                 break;
 
             case AreaType.DirtyDishReturn:
