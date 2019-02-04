@@ -23,33 +23,6 @@ public class RtsMover : MonoBehaviour {
         {
             MouseClick();
         }
-        //Posses unit on number key presses
-        
-        //if (Input.GetKeyDown("1"))
-        //{
-        //    if (ActiveUnit == Unit2 || ActiveUnit == null)
-        //    {
-        //        Unit1.gameObject.GetComponent<UnitHighlight>().PossesUnit();
-        //    }
-        //    else
-        //    {
-
-        //    }
-        //}
-
-        //if (Input.GetKeyDown("2"))
-        //{
-        //    if (ActiveUnit == Unit1 || ActiveUnit == null)
-        //    {
-        //        Unit2.gameObject.GetComponent<UnitHighlight>().PossesUnit();
-        //    }
-        //    else
-        //    {
-
-        //    }
-        //}
-
-
     }
 
     private void OnDrawGizmos()

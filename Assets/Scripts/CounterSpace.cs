@@ -9,12 +9,19 @@ public class CounterSpace : MonoBehaviour {
     public GameObject filledPlate;
     public GameObject rawFood;
 
+    public bool hasCleanPlate = false;
+
     // Use this for initialization
     void Start () {
         dirtyPlate.gameObject.SetActive(false);
         cleanPlate.gameObject.SetActive(false);
         filledPlate.gameObject.SetActive(false);
         rawFood.gameObject.SetActive(false);
+
+        if(hasCleanPlate)
+        {
+            ObjectCleanPlate();
+        }
     }
 	
 	// Update is called once per frame

@@ -9,7 +9,9 @@ public class Customer : MonoBehaviour {
     public GameManager gameManager;
     public bool leaveWhenMeterReachZero = false;
 
+    public Sprite[] currentSituation;
     public Sprite[] sprite;
+    public Sprite[] newSituationSprites;
     public Image status;
 
     public bool isMoving = true;
@@ -55,6 +57,15 @@ public class Customer : MonoBehaviour {
                 sC.negativeButton.onClick.AddListener(NegativeRespond);
             }
         }
+        int rando = Random.Range(0, 2);
+        if(rando != 1)
+        {
+            currentSituation = newSituationSprites;
+        }
+        else
+        {
+            currentSituation = sprite;
+        }
     }
 	
 	// Update is called once per frame
@@ -97,11 +108,11 @@ public class Customer : MonoBehaviour {
 
     void TriggerDialogue()
     {
-        if(gameObject.tag == "SpecialCustomer")
+        if(gameObject.tag == "SpecialCustomer" )
         {
             foreach (SliderCanvas sC in playerCanvas)
             {
-                if(Vector3.Distance(sC.gameObject.transform.position, transform.position) < 5.0f)
+                if(Vector3.Distance(sC.gameObject.transform.position, transform.position) < 5.0f && talkTimes < 2)
                 {
                     sC.positiveButton.gameObject.SetActive(true);
                     //sC.positiveButton.onClick.AddListener(PositiveRespond);
@@ -125,19 +136,19 @@ public class Customer : MonoBehaviour {
             switch (talkStage)
             {
                 case 0:
-                    status.sprite = sprite[0];
+                    status.sprite = currentSituation[0];
                     break;
                 case 1:
-                    status.sprite = sprite[1];
+                    status.sprite = currentSituation[1];
                     break;
                 case 2:
-                    status.sprite = sprite[2];
+                    status.sprite = currentSituation[2];
                     break;
                 case -1:
-                    status.sprite = sprite[3];
+                    status.sprite = currentSituation[3];
                     break;
                 case -2:
-                    status.sprite = sprite[4];
+                    status.sprite = currentSituation[4];
                     break;
                 default:
                     break;

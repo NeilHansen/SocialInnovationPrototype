@@ -71,16 +71,6 @@ public class UnitHighlight : MonoBehaviour {
     {
         if(rtsMover.ActiveUnit != this.gameObject)
         PossesUnit();
-        //isClicked = true;
-        //this.gameObject.GetComponent<Renderer>().material = Green;
-        //if (rtsMover.ActiveUnit != null)
-        //{
-        //    rtsMover.ActiveUnit.GetComponent<UnitHighlight>().isClicked = false;
-        //    rtsMover.ActiveUnit.GetComponent<Renderer>().material = Red;
-        //}
-        //rtsMover.ActiveUnit = this.gameObject;
-        //this.GetComponent<NavMeshAgent>().enabled = true;
-        //this.GetComponent<NavMeshAgent>().isStopped = false;
     }
 
 

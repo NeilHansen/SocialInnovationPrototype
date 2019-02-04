@@ -56,8 +56,8 @@ public class InteractableArea : MonoBehaviour
         Gm = GameObject.FindObjectOfType<GameManager>();
         counterSpace = gameObject.GetComponent<CounterSpace>();
         InvokeRepeating("TestDebug", 0.0f, 1.0f);
-        //feedbackSlider = GameObject.FindGameObjectWithTag("PlayerCanvas1").transform.GetChild(0).GetComponent<Slider>();
-        //feedbackSlider2 = GameObject.FindGameObjectWithTag("Player Canvas2").transform.GetChild(0).GetComponent<Slider>();
+        feedbackSlider = GameObject.FindGameObjectWithTag("PlayerCanvas1").transform.GetChild(0).GetComponent<Slider>();
+        feedbackSlider2 = GameObject.FindGameObjectWithTag("Player Canvas2").transform.GetChild(0).GetComponent<Slider>();
 
         Status = GameObject.FindGameObjectWithTag("PlayerCanvas1").transform.GetChild(1).GetComponent<Image>();
         Status2 = GameObject.FindGameObjectWithTag("Player Canvas2").transform.GetChild(1).GetComponent<Image>();
@@ -147,7 +147,7 @@ public class InteractableArea : MonoBehaviour
             case AreaType.ServingArea:
                 Gm.AddScore();
                 Gm.StartNewCustomer();
-                interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.Washing;
+                interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
                 foreach (Customer c in customers)
                 {
                     c.isMoving = true;
@@ -441,8 +441,8 @@ public class InteractableArea : MonoBehaviour
                         // feedbackSlider.maxValue = 2;
                         if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.CookedFood)
                         {
-                            Gm.AddScore();
-                            Gm.StartNewCustomer();
+                          //  Gm.AddScore();
+                          //  Gm.StartNewCustomer();
                             isInteracting = true;
                             interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
                             interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;

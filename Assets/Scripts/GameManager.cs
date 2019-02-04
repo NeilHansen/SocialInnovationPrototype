@@ -35,6 +35,8 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     GameObject EndingScreen;
 
+    public float timerMultiplier = 0.1f;
+
 
 
 
@@ -70,7 +72,7 @@ public class GameManager : MonoBehaviour {
 
         if (hasCustomer)
         {
-            satisfactionMeter.value -= Time.deltaTime * 0.1f;
+            satisfactionMeter.value -= Time.deltaTime * timerMultiplier;
             if (satisfactionMeter.value > 1.04f)
             {
                 satisfactionMeter.GetComponentInChildren<Image>().color = Colors[0];

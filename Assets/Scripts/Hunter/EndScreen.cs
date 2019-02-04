@@ -30,12 +30,12 @@ public class EndScreen : MonoBehaviour {
         int StarAmount=3;
         ScoreDisplay.text = Mathf.RoundToInt(GM.playerScore).ToString();
 
-        if (GM.playerScore >= 800)
+        if (GM.playerScore >= 500)
         {
             StarAmount = 3;
         }
 
-        else if (GM.playerScore >= 400)
+        else if (GM.playerScore >= 200)
         {
             StarAmount = 2;
         }

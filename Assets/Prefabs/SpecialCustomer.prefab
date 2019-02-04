@@ -344,11 +344,18 @@ MonoBehaviour:
   customerPath: {fileID: 0}
   gameManager: {fileID: 0}
   leaveWhenMeterReachZero: 0
+  currentSituation: []
   sprite:
   - {fileID: 21300000, guid: f2e5a5eebe5661a43b3fe1aa54d267ce, type: 3}
   - {fileID: 21300000, guid: 23bf71e9e1b7827479d3f21720d96260, type: 3}
   - {fileID: 21300000, guid: 29243aa2d1cacb345a7aebd01dc29e65, type: 3}
   - {fileID: 21300000, guid: 372cff60c50e56545b9534a87a501726, type: 3}
+  - {fileID: 21300000, guid: 0cc46b8ec004e08468f7f606ebba83fc, type: 3}
+  newSituationSprites:
+  - {fileID: 21300000, guid: 28dd10d454462724e8b8fbad62c0210c, type: 3}
+  - {fileID: 21300000, guid: 372cff60c50e56545b9534a87a501726, type: 3}
+  - {fileID: 21300000, guid: 23bf71e9e1b7827479d3f21720d96260, type: 3}
+  - {fileID: 21300000, guid: f2e5a5eebe5661a43b3fe1aa54d267ce, type: 3}
   - {fileID: 21300000, guid: 0cc46b8ec004e08468f7f606ebba83fc, type: 3}
   status: {fileID: 114167866477569604}
   isMoving: 1
@@ -415,14 +422,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1686443717912422}
-  m_LocalRotation: {x: 0, y: 0.92387956, z: 0, w: 0.38268343}
+  m_LocalRotation: {x: -0.27059805, y: 0.6532815, z: 0.27059805, w: 0.6532815}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.010000008, y: 0.009999999, z: 0.010000008}
   m_Children:
   - {fileID: 224198867922599774}
   m_Father: {fileID: 4711375885321584}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 135, z: 0}
+  m_LocalEulerAnglesHint: {x: -45, y: 90, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 1.8}
