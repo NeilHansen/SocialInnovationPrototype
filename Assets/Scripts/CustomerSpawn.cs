@@ -7,6 +7,11 @@ public class CustomerSpawn : MonoBehaviour {
     public GameObject customerPrefab;
     public GameObject specialCustomerPrefab;
     public GameObject spawnPoint;
+    public GameManager gameManager;
+
+    public float specialCustomerScoreSpawn;
+    private bool specialCustomerSpawn;
+    private float firstSpecialCustomerSpawn = 0.0f;
 
     private GameObject[] customers, specialCustomers;
     private float spawnTime = 2.0f;
@@ -18,10 +23,22 @@ public class CustomerSpawn : MonoBehaviour {
 	void Start () {
         Instantiate(customerPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
         customerCount = 1;
+        gameManager = FindObjectOfType<GameManager>();
     }
 	
 	// Update is called once per frame
 	void Update () {
+        if (gameManager.playerScore >= specialCustomerScoreSpawn)
+        {
+            specialCustomerSpawn = true;
+        }
+
+        if(specialCustomerSpawn && firstSpecialCustomerSpawn == 0)
+        {
+            Instantiate(specialCustomerPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
+            firstSpecialCustomerSpawn += 1.0f;
+        }
+
         customers = GameObject.FindGameObjectsWithTag("Customer");
         specialCustomers = GameObject.FindGameObjectsWithTag("SpecialCustomer");
 
@@ -39,8 +56,13 @@ public class CustomerSpawn : MonoBehaviour {
 
     void Spawn()
     {
-        if(customerCount%3 == 0)
-            Instantiate(specialCustomerPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
+        if (specialCustomerSpawn)
+        {
+            if (customerCount % 3 == 0)
+                Instantiate(specialCustomerPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
+            else
+                Instantiate(customerPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
+        }
         else
             Instantiate(customerPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
         customerCount += 1;
