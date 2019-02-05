@@ -45,9 +45,9 @@ public class InteractableArea : MonoBehaviour
     }
 
     //Put things on the counters
-    private bool isOnCounter = false;
+    private bool isOnCounter;
     private CounterSpace counterSpace;
-    private bool dirtyPlateOn, cleanPlateOn, filledPlateOn, rawFoodOn;
+    private bool dirtyPlateOn, cleanPlateOn = true, filledPlateOn, rawFoodOn;
     UnitTaskController.ObjectHeld objectPlayerHolding;
 
     // Use this for initialization
@@ -67,6 +67,7 @@ public class InteractableArea : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(isOnCounter + " " + objectPlayerHolding);
         customers = FindObjectsOfType<Customer>();
         if (gameObject.name == "CookingInteractableArea")
         {
@@ -501,12 +502,15 @@ public class InteractableArea : MonoBehaviour
                     // startTime = 0.5f;
                     //  feedbackSlider.maxValue = 0.5f;
                     ///
+                    
                     objectPlayerHolding = interactingUnit.gameObject.GetComponent<UnitTaskController>().objectHolding;
                     //Nothing on counter
                     ///
-                    isInteracting = true;
-                    interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
-                    interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
+                    if (isOnCounter || objectPlayerHolding != UnitTaskController.ObjectHeld.None) {
+                        isInteracting = true;
+                        interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
+                        interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
+                    }
                     //interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.Counter;
                     //objectOnCounter = interactingUnit.gameObject.GetComponent<UnitTaskController>().objectHolding;
                     break;

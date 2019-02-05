@@ -12,7 +12,7 @@ public class CounterSpace : MonoBehaviour {
     // Use this for initialization
     void Start () {
         dirtyPlate.gameObject.SetActive(false);
-        cleanPlate.gameObject.SetActive(false);
+        cleanPlate.gameObject.SetActive(true);
         filledPlate.gameObject.SetActive(false);
         rawFood.gameObject.SetActive(false);
     }
