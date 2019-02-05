@@ -55,6 +55,7 @@ public class UnitTaskController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         objectHolding = ObjectHeld.None;
+        currentTaskType = TaskType.None;
 	}
 
     // Update is called once per frame
