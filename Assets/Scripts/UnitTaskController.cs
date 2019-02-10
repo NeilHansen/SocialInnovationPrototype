@@ -38,7 +38,11 @@ public class UnitTaskController : MonoBehaviour {
        CookedFood,
        RawFood,
        Serving,
-       Counter
+       Counter,
+       LargeWood,
+       LargePipe,
+       SmallWood,
+       SmallPipe
     }
 
     // Put things on the table

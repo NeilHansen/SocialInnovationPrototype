@@ -25,6 +25,14 @@ public class InteractableAreaConstructionSite : MonoBehaviour
     public Sprite[] FeedbackSprites;
     bool FeedBackFiredAlready = false;
 
+    public GameObject woodRecipticalBin;
+    public GameObject pipeRecipticalBin;
+    public bool BenchHasWood = false;
+    public bool BenchHasPipe = false;
+
+    public int numberOfBoards;
+    public int numberOfPipes;
+
 
 
 
@@ -33,6 +41,9 @@ public class InteractableAreaConstructionSite : MonoBehaviour
     {
         None,
         TrashCan,
+        CuttingArea,
+        WoodRecipticalBin,
+        PipeRecipticalBin,
         Counter
     }
 
@@ -60,9 +71,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
     void Update()
     {
         Debug.Log(isOnCounter + " " + objectPlayerHolding);
-       
-       
-        
+
         if (cleanPlateOn)
             counterSpace.ObjectCleanPlate();
 
@@ -86,7 +95,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
         interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = false;
         StartCoroutine(FlashFeedback(Player, FeedbackSprites[2]));
 
-        ///check type of Area
+        //check type of Area
         switch (type)
         {
             case AreaType.None:
@@ -95,7 +104,46 @@ public class InteractableAreaConstructionSite : MonoBehaviour
             case AreaType.TrashCan:
                 interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
                 break;
+            case AreaType.CuttingArea:
+                if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.LargeWood)
+                {
+                    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
+                    BenchHasWood = true;
+                }
+                else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.LargePipe)
+                {
+                    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
+                    BenchHasPipe = true;
+                }
+                else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None && BenchHasWood)
+                {
+                    if (woodRecipticalBin.GetComponent<InteractableAreaConstructionSite>().numberOfBoards < 4)
+                    {
+                        woodRecipticalBin.GetComponent<InteractableAreaConstructionSite>().numberOfBoards += 2;
+                        BenchHasWood = false;
+                    }
+                }
+                else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None && BenchHasPipe)
+                {
+                    if (pipeRecipticalBin.GetComponent<InteractableAreaConstructionSite>().numberOfPipes < 4)
+                    {
+                        pipeRecipticalBin.GetComponent<InteractableAreaConstructionSite>().numberOfPipes += 2;
+                        BenchHasPipe = false;
+                    }
+                }
+                else
+                {
 
+                }
+                break;
+            case AreaType.WoodRecipticalBin:
+                interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.SmallWood;
+                this.numberOfBoards -= 1;
+                break;
+            case AreaType.PipeRecipticalBin:
+                interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.SmallPipe;
+                this.numberOfPipes -= 1;
+                break;
             case AreaType.Counter:
                 //Nothing is on the counter
                 if (!isOnCounter)
@@ -159,7 +207,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                                 if (dirtyPlateOn)
                                     break;
                                 //Different object, switch place
-                                else 
+                                else
                                 {
                                     if (cleanPlateOn)
                                     {
@@ -262,6 +310,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                     }
                 }
                 break;
+           
         }
 
 
@@ -288,7 +337,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                     interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
                     break;
 
-                
+
                 case AreaType.TrashCan:
                     if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType != UnitTaskController.TaskType.None)
                     {
@@ -309,10 +358,86 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                     objectPlayerHolding = interactingUnit.gameObject.GetComponent<UnitTaskController>().objectHolding;
                     //Nothing on counter
                     ///
-                    if (isOnCounter || objectPlayerHolding != UnitTaskController.ObjectHeld.None) {
+                    if (isOnCounter || objectPlayerHolding != UnitTaskController.ObjectHeld.None)
+                    {
                         isInteracting = true;
                         interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
                         interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
+                    }
+                    break;
+                case AreaType.CuttingArea:
+                    if (!isInteracting && !isComplete)
+                    {
+                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.LargeWood && !BenchHasWood)
+                        {
+                            isInteracting = true;
+                            interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
+                            interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
+                        }
+                        else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.LargePipe && !BenchHasPipe)
+                        {
+                            isInteracting = true;
+                            interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
+                            interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
+                        }
+                        else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None && BenchHasWood)
+                        {
+                            isInteracting = true;
+                            interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
+                            interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
+                        }
+                        else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None && BenchHasPipe)
+                        {
+                            isInteracting = true;
+                            interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
+                            interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
+                        }
+                        else
+                        {
+                            if (FeedBackFiredAlready == false)
+                            {
+                                NegativeFeedback(other);
+                            }
+                        }
+
+                    }
+                    break;
+                case AreaType.WoodRecipticalBin:
+                     if (!isInteracting && !isComplete)
+                    {
+                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None && this.numberOfBoards > 0)
+                        {
+                            isInteracting = true;
+                            interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
+                            interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
+                        }
+                        else
+                        {
+                            if (FeedBackFiredAlready == false)
+                            {
+                                NegativeFeedback(other);
+                            }
+                        }
+
+                    }
+                    break;
+                case AreaType.PipeRecipticalBin:
+                    if (!isInteracting && !isComplete)
+                    {
+                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None && this.numberOfPipes > 0)
+                        {
+                            isInteracting = true;
+                            interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
+                            interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
+                        }
+                        else
+                        {
+                            if (FeedBackFiredAlready == false)
+                            {
+                                NegativeFeedback(other);
+                            }
+                        }
+
                     }
                     break;
             }

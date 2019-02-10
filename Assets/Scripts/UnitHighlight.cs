@@ -12,8 +12,15 @@ public class UnitHighlight : MonoBehaviour {
     public bool isClicked = false;
     public bool isInteracting = false;
 
-	// Update is called once per frame
-	void LateUpdate () {
+    private int numberOfUnits = 0;
+
+    void Start()
+    {
+        numberOfUnits = GameObject.FindGameObjectsWithTag("Player").Length;
+    }
+
+    // Update is called once per frame
+    void LateUpdate () {
         if(isClicked)
         {
             this.gameObject.GetComponent<Renderer>().material = Green;
@@ -25,7 +32,7 @@ public class UnitHighlight : MonoBehaviour {
 
         if (Input.GetKeyDown("1"))
         {
-            if (rtsMover.ActiveUnit == rtsMover.Unit2 || rtsMover.ActiveUnit == null)
+            if (rtsMover.ActiveUnit != rtsMover.Unit1 || rtsMover.ActiveUnit == null)
             {
                rtsMover.Unit1.gameObject.GetComponent<UnitHighlight>().PossesUnit();
             }
@@ -35,9 +42,10 @@ public class UnitHighlight : MonoBehaviour {
             }
         }
 
+        
         if (Input.GetKeyDown("2"))
         {
-            if (rtsMover.ActiveUnit == rtsMover.Unit1 || rtsMover.ActiveUnit == null)
+            if (rtsMover.ActiveUnit != rtsMover.Unit2 || rtsMover.ActiveUnit == null)
             {
                 rtsMover.Unit2.gameObject.GetComponent<UnitHighlight>().PossesUnit();
             }
@@ -46,6 +54,38 @@ public class UnitHighlight : MonoBehaviour {
 
             }
         }
+
+        if (numberOfUnits >= 3)
+        {
+            if (Input.GetKeyDown("3"))
+            {
+                if (rtsMover.ActiveUnit != rtsMover.Unit3 || rtsMover.ActiveUnit == null)
+                {
+                    rtsMover.Unit3.gameObject.GetComponent<UnitHighlight>().PossesUnit();
+                }
+                else
+                {
+
+                }
+            }
+        }
+
+        if (numberOfUnits >= 4)
+        {
+            if (Input.GetKeyDown("4"))
+            {
+                if (rtsMover.ActiveUnit != rtsMover.Unit4 || rtsMover.ActiveUnit == null)
+                {
+                    rtsMover.Unit4.gameObject.GetComponent<UnitHighlight>().PossesUnit();
+                }
+                else
+                {
+
+                }
+            }
+        }
+
+
 
     }
 

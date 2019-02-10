@@ -6,6 +6,8 @@ using UnityEngine.AI;
 public class RtsMover : MonoBehaviour {
     public GameObject Unit1;
     public GameObject Unit2;
+    public GameObject Unit3;
+    public GameObject Unit4;
     public GameObject ActiveUnit;
 
     Vector3 originalPosition;
