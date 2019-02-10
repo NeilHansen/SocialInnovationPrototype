@@ -45,9 +45,9 @@ public class InteractableArea : MonoBehaviour
     }
 
     //Put things on the counters
-    private bool isOnCounter;
+    private bool isOnCounter = false;
     private CounterSpace counterSpace;
-    private bool dirtyPlateOn, cleanPlateOn = true, filledPlateOn, rawFoodOn;
+    public bool dirtyPlateOn, cleanPlateOn, filledPlateOn, rawFoodOn;
     UnitTaskController.ObjectHeld objectPlayerHolding;
 
     // Use this for initialization
@@ -95,6 +95,9 @@ public class InteractableArea : MonoBehaviour
                     break;
             }
         }
+
+        if (cleanPlateOn)
+            counterSpace.ObjectCleanPlate();
 
         if (dirtyPlateOn || cleanPlateOn || filledPlateOn || rawFoodOn)
             isOnCounter = true;

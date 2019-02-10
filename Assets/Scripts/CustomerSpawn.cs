@@ -11,7 +11,7 @@ public class CustomerSpawn : MonoBehaviour {
 
     public float specialCustomerScoreSpawn;
     private bool specialCustomerSpawn;
-    private float firstSpecialCustomerSpawn = 0.0f;
+    public float firstSpecialCustomerSpawn = 0.0f;
 
     private GameObject[] customers, specialCustomers;
     private float spawnTime = 2.0f;

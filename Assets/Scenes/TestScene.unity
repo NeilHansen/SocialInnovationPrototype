@@ -2246,6 +2246,11 @@ Prefab:
       propertyPath: m_Center.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114609569544456894, guid: cdf0891066c99c847bc321a80fb81b5e,
+        type: 2}
+      propertyPath: cleanPlateOn
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdf0891066c99c847bc321a80fb81b5e, type: 2}
   m_IsPrefabAsset: 0
@@ -2654,7 +2659,17 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1517383058092084, guid: 9cdd8a6febaf0e94b9ebb6c8ae851e65, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224939701510523204, guid: 9cdd8a6febaf0e94b9ebb6c8ae851e65,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -245
+      objectReference: {fileID: 0}
+    - target: {fileID: 224700538518091402, guid: 9cdd8a6febaf0e94b9ebb6c8ae851e65,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -233.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cdd8a6febaf0e94b9ebb6c8ae851e65, type: 2}
@@ -2769,6 +2784,9 @@ MonoBehaviour:
   specialCustomerPrefab: {fileID: 1466831249542532, guid: 4468d0992e041cd4380024f1bb239a0c,
     type: 2}
   spawnPoint: {fileID: 338519537}
+  gameManager: {fileID: 0}
+  specialCustomerScoreSpawn: 100
+  firstSpecialCustomerSpawn: 0
 --- !u!4 &677425849
 Transform:
   m_ObjectHideFlags: 0
@@ -3134,6 +3152,10 @@ MonoBehaviour:
   fillLevel2: {fileID: 0}
   fillLevel3: {fileID: 0}
   Gm: {fileID: 1875669972}
+  dirtyPlateOn: 0
+  cleanPlateOn: 0
+  filledPlateOn: 0
+  rawFoodOn: 0
 --- !u!65 &771904042
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3628,7 +3650,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 736, y: -261.44824}
+  m_AnchoredPosition: {x: 454.21942, y: -261.44824}
   m_SizeDelta: {x: -1808.47, y: -1576.23}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &904434531
@@ -4217,7 +4239,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 937.7805, y: -839.9995}
+  m_AnchoredPosition: {x: 428, y: -839.9995}
   m_SizeDelta: {x: -1808.47, y: -1576.23}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &966032480
@@ -4252,7 +4274,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 90
+  m_Text: 180
 --- !u!222 &966032481
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4551,6 +4573,10 @@ MonoBehaviour:
   fillLevel2: {fileID: 0}
   fillLevel3: {fileID: 0}
   Gm: {fileID: 1875669972}
+  dirtyPlateOn: 0
+  cleanPlateOn: 0
+  filledPlateOn: 0
+  rawFoodOn: 0
 --- !u!65 &1020423450
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4915,6 +4941,10 @@ MonoBehaviour:
   fillLevel2: {fileID: 0}
   fillLevel3: {fileID: 0}
   Gm: {fileID: 1875669972}
+  dirtyPlateOn: 0
+  cleanPlateOn: 0
+  filledPlateOn: 0
+  rawFoodOn: 0
 --- !u!65 &1123506956
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6982,7 +7012,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 937.7805, y: -840}
+  m_AnchoredPosition: {x: 428.0003, y: -840}
   m_SizeDelta: {x: -1808.47, y: -1576.23}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1809361145
@@ -7017,7 +7047,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 90
+  m_Text: 180
 --- !u!222 &1809361146
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7206,7 +7236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerText: {fileID: 966032480}
   timerTextBG: {fileID: 1809361145}
-  timeValue: 91
+  timeValue: 181
   satisfactionMeter: {fileID: 2041238253}
   hasCustomer: 0
   defautlSatisfactionLevel: 1.5
@@ -7225,7 +7255,7 @@ MonoBehaviour:
   SatisfactionText: {fileID: 432729561}
   ScoreAdded: {fileID: 97617017}
   EndingScreen: {fileID: 1792555381}
-  timerMultiplier: 0.025
+  timerMultiplier: 0.02
 --- !u!4 &1875669973
 Transform:
   m_ObjectHideFlags: 0
@@ -7501,6 +7531,10 @@ MonoBehaviour:
   fillLevel2: {fileID: 0}
   fillLevel3: {fileID: 0}
   Gm: {fileID: 1875669972}
+  dirtyPlateOn: 0
+  cleanPlateOn: 0
+  filledPlateOn: 0
+  rawFoodOn: 0
 --- !u!65 &1933527125
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7934,7 +7968,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Goal:500
+  m_Text: 'Goal: 400
 
 '
 --- !u!222 &2017396440
@@ -8244,7 +8278,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 736.0012, y: -261.44824}
+  m_AnchoredPosition: {x: 454.22064, y: -261.44824}
   m_SizeDelta: {x: -1808.47, y: -1576.23}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2053582052
@@ -8575,7 +8609,7 @@ MonoBehaviour:
   isInteracting: 0
   isComplete: 0
   areaType: 2
-  foodServings: 0
+  foodServings: 1
   feedbackSlider: {fileID: 1411965100}
   feedbackSlider2: {fileID: 101725934}
   Status: {fileID: 620451384}
@@ -8588,6 +8622,10 @@ MonoBehaviour:
   fillLevel2: {fileID: 397909778}
   fillLevel3: {fileID: 329239432}
   Gm: {fileID: 1875669972}
+  dirtyPlateOn: 0
+  cleanPlateOn: 0
+  filledPlateOn: 0
+  rawFoodOn: 0
 --- !u!1001 &2074708419
 Prefab:
   m_ObjectHideFlags: 0
@@ -9132,6 +9170,10 @@ MonoBehaviour:
   fillLevel2: {fileID: 0}
   fillLevel3: {fileID: 0}
   Gm: {fileID: 1875669972}
+  dirtyPlateOn: 0
+  cleanPlateOn: 0
+  filledPlateOn: 0
+  rawFoodOn: 0
 --- !u!65 &2135172770
 BoxCollider:
   m_ObjectHideFlags: 0
