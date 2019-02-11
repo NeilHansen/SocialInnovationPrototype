@@ -14,6 +14,8 @@ public class UnitTaskController : MonoBehaviour {
     public GameObject filledPlate;
     public GameObject rawFood;
     public Canvas convoCanvas;
+    [HideInInspector]
+    public GameObject companion;
 
     public GameObject BigwoodOBJ;
 

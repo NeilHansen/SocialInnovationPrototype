@@ -117,25 +117,20 @@ public class InteractableAreaConstructionSite : MonoBehaviour
             case AreaType.CuttingArea:
                 if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.LargeWood)
                 {
-                    if (interactingUnit.transform.parent != null)
-                    {
-                        interactingUnit.transform.parent.GetComponent<UnitTaskController>().currentTaskType = UnitTaskController.TaskType.None;
-                        interactingUnit.GetComponent<UnitTaskController>().currentTaskType = UnitTaskController.TaskType.None;
-                        interactingUnit.transform.parent = null;
-                        Debug.Log("Parent");
-                        
-                    }
-                    else
-                    {
-                       interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
-                        //  interactingUnit.GetComponentInChildren<UnitTaskController>().gameObject.transform.parent = null;
-                        Debug.Log(interactingUnit.gameObject.transform.GetChild(6).GetComponent<UnitTaskController>().gameObject.name);
-                        interactingUnit.gameObject.transform.GetChild(6).GetComponent<UnitTaskController>().gameObject.transform.parent = null;
-                       
-                       interactingUnit.GetComponentInChildren<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
-                        Debug.Log("NOParent");
-                        // Debug.Log(Heavycarriers[0]);
-                    }
+                    interactingUnit.transform.parent = null;
+                    interactingUnit.GetComponent<UnitTaskController>().currentTaskType = UnitTaskController.TaskType.None;
+                    //Do it for companion
+                    interactingUnit.GetComponent<UnitTaskController>().companion.GetComponent<UnitTaskController>().currentTaskType = UnitTaskController.TaskType.None;
+                    interactingUnit.GetComponent<UnitTaskController>().companion.transform.parent = null;
+
+                    //interactingUnit.transform.parent.GetComponent<UnitTaskController>().currentTaskType = UnitTaskController.TaskType.None;
+                    //interactingUnit.GetComponent<UnitTaskController>().currentTaskType = UnitTaskController.TaskType.None;
+                    //interactingUnit.transform.parent = null;
+
+
+
+
+
                     BenchHasWood = true;
                 }
                 else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.LargePipe)
@@ -180,11 +175,13 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                         Heavycarriers[0].gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.LargeWood;
                         Heavycarriers[0].gameObject.GetComponent<UnitTaskController>().BigwoodOBJ.SetActive(true);
                         Heavycarriers[0].gameObject.GetComponent<UnitTaskController>().BigwoodOBJ.transform.SetPositionAndRotation(transform.position, Quaternion.Euler(0, transform.rotation.eulerAngles.y - 90, 0));
+                        Heavycarriers[0].gameObject.GetComponent<UnitTaskController>().companion = Heavycarriers[1].gameObject;
                     }
                     else
                     {
                         Heavycarriers[1].gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.LargeWood;
                         Heavycarriers[1].gameObject.transform.parent = Heavycarriers[0].gameObject.transform;
+                        Heavycarriers[1].gameObject.GetComponent<UnitTaskController>().companion = Heavycarriers[0].gameObject;
                     }
                 }
                 break;
