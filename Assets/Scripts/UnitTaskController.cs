@@ -15,6 +15,8 @@ public class UnitTaskController : MonoBehaviour {
     public GameObject rawFood;
     public Canvas convoCanvas;
 
+    public GameObject BigwoodOBJ;
+
     public TaskType CurrentTaskType
     {
         get
@@ -89,6 +91,7 @@ public class UnitTaskController : MonoBehaviour {
                 dirtyPlate.SetActive(false);
                 filledPlate.SetActive(false);
                 rawFood.SetActive(false);
+                BigwoodOBJ.SetActive(false);
                 objectHolding = ObjectHeld.None;
                 isInteracting = false;
                 break;

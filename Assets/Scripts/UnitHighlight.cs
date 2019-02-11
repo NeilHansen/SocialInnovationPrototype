@@ -129,6 +129,19 @@ public class UnitHighlight : MonoBehaviour {
             }
 
         }
+        if (other.gameObject.tag == "constructionarea")
+        {
+            if (other.gameObject.GetComponent<InteractableAreaConstructionSite>().isInteracting == false)
+            {
+                isInteracting = true;
+                this.GetComponent<NavMeshAgent>().isStopped = true;
+                this.GetComponent<NavMeshAgent>().enabled = false;
+                rtsMover.ActiveUnit = null;
+                isClicked = false;
+                //this.GetComponent<NavMeshAgent>().isStopped = false;
+            }
+
+        }
 
         if (other.gameObject.tag == "SpecialCustomer")
         {

@@ -17,11 +17,15 @@ public class InteractableAreaConstructionSite : MonoBehaviour
 
     public Slider feedbackSlider;
     public Slider feedbackSlider2;
+    public Slider feedbackSlider3;
+    public Slider feedbackSlider4;
 
 
     //Player UI status
     public Image Status;
     public Image Status2;
+    public Image Status3;
+    public Image Status4;
     public Sprite[] FeedbackSprites;
     bool FeedBackFiredAlready = false;
 
@@ -63,9 +67,13 @@ public class InteractableAreaConstructionSite : MonoBehaviour
         InvokeRepeating("TestDebug", 0.0f, 1.0f);
         feedbackSlider = GameObject.FindGameObjectWithTag("PlayerCanvas1").transform.GetChild(0).GetComponent<Slider>();
         feedbackSlider2 = GameObject.FindGameObjectWithTag("Player Canvas2").transform.GetChild(0).GetComponent<Slider>();
+        feedbackSlider3 = GameObject.FindGameObjectWithTag("Player Canvas3").transform.GetChild(0).GetComponent<Slider>();
+      //  feedbackSlider4 = GameObject.FindGameObjectWithTag("PlayerCanvas 4").transform.GetChild(0).GetComponent<Slider>();
 
         Status = GameObject.FindGameObjectWithTag("PlayerCanvas1").transform.GetChild(1).GetComponent<Image>();
         Status2 = GameObject.FindGameObjectWithTag("Player Canvas2").transform.GetChild(1).GetComponent<Image>();
+        Status3 = GameObject.FindGameObjectWithTag("Player Canvas3").transform.GetChild(1).GetComponent<Image>();
+      //  Status4 = GameObject.FindGameObjectWithTag("PlayerCanvas2").transform.GetChild(1).GetComponent<Image>();
 
     }
 
@@ -109,7 +117,25 @@ public class InteractableAreaConstructionSite : MonoBehaviour
             case AreaType.CuttingArea:
                 if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.LargeWood)
                 {
-                    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
+                    if (interactingUnit.transform.parent != null)
+                    {
+                        interactingUnit.transform.parent.GetComponent<UnitTaskController>().currentTaskType = UnitTaskController.TaskType.None;
+                        interactingUnit.GetComponent<UnitTaskController>().currentTaskType = UnitTaskController.TaskType.None;
+                        interactingUnit.transform.parent = null;
+                        Debug.Log("Parent");
+                        
+                    }
+                    else
+                    {
+                       interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
+                        //  interactingUnit.GetComponentInChildren<UnitTaskController>().gameObject.transform.parent = null;
+                        Debug.Log(interactingUnit.gameObject.transform.GetChild(6).GetComponent<UnitTaskController>().gameObject.name);
+                        interactingUnit.gameObject.transform.GetChild(6).GetComponent<UnitTaskController>().gameObject.transform.parent = null;
+                       
+                       interactingUnit.GetComponentInChildren<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
+                        Debug.Log("NOParent");
+                        // Debug.Log(Heavycarriers[0]);
+                    }
                     BenchHasWood = true;
                 }
                 else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.LargePipe)
@@ -152,19 +178,15 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                     if (i == 0)
                     {
                         Heavycarriers[0].gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.LargeWood;
-                        //Heavycarriers[0].gameObject.GetComponent<UnitTaskController>().BigwoodOBJ.SetActive(true);
-                       // Heavycarriers[0].gameObject.GetComponent<UnitTaskController>().BigwoodOBJ.transform.SetPositionAndRotation(transform.position, Quaternion.Euler(0, transform.rotation.eulerAngles.y - 90, 0));
+                        Heavycarriers[0].gameObject.GetComponent<UnitTaskController>().BigwoodOBJ.SetActive(true);
+                        Heavycarriers[0].gameObject.GetComponent<UnitTaskController>().BigwoodOBJ.transform.SetPositionAndRotation(transform.position, Quaternion.Euler(0, transform.rotation.eulerAngles.y - 90, 0));
                     }
-
                     else
                     {
                         Heavycarriers[1].gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.LargeWood;
                         Heavycarriers[1].gameObject.transform.parent = Heavycarriers[0].gameObject.transform;
-
                     }
                 }
-
-                break;
                 break;
             case AreaType.Counter:
                 //Nothing is on the counter
@@ -470,6 +492,13 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                         interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
                         interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
                     }
+                    else
+                    {
+                        if (FeedBackFiredAlready == false)
+                        {
+                            NegativeFeedback(other);
+                        }
+                    }
                     break;
             }
             if (other.gameObject.name == "Unit1")
@@ -517,6 +546,28 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                     timer = 0.0f;
                 }
             }
+            else if(other.gameObject.name == "Unit3")
+            {
+                if (isInteracting && !isComplete)
+                {
+                    feedbackSlider3.gameObject.SetActive(true);
+                    feedbackSlider3.maxValue = startTime;
+                    Status3.gameObject.SetActive(true);
+                    SwitchImage(FeedbackSprites[0], Status3);
+
+                    feedbackSlider3.value = timer;
+                    timer += Time.deltaTime;
+                    if (timer >= startTime)
+                    {
+                        Complete(areaType, Status3);
+                    }
+                }
+                else
+                {
+                    feedbackSlider3.gameObject.SetActive(false);
+                    timer = 0.0f;
+                }
+            }
         }
     }
 
@@ -531,6 +582,11 @@ public class InteractableAreaConstructionSite : MonoBehaviour
             Status2.gameObject.SetActive(false);
             feedbackSlider.gameObject.SetActive(false);
             feedbackSlider2.gameObject.SetActive(false);
+        }
+
+        if(areaType == AreaType.WoodPile)
+        {
+            Heavycarriers.Remove(other.gameObject);
         }
     }
 
@@ -563,10 +619,13 @@ public class InteractableAreaConstructionSite : MonoBehaviour
         {
             StartCoroutine(FlashFeedback(Status, FeedbackSprites[1]));
         }
-
         else if (target.gameObject.name == "Unit2")
         {
             StartCoroutine(FlashFeedback(Status2, FeedbackSprites[1]));
+        }
+        else if (target.gameObject.name == "Unit3")
+        {
+            StartCoroutine(FlashFeedback(Status3, FeedbackSprites[1]));
         }
     }
 }
