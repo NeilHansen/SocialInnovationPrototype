@@ -80,7 +80,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(isOnCounter + " " + objectPlayerHolding);
+    //    Debug.Log(isOnCounter + " " + objectPlayerHolding);
 
         if (cleanPlateOn)
             counterSpace.ObjectCleanPlate();
@@ -98,7 +98,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
 
     void Complete(AreaType type, Image Player)
     {
-        Debug.Log("COMPLETE");
+        
         isInteracting = false;
         isComplete = true;
         interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = false;
@@ -117,18 +117,26 @@ public class InteractableAreaConstructionSite : MonoBehaviour
             case AreaType.CuttingArea:
                 if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.LargeWood)
                 {
-                    interactingUnit.transform.parent = null;
+                    if(interactingUnit.transform.parent!= null)
+                    {
+                        interactingUnit.transform.parent = null;
+                    }
+
+                    else
+                    {
+                        interactingUnit.GetComponent<UnitTaskController>().companion.transform.parent = null;
+                    }
+
+                   
                     interactingUnit.GetComponent<UnitTaskController>().currentTaskType = UnitTaskController.TaskType.None;
-                    //Do it for companion
+                    interactingUnit.GetComponent<UnitTaskController>().BigwoodOBJ.SetActive(false);
                     interactingUnit.GetComponent<UnitTaskController>().companion.GetComponent<UnitTaskController>().currentTaskType = UnitTaskController.TaskType.None;
-                    interactingUnit.GetComponent<UnitTaskController>().companion.transform.parent = null;
-
-                    //interactingUnit.transform.parent.GetComponent<UnitTaskController>().currentTaskType = UnitTaskController.TaskType.None;
-                    //interactingUnit.GetComponent<UnitTaskController>().currentTaskType = UnitTaskController.TaskType.None;
-                    //interactingUnit.transform.parent = null;
+                    interactingUnit.GetComponent<UnitTaskController>().companion.GetComponent<UnitTaskController>().BigwoodOBJ.SetActive(false);
 
 
-
+                    //CHECK IF REERENCES ARE CORRECT
+                    Debug.Log("The interacting unit is" + interactingUnit.name);
+                    Debug.Log("The interacting unit is" + interactingUnit.GetComponent<UnitTaskController>().companion.name);
 
 
                     BenchHasWood = true;
@@ -170,6 +178,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
             case AreaType.WoodPile:
                 for (int i = 0; i < Heavycarriers.Count; i++)
                 {
+                    //Set up the players to carry the wood
                     if (i == 0)
                     {
                         Heavycarriers[0].gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.LargeWood;
@@ -583,7 +592,11 @@ public class InteractableAreaConstructionSite : MonoBehaviour
 
         if(areaType == AreaType.WoodPile)
         {
-            Heavycarriers.Remove(other.gameObject);
+            if (Heavycarriers.Contains(other.gameObject))
+            {
+                Heavycarriers.Remove(other.gameObject);
+            }
+            
         }
     }
 
@@ -598,8 +611,13 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                     objectPlayerHolding = interactingUnit.gameObject.GetComponent<UnitTaskController>().objectHolding;
                     break;
                 case AreaType.WoodPile:
-                    Heavycarriers.Add(other.gameObject);
+
+                    if (interactingUnit.gameObject.GetComponent<UnitTaskController>().currentTaskType== UnitTaskController.TaskType.None)
+                    {
+                        Heavycarriers.Add(other.gameObject);
+                    }
                     break;
+
             }
         }
     }

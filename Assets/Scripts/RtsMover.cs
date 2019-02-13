@@ -23,7 +23,7 @@ public class RtsMover : MonoBehaviour {
 	void Update () {
         if(Input.GetMouseButtonDown(0))
         {
-            MouseClick();
+          //  MouseClick();
         }
     }
 
@@ -32,32 +32,45 @@ public class RtsMover : MonoBehaviour {
         Gizmos.DrawSphere(new Vector3(originalPosition.x, 0, originalPosition.z), 1.0f);
     }
 
-    private void MouseClick()
-    {
-        if (ActiveUnit != null)
-        {
+    //private void MouseClick()
+    //{
+    //    if (ActiveUnit != null)
+    //    {
            
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if(Physics.Raycast(ray, out hit, mask))
-            {
-               // if (hit.collider.gameObject.tag == "Floor")
-             //   {
-                    originalPosition = hit.point;
-              //  }
-            }
+    //        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+    //        RaycastHit hit;
+    //        if(Physics.Raycast(ray, out hit, mask))
+    //        {
+    //          // if (hit.collider.gameObject.tag == "constructionarea")
+    //           // {
+    //                originalPosition = hit.point;
+    //          //  }
+    //        }
             
-            //originalPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            MovePlayer(new Vector3(originalPosition.x, 0,originalPosition.z));
-        }
-    }
+    //        //originalPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    //        //MovePlayer(new Vector3(originalPosition.x, 0,originalPosition.z));
+    //        if (ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.LargeWood)
+    //        {
 
-    void MovePlayer(Vector3 newPos)
+    //        }
+    //    }
+    //}
+
+    public void MovePlayer(Transform newPos)
     {
-        ActiveUnit.GetComponent<NavMeshAgent>().SetDestination(newPos);
+        ActiveUnit.GetComponent<NavMeshAgent>().SetDestination(newPos.position);
+        Debug.Log("Fuck");
     }
 
     
+
+    void FollowLeader()
+    {
+        //Variable for follower
+        UnitTaskController Follower = ActiveUnit.GetComponent<UnitTaskController>().companion.GetComponent<UnitTaskController>();
+
+
+    }
 
     
 }

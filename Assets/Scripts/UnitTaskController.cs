@@ -89,6 +89,7 @@ public class UnitTaskController : MonoBehaviour {
         switch (currentTaskType)
         {
             case TaskType.None:
+           //     Debug.Log("DOING None");
                 cleanPlate.SetActive(false);
                 dirtyPlate.SetActive(false);
                 filledPlate.SetActive(false);
