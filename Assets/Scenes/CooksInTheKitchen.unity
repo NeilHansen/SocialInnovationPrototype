@@ -98,7 +98,7 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.5
+    agentRadius: 0.25
     agentHeight: 5
     agentSlope: 32.6
     agentClimb: 0.25
@@ -106,13 +106,13 @@ NavMeshSettings:
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.16666667
+    cellSize: 0.083333336
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: a3c36204ed14e11438379d842dd0de8d, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 7b4675f01429d79438ae042e46ed338b, type: 2}
 --- !u!1 &34197447
 GameObject:
   m_ObjectHideFlags: 0
@@ -617,6 +617,8 @@ MonoBehaviour:
   filledPlate: {fileID: 674668500}
   rawFood: {fileID: 804194948}
   convoCanvas: {fileID: 0}
+  companion: {fileID: 0}
+  BigwoodOBJ: {fileID: 804194948}
   objectHolding: 0
 --- !u!195 &163055772
 NavMeshAgent:
@@ -650,7 +652,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6eae5d5b5ecdc043a3d82cedbbe5b1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rtsMover: {fileID: 775908834}
+  rtsMover: {fileID: 534669906}
   Green: {fileID: 2100000, guid: 8a68e6e46b28dcd42abf84780551e8fb, type: 2}
   Red: {fileID: 2100000, guid: 38cc30c14c99063409d4bc36a440f2c3, type: 2}
   isClicked: 0
@@ -2096,6 +2098,8 @@ GameObject:
   - component: {fileID: 534669905}
   - component: {fileID: 534669904}
   - component: {fileID: 534669903}
+  - component: {fileID: 534669906}
+  - component: {fileID: 534669907}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2163,6 +2167,41 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 40.56, y: 0, z: 0}
+--- !u!114 &534669906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 534669902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2418bfb858d3d14bb51232e5f71dd56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Unit1: {fileID: 163055770}
+  Unit2: {fileID: 2077688814}
+  Unit3: {fileID: 0}
+  Unit4: {fileID: 0}
+  ActiveUnit: {fileID: 0}
+  originalPosition: {x: 0, y: 0, z: 0}
+  mask:
+    serializedVersion: 2
+    m_Bits: 512
+--- !u!114 &534669907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 534669902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -768656878, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EventMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_MaxRayIntersections: 0
 --- !u!1001 &556759321
 Prefab:
   m_ObjectHideFlags: 0
@@ -3116,12 +3155,13 @@ GameObject:
   - component: {fileID: 771904042}
   - component: {fileID: 771904046}
   - component: {fileID: 771904041}
+  - component: {fileID: 771904047}
   m_Layer: 0
   m_Name: DishReturn
   m_TagString: InteractableAre
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!114 &771904041
 MonoBehaviour:
@@ -3217,7 +3257,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 771904040}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -12.66, y: 0, z: 2.21}
+  m_LocalPosition: {x: -12.66, y: 0, z: 2.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1676320137}
@@ -3239,6 +3279,36 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.3681731, y: 1, z: 1.0000001}
   m_Center: {x: 0.18408695, y: 0, z: -0.0000000014472361}
+--- !u!114 &771904047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 771904040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 534669906}
+          m_MethodName: MovePlayer
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 771904045}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &775908829
 GameObject:
   m_ObjectHideFlags: 0
@@ -3333,14 +3403,17 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 775908829}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2418bfb858d3d14bb51232e5f71dd56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Unit1: {fileID: 163055770}
   Unit2: {fileID: 2077688814}
+  Unit3: {fileID: 0}
+  Unit4: {fileID: 0}
   ActiveUnit: {fileID: 0}
+  originalPosition: {x: 0, y: 0, z: 0}
   mask:
     serializedVersion: 2
     m_Bits: 512
@@ -3419,6 +3492,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 795398120}
+  - component: {fileID: 795398121}
   m_Layer: 0
   m_Name: Counters
   m_TagString: Untagged
@@ -3443,6 +3517,19 @@ Transform:
   m_Father: {fileID: 625079150}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &795398121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 795398119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  delegates: []
 --- !u!1 &804194948 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 5b99302d183059c4183e8a6ffed9e79c,
@@ -3480,6 +3567,76 @@ Transform:
   m_Father: {fileID: 2074349954}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &805416616 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1738191788380822, guid: cdf0891066c99c847bc321a80fb81b5e,
+    type: 2}
+  m_PrefabInternal: {fileID: 2033558557}
+--- !u!114 &805416617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 805416616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 534669906}
+          m_MethodName: MovePlayer
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 2033558558}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
+--- !u!1 &813662761 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1738191788380822, guid: cdf0891066c99c847bc321a80fb81b5e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1164731102}
+--- !u!114 &813662762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 813662761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 534669906}
+          m_MethodName: MovePlayer
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1164731103}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1001 &816816904
 Prefab:
   m_ObjectHideFlags: 0
@@ -3874,7 +4031,7 @@ GameObject:
   - component: {fileID: 924206967}
   - component: {fileID: 924206966}
   - component: {fileID: 924206965}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Plane (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3961,7 +4118,7 @@ GameObject:
   - component: {fileID: 925922543}
   - component: {fileID: 925922542}
   - component: {fileID: 925922541}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Plane (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4518,6 +4675,7 @@ GameObject:
   - component: {fileID: 1020423451}
   - component: {fileID: 1020423450}
   - component: {fileID: 1020423449}
+  - component: {fileID: 1020423454}
   m_Layer: 0
   m_Name: TrashArea
   m_TagString: InteractableAre
@@ -4643,6 +4801,36 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1020423447}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1020423454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1020423447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 534669906}
+          m_MethodName: MovePlayer
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1020423448}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &1020988840
 GameObject:
   m_ObjectHideFlags: 0
@@ -4905,6 +5093,7 @@ GameObject:
   - component: {fileID: 1123506957}
   - component: {fileID: 1123506956}
   - component: {fileID: 1123506955}
+  - component: {fileID: 1123506961}
   m_Layer: 0
   m_Name: PrepInteractableArea
   m_TagString: InteractableAre
@@ -5018,7 +5207,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1123506954}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -2.86, y: 0, z: 11.076725}
+  m_LocalPosition: {x: -2.86, y: 0, z: 10.85}
   m_LocalScale: {x: 1, y: 1, z: 2}
   m_Children:
   - {fileID: 1093868103}
@@ -5029,6 +5218,36 @@ Transform:
   m_Father: {fileID: 625079150}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &1123506961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1123506954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 534669906}
+          m_MethodName: MovePlayer
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1123506960}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1001 &1164731102
 Prefab:
   m_ObjectHideFlags: 0
@@ -5207,7 +5426,7 @@ GameObject:
   - component: {fileID: 1180498448}
   - component: {fileID: 1180498447}
   - component: {fileID: 1180498446}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5299,7 +5518,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!65 &1205357135
 BoxCollider:
@@ -6007,6 +6226,41 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 224215237147681630, guid: 067251dc3954894418a7a1198cc72d1a,
     type: 2}
   m_PrefabInternal: {fileID: 629516793}
+--- !u!1 &1567726224 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1738191788380822, guid: cdf0891066c99c847bc321a80fb81b5e,
+    type: 2}
+  m_PrefabInternal: {fileID: 556759321}
+--- !u!114 &1567726225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1567726224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 534669906}
+          m_MethodName: MovePlayer
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 556759322}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1001 &1579365049
 Prefab:
   m_ObjectHideFlags: 0
@@ -6503,7 +6757,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!23 &1676320135
 MeshRenderer:
@@ -6661,7 +6915,7 @@ GameObject:
   - component: {fileID: 1714529417}
   - component: {fileID: 1714529416}
   - component: {fileID: 1714529415}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Plane (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7495,6 +7749,7 @@ GameObject:
   - component: {fileID: 1933527126}
   - component: {fileID: 1933527125}
   - component: {fileID: 1933527124}
+  - component: {fileID: 1933527130}
   m_Layer: 0
   m_Name: ServingInteractableArea
   m_TagString: InteractableAre
@@ -7608,7 +7863,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1933527123}
   m_LocalRotation: {x: -0.0063310154, y: -0.70707846, z: -0.0055289143, w: 0.70708513}
-  m_LocalPosition: {x: 0, y: 0, z: 2.38}
+  m_LocalPosition: {x: 0, y: 0, z: 2.67}
   m_LocalScale: {x: 1, y: 1, z: 2}
   m_Children: []
   m_Father: {fileID: 625079150}
@@ -7619,6 +7874,36 @@ RectTransform:
   m_AnchoredPosition: {x: -3.08, y: 0.01}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1933527130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1933527123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 534669906}
+          m_MethodName: MovePlayer
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1933527129}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &1956805321
 GameObject:
   m_ObjectHideFlags: 0
@@ -8332,7 +8617,7 @@ GameObject:
   - component: {fileID: 2053872140}
   - component: {fileID: 2053872139}
   - component: {fileID: 2053872138}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Plane (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8424,7 +8709,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!23 &2070876987
 MeshRenderer:
@@ -8498,6 +8783,7 @@ GameObject:
   - component: {fileID: 2074349951}
   - component: {fileID: 2074349950}
   - component: {fileID: 2074349955}
+  - component: {fileID: 2074349956}
   m_Layer: 0
   m_Name: CookingInteractableArea
   m_TagString: InteractableAre
@@ -8590,7 +8876,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.342, y: 0.051}
+  m_AnchoredPosition: {x: 0.16, y: 0.051}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2074349955
@@ -8626,6 +8912,36 @@ MonoBehaviour:
   cleanPlateOn: 0
   filledPlateOn: 0
   rawFoodOn: 0
+--- !u!114 &2074349956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2074349949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 534669906}
+          m_MethodName: MovePlayer
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 2074349954}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1001 &2074708419
 Prefab:
   m_ObjectHideFlags: 0
@@ -8765,7 +9081,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6eae5d5b5ecdc043a3d82cedbbe5b1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rtsMover: {fileID: 775908834}
+  rtsMover: {fileID: 534669906}
   Green: {fileID: 2100000, guid: 8a68e6e46b28dcd42abf84780551e8fb, type: 2}
   Red: {fileID: 2100000, guid: 38cc30c14c99063409d4bc36a440f2c3, type: 2}
   isClicked: 0
@@ -8897,6 +9213,8 @@ MonoBehaviour:
   filledPlate: {fileID: 1907041443}
   rawFood: {fileID: 1874181503}
   convoCanvas: {fileID: 0}
+  companion: {fileID: 0}
+  BigwoodOBJ: {fileID: 1874181503}
   objectHolding: 0
 --- !u!1 &2080293469
 GameObject:
@@ -8983,7 +9301,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!23 &2091760735
 MeshRenderer:
@@ -9134,6 +9452,7 @@ GameObject:
   - component: {fileID: 2135172771}
   - component: {fileID: 2135172770}
   - component: {fileID: 2135172769}
+  - component: {fileID: 2135172775}
   m_Layer: 0
   m_Name: SinkInteractableArea
   m_TagString: InteractableAre
@@ -9254,6 +9573,36 @@ Transform:
   m_Father: {fileID: 625079150}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &2135172775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2135172768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 534669906}
+          m_MethodName: MovePlayer
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 2135172774}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &2139458435
 GameObject:
   m_ObjectHideFlags: 0

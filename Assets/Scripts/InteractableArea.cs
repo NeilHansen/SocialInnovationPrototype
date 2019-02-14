@@ -67,7 +67,7 @@ public class InteractableArea : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(isOnCounter + " " + objectPlayerHolding);
+      //  Debug.Log(isOnCounter + " " + objectPlayerHolding);
         customers = FindObjectsOfType<Customer>();
         if (gameObject.name == "CookingInteractableArea")
         {
@@ -112,7 +112,7 @@ public class InteractableArea : MonoBehaviour
 
     void Complete(AreaType type, Image Player)
     {
-        Debug.Log("COMPLETE");
+    //    Debug.Log("COMPLETE");
         isInteracting = false;
         isComplete = true;
         interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = false;
