@@ -46,7 +46,8 @@ public class UnitTaskController : MonoBehaviour {
        LargeWood,
        LargePipe,
        SmallWood,
-       SmallPipe
+       SmallPipe,
+       Nails
     }
 
     // Put things on the table
