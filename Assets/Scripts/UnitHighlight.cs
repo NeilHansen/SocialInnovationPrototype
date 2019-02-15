@@ -14,6 +14,9 @@ public class UnitHighlight : MonoBehaviour {
 
     private int numberOfUnits = 0;
 
+    //For keeping The players on Big Wood
+    
+
     void Start()
     {
         numberOfUnits = GameObject.FindGameObjectsWithTag("Player").Length;
@@ -32,41 +35,53 @@ public class UnitHighlight : MonoBehaviour {
 
         if (Input.GetKeyDown("1"))
         {
-            if (rtsMover.ActiveUnit != rtsMover.Unit1 || rtsMover.ActiveUnit == null)
+            if (rtsMover.Unit1.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.LargeWood)
+            {
+                rtsMover.BigWood.gameObject.GetComponent<UnitHighlight>().PossesUnit();
+                Debug.Log("Posses the wood");
+            }
+
+           else if (rtsMover.ActiveUnit != rtsMover.Unit1 || rtsMover.ActiveUnit == null)
             {
                rtsMover.Unit1.gameObject.GetComponent<UnitHighlight>().PossesUnit();
+              
             }
-            else
-            {
+            
 
-            }
         }
 
         
         if (Input.GetKeyDown("2"))
         {
-            if (rtsMover.ActiveUnit != rtsMover.Unit2 || rtsMover.ActiveUnit == null)
+            if (rtsMover.Unit2.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.LargeWood)
+            {
+                rtsMover.BigWood.gameObject.GetComponent<UnitHighlight>().PossesUnit();
+                Debug.Log("Posses the wood");
+            }
+
+            else if (rtsMover.ActiveUnit != rtsMover.Unit2 || rtsMover.ActiveUnit == null)
             {
                 rtsMover.Unit2.gameObject.GetComponent<UnitHighlight>().PossesUnit();
             }
-            else
-            {
-
-            }
+          
         }
 
         if (numberOfUnits >= 3)
         {
             if (Input.GetKeyDown("3"))
             {
-                if (rtsMover.ActiveUnit != rtsMover.Unit3 || rtsMover.ActiveUnit == null)
+                if (rtsMover.Unit1.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.LargeWood)
+                {
+                    rtsMover.BigWood.gameObject.GetComponent<UnitHighlight>().PossesUnit();
+                    Debug.Log("Posses the wood");
+                }
+
+
+                else if (rtsMover.ActiveUnit != rtsMover.Unit3 || rtsMover.ActiveUnit == null)
                 {
                     rtsMover.Unit3.gameObject.GetComponent<UnitHighlight>().PossesUnit();
                 }
-                else
-                {
-
-                }
+               
             }
         }
 

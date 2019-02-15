@@ -16,8 +16,9 @@ public class UnitTaskController : MonoBehaviour {
     public Canvas convoCanvas;
     [HideInInspector]
     public GameObject companion;
-
+    //For heavy object
     public GameObject BigwoodOBJ;
+    public GameObject HeavyHoldPosition;
 
     public TaskType CurrentTaskType
     {
@@ -73,6 +74,14 @@ public class UnitTaskController : MonoBehaviour {
         if (!isInteracting)
         {
             DoTask();
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (currentTaskType == TaskType.LargeWood)
+        {
+            transform.position = HeavyHoldPosition.transform.position;
         }
     }
 

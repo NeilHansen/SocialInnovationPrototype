@@ -36,25 +36,27 @@ public class InteractableAreaConstructionSite : MonoBehaviour
 
     public int numberOfBoards;
     public int numberOfPipes;
-    public int numberOfNails;
-
+    //For heavy objects
     public List<GameObject> Heavycarriers;
+    public List<GameObject> WoodHoldPositions;
+    public GameObject carryWood;
+   
 
-    //tied to AreaType State
-    public int ClickedAreaState;
+
+
+
+
 
     public GameManager Gm;
     public enum AreaType
     {
-        None=0,
-        TrashCan = 1,
-        CuttingArea = 2,
-        WoodPile = 3,
-        WoodRecipticalBin = 5,
-        PipeRecipticalBin = 6,
-        FormanRecipicalBin = 7,
-        NailBin = 8,
-        Counter = 9
+        None,
+        TrashCan,
+        CuttingArea,
+        WoodPile,
+        WoodRecipticalBin,
+        PipeRecipticalBin,
+        Counter
     }
 
     //Put things on the counters
@@ -95,15 +97,9 @@ public class InteractableAreaConstructionSite : MonoBehaviour
             isOnCounter = false;
     }
 
-     void TestDebug()
+    void TestDebug()
     {
-    
-    }
-    public void SetClickedState(int area)
-    {
-        area = ClickedAreaState;
-        Debug.Log(area);
-        Debug.Log("JHSJAJK");
+
     }
 
     void Complete(AreaType type, Image Player)
@@ -127,26 +123,26 @@ public class InteractableAreaConstructionSite : MonoBehaviour
             case AreaType.CuttingArea:
                 if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.LargeWood)
                 {
-                    if (interactingUnit.transform.parent != null)
-                    {
-                        interactingUnit.transform.parent = null;
-                    }
+                    //if(interactingUnit.transform.parent!= null)
+                    //{
+                    //    interactingUnit.transform.parent = null;
+                    //}
 
-                    else
-                    {
-                        interactingUnit.GetComponent<UnitTaskController>().companion.transform.parent = null;
-                    }
+                    //else
+                    //{
+                    //   // interactingUnit.GetComponent<UnitTaskController>().companion.transform.parent = null;
+                    //}
 
-
+                   
                     interactingUnit.GetComponent<UnitTaskController>().currentTaskType = UnitTaskController.TaskType.None;
                     interactingUnit.GetComponent<UnitTaskController>().BigwoodOBJ.SetActive(false);
                     interactingUnit.GetComponent<UnitTaskController>().companion.GetComponent<UnitTaskController>().currentTaskType = UnitTaskController.TaskType.None;
                     interactingUnit.GetComponent<UnitTaskController>().companion.GetComponent<UnitTaskController>().BigwoodOBJ.SetActive(false);
-
+                    carryWood.SetActive(false);
 
                     //CHECK IF REERENCES ARE CORRECT
-                    Debug.Log("The interacting unit is" + interactingUnit.name);
-                    Debug.Log("The interacting unit is" + interactingUnit.GetComponent<UnitTaskController>().companion.name);
+                    //Debug.Log("The interacting unit is" + interactingUnit.name);
+                  //  Debug.Log("The interacting unit is" + interactingUnit.GetComponent<UnitTaskController>().companion.name);
 
 
                     BenchHasWood = true;
@@ -189,40 +185,28 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                 for (int i = 0; i < Heavycarriers.Count; i++)
                 {
                     //Set up the players to carry the wood
+                    carryWood.SetActive(true);
+                    carryWood.transform.position = transform.position;
+
                     if (i == 0)
                     {
+                        //Heavycarriers[0].gameObject.GetComponent<UnitTaskController>().BigwoodOBJ.transform.SetPositionAndRotation(transform.position, Quaternion.Euler(0, transform.rotation.eulerAngles.y - 90, 0));
                         Heavycarriers[0].gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.LargeWood;
-                        Heavycarriers[0].gameObject.GetComponent<UnitTaskController>().BigwoodOBJ.SetActive(true);
-                        Heavycarriers[0].gameObject.GetComponent<UnitTaskController>().BigwoodOBJ.transform.SetPositionAndRotation(transform.position, Quaternion.Euler(0, transform.rotation.eulerAngles.y - 90, 0));
+           
                         Heavycarriers[0].gameObject.GetComponent<UnitTaskController>().companion = Heavycarriers[1].gameObject;
+                        //Setting hold position
+                        Heavycarriers[0].gameObject.GetComponent<UnitTaskController>().HeavyHoldPosition = WoodHoldPositions[0];
+
                     }
                     else
                     {
                         Heavycarriers[1].gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.LargeWood;
-                        Heavycarriers[1].gameObject.transform.parent = Heavycarriers[0].gameObject.transform;
+                        //Heavycarriers[1].gameObject.transform.parent = Heavycarriers[0].gameObject.transform;
                         Heavycarriers[1].gameObject.GetComponent<UnitTaskController>().companion = Heavycarriers[0].gameObject;
+                        //Setting hold position
+                        Heavycarriers[1].gameObject.GetComponent<UnitTaskController>().HeavyHoldPosition = WoodHoldPositions[1];
                     }
                 }
-                break;
-            case AreaType.FormanRecipicalBin:
-                if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.SmallWood)
-                {
-                    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
-                    numberOfBoards += 1;
-                }
-                else if(interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.SmallPipe)
-                {
-                    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
-                    numberOfPipes += 1;
-                }
-                else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Nails)
-                {
-                    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
-                    numberOfNails += 1;
-                }
-                break;
-            case AreaType.NailBin:
-                interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.Nails;
                 break;
             case AreaType.Counter:
                 //Nothing is on the counter
@@ -390,8 +374,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                     }
                 }
                 break;
-           
-        }
+             }
 
 
     }
@@ -419,7 +402,6 @@ public class InteractableAreaConstructionSite : MonoBehaviour
 
 
                 case AreaType.TrashCan:
-
                     if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType != UnitTaskController.TaskType.None)
                     {
                         isInteracting = true;
@@ -434,59 +416,54 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                             NegativeFeedback(other);
                         }
                     }
-
                     break;
                 case AreaType.Counter:
-                    
-                        objectPlayerHolding = interactingUnit.gameObject.GetComponent<UnitTaskController>().objectHolding;
-                        //Nothing on counter
-                        ///
-                        if (isOnCounter || objectPlayerHolding != UnitTaskController.ObjectHeld.None)
+                    objectPlayerHolding = interactingUnit.gameObject.GetComponent<UnitTaskController>().objectHolding;
+                    //Nothing on counter
+                    ///
+                    if (isOnCounter || objectPlayerHolding != UnitTaskController.ObjectHeld.None)
+                    {
+                        isInteracting = true;
+                        interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
+                        interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
+                    }
+                    break;
+                case AreaType.CuttingArea:
+                    if (!isInteracting && !isComplete )
+                    {
+                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.LargeWood && !BenchHasWood)
                         {
                             isInteracting = true;
                             interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
                             interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
                         }
-                    
-                    break;
-                case AreaType.CuttingArea:
-                   
-                        if (!isInteracting && !isComplete)
+                        else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.LargePipe && !BenchHasPipe)
                         {
-                            if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.LargeWood && !BenchHasWood)
+                            isInteracting = true;
+                            interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
+                            interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
+                        }
+                        else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None && BenchHasWood)
+                        {
+                            isInteracting = true;
+                            interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
+                            interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
+                        }
+                        else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None && BenchHasPipe)
+                        {
+                            isInteracting = true;
+                            interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
+                            interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
+                        }
+                        else
+                        {
+                            if (FeedBackFiredAlready == false)
                             {
-                                isInteracting = true;
-                                interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
-                                interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
-                            }
-                            else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.LargePipe && !BenchHasPipe)
-                            {
-                                isInteracting = true;
-                                interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
-                                interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
-                            }
-                            else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None && BenchHasWood)
-                            {
-                                isInteracting = true;
-                                interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
-                                interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
-                            }
-                            else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None && BenchHasPipe)
-                            {
-                                isInteracting = true;
-                                interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
-                                interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
-                            }
-                            else
-                            {
-                                if (FeedBackFiredAlready == false)
-                                {
-                                    NegativeFeedback(other);
-                                }
+                                NegativeFeedback(other);
                             }
                         }
 
-                    
+                    }
                     break;
                 case AreaType.WoodRecipticalBin:
                     if (!isInteracting && !isComplete)
@@ -527,7 +504,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                     }
                     break;
                 case AreaType.WoodPile:
-                  //  Debug.Log(Heavycarriers.Count);
+                    Debug.Log(Heavycarriers.Count);
                     if (Heavycarriers.Count == 2)
                     {
                         Debug.Log("pickup Log");
@@ -541,46 +518,6 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                         {
                             NegativeFeedback(other);
                         }
-                    }
-                    break;
-                case AreaType.FormanRecipicalBin:
-                    if (!isInteracting && !isComplete)
-                    {
-                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.SmallWood
-                            || interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.SmallPipe ||
-                            interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Nails)
-                        {
-                            isInteracting = true;
-                            interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
-                            interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
-                        }
-                        else
-                        {
-                            if (FeedBackFiredAlready == false)
-                            {
-                                NegativeFeedback(other);
-                            }
-                        }
-
-                    }
-                    break;
-                case AreaType.NailBin:
-                    if (!isInteracting && !isComplete)
-                    {
-                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
-                        {
-                            isInteracting = true;
-                            interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
-                            interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
-                        }
-                        else
-                        {
-                            if (FeedBackFiredAlready == false)
-                            {
-                                NegativeFeedback(other);
-                            }
-                        }
-
                     }
                     break;
             }

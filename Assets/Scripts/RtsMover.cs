@@ -9,6 +9,9 @@ public class RtsMover : MonoBehaviour {
     public GameObject Unit3;
     public GameObject Unit4;
     public GameObject ActiveUnit;
+    //Moveing Wood
+    public GameObject BigWood;
+
     [SerializeField]
     Vector3 originalPosition;
 
