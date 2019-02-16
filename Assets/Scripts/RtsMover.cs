@@ -11,6 +11,7 @@ public class RtsMover : MonoBehaviour {
     public GameObject ActiveUnit;
     //Moveing Wood
     public GameObject BigWood;
+    public GameObject BigPipe;
 
     [SerializeField]
     Vector3 originalPosition;
@@ -94,7 +95,7 @@ public class RtsMover : MonoBehaviour {
         //Variable for follower
         UnitTaskController Follower = ActiveUnit.GetComponent<UnitTaskController>().companion.GetComponent<UnitTaskController>();
 
-
+         
     }
 
     

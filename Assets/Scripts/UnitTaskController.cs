@@ -79,10 +79,12 @@ public class UnitTaskController : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        if (currentTaskType == TaskType.LargeWood)
+        if (currentTaskType == TaskType.LargeWood || currentTaskType == TaskType.LargePipe)
         {
             transform.position = HeavyHoldPosition.transform.position;
         }
+
+        
     }
 
     public IEnumerator FlashFeedback()

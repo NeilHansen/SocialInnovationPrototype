@@ -40,6 +40,9 @@ public class InteractableAreaConstructionSite : MonoBehaviour
     public List<GameObject> Heavycarriers;
     public List<GameObject> WoodHoldPositions;
     public GameObject carryWood;
+    public List<GameObject> PipeHoldPositions;
+    public GameObject CarryPipe;
+    
    
 
 
@@ -56,7 +59,8 @@ public class InteractableAreaConstructionSite : MonoBehaviour
         WoodPile,
         WoodRecipticalBin,
         PipeRecipticalBin,
-        Counter
+        Counter,
+        PipePile
     }
 
     //Put things on the counters
@@ -135,9 +139,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
 
                    
                     interactingUnit.GetComponent<UnitTaskController>().currentTaskType = UnitTaskController.TaskType.None;
-                    interactingUnit.GetComponent<UnitTaskController>().BigwoodOBJ.SetActive(false);
                     interactingUnit.GetComponent<UnitTaskController>().companion.GetComponent<UnitTaskController>().currentTaskType = UnitTaskController.TaskType.None;
-                    interactingUnit.GetComponent<UnitTaskController>().companion.GetComponent<UnitTaskController>().BigwoodOBJ.SetActive(false);
                     carryWood.SetActive(false);
 
                     //CHECK IF REERENCES ARE CORRECT
@@ -150,6 +152,9 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                 else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.LargePipe)
                 {
                     interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
+                    interactingUnit.GetComponent<UnitTaskController>().companion.GetComponent<UnitTaskController>().currentTaskType = UnitTaskController.TaskType.None;
+                    CarryPipe.SetActive(false);
+
                     BenchHasPipe = true;
                 }
                 else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None && BenchHasWood)
@@ -208,6 +213,38 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                     }
                 }
                 break;
+
+
+
+            case AreaType.PipePile:
+                for(int n=0; n < Heavycarriers.Count; n++)
+                {
+                    CarryPipe.SetActive(true);
+                    CarryPipe.transform.position = transform.position;
+
+                    if (n == 0)
+                    {
+                        Heavycarriers[0].gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.LargePipe;
+
+                        Heavycarriers[0].gameObject.GetComponent<UnitTaskController>().companion = Heavycarriers[1].gameObject;
+                        //Setting hold position
+                        Heavycarriers[0].gameObject.GetComponent<UnitTaskController>().HeavyHoldPosition = PipeHoldPositions[0];
+
+                    }
+
+                    else
+                    {
+                        Heavycarriers[1].gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.LargePipe;
+                        //Heavycarriers[1].gameObject.transform.parent = Heavycarriers[0].gameObject.transform;
+                        Heavycarriers[1].gameObject.GetComponent<UnitTaskController>().companion = Heavycarriers[0].gameObject;
+                        //Setting hold position
+                        Heavycarriers[1].gameObject.GetComponent<UnitTaskController>().HeavyHoldPosition = PipeHoldPositions[1];
+                    }
+                }
+
+                break;
+
+                   
             case AreaType.Counter:
                 //Nothing is on the counter
                 if (!isOnCounter)
@@ -504,7 +541,6 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                     }
                     break;
                 case AreaType.WoodPile:
-                    Debug.Log(Heavycarriers.Count);
                     if (Heavycarriers.Count == 2)
                     {
                         Debug.Log("pickup Log");
@@ -520,6 +556,27 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                         }
                     }
                     break;
+
+
+                case AreaType.PipePile:
+                    if(Heavycarriers.Count == 2)
+                    {
+                        isInteracting = true;
+                        interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
+                        interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
+                    }
+
+                    else
+                    {
+                        if (FeedBackFiredAlready == false)
+                        {
+                            NegativeFeedback(other);
+                        }
+
+                    }
+                
+                    break;
+
             }
             if (other.gameObject.name == "Unit1")
             {
@@ -604,7 +661,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
             feedbackSlider2.gameObject.SetActive(false);
         }
 
-        if(areaType == AreaType.WoodPile)
+        if(areaType == AreaType.WoodPile || areaType == AreaType.PipePile)
         {
             if (Heavycarriers.Contains(other.gameObject))
             {
@@ -630,6 +687,14 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                     {
                         Heavycarriers.Add(other.gameObject);
                     }
+                    break;
+
+                case AreaType.PipePile:
+                    if(interactingUnit.gameObject.GetComponent<UnitTaskController>().currentTaskType== UnitTaskController.TaskType.None)
+                    {
+                        Heavycarriers.Add(other.gameObject);
+                    }
+
                     break;
 
             }

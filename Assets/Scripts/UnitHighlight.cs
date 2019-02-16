@@ -41,6 +41,12 @@ public class UnitHighlight : MonoBehaviour {
                 Debug.Log("Posses the wood");
             }
 
+
+            else if(rtsMover.Unit1.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.LargePipe)
+            {
+                rtsMover.BigPipe.gameObject.GetComponent<UnitHighlight>().PossesUnit();
+            }
+
            else if (rtsMover.ActiveUnit != rtsMover.Unit1 || rtsMover.ActiveUnit == null)
             {
                rtsMover.Unit1.gameObject.GetComponent<UnitHighlight>().PossesUnit();
@@ -59,11 +65,18 @@ public class UnitHighlight : MonoBehaviour {
                 Debug.Log("Posses the wood");
             }
 
+            else if (rtsMover.Unit2.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.LargePipe)
+            {
+                rtsMover.BigPipe.gameObject.GetComponent<UnitHighlight>().PossesUnit();
+            }
+
             else if (rtsMover.ActiveUnit != rtsMover.Unit2 || rtsMover.ActiveUnit == null)
             {
                 rtsMover.Unit2.gameObject.GetComponent<UnitHighlight>().PossesUnit();
             }
-          
+
+         
+
         }
 
         if (numberOfUnits >= 3)
@@ -76,6 +89,10 @@ public class UnitHighlight : MonoBehaviour {
                     Debug.Log("Posses the wood");
                 }
 
+                else if (rtsMover.Unit3.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.LargePipe)
+                {
+                    rtsMover.BigPipe.gameObject.GetComponent<UnitHighlight>().PossesUnit();
+                }
 
                 else if (rtsMover.ActiveUnit != rtsMover.Unit3 || rtsMover.ActiveUnit == null)
                 {
