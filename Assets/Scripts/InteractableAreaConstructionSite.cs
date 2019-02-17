@@ -39,8 +39,6 @@ public class InteractableAreaConstructionSite : MonoBehaviour
 
     public List<GameObject> Heavycarriers; 
 
-
-
     public GameManager Gm;
     public enum AreaType
     {
