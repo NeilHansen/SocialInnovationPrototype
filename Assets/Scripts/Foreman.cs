@@ -9,7 +9,7 @@ public class Foreman : MonoBehaviour {
     public GameManager gameManager;
     public bool leaveWhenMeterReachZero = false;
 
-    enum ToolList
+    public enum ToolList
     {
         Nail,
         Pipe,
@@ -33,7 +33,7 @@ public class Foreman : MonoBehaviour {
     public Text item1Name, item2Name, item3Name;
     public Text item1Quantity, item2Quantity, item3Quantity;
     private bool item1Received, item2Received, item3Received;
-    private int item1Needed, item2Needed, item3Needed;
+    //private int item1Needed, item2Needed, item3Needed;
 
     public bool isMoving;
     private float mass = 1.0f;
@@ -60,11 +60,36 @@ public class Foreman : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
-            item1Received = true;
-            item2Received = true;
-            item3Received = true;
+            ReceiveItem(ToolList.Nail);
+        }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            ReceiveItem(ToolList.Pipe);
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            ReceiveItem(ToolList.Wood);
+        }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            ReceiveItem(ToolList.DoubleNail);
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            ReceiveItem(ToolList.DoublePipe);
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            ReceiveItem(ToolList.DoubleWood);
+        }
+
+        item1Quantity.text = "x " + finalItemList[0].amount.ToString();
+        if (!IsCombo())
+        {
+            item2Quantity.text = "x " + finalItemList[1].amount.ToString();
+            item3Quantity.text = "x " + finalItemList[2].amount.ToString();
         }
 
         if (item1Received && item2Received && item3Received)
@@ -84,54 +109,76 @@ public class Foreman : MonoBehaviour {
 
     private void GenerateItems()
     {
+        finalItemList = new List<itemInfo>();
         //Spawn combo
         if (IsCombo())
         {
-            item1Received = true;
+            item2Received = true;
             item3Received = true;
-            item1Name.enabled = false;
-            item1Quantity.enabled = false;
+            item2Name.enabled = false;
+            item2Quantity.enabled = false;
             item3Name.enabled = false;
             item3Quantity.enabled = false;
             switch (Random.Range(0, 3))
             {
                 case 0:
-                    item2Name.text = ToolList.DoubleNail.ToString();
+                    finalItemList.Add(new itemInfo(ToolList.DoubleNail, Random.Range(1, 3)));
                     break;
                 case 1:
-                    item2Name.text = ToolList.DoublePipe.ToString();
+                    finalItemList.Add(new itemInfo(ToolList.DoublePipe, Random.Range(1, 3)));
                     break;
                 case 2:
-                    item2Name.text = ToolList.DoubleWood.ToString();
+                    finalItemList.Add(new itemInfo(ToolList.DoubleWood, Random.Range(1, 3)));
                     break;
                 default:
                     Debug.Log("Error");
                     break;
             }
-            int amount = Random.Range(1, 3);
-            item2Quantity.text = "x " + amount;
-            item2Needed = amount;
+            item1Name.text = finalItemList[0].tool.ToString();
         }
         //Spawn random single items
         else
         {
             List<ToolList> shuffledList = ShuffleList();
             
-            finalItemList = new List<itemInfo>();
             finalItemList.Add(new itemInfo(shuffledList[0], Random.Range(1, 3)));
             finalItemList.Add(new itemInfo(shuffledList[1], Random.Range(1, 3)));
             finalItemList.Add(new itemInfo(shuffledList[2], Random.Range(1, 3)));
 
-            item1Needed = finalItemList[0].amount;
-            item2Needed = finalItemList[1].amount;
-            item3Needed = finalItemList[2].amount;
-
             item1Name.text = finalItemList[0].tool.ToString();
-            item1Quantity.text = "x " + finalItemList[0].amount.ToString();
             item2Name.text = finalItemList[1].tool.ToString();
-            item2Quantity.text = "x " + finalItemList[1].amount.ToString();
             item3Name.text = finalItemList[2].tool.ToString();
-            item3Quantity.text = "x " + finalItemList[2].amount.ToString();
+        }
+    }
+
+    public void ReceiveItem(ToolList t)
+    {
+        foreach (itemInfo iI in finalItemList)
+        {
+            if(t == iI.tool)
+            {
+                if (iI.amount > 0)
+                    iI.amount -= 1;
+                if (iI.amount == 0)
+                {
+                    int index = finalItemList.IndexOf(iI);
+                    switch(index)
+                    {
+                        case 0:
+                            item1Received = true;
+                            break;
+                        case 1:
+                            item2Received = true;
+                            break;
+                        case 2:
+                            item3Received = true;
+                            break;
+                        default:
+                            Debug.Log("Error");
+                            break;
+                    }
+                }
+            }
         }
     }
             

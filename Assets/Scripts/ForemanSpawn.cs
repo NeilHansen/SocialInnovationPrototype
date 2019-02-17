@@ -9,7 +9,7 @@ public class ForemanSpawn : MonoBehaviour {
     public GameManager gameManager;
 
     private GameObject[] foremen;
-    private float spawnTime = 2.0f;
+    private float spawnTime = 0.5f;
     private float timeElapsed = 0.0f;
     //private int maxForeman = 1;
     //private int customerCount;
