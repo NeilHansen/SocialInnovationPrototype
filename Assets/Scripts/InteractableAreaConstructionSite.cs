@@ -48,8 +48,6 @@ public class InteractableAreaConstructionSite : MonoBehaviour
 
 
 
-
-
     public GameManager Gm;
     public enum AreaType
     {
