@@ -58,7 +58,8 @@ public class InteractableAreaConstructionSite : MonoBehaviour
         WoodRecipticalBin,
         PipeRecipticalBin,
         Counter,
-        PipePile
+        PipePile,
+        CraftingStation
     }
 
     //Put things on the counters
@@ -135,14 +136,14 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                     //   // interactingUnit.GetComponent<UnitTaskController>().companion.transform.parent = null;
                     //}
 
-                   
+
                     interactingUnit.GetComponent<UnitTaskController>().currentTaskType = UnitTaskController.TaskType.None;
                     interactingUnit.GetComponent<UnitTaskController>().companion.GetComponent<UnitTaskController>().currentTaskType = UnitTaskController.TaskType.None;
                     carryWood.SetActive(false);
 
                     //CHECK IF REERENCES ARE CORRECT
                     //Debug.Log("The interacting unit is" + interactingUnit.name);
-                  //  Debug.Log("The interacting unit is" + interactingUnit.GetComponent<UnitTaskController>().companion.name);
+                    //  Debug.Log("The interacting unit is" + interactingUnit.GetComponent<UnitTaskController>().companion.name);
 
 
                     BenchHasWood = true;
@@ -195,7 +196,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                     {
                         //Heavycarriers[0].gameObject.GetComponent<UnitTaskController>().BigwoodOBJ.transform.SetPositionAndRotation(transform.position, Quaternion.Euler(0, transform.rotation.eulerAngles.y - 90, 0));
                         Heavycarriers[0].gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.LargeWood;
-           
+
                         Heavycarriers[0].gameObject.GetComponent<UnitTaskController>().companion = Heavycarriers[1].gameObject;
                         //Setting hold position
                         Heavycarriers[0].gameObject.GetComponent<UnitTaskController>().HeavyHoldPosition = WoodHoldPositions[0];
@@ -215,7 +216,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
 
 
             case AreaType.PipePile:
-                for(int n=0; n < Heavycarriers.Count; n++)
+                for (int n = 0; n < Heavycarriers.Count; n++)
                 {
                     CarryPipe.SetActive(true);
                     CarryPipe.transform.position = transform.position;
@@ -242,7 +243,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
 
                 break;
 
-                   
+
             case AreaType.Counter:
                 //Nothing is on the counter
                 if (!isOnCounter)
@@ -409,7 +410,10 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                     }
                 }
                 break;
-             }
+            case AreaType.CraftingStation:
+                interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
+                break;
+        }
 
 
     }
@@ -464,7 +468,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                     }
                     break;
                 case AreaType.CuttingArea:
-                    if (!isInteracting && !isComplete )
+                    if (!isInteracting && !isComplete)
                     {
                         if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.LargeWood && !BenchHasWood)
                         {
@@ -557,7 +561,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
 
 
                 case AreaType.PipePile:
-                    if(Heavycarriers.Count == 2)
+                    if (Heavycarriers.Count == 2)
                     {
                         isInteracting = true;
                         interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
@@ -572,9 +576,38 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                         }
 
                     }
-                
-                    break;
 
+                    break;
+                case AreaType.CraftingStation:
+                    if (!isInteracting && !isComplete)
+                    {
+                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.SmallWood)
+                        {
+                            isInteracting = true;
+                            interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
+                            interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
+                        }
+                        else if(interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.SmallPipe)
+                        {
+                            isInteracting = true;
+                            interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
+                            interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
+                        }
+                        else if(interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Nails)
+                        {
+                            isInteracting = true;
+                            interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
+                            interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
+                        }
+                        else
+                        {
+                            if (FeedBackFiredAlready == false)
+                            {
+                                NegativeFeedback(other);
+                            }
+                        }
+                    }
+                    break;
             }
             if (other.gameObject.name == "Unit1")
             {
