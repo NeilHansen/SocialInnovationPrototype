@@ -98,5 +98,12 @@ public class RtsMover : MonoBehaviour {
          
     }
 
+    public void MoveToWoodPile()
+    {
+        
+    }
+  
     
+
+
 }

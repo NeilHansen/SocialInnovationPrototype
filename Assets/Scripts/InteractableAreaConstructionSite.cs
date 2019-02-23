@@ -138,11 +138,13 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                    
                     interactingUnit.GetComponent<UnitTaskController>().currentTaskType = UnitTaskController.TaskType.None;
                     interactingUnit.GetComponent<UnitTaskController>().companion.GetComponent<UnitTaskController>().currentTaskType = UnitTaskController.TaskType.None;
-                    carryWood.SetActive(false);
+                    //ResetsWood
+                    carryWood.transform.position = carryWood.GetComponent<VisibilityManager>().OrginalPosition;
+                    carryWood.GetComponent<VisibilityManager>().TurnoffObject();
 
                     //CHECK IF REERENCES ARE CORRECT
                     //Debug.Log("The interacting unit is" + interactingUnit.name);
-                  //  Debug.Log("The interacting unit is" + interactingUnit.GetComponent<UnitTaskController>().companion.name);
+                    //  Debug.Log("The interacting unit is" + interactingUnit.GetComponent<UnitTaskController>().companion.name);
 
 
                     BenchHasWood = true;
@@ -151,7 +153,9 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                 {
                     interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
                     interactingUnit.GetComponent<UnitTaskController>().companion.GetComponent<UnitTaskController>().currentTaskType = UnitTaskController.TaskType.None;
-                    CarryPipe.SetActive(false);
+                    //Resets pipe
+                    CarryPipe.transform.position = CarryPipe.GetComponent<VisibilityManager>().OrginalPosition;
+                    CarryPipe.GetComponent<VisibilityManager>().TurnoffObject();
 
                     BenchHasPipe = true;
                 }
@@ -188,8 +192,8 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                 for (int i = 0; i < Heavycarriers.Count; i++)
                 {
                     //Set up the players to carry the wood
-                    carryWood.SetActive(true);
-                    carryWood.transform.position = transform.position;
+                    carryWood.GetComponent<VisibilityManager>().TurnonObject();
+                    //carryWood.transform.position = transform.position;
 
                     if (i == 0)
                     {
@@ -217,7 +221,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
             case AreaType.PipePile:
                 for(int n=0; n < Heavycarriers.Count; n++)
                 {
-                    CarryPipe.SetActive(true);
+                    CarryPipe.GetComponent<VisibilityManager>().TurnonObject();
                     CarryPipe.transform.position = transform.position;
 
                     if (n == 0)
@@ -614,6 +618,8 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                     {
                         Complete(areaType, Status2);
                     }
+
+                    
                 }
                 else
                 {
@@ -720,4 +726,53 @@ public class InteractableAreaConstructionSite : MonoBehaviour
             StartCoroutine(FlashFeedback(Status3, FeedbackSprites[1]));
         }
     }
+
+
+
+    public void MoveToWoodPoint()
+    {
+       RtsMover Mover = FindObjectOfType<RtsMover>();
+
+        //Makes the units go to the holding positions when you click the wood pile
+
+        if (Heavycarriers.Count < 1)
+        {
+            Mover.MovePlayer(PipeHoldPositions[0].transform);
+        }
+
+        else if (Heavycarriers.Count < 2)
+        {
+            Mover.MovePlayer(PipeHoldPositions[1].transform);
+        }
+
+        else if(Heavycarriers.Count >= 2)
+        {
+            //Put feedback for unbable to complete here
+        }
+
+    }
+
+    public void MoveToPipePoint()
+    {
+        RtsMover Mover = FindObjectOfType<RtsMover>();
+
+        if (Heavycarriers.Count < 1)
+        {
+            Mover.MovePlayer(PipeHoldPositions[0].transform);
+        }
+
+        else if (Heavycarriers.Count < 2)
+        {
+            Mover.MovePlayer(PipeHoldPositions[1].transform);
+        }
+
+        else if (Heavycarriers.Count >= 2)
+        {
+            //Put feedback for unbable to complete here
+        }
+    }
+
+
+
+
 }
