@@ -36,6 +36,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
 
     public int numberOfBoards;
     public int numberOfPipes;
+    public int numberOfNails;
     //For heavy objects
     public List<GameObject> Heavycarriers;
     public List<GameObject> WoodHoldPositions;
@@ -415,7 +416,23 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                 }
                 break;
             case AreaType.CraftingStation:
-                interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
+                    if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.SmallWood)
+                    {
+                        numberOfBoards += 1;
+                        interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
+                    }
+                    else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.SmallPipe)
+                    {
+                        numberOfPipes += 1;
+                        interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
+                    }
+                    else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Nails)
+                    {
+                        numberOfNails += 1;
+                        interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
+                    }
+
+
                 break;
         }
 
