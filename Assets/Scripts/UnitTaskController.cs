@@ -81,7 +81,7 @@ public class UnitTaskController : MonoBehaviour {
     {
         if (currentTaskType == TaskType.LargeWood || currentTaskType == TaskType.LargePipe)
         {
-            transform.position = HeavyHoldPosition.transform.position;
+            transform.position = new Vector3(HeavyHoldPosition.transform.position.x, transform.position.y, HeavyHoldPosition.transform.position.z);
         }
 
         
