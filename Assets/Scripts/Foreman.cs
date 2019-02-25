@@ -33,6 +33,7 @@ public class Foreman : MonoBehaviour {
     public Text item1Name, item2Name, item3Name;
     public Text item1Quantity, item2Quantity, item3Quantity;
     private bool item1Received, item2Received, item3Received;
+    private bool isCombo;
     //private int item1Needed, item2Needed, item3Needed;
 
     public bool isMoving;
@@ -53,6 +54,7 @@ public class Foreman : MonoBehaviour {
         pathLength = foremanPath.Length;
         curPathIndex = 0;
         velocity = transform.forward;
+        isCombo = IsCombo();
         GenerateItems();
         isMoving = true;
     }
@@ -86,7 +88,7 @@ public class Foreman : MonoBehaviour {
         }
 
         item1Quantity.text = "x " + finalItemList[0].amount.ToString();
-        if (!IsCombo())
+        if (!isCombo)
         {
             item2Quantity.text = "x " + finalItemList[1].amount.ToString();
             item3Quantity.text = "x " + finalItemList[2].amount.ToString();
@@ -111,7 +113,7 @@ public class Foreman : MonoBehaviour {
     {
         finalItemList = new List<itemInfo>();
         //Spawn combo
-        if (IsCombo())
+        if (isCombo)
         {
             item2Received = true;
             item3Received = true;
