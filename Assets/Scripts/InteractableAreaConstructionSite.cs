@@ -937,20 +937,23 @@ public class InteractableAreaConstructionSite : MonoBehaviour
        RtsMover Mover = FindObjectOfType<RtsMover>();
 
         //Makes the units go to the holding positions when you click the wood pile
-
-        if (Heavycarriers.Count < 1)
+        if (Mover != null)
         {
-            Mover.MovePlayer(PipeHoldPositions[0].transform);
-        }
+            if (Heavycarriers.Count < 1)
+            {
+                Mover.MovePlayer(WoodHoldPositions[2].transform);
+            }
 
-        else if (Heavycarriers.Count < 2)
-        {
-            Mover.MovePlayer(PipeHoldPositions[1].transform);
-        }
+            else if (Heavycarriers.Count < 2)
+            {
+                Mover.MovePlayer(WoodHoldPositions[3].transform);
+            }
 
-        else if(Heavycarriers.Count >= 2)
-        {
-            //Put feedback for unbable to complete here
+            else if (Heavycarriers.Count >= 2)
+            {
+                //Put feedback for unbable to complete here
+            }
+
         }
 
     }
@@ -961,12 +964,12 @@ public class InteractableAreaConstructionSite : MonoBehaviour
 
         if (Heavycarriers.Count < 1)
         {
-            Mover.MovePlayer(PipeHoldPositions[0].transform);
+            Mover.MovePlayer(PipeHoldPositions[2].transform);
         }
 
         else if (Heavycarriers.Count < 2)
         {
-            Mover.MovePlayer(PipeHoldPositions[1].transform);
+            Mover.MovePlayer(PipeHoldPositions[3].transform);
         }
 
         else if (Heavycarriers.Count >= 2)

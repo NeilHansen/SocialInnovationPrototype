@@ -79,7 +79,11 @@ public class RtsMover : MonoBehaviour {
 
     public void MovePlayer(Vector3 newPos)
     {
-        ActiveUnit.GetComponent<NavMeshAgent>().SetDestination(newPos);
+        if (newPos != null)
+        {
+            ActiveUnit.GetComponent<NavMeshAgent>().SetDestination(newPos);
+        }
+      
 
         //to get rid of the navmaesh adgent rotation
 
