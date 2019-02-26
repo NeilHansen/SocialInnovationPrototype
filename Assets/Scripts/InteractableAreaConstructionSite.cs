@@ -48,6 +48,9 @@ public class InteractableAreaConstructionSite : MonoBehaviour
     public GameObject carryWood;
     public List<GameObject> PipeHoldPositions;
     public GameObject CarryPipe;
+
+    public Sprite hoverSprite;
+    public GameObject hoverSpriteObject;
     
    
 
@@ -82,6 +85,8 @@ public class InteractableAreaConstructionSite : MonoBehaviour
     {
         Gm = GameObject.FindObjectOfType<GameManager>();
         counterSpace = gameObject.GetComponent<CounterSpace>();
+        hoverSpriteObject.GetComponent<Image>().sprite = hoverSprite;
+        hoverSpriteObject.SetActive(false);
         InvokeRepeating("TestDebug", 0.0f, 1.0f);
         feedbackSlider = GameObject.FindGameObjectWithTag("PlayerCanvas1").transform.GetChild(0).GetComponent<Slider>();
         feedbackSlider2 = GameObject.FindGameObjectWithTag("Player Canvas2").transform.GetChild(0).GetComponent<Slider>();
@@ -112,6 +117,17 @@ public class InteractableAreaConstructionSite : MonoBehaviour
     void TestDebug()
     {
 
+    }
+
+    private void OnMouseOver()
+    {
+        Debug.Log("HOVERED OVER " + gameObject.name);
+        hoverSpriteObject.SetActive(true);
+    }
+
+    private void OnMouseExit()
+    {
+        hoverSpriteObject.SetActive(false);
     }
 
     void Complete(AreaType type, PlayerUI UI)
