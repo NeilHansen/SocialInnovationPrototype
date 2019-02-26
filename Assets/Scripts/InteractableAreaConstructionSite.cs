@@ -12,7 +12,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
     public bool isComplete;
     public AreaType areaType;
 
-    private GameObject interactingUnit;
+    public GameObject interactingUnit;
  
 
     public Slider feedbackSlider;
@@ -37,6 +37,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
     public int numberOfBoards;
     public int numberOfPipes;
     public int numberOfNails;
+    public int numberOfConnectors;
     //For heavy objects
     public List<GameObject> Heavycarriers;
     public List<GameObject> WoodHoldPositions;
@@ -60,7 +61,10 @@ public class InteractableAreaConstructionSite : MonoBehaviour
         PipeRecipticalBin,
         Counter,
         PipePile,
-        CraftingStation
+        NailsBin,
+        PipeConnector,
+        CraftingStation,
+        FormanReturn
     }
 
     //Put things on the counters
@@ -190,6 +194,9 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                 interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.SmallPipe;
                 this.numberOfPipes -= 1;
                 break;
+            case AreaType.PipeConnector:
+                interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.PipeConnector;
+                break;
             case AreaType.WoodPile:
                 for (int i = 0; i < Heavycarriers.Count; i++)
                 {
@@ -247,6 +254,8 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                 }
 
                 break;
+
+
 
 
             case AreaType.Counter:
@@ -416,23 +425,33 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                 }
                 break;
             case AreaType.CraftingStation:
-                    if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.SmallWood)
-                    {
-                        numberOfBoards += 1;
-                        interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
-                    }
-                    else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.SmallPipe)
-                    {
-                        numberOfPipes += 1;
-                        interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
-                    }
-                    else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Nails)
-                    {
-                        numberOfNails += 1;
-                        interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
-                    }
+                if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.SmallWood)
+                {
+                    numberOfBoards += 1;
+                    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
+                }
+                else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.SmallPipe)
+                {
+                    numberOfPipes += 1;
+                    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
+                }
+                else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Nails)
+                {
+                    numberOfNails += 1;
+                    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
+                }
+                else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.PipeConnector)
+                {
+                    numberOfConnectors += 1;
+                    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
+                }
 
 
+                break;
+            case AreaType.NailsBin:
+                interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.Nails;
+                break;
+            case AreaType.FormanReturn:
                 break;
         }
 
@@ -602,19 +621,61 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                 case AreaType.CraftingStation:
                     if (!isInteracting && !isComplete)
                     {
-                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.SmallWood)
+                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.SmallWood && numberOfPipes == 0)
                         {
                             isInteracting = true;
                             interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
                             interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
                         }
-                        else if(interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.SmallPipe)
+                        else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.SmallPipe && numberOfBoards == 0)
                         {
                             isInteracting = true;
                             interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
                             interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
                         }
-                        else if(interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Nails)
+                        else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Nails && numberOfPipes == 0)
+                        {
+                            isInteracting = true;
+                            interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
+                            interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
+                        }
+                        else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.PipeConnector && numberOfBoards == 0)
+                        {
+                            isInteracting = true;
+                            interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
+                            interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
+                        }
+                        else
+                        {
+                            if (FeedBackFiredAlready == false)
+                            {
+                                NegativeFeedback(other);
+                            }
+                        }
+                    }
+                    break;
+                case AreaType.PipeConnector:
+                    if (!isInteracting && !isComplete)
+                    {
+                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
+                        {
+                            isInteracting = true;
+                            interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
+                            interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
+                        }
+                        else
+                        {
+                            if (FeedBackFiredAlready == false)
+                            {
+                                NegativeFeedback(other);
+                            }
+                        }
+                    }
+                    break;
+                case AreaType.NailsBin:
+                    if (!isInteracting && !isComplete)
+                    {
+                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
                         {
                             isInteracting = true;
                             interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
