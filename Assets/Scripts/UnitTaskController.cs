@@ -49,8 +49,8 @@ public class UnitTaskController : MonoBehaviour {
        SmallWood,
        SmallPipe,
        PipeConnector,
-       DoubleWood,
-       DoublePipe,
+       ComboWood,
+       ComboPipe,
        Nails
     }
 

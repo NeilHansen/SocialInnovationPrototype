@@ -96,7 +96,7 @@ public class CraftingStation : MonoBehaviour {
         woodImage.GetComponent<Image>().sprite = images[4];
         plusImage.SetActive(false);
         connectorImage.SetActive(false);
-        areaManager.interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.DoubleWood;
+        areaManager.interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.ComboWood;
         Debug.Log("Crafted Wood ");
        
     }
@@ -111,7 +111,7 @@ public class CraftingStation : MonoBehaviour {
         woodImage.GetComponent<Image>().sprite = images[4];
         plusImage.SetActive(false);
         connectorImage.SetActive(false);
-        areaManager.interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.DoublePipe;
+        areaManager.interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.ComboPipe;
         Debug.Log("Crafted Pipe ");
        
     }
