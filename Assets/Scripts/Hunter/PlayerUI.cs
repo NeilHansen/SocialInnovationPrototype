@@ -102,7 +102,7 @@ public class PlayerUI : MonoBehaviour {
         {
             Status.sprite = FeedbackSprites[2];
         }
-
+        CurrentProgress = 0;
         yield return new WaitForSeconds(1);
 
         Status.gameObject.SetActive(false);

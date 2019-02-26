@@ -701,7 +701,7 @@ Transform:
   - {fileID: 1787781166}
   - {fileID: 1957261371}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &158627161
 MonoBehaviour:
@@ -1088,7 +1088,7 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 726683998}
     m_Modifications:
     - target: {fileID: 224215237147681630, guid: 067251dc3954894418a7a1198cc72d1a,
         type: 2}
@@ -1103,7 +1103,7 @@ Prefab:
     - target: {fileID: 224215237147681630, guid: 067251dc3954894418a7a1198cc72d1a,
         type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0.029
+      value: -0.006249901
       objectReference: {fileID: 0}
     - target: {fileID: 224215237147681630, guid: 067251dc3954894418a7a1198cc72d1a,
         type: 2}
@@ -1128,17 +1128,17 @@ Prefab:
     - target: {fileID: 224215237147681630, guid: 067251dc3954894418a7a1198cc72d1a,
         type: 2}
       propertyPath: m_RootOrder
-      value: 14
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 224215237147681630, guid: 067251dc3954894418a7a1198cc72d1a,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -5.691
+      value: 0.086250305
       objectReference: {fileID: 0}
     - target: {fileID: 224215237147681630, guid: 067251dc3954894418a7a1198cc72d1a,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 2.205
+      value: 1.3208331
       objectReference: {fileID: 0}
     - target: {fileID: 224215237147681630, guid: 067251dc3954894418a7a1198cc72d1a,
         type: 2}
@@ -1197,17 +1197,17 @@ Prefab:
     - target: {fileID: 224215237147681630, guid: 067251dc3954894418a7a1198cc72d1a,
         type: 2}
       propertyPath: m_LocalScale.x
-      value: 0.01
+      value: 0.012500002
       objectReference: {fileID: 0}
     - target: {fileID: 224215237147681630, guid: 067251dc3954894418a7a1198cc72d1a,
         type: 2}
       propertyPath: m_LocalScale.y
-      value: 0.009999999
+      value: 0.010955385
       objectReference: {fileID: 0}
     - target: {fileID: 224215237147681630, guid: 067251dc3954894418a7a1198cc72d1a,
         type: 2}
       propertyPath: m_LocalScale.z
-      value: 0.01
+      value: 0.009877946
       objectReference: {fileID: 0}
     - target: {fileID: 1877330277348606, guid: 067251dc3954894418a7a1198cc72d1a, type: 2}
       propertyPath: m_IsActive
@@ -1453,6 +1453,7 @@ MonoBehaviour:
   isInteracting: 0
   isComplete: 0
   areaType: 2
+  interactingUnit: {fileID: 0}
   feedbackSlider: {fileID: 0}
   feedbackSlider2: {fileID: 0}
   feedbackSlider3: {fileID: 0}
@@ -1472,6 +1473,7 @@ MonoBehaviour:
   numberOfBoards: 0
   numberOfPipes: 0
   numberOfNails: 0
+  numberOfConnectors: 0
   Heavycarriers: []
   WoodHoldPositions: []
   carryWood: {fileID: 0}
@@ -4043,8 +4045,9 @@ Transform:
   - {fileID: 1882208915}
   - {fileID: 1622428186}
   - {fileID: 321028434}
+  - {fileID: 1578705096}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &732877023
 GameObject:
@@ -4641,6 +4644,7 @@ MonoBehaviour:
   isInteracting: 0
   isComplete: 0
   areaType: 2
+  interactingUnit: {fileID: 0}
   feedbackSlider: {fileID: 0}
   feedbackSlider2: {fileID: 0}
   feedbackSlider3: {fileID: 0}
@@ -4660,6 +4664,7 @@ MonoBehaviour:
   numberOfBoards: 0
   numberOfPipes: 0
   numberOfNails: 0
+  numberOfConnectors: 0
   Heavycarriers: []
   WoodHoldPositions: []
   carryWood: {fileID: 0}
@@ -6019,6 +6024,7 @@ MonoBehaviour:
   isInteracting: 0
   isComplete: 0
   areaType: 3
+  interactingUnit: {fileID: 0}
   feedbackSlider: {fileID: 0}
   feedbackSlider2: {fileID: 0}
   feedbackSlider3: {fileID: 0}
@@ -6038,6 +6044,7 @@ MonoBehaviour:
   numberOfBoards: 0
   numberOfPipes: 0
   numberOfNails: 0
+  numberOfConnectors: 0
   Heavycarriers: []
   WoodHoldPositions:
   - {fileID: 1787781165}
@@ -6262,7 +6269,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1155492963
 Rigidbody:
@@ -7225,7 +7232,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4933023271688468, guid: 05fd820b49d03cf4ebdfa00fdc17328a, type: 2}
       propertyPath: m_RootOrder
-      value: 19
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 114374473946577104, guid: 05fd820b49d03cf4ebdfa00fdc17328a,
         type: 2}
@@ -7281,6 +7288,12 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05fd820b49d03cf4ebdfa00fdc17328a, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &1478328505 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114508773108355002, guid: 067251dc3954894418a7a1198cc72d1a,
+    type: 2}
+  m_PrefabInternal: {fileID: 219390201}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!224 &1491782305
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7381,6 +7394,12 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1497110717}
   m_CullTransparentMesh: 0
+--- !u!114 &1501835076 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114496599921921224, guid: 067251dc3954894418a7a1198cc72d1a,
+    type: 2}
+  m_PrefabInternal: {fileID: 219390201}
+  m_Script: {fileID: -113659843, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &1505901672
 GameObject:
   m_ObjectHideFlags: 0
@@ -9050,6 +9069,31 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4819172435866664, guid: 4734083925ccf4b4c8f96dfc843af278,
     type: 2}
   m_PrefabInternal: {fileID: 2122431616}
+--- !u!1 &1862746523 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1925938593965576, guid: 067251dc3954894418a7a1198cc72d1a,
+    type: 2}
+  m_PrefabInternal: {fileID: 219390201}
+--- !u!114 &1862746528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1862746523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 563f433ec0936714aadceae7104d5fc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TaskProgressSlider: {fileID: 1501835076}
+  Status: {fileID: 1478328505}
+  FeedbackSprites:
+  - {fileID: 21300000, guid: 170b97eb43c1f804790c9f7dc52db046, type: 3}
+  - {fileID: 21300000, guid: d0e7f14f3855473479e6fbbc5871f81c, type: 3}
+  - {fileID: 21300000, guid: 91bc5cdde8c27624d9f86aab5460c166, type: 3}
+  CurrentProgress: 0
+  FeedBackFire: 0
+  Unit: {fileID: 726683991}
 --- !u!1 &1874181503 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 5b99302d183059c4183e8a6ffed9e79c,
@@ -9526,6 +9570,7 @@ MonoBehaviour:
   isInteracting: 0
   isComplete: 0
   areaType: 2
+  interactingUnit: {fileID: 0}
   feedbackSlider: {fileID: 0}
   feedbackSlider2: {fileID: 0}
   feedbackSlider3: {fileID: 0}
@@ -9545,6 +9590,7 @@ MonoBehaviour:
   numberOfBoards: 0
   numberOfPipes: 0
   numberOfNails: 0
+  numberOfConnectors: 0
   Heavycarriers: []
   WoodHoldPositions: []
   carryWood: {fileID: 158627159}
@@ -9849,6 +9895,7 @@ MonoBehaviour:
   isInteracting: 0
   isComplete: 0
   areaType: 7
+  interactingUnit: {fileID: 0}
   feedbackSlider: {fileID: 0}
   feedbackSlider2: {fileID: 0}
   feedbackSlider3: {fileID: 0}
@@ -9868,6 +9915,7 @@ MonoBehaviour:
   numberOfBoards: 0
   numberOfPipes: 0
   numberOfNails: 0
+  numberOfConnectors: 0
   Heavycarriers: []
   WoodHoldPositions:
   - {fileID: 1787781165}
@@ -9935,7 +9983,7 @@ Transform:
   - {fileID: 1716944851}
   - {fileID: 1197892421}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &1989975998
 GameObject:
