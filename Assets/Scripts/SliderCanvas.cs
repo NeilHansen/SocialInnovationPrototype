@@ -12,6 +12,7 @@ public class SliderCanvas : MonoBehaviour {
 
     private Vector3 offset;
     private GameObject specialCustomer;
+    public Quaternion RotationToKeep;
 
 	// Use this for initialization
 	void Start () {
@@ -19,6 +20,7 @@ public class SliderCanvas : MonoBehaviour {
 
         positiveButton.gameObject.SetActive(false);
         negativeButton.gameObject.SetActive(false);
+        RotationToKeep = player.transform.rotation;
 
         //positiveButton.onClick.AddListener(PositiveRespond);
         //negativeButton.onClick.AddListener(NegativeRespond);
@@ -29,6 +31,7 @@ public class SliderCanvas : MonoBehaviour {
         transform.position = player.transform.position + offset;
 
         specialCustomer = GameObject.FindGameObjectWithTag("SpecialCustomer");
+        player.transform.rotation = RotationToKeep;
 
         //if(Vector3.Distance(specialCustomer.transform.position, transform.position) < 5.0f)
         //{
