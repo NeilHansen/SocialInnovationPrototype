@@ -16,8 +16,9 @@ public class UnitTaskController : MonoBehaviour {
     public Canvas convoCanvas;
     [HideInInspector]
     public GameObject companion;
-
+    //For heavy object
     public GameObject BigwoodOBJ;
+    public GameObject HeavyHoldPosition;
 
     public TaskType CurrentTaskType
     {
@@ -47,7 +48,14 @@ public class UnitTaskController : MonoBehaviour {
        LargePipe,
        SmallWood,
        SmallPipe,
+<<<<<<< HEAD
        Nail
+=======
+       PipeConnector,
+       ComboWood,
+       ComboPipe,
+       Nails
+>>>>>>> develop
     }
 
     // Put things on the table
@@ -79,6 +87,16 @@ public class UnitTaskController : MonoBehaviour {
         {
             DoTask();
         }
+    }
+
+    private void FixedUpdate()
+    {
+        if (currentTaskType == TaskType.LargeWood || currentTaskType == TaskType.LargePipe)
+        {
+            transform.position = new Vector3(HeavyHoldPosition.transform.position.x, transform.position.y, HeavyHoldPosition.transform.position.z);
+        }
+
+        
     }
 
     public IEnumerator FlashFeedback()

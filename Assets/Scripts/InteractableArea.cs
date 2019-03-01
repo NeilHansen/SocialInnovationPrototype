@@ -67,7 +67,7 @@ public class InteractableArea : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(isOnCounter + " " + objectPlayerHolding);
+      //  Debug.Log(isOnCounter + " " + objectPlayerHolding);
         customers = FindObjectsOfType<Customer>();
         if (gameObject.name == "CookingInteractableArea")
         {
@@ -110,14 +110,14 @@ public class InteractableArea : MonoBehaviour
 
     }
 
-    void Complete(AreaType type, Image Player)
+    void Complete(AreaType type, PlayerUI UI)
     {
-        Debug.Log("COMPLETE");
+    //    Debug.Log("COMPLETE");
         isInteracting = false;
         isComplete = true;
         interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = false;
         interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = false;
-        StartCoroutine(FlashFeedback(Player, FeedbackSprites[2]));
+        StartCoroutine(UI.FlashFeedback(true));
 
         switch (type)
         {
@@ -518,55 +518,85 @@ public class InteractableArea : MonoBehaviour
                     //objectOnCounter = interactingUnit.gameObject.GetComponent<UnitTaskController>().objectHolding;
                     break;
             }
-            if (other.gameObject.name == "Unit1")
+
+
+            if (other.gameObject.GetComponentInChildren<PlayerUI>())
             {
+
+                PlayerUI UI = other.gameObject.GetComponentInChildren<PlayerUI>();
+
                 if (isInteracting && !isComplete)
                 {
-                    feedbackSlider.gameObject.SetActive(true);
-                    feedbackSlider.maxValue = startTime;
-                    //setImage
-                    Status.gameObject.SetActive(true);
-                    SwitchImage(FeedbackSprites[0], Status);
 
-                    feedbackSlider.value = timer;
-                    timer += Time.deltaTime;
-                    if (timer >= startTime)
+                    UI.TaskInProgress(startTime);
+                    UI.CurrentProgress += Time.deltaTime;
+
+
+                    if (UI.CurrentProgress >= startTime)
                     {
-                        Complete(areaType, Status);
+                        Complete(areaType, UI);
+                    }
+
+
+                }
+
+            }   
+            /*
+                if (other.gameObject.name == "Unit1")
+                {
+                    if (isInteracting && !isComplete)
+                    {
+                        feedbackSlider.gameObject.SetActive(true);
+                        feedbackSlider.maxValue = startTime;
+                        //setImage
+                        Status.gameObject.SetActive(true);
+                        SwitchImage(FeedbackSprites[0], Status);
+
+                        feedbackSlider.value = timer;
+                        timer += Time.deltaTime;
+                        if (timer >= startTime)
+                        {
+                            Complete(areaType, Status);
+                        }
+                    }
+                    else
+                    {
+                        feedbackSlider.gameObject.SetActive(false);
+                        //Status.gameObject.SetActive(false);
+                        timer = 0.0f;
                     }
                 }
-                else
+                else if (other.gameObject.name == "Unit2")
                 {
-                    feedbackSlider.gameObject.SetActive(false);
-                    //Status.gameObject.SetActive(false);
-                    timer = 0.0f;
-                }
-            }
-            else if (other.gameObject.name == "Unit2")
-            {
-                if (isInteracting && !isComplete)
-                {
-                    feedbackSlider2.gameObject.SetActive(true);
-                    feedbackSlider2.maxValue = startTime;
-                    Status2.gameObject.SetActive(true);
-                    SwitchImage(FeedbackSprites[0], Status2);
-
-                    feedbackSlider2.value = timer;
-                    timer += Time.deltaTime;
-                    if (timer >= startTime)
+                    if (isInteracting && !isComplete)
                     {
-                        Complete(areaType, Status2);
+                        feedbackSlider2.gameObject.SetActive(true);
+                        feedbackSlider2.maxValue = startTime;
+                        Status2.gameObject.SetActive(true);
+                        SwitchImage(FeedbackSprites[0], Status2);
+
+                        feedbackSlider2.value = timer;
+                        timer += Time.deltaTime;
+                        if (timer >= startTime)
+                        {
+                            Complete(areaType, Status2);
+                        }
+                    }
+                    else
+                    {
+                        feedbackSlider2.gameObject.SetActive(false);
+                        //  Status2.gameObject.SetActive(false);
+                        timer = 0.0f;
                     }
                 }
-                else
-                {
-                    feedbackSlider2.gameObject.SetActive(false);
-                    //  Status2.gameObject.SetActive(false);
-                    timer = 0.0f;
-                }
-            }
-            //Debug.Log(feedbackSlider.maxValue);
+                //Debug.Log(feedbackSlider.maxValue);
+                 */
+
+
+
+
         }
+
     }
 
     private void OnTriggerExit(Collider other)
@@ -575,11 +605,17 @@ public class InteractableArea : MonoBehaviour
         {
             isInteracting = false;
             isComplete = false;
-            FeedBackFiredAlready = false;
+
+            if (other.GetComponentInChildren<PlayerUI>())
+            {
+                other.GetComponentInChildren<PlayerUI>().TurnOffUI();
+            }
+
+            /*FeedBackFiredAlready = false;
             Status.gameObject.SetActive(false);
             Status2.gameObject.SetActive(false);
             feedbackSlider.gameObject.SetActive(false);
-            feedbackSlider2.gameObject.SetActive(false);
+            feedbackSlider2.gameObject.SetActive(false);*/
         }
     }
 
@@ -606,15 +642,11 @@ public class InteractableArea : MonoBehaviour
 
     void NegativeFeedback(Collider target)
     {
-        FeedBackFiredAlready = true;
-        if (target.gameObject.name == "Unit1")
+        if (target.gameObject.GetComponentInChildren<PlayerUI>() && !target.gameObject.GetComponentInChildren<PlayerUI>().FeedBackFire)
         {
-            StartCoroutine(FlashFeedback(Status, FeedbackSprites[1]));
-        }
+            StartCoroutine(target.GetComponentInChildren<PlayerUI>().FlashFeedback(false));
+            target.gameObject.GetComponentInChildren<PlayerUI>().FeedBackFire = true;
 
-        else if (target.gameObject.name == "Unit2")
-        {
-            StartCoroutine(FlashFeedback(Status2, FeedbackSprites[1]));
         }
     }
 }
