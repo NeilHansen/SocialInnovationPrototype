@@ -14,7 +14,6 @@ public class Foreman : MonoBehaviour {
         Nail,
         Pipe,
         Wood,
-        DoubleNail,
         DoublePipe,
         DoubleWood
     }
@@ -76,23 +75,18 @@ public class Foreman : MonoBehaviour {
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
-            ReceiveItem(ToolList.DoubleNail);
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
             ReceiveItem(ToolList.DoublePipe);
         }
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.S))
         {
             ReceiveItem(ToolList.DoubleWood);
         }
 
         item1Quantity.text = "x " + finalItemList[0].amount.ToString();
-        if (!isCombo)
-        {
+        if (finalItemList.Count > 1)
             item2Quantity.text = "x " + finalItemList[1].amount.ToString();
+        if (finalItemList.Count > 2)
             item3Quantity.text = "x " + finalItemList[2].amount.ToString();
-        }
 
         if (item1Received && item2Received && item3Received)
             isMoving = true;
@@ -115,28 +109,40 @@ public class Foreman : MonoBehaviour {
         //Spawn combo
         if (isCombo)
         {
-            item2Received = true;
             item3Received = true;
-            item2Name.enabled = false;
-            item2Quantity.enabled = false;
             item3Name.enabled = false;
             item3Quantity.enabled = false;
-            switch (Random.Range(0, 3))
+            switch (Random.Range(0, 2))
             {
                 case 0:
-                    finalItemList.Add(new itemInfo(ToolList.DoubleNail, Random.Range(1, 3)));
+                    item2Received = true;
+                    item2Name.enabled = false;
+                    item2Quantity.enabled = false;
+                    
+                    switch (Random.Range(0, 2))
+                    {
+                        case 0:
+                            finalItemList.Add(new itemInfo(ToolList.DoublePipe, Random.Range(1, 3)));
+                            break;
+                        case 1:
+                            finalItemList.Add(new itemInfo(ToolList.DoubleWood, Random.Range(1, 3)));
+                            break;
+                        default:
+                            Debug.Log("Error");
+                            break;
+                    }
+                    item1Name.text = finalItemList[0].tool.ToString();
                     break;
                 case 1:
-                    finalItemList.Add(new itemInfo(ToolList.DoublePipe, Random.Range(1, 3)));
-                    break;
-                case 2:
                     finalItemList.Add(new itemInfo(ToolList.DoubleWood, Random.Range(1, 3)));
+                    finalItemList.Add(new itemInfo(ToolList.Nail, Random.Range(1, 3)));
+                    item1Name.text = finalItemList[0].tool.ToString();
+                    item2Name.text = finalItemList[1].tool.ToString();
                     break;
                 default:
                     Debug.Log("Error");
                     break;
             }
-            item1Name.text = finalItemList[0].tool.ToString();
         }
         //Spawn random single items
         else
@@ -190,9 +196,9 @@ public class Foreman : MonoBehaviour {
         defaultItemList.Add(ToolList.Nail);
         defaultItemList.Add(ToolList.Pipe);
         defaultItemList.Add(ToolList.Wood);
-        Debug.Log(defaultItemList[0] + " " + defaultItemList[1] + " " + defaultItemList[2]);
+        //Debug.Log(defaultItemList[0] + " " + defaultItemList[1] + " " + defaultItemList[2]);
         List<ToolList> shuffledList = new List<ToolList>();
-        Debug.Log(defaultItemList.Count);
+        //Debug.Log(defaultItemList.Count);
         for (int i = 0; i < defaultItemList.Count; i++)
         {
             Swap(defaultItemList, i, Random.Range(0, defaultItemList.Count));

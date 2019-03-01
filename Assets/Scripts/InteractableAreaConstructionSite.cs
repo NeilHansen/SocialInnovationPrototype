@@ -48,7 +48,12 @@ public class InteractableAreaConstructionSite : MonoBehaviour
         WoodPile,
         WoodRecipticalBin,
         PipeRecipticalBin,
-        Counter
+        Counter,
+        TempNail,
+        TempComboWood,
+        TempComboPipe,
+        TempSmallWood,
+        TempSmallPipe
     }
 
     //Put things on the counters
@@ -167,10 +172,12 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                 break;
             case AreaType.WoodRecipticalBin:
                 interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.SmallWood;
+                Debug.Log("Wood");
                 this.numberOfBoards -= 1;
                 break;
             case AreaType.PipeRecipticalBin:
                 interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.SmallPipe;
+                Debug.Log("Pipe");
                 this.numberOfPipes -= 1;
                 break;
             case AreaType.WoodPile:
@@ -193,7 +200,12 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                 }
                 break;
             case AreaType.Counter:
-                //Nothing is on the counter
+
+
+                break;
+                //kitchen stuff
+                #region
+                /*//Nothing is on the counter
                 if (!isOnCounter)
                 {
                     switch (objectPlayerHolding)
@@ -356,9 +368,9 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                                 break;
                         }
                     }
-                }
-                break;
-             }
+                }*/
+                #endregion
+        }
 
 
     }

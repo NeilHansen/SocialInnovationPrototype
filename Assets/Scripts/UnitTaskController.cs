@@ -46,7 +46,8 @@ public class UnitTaskController : MonoBehaviour {
        LargeWood,
        LargePipe,
        SmallWood,
-       SmallPipe
+       SmallPipe,
+       Nail
     }
 
     // Put things on the table
@@ -56,7 +57,12 @@ public class UnitTaskController : MonoBehaviour {
         DirtyPlate,
         CleanPlate,
         FilledPlate,
-        RawFood
+        RawFood,
+        LargeWood,
+        LargePipe,
+        SmallWood,
+        SmallPipe,
+        Nail
     }
     public ObjectHeld objectHolding;
 
@@ -146,6 +152,21 @@ public class UnitTaskController : MonoBehaviour {
                 filledPlate.SetActive(false);
                 rawFood.SetActive(false);
                 objectHolding = ObjectHeld.None;
+                break;
+            case TaskType.SmallPipe:
+                objectHolding = ObjectHeld.SmallPipe;
+                break;
+            case TaskType.LargePipe:
+                objectHolding = ObjectHeld.LargePipe;
+                break;
+            case TaskType.SmallWood:
+                objectHolding = ObjectHeld.SmallWood;
+                break;
+            case TaskType.LargeWood:
+                objectHolding = ObjectHeld.LargeWood;
+                break;
+            case TaskType.Nail:
+                objectHolding = ObjectHeld.Nail;
                 break;
         }
     }
