@@ -477,37 +477,64 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                 break;
 
             case AreaType.FormanReturn:
+                
                 if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.SmallWood)
                 {
                     numberOfBoards += 1;
-                    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
                 }
                 else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.SmallPipe)
                 {
                     numberOfPipes += 1;
-                    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
                 }
                 else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Nails)
                 {
                     numberOfNails += 1;
-                    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
                 }
                 else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.PipeConnector)
                 {
                     numberOfConnectors += 1;
-                    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
                 }
                 else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.ComboPipe)
                 {
                     numberOfComboPipe += 1;
-                    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
                 }
                 else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.ComboWood)
                 {
                     numberOfComboWood += 1;
-                    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
+                }
+                
+                Foreman foreman = FindObjectOfType<Foreman>();
+                objectPlayerHolding = interactingUnit.gameObject.GetComponent<UnitTaskController>().objectHolding;
+                foreach (Foreman.itemInfo item in foreman.finalItemList)
+                {
+                    if(item.tool.ToString() == objectPlayerHolding.ToString())
+                    {
+                        Debug.Log("Got something");
+                        switch (objectPlayerHolding)
+                        {
+                            case UnitTaskController.ObjectHeld.ComboPipe:
+                                foreman.ReceiveItem(Foreman.ToolList.ComboPipe);
+                                break;
+                            case UnitTaskController.ObjectHeld.ComboWood:
+                                foreman.ReceiveItem(Foreman.ToolList.ComboWood);
+                                break;
+                            case UnitTaskController.ObjectHeld.SmallWood:
+                                foreman.ReceiveItem(Foreman.ToolList.SmallWood);
+                                break;
+                            case UnitTaskController.ObjectHeld.SmallPipe:
+                                foreman.ReceiveItem(Foreman.ToolList.SmallPipe);
+                                break;
+                            case UnitTaskController.ObjectHeld.Nails:
+                                foreman.ReceiveItem(Foreman.ToolList.Nails);
+                                break;
+                            case UnitTaskController.ObjectHeld.PipeConnector:
+                                foreman.ReceiveItem(Foreman.ToolList.PipeConnector);
+                                break;
+                        }
+                    }
                 }
 
+                interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
                 break;
         }
 

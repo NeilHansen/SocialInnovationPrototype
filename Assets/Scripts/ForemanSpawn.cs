@@ -6,7 +6,7 @@ public class ForemanSpawn : MonoBehaviour {
 
     public GameObject foremanPrefab;
     public GameObject spawnPoint;
-    public GameManager gameManager;
+   // public GameManager gameManager;
 
     private GameObject[] foremen;
     private float spawnTime = 0.5f;
@@ -19,7 +19,7 @@ public class ForemanSpawn : MonoBehaviour {
     {
         Instantiate(foremanPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
         //customerCount = 1;
-        gameManager = FindObjectOfType<GameManager>();
+      //  gameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame

@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitTaskController : MonoBehaviour {
+public class UnitTaskController : MonoBehaviour
+{
 
     public bool isInteracting = false;
     public TaskType currentTaskType;
-    
+
     public GameObject exclamationPoint;
 
     public GameObject dirtyPlate;
@@ -34,24 +35,25 @@ public class UnitTaskController : MonoBehaviour {
         }
     }
 
-    public enum TaskType {
-       None,
-       CleanPlate,
-       DirtyPlate,
-       Interacting,
-       Washing,
-       CookedFood,
-       RawFood,
-       Serving,
-       Counter,
-       LargeWood,
-       LargePipe,
-       SmallWood,
-       SmallPipe,
-       PipeConnector,
-       ComboWood,
-       ComboPipe,
-       Nails
+    public enum TaskType
+    {
+        None,
+        CleanPlate,
+        DirtyPlate,
+        Interacting,
+        Washing,
+        CookedFood,
+        RawFood,
+        Serving,
+        Counter,
+        LargeWood,
+        LargePipe,
+        SmallWood,
+        SmallPipe,
+        PipeConnector,
+        ComboWood,
+        ComboPipe,
+        Nails,
     }
 
     // Put things on the table
@@ -61,15 +63,22 @@ public class UnitTaskController : MonoBehaviour {
         DirtyPlate,
         CleanPlate,
         FilledPlate,
-        RawFood
+        RawFood,
+        SmallWood,
+        SmallPipe,
+        ComboWood,
+        ComboPipe,
+        Nails,
+        PipeConnector
     }
     public ObjectHeld objectHolding;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         objectHolding = ObjectHeld.None;
         currentTaskType = TaskType.None;
-	}
+    }
 
     // Update is called once per frame
     void Update()
@@ -78,6 +87,7 @@ public class UnitTaskController : MonoBehaviour {
         {
             DoTask();
         }
+      //  Debug.Log(objectHolding);
     }
 
     private void FixedUpdate()
@@ -87,15 +97,15 @@ public class UnitTaskController : MonoBehaviour {
             transform.position = new Vector3(HeavyHoldPosition.transform.position.x, transform.position.y, HeavyHoldPosition.transform.position.z);
         }
 
-        
+
     }
 
     public IEnumerator FlashFeedback()
     {
-      exclamationPoint.SetActive(true);
-      yield return new WaitForSeconds(2.0f);
-      exclamationPoint.SetActive(false);
-      StopCoroutine("FlashFeedback");
+        exclamationPoint.SetActive(true);
+        yield return new WaitForSeconds(2.0f);
+        exclamationPoint.SetActive(false);
+        StopCoroutine("FlashFeedback");
     }
 
 
@@ -104,7 +114,7 @@ public class UnitTaskController : MonoBehaviour {
         switch (currentTaskType)
         {
             case TaskType.None:
-           //     Debug.Log("DOING None");
+                //     Debug.Log("DOING None");
                 cleanPlate.SetActive(false);
                 dirtyPlate.SetActive(false);
                 filledPlate.SetActive(false);
@@ -161,6 +171,21 @@ public class UnitTaskController : MonoBehaviour {
                 filledPlate.SetActive(false);
                 rawFood.SetActive(false);
                 objectHolding = ObjectHeld.None;
+                break;
+            case TaskType.ComboWood:
+                objectHolding = ObjectHeld.ComboWood;
+                break;
+            case TaskType.ComboPipe:
+                objectHolding = ObjectHeld.ComboPipe;
+                break;
+            case TaskType.SmallWood:
+                objectHolding = ObjectHeld.SmallWood;
+                break;
+            case TaskType.SmallPipe:
+                objectHolding = ObjectHeld.SmallPipe;
+                break;
+            case TaskType.Nails:
+                objectHolding = ObjectHeld.Nails;
                 break;
         }
     }

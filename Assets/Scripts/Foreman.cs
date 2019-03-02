@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Foreman : MonoBehaviour {
+public class Foreman : MonoBehaviour
+{
 
     public CustomerMovePath foremanPath;
     public GameManager gameManager;
@@ -11,14 +12,14 @@ public class Foreman : MonoBehaviour {
 
     public enum ToolList
     {
-        Nail,
-        Pipe,
-        Wood,
-        DoubleNail,
-        DoublePipe,
-        DoubleWood
+        Nails,
+        SmallPipe,
+        SmallWood,
+        ComboPipe,
+        ComboWood,
+        PipeConnector
     }
-    class itemInfo
+    public class itemInfo
     {
         public ToolList tool;
         public int amount;
@@ -28,8 +29,8 @@ public class Foreman : MonoBehaviour {
             amount = a;
         }
     }
-    private List<ToolList> defaultItemList;
-    private List<itemInfo> finalItemList;
+    public List<ToolList> defaultItemList;
+    public List<itemInfo> finalItemList;
     public Text item1Name, item2Name, item3Name;
     public Text item1Quantity, item2Quantity, item3Quantity;
     private bool item1Received, item2Received, item3Received;
@@ -48,7 +49,8 @@ public class Foreman : MonoBehaviour {
     private Vector3 velocity;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         foremanPath = FindObjectOfType<CustomerMovePath>();
         gameManager = FindObjectOfType<GameManager>();
         pathLength = foremanPath.Length;
@@ -58,41 +60,41 @@ public class Foreman : MonoBehaviour {
         GenerateItems();
         isMoving = true;
     }
-	
-	// Update is called once per frame
-	void Update () {
 
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            ReceiveItem(ToolList.Nail);
-        }
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            ReceiveItem(ToolList.Pipe);
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            ReceiveItem(ToolList.Wood);
-        }
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            ReceiveItem(ToolList.DoubleNail);
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            ReceiveItem(ToolList.DoublePipe);
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            ReceiveItem(ToolList.DoubleWood);
-        }
+    // Update is called once per frame
+    void Update()
+    {
+
+        //if (Input.GetKeyDown(KeyCode.Q))
+        //{
+        //    ReceiveItem(ToolList.Nails);
+        //}
+        //if (Input.GetKeyDown(KeyCode.W))
+        //{
+        //    ReceiveItem(ToolList.SmallPipe);
+        //}
+        //if (Input.GetKeyDown(KeyCode.E))
+        //{
+        //    ReceiveItem(ToolList.SmallWood);
+        //}
+        //if (Input.GetKeyDown(KeyCode.A))
+        //{
+        //    ReceiveItem(ToolList.ComboPipe);
+        //}
+        //if (Input.GetKeyDown(KeyCode.S))
+        //{
+        //    ReceiveItem(ToolList.ComboWood);
+        //}
+        //if (Input.GetKeyDown(KeyCode.D))
+        //{
+        //    ReceiveItem(ToolList.PipeConnector);
+        //}
 
         item1Quantity.text = "x " + finalItemList[0].amount.ToString();
-        if (!isCombo)
-        {
+        if (finalItemList.Count > 1)
             item2Quantity.text = "x " + finalItemList[1].amount.ToString();
+        if (finalItemList.Count > 2)
             item3Quantity.text = "x " + finalItemList[2].amount.ToString();
-        }
 
         if (item1Received && item2Received && item3Received)
             isMoving = true;
@@ -115,34 +117,49 @@ public class Foreman : MonoBehaviour {
         //Spawn combo
         if (isCombo)
         {
-            item2Received = true;
             item3Received = true;
-            item2Name.enabled = false;
-            item2Quantity.enabled = false;
             item3Name.enabled = false;
             item3Quantity.enabled = false;
-            switch (Random.Range(0, 3))
+            switch (Random.Range(0, 2))
             {
                 case 0:
-                    finalItemList.Add(new itemInfo(ToolList.DoubleNail, Random.Range(1, 3)));
+                    item2Received = true;
+                    item2Name.enabled = false;
+                    item2Quantity.enabled = false;
+
+                    switch (Random.Range(0, 3))
+                    {
+                        case 0:
+                            finalItemList.Add(new itemInfo(ToolList.ComboPipe, Random.Range(1, 3)));
+                            break;
+                        case 1:
+                            finalItemList.Add(new itemInfo(ToolList.ComboWood, Random.Range(1, 3)));
+                            break;
+                        case 2:
+                            finalItemList.Add(new itemInfo(ToolList.PipeConnector, Random.Range(1, 3)));
+                            break;
+                        default:
+                            Debug.Log("Error");
+                            break;
+                    }
+                    item1Name.text = finalItemList[0].tool.ToString();
                     break;
                 case 1:
-                    finalItemList.Add(new itemInfo(ToolList.DoublePipe, Random.Range(1, 3)));
-                    break;
-                case 2:
-                    finalItemList.Add(new itemInfo(ToolList.DoubleWood, Random.Range(1, 3)));
+                    finalItemList.Add(new itemInfo(ToolList.ComboWood, Random.Range(1, 3)));
+                    finalItemList.Add(new itemInfo(ToolList.Nails, Random.Range(1, 3)));
+                    item1Name.text = finalItemList[0].tool.ToString();
+                    item2Name.text = finalItemList[1].tool.ToString();
                     break;
                 default:
                     Debug.Log("Error");
                     break;
             }
-            item1Name.text = finalItemList[0].tool.ToString();
         }
         //Spawn random single items
         else
         {
             List<ToolList> shuffledList = ShuffleList();
-            
+
             finalItemList.Add(new itemInfo(shuffledList[0], Random.Range(1, 3)));
             finalItemList.Add(new itemInfo(shuffledList[1], Random.Range(1, 3)));
             finalItemList.Add(new itemInfo(shuffledList[2], Random.Range(1, 3)));
@@ -157,14 +174,14 @@ public class Foreman : MonoBehaviour {
     {
         foreach (itemInfo iI in finalItemList)
         {
-            if(t == iI.tool)
+            if (t == iI.tool)
             {
                 if (iI.amount > 0)
                     iI.amount -= 1;
                 if (iI.amount == 0)
                 {
                     int index = finalItemList.IndexOf(iI);
-                    switch(index)
+                    switch (index)
                     {
                         case 0:
                             item1Received = true;
@@ -183,16 +200,16 @@ public class Foreman : MonoBehaviour {
             }
         }
     }
-            
+
     private List<ToolList> ShuffleList()
     {
         defaultItemList = new List<ToolList>();
-        defaultItemList.Add(ToolList.Nail);
-        defaultItemList.Add(ToolList.Pipe);
-        defaultItemList.Add(ToolList.Wood);
-        Debug.Log(defaultItemList[0] + " " + defaultItemList[1] + " " + defaultItemList[2]);
+        defaultItemList.Add(ToolList.Nails);
+        defaultItemList.Add(ToolList.SmallPipe);
+        defaultItemList.Add(ToolList.SmallWood);
+        //Debug.Log(defaultItemList[0] + " " + defaultItemList[1] + " " + defaultItemList[2]);
         List<ToolList> shuffledList = new List<ToolList>();
-        Debug.Log(defaultItemList.Count);
+        //Debug.Log(defaultItemList.Count);
         for (int i = 0; i < defaultItemList.Count; i++)
         {
             Swap(defaultItemList, i, Random.Range(0, defaultItemList.Count));
@@ -209,7 +226,7 @@ public class Foreman : MonoBehaviour {
 
     private bool IsCombo()
     {
-        switch (Random.Range(0,5))
+        switch (Random.Range(0, 5))
         {
             case 0:
                 return true;
@@ -246,7 +263,7 @@ public class Foreman : MonoBehaviour {
             if (curPathIndex < pathLength - 1)
             {
                 curPathIndex++;
-                if(curPathIndex == 2)
+                if (curPathIndex == 2)
                 {
                     isMoving = false;
                     return;
