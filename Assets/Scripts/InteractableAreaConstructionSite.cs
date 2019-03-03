@@ -13,7 +13,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
     public AreaType areaType;
 
     public GameObject interactingUnit;
- 
+
 
     public Slider feedbackSlider;
     public Slider feedbackSlider2;
@@ -51,8 +51,8 @@ public class InteractableAreaConstructionSite : MonoBehaviour
 
     public Sprite hoverSprite;
     public GameObject hoverSpriteObject;
-    
-   
+
+
 
 
 
@@ -91,19 +91,19 @@ public class InteractableAreaConstructionSite : MonoBehaviour
         feedbackSlider = GameObject.FindGameObjectWithTag("PlayerCanvas1").transform.GetChild(0).GetComponent<Slider>();
         feedbackSlider2 = GameObject.FindGameObjectWithTag("Player Canvas2").transform.GetChild(0).GetComponent<Slider>();
         feedbackSlider3 = GameObject.FindGameObjectWithTag("Player Canvas3").transform.GetChild(0).GetComponent<Slider>();
-      //  feedbackSlider4 = GameObject.FindGameObjectWithTag("PlayerCanvas 4").transform.GetChild(0).GetComponent<Slider>();
+        //  feedbackSlider4 = GameObject.FindGameObjectWithTag("PlayerCanvas 4").transform.GetChild(0).GetComponent<Slider>();
 
         Status = GameObject.FindGameObjectWithTag("PlayerCanvas1").transform.GetChild(1).GetComponent<Image>();
         Status2 = GameObject.FindGameObjectWithTag("Player Canvas2").transform.GetChild(1).GetComponent<Image>();
         Status3 = GameObject.FindGameObjectWithTag("Player Canvas3").transform.GetChild(1).GetComponent<Image>();
-      //  Status4 = GameObject.FindGameObjectWithTag("PlayerCanvas2").transform.GetChild(1).GetComponent<Image>();
+        //  Status4 = GameObject.FindGameObjectWithTag("PlayerCanvas2").transform.GetChild(1).GetComponent<Image>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-    //    Debug.Log(isOnCounter + " " + objectPlayerHolding);
+        //    Debug.Log(isOnCounter + " " + objectPlayerHolding);
 
         if (cleanPlateOn)
             counterSpace.ObjectCleanPlate();
@@ -132,7 +132,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
 
     void Complete(AreaType type, PlayerUI UI)
     {
-        
+
         isInteracting = false;
         isComplete = true;
         interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = false;
@@ -477,7 +477,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                 break;
 
             case AreaType.FormanReturn:
-                
+
                 if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.SmallWood)
                 {
                     numberOfBoards += 1;
@@ -502,14 +502,13 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                 {
                     numberOfComboWood += 1;
                 }
-                
+
                 Foreman foreman = FindObjectOfType<Foreman>();
                 objectPlayerHolding = interactingUnit.gameObject.GetComponent<UnitTaskController>().objectHolding;
                 foreach (Foreman.itemInfo item in foreman.finalItemList)
                 {
-                    if(item.tool.ToString() == objectPlayerHolding.ToString())
+                    if (item.tool.ToString() == objectPlayerHolding.ToString())
                     {
-                        Debug.Log("Got something");
                         switch (objectPlayerHolding)
                         {
                             case UnitTaskController.ObjectHeld.ComboPipe:
@@ -533,7 +532,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                         }
                     }
                 }
-
+                objectPlayerHolding = UnitTaskController.ObjectHeld.None;
                 interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
                 break;
         }
@@ -541,7 +540,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
 
     }
 
- 
+
 
     private void OnTriggerStay(Collider other)
     {
@@ -768,22 +767,29 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                 case AreaType.FormanReturn:
                     if (!isInteracting && !isComplete)
                     {
-                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.SmallPipe 
-                            || interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.SmallWood
-                            || interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.PipeConnector
-                            || interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Nails
-                            || interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.ComboWood
-                            || interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.ComboPipe)
+                        //if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.SmallPipe 
+                        //    || interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.SmallWood
+                        //    || interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.PipeConnector
+                        //    || interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Nails
+                        //    || interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.ComboWood
+                        //    || interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.ComboPipe)
+                        objectPlayerHolding = interactingUnit.gameObject.GetComponent<UnitTaskController>().objectHolding;
+                        Foreman foreman = FindObjectOfType<Foreman>();
+                        objectPlayerHolding = interactingUnit.gameObject.GetComponent<UnitTaskController>().objectHolding;
+                        foreach (Foreman.itemInfo item in foreman.finalItemList)
                         {
-                            isInteracting = true;
-                            interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
-                            interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
-                        }
-                        else
-                        {
-                            if (FeedBackFiredAlready == false)
+                            if (item.tool.ToString() == objectPlayerHolding.ToString())
                             {
-                                NegativeFeedback(other);
+                                isInteracting = true;
+                                interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
+                                interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
+                            }
+                            else
+                            {
+                                if (FeedBackFiredAlready == false)
+                                {
+                                    NegativeFeedback(other);
+                                }
                             }
                         }
                     }
@@ -915,13 +921,13 @@ public class InteractableAreaConstructionSite : MonoBehaviour
              feedbackSlider2.gameObject.SetActive(false);*/
         }
 
-        if(areaType == AreaType.WoodPile || areaType == AreaType.PipePile)
+        if (areaType == AreaType.WoodPile || areaType == AreaType.PipePile)
         {
             if (Heavycarriers.Contains(other.gameObject))
             {
                 Heavycarriers.Remove(other.gameObject);
             }
-            
+
         }
     }
 
@@ -937,14 +943,14 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                     break;
                 case AreaType.WoodPile:
 
-                    if (interactingUnit.gameObject.GetComponent<UnitTaskController>().currentTaskType== UnitTaskController.TaskType.None)
+                    if (interactingUnit.gameObject.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None)
                     {
                         Heavycarriers.Add(other.gameObject);
                     }
                     break;
 
                 case AreaType.PipePile:
-                    if(interactingUnit.gameObject.GetComponent<UnitTaskController>().currentTaskType== UnitTaskController.TaskType.None)
+                    if (interactingUnit.gameObject.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None)
                     {
                         Heavycarriers.Add(other.gameObject);
                     }
@@ -977,7 +983,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
 
     public void MoveToWoodPoint()
     {
-       RtsMover Mover = FindObjectOfType<RtsMover>();
+        RtsMover Mover = FindObjectOfType<RtsMover>();
 
         //Makes the units go to the holding positions when you click the wood pile
         if (Mover != null)
