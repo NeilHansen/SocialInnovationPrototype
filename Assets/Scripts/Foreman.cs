@@ -102,6 +102,8 @@ public class Foreman : MonoBehaviour
         if (isMoving)
             AutoMove();
 
+
+        //DONT DO THIS!!!!!
         if (transform.position.z <= -14.0f)
         {
             if (gameObject.transform.parent == null)
