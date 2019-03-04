@@ -13,7 +13,8 @@ public class InteractableAreaConstructionSite : MonoBehaviour
     public AreaType areaType;
 
     public GameObject interactingUnit;
-
+    public GameObject Unit;
+    private RtsMover rtsMover;
 
     public Slider feedbackSlider;
     public Slider feedbackSlider2;
@@ -83,6 +84,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        rtsMover = Camera.main.GetComponent<RtsMover>();
         Gm = GameObject.FindObjectOfType<GameManager>();
         counterSpace = gameObject.GetComponent<CounterSpace>();
         hoverSpriteObject.GetComponent<Image>().sprite = hoverSprite;
@@ -117,6 +119,11 @@ public class InteractableAreaConstructionSite : MonoBehaviour
     void TestDebug()
     {
 
+    }
+
+    private void OnMouseDown()
+    {
+        Unit = rtsMover.ActiveUnit;
     }
 
     private void OnMouseOver()
