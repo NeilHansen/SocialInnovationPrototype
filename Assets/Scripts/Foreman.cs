@@ -7,7 +7,7 @@ public class Foreman : MonoBehaviour
 {
 
     public CustomerMovePath foremanPath;
-    public GameManager gameManager;
+    public GameManagerConstruction gameManager;
     public bool leaveWhenMeterReachZero = false;
 
     public enum ToolList
@@ -52,7 +52,7 @@ public class Foreman : MonoBehaviour
     void Start()
     {
         foremanPath = FindObjectOfType<CustomerMovePath>();
-        gameManager = FindObjectOfType<GameManager>();
+        gameManager = FindObjectOfType<GameManagerConstruction>();
         pathLength = foremanPath.Length;
         curPathIndex = 0;
         velocity = transform.forward;
@@ -97,7 +97,13 @@ public class Foreman : MonoBehaviour
             item3Quantity.text = "x " + finalItemList[2].amount.ToString();
 
         if (item1Received && item2Received && item3Received)
+        {
             isMoving = true;
+            //Destroy(gameObject);
+            gameManager.AddScore();
+            Destroy(gameObject.transform.parent.gameObject);
+        }
+
 
         if (isMoving)
             AutoMove();
@@ -108,6 +114,7 @@ public class Foreman : MonoBehaviour
         {
             if (gameObject.transform.parent == null)
                 Destroy(gameObject);
+           
             else
                 Destroy(gameObject.transform.parent.gameObject);
         }
