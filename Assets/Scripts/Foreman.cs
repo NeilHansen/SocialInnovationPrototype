@@ -97,7 +97,12 @@ public class Foreman : MonoBehaviour
             item3Quantity.text = "x " + finalItemList[2].amount.ToString();
 
         if (item1Received && item2Received && item3Received)
+        {
             isMoving = true;
+            //Destroy(gameObject);
+            Destroy(gameObject.transform.parent.gameObject);
+        }
+
 
         if (isMoving)
             AutoMove();
