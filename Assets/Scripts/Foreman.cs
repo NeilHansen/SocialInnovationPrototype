@@ -145,7 +145,7 @@ public class Foreman : MonoBehaviour
                             finalItemList.Add(new itemInfo(ToolList.ComboWood, Random.Range(1, 3)));
                             break;
                         case 2:
-                            finalItemList.Add(new itemInfo(ToolList.PipeConnector, Random.Range(1, 3)));
+                            finalItemList.Add(new itemInfo(ToolList.Nails, Random.Range(1, 3)));
                             break;
                         default:
                             Debug.Log("Error");
