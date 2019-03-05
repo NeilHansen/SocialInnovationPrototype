@@ -13,7 +13,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
     public AreaType areaType;
 
     public GameObject interactingUnit;
-    public GameObject Unit;
+    public GameObject UnitToMoveTo;
     private RtsMover rtsMover;
 
     public Slider feedbackSlider;
@@ -123,7 +123,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Unit = rtsMover.ActiveUnit;
+        UnitToMoveTo = rtsMover.ActiveUnit;
     }
 
     private void OnMouseOver()
@@ -551,7 +551,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && other.gameObject == UnitToMoveTo)
         {
             interactingUnit = other.gameObject;
             switch (areaType)
@@ -915,6 +915,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
         {
             isInteracting = false;
             isComplete = false;
+            UnitToMoveTo = null;
 
             if (other.GetComponentInChildren<PlayerUI>())
             {
