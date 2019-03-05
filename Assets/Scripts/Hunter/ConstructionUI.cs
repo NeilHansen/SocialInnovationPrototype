@@ -36,34 +36,34 @@ public class ConstructionUI : MonoBehaviour {
         {
 
             case 0:
-                House.enabled=false;
+                House.sprite = HouseImages[0];
                 ProgressText.text = "Progress: " + Score + "/4";
                 break;
 
 
             case 1:
-                House.enabled = true;
-                House.sprite = HouseImages[0];
-                ProgressText.text = "Progress: " + Score + "/4";
-
-                break;
-
-            case 2:
-                House.enabled = true;
+               
                 House.sprite = HouseImages[1];
                 ProgressText.text = "Progress: " + Score + "/4";
 
                 break;
 
-            case 3:
-                House.enabled = true;
+            case 2:
+               
                 House.sprite = HouseImages[2];
+                ProgressText.text = "Progress: " + Score + "/4";
+
+                break;
+
+            case 3:
+              
+                House.sprite = HouseImages[3];
                 ProgressText.text = "Progress: " + Score + "/4";
                 break;
 
             case 4:
-                House.enabled = true;
-                House.sprite = HouseImages[3];
+              
+                House.sprite = HouseImages[4];
                 ProgressText.text = "Progress: " + Score + "/4";
                 break;
 

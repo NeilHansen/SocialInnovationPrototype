@@ -274,22 +274,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1618989305135508
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4078054102031016}
-  - component: {fileID: 114221180706043984}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1619013625320734
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,19 +455,6 @@ Transform:
   m_Father: {fileID: 4373860997149412}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: -90.00001, y: 90, z: 0}
---- !u!4 &4078054102031016
-Transform:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1618989305135508}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.1749997, y: 2.6916664, z: -4.1625}
-  m_LocalScale: {x: 1.25, y: 0.83333325, z: 1.25}
-  m_Children: []
-  m_Father: {fileID: 4373860997149412}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4156307016134874
 Transform:
   m_ObjectHideFlags: 1
@@ -519,7 +490,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1619013625320734}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.04, y: 0.62, z: -1.11}
+  m_LocalPosition: {x: -7.15, y: 0.60099995, z: -3.21}
   m_LocalScale: {x: 0.8, y: 1.2, z: 0.8}
   m_Children:
   - {fileID: 4156307016134874}
@@ -528,7 +499,6 @@ Transform:
   - {fileID: 4493639237026940}
   - {fileID: 4055938220983898}
   - {fileID: 4851673656403404}
-  - {fileID: 4078054102031016}
   - {fileID: 224151560688359090}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -1095,39 +1065,6 @@ MonoBehaviour:
   BigwoodOBJ: {fileID: 1700887587926852}
   HeavyHoldPosition: {fileID: 0}
   objectHolding: 0
---- !u!114 &114221180706043984
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1618989305135508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 282d3cca18259bf4b8c01d2619b129c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timerText: {fileID: 0}
-  timerTextBG: {fileID: 0}
-  timeValue: 181
-  satisfactionMeter: {fileID: 0}
-  hasCustomer: 0
-  defautlSatisfactionLevel: 1.5
-  defaultFoodValue: 100
-  scoreText: {fileID: 0}
-  playerScore: 0
-  Colors:
-  - {r: 0.06894054, g: 0.8962264, b: 0, a: 1}
-  - {r: 0.95149136, g: 1, b: 0, a: 1}
-  - {r: 1, g: 0.0141509175, b: 0.0141509175, a: 1}
-  Satisfactionemojis:
-  - {fileID: 21300000, guid: 23bf71e9e1b7827479d3f21720d96260, type: 3}
-  - {fileID: 21300000, guid: 372cff60c50e56545b9534a87a501726, type: 3}
-  - {fileID: 21300000, guid: 28dd10d454462724e8b8fbad62c0210c, type: 3}
-  SatisfactionFace: {fileID: 0}
-  SatisfactionText: {fileID: 0}
-  ScoreAdded: {fileID: 0}
-  EndingScreen: {fileID: 0}
-  timerMultiplier: 0.02
 --- !u!114 &114272002381269912
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1832,7 +1769,7 @@ RectTransform:
   - {fileID: 224339334712950806}
   - {fileID: 224050789021425816}
   m_Father: {fileID: 4373860997149412}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 52.493004, y: 0.606, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

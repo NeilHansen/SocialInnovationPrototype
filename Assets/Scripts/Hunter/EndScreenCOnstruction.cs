@@ -4,19 +4,17 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class EndScreen : MonoBehaviour {
+public class EndScreenCOnstruction : MonoBehaviour {
     [SerializeField]
     Image[] Stars;
     [SerializeField]
-    Text ScoreDisplay;
-    [SerializeField]
-    GameManager GM;
+    GameManagerConstruction GM;
 
 
 
     // Use this for initialization
     void Start () {
-        
+		
 	}
 	
 	// Update is called once per frame
@@ -24,19 +22,17 @@ public class EndScreen : MonoBehaviour {
 		
 	}
 
-
-
     public void EndGame()
     {
-        int StarAmount=3;
-        ScoreDisplay.text = Mathf.RoundToInt(GM.playerScore).ToString();
+        int StarAmount = 3;
+       
 
-        if (GM.playerScore >= 400)
+        if (GM.MaxTime/GM.timeValue>=.70f )
         {
             StarAmount = 3;
         }
 
-        else if (GM.playerScore >= 150)
+        else if (GM.MaxTime / GM.timeValue >= .245f)
         {
             StarAmount = 2;
         }
@@ -55,9 +51,7 @@ public class EndScreen : MonoBehaviour {
 
     public void RestartGame()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
-
-   
 
 }
