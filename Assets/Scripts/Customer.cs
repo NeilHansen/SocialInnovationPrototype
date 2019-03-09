@@ -36,7 +36,6 @@ public class Customer : MonoBehaviour {
 
     //For dialogue
     private SliderCanvas[] playerCanvas;
-    private int talkStage = 0;
     private int talkTimes = 0;
     GameManager Gm;
 
@@ -50,6 +49,9 @@ public class Customer : MonoBehaviour {
     Attitude currentAttitude;
     Attitude positiveRespond;
     Attitude negativeRespond;
+
+    public float positiveMultiplier = 2.0f;
+    public float negativeMultiplier = 0.5f;
 
     // Use this for initialization
     void Start () {
@@ -163,31 +165,20 @@ public class Customer : MonoBehaviour {
 
     void CheckCustomerStatus()
     {
-        //switch (talkStage)
-        //{
-        //    case 0:
-        //        status.sprite = currentSituation[0];
-        //        break;
-        //    case 1:
-        //        status.sprite = currentSituation[1];
-        //        break;
-        //    case 2:
-        //        status.sprite = currentSituation[2];
-        //        break;
-        //    case -1:
-        //        status.sprite = currentSituation[3];
-        //        break;
-        //    case -2:
-        //        status.sprite = currentSituation[4];
-        //        break;
-        //    default:
-        //        break;
-        //}
         ChangeRespond(currentAttitude);
 
-        if (talkTimes == 2 && currentAttitude == Attitude.Love)
+        if (talkTimes == 2)
         {
-            Gm.isBonusMultiplierOn = true;
+            if (currentAttitude == Attitude.Love)
+            {
+                Gm.isBonusMultiplierOn = true;
+                Gm.specialCustomerBonusMultiplier = positiveMultiplier;
+            }
+            if(currentAttitude == Attitude.Cry)
+            {
+                Gm.isBonusMultiplierOn = true;
+                Gm.specialCustomerBonusMultiplier = negativeMultiplier;
+            }
             talkTimes++;
         }
     }
@@ -196,7 +187,6 @@ public class Customer : MonoBehaviour {
     {
         if (talkTimes < 2)
         {
-            //talkStage++;
             talkTimes++;
         }
 
@@ -207,7 +197,6 @@ public class Customer : MonoBehaviour {
     {
         if(talkTimes < 2)
         {
-            //talkStage--;
             talkTimes++;
         }
 
@@ -257,11 +246,11 @@ public class Customer : MonoBehaviour {
         }
     }
 
-    public void ChangeRespond(Attitude attitude)
+    public void ChangeRespond(Attitude a)
     {
         foreach (SliderCanvas sC in playerCanvas)
         {
-            switch (attitude)
+            switch (a)
             {
                 case Attitude.SuperSad:
                     sC.negativeButton.image.sprite = sprite[6];
