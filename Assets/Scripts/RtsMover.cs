@@ -63,13 +63,36 @@ public class RtsMover : MonoBehaviour {
 
 
             //Causing issues
-         // MovePlayer(originalPosition);
+         //MovePlayer(originalPosition);
             
           
         }
     }
 
   
+    public void GroundMove()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 1000f, mask))
+        {
+
+            originalPosition = hit.point;
+            Debug.DrawRay(ray.origin, ray.direction * 1000.0f, Color.green);
+            Debug.Log("HIIIIT" + hit.collider.name);
+        }
+        else
+        {
+            Debug.Log("not");
+            Debug.DrawRay(ray.origin, ray.direction * 1000.0f, Color.red);
+        }
+
+
+        
+        MovePlayer(originalPosition);
+    }
+
 
     public void MovePlayer(Transform newPos)
     {
@@ -79,7 +102,7 @@ public class RtsMover : MonoBehaviour {
             // ActiveUnit.GetComponent<NavMeshAgent>().SetDestination(newPos.position);
             MovePlayer(newPos.position);
         }
-//Debug.Log("Fuck");
+
     }
 
     public void MovePlayer(Vector3 newPos)
@@ -87,7 +110,11 @@ public class RtsMover : MonoBehaviour {
         
         if (newPos != null)
         {
-            ActiveUnit.GetComponent<NavMeshAgent>().SetDestination(newPos);
+            if (ActiveUnit != null)
+            {
+                ActiveUnit.GetComponent<NavMeshAgent>().SetDestination(newPos);
+            }
+            
         }
       
 
@@ -108,10 +135,6 @@ public class RtsMover : MonoBehaviour {
          
     }
 
-    public void ClickedObject()
-    {
-        
-    }
   
     
 
