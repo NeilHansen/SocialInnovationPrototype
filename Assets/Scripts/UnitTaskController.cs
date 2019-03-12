@@ -90,15 +90,6 @@ public class UnitTaskController : MonoBehaviour
         //  Debug.Log(objectHolding);
     }
 
-    private void FixedUpdate()
-    {
-        if (currentTaskType == TaskType.LargeWood || currentTaskType == TaskType.LargePipe)
-        {
-            transform.position = new Vector3(HeavyHoldPosition.transform.position.x, transform.position.y, HeavyHoldPosition.transform.position.z);
-        }
-
-
-    }
 
     public IEnumerator FlashFeedback()
     {

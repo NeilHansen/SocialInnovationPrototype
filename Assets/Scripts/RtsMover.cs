@@ -12,6 +12,7 @@ public class RtsMover : MonoBehaviour {
     //Moveing Wood
     public GameObject BigWood;
     public GameObject BigPipe;
+    bool AlreadyGivenPosition = false;
 
     [SerializeField]
     Vector3 originalPosition;
@@ -61,30 +62,59 @@ public class RtsMover : MonoBehaviour {
             }
 
 
-
-           MovePlayer(originalPosition);
+            //Causing issues
+         //MovePlayer(originalPosition);
             
           
         }
     }
 
   
+    public void GroundMove()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 1000f, mask))
+        {
+
+            originalPosition = hit.point;
+            Debug.DrawRay(ray.origin, ray.direction * 1000.0f, Color.green);
+            Debug.Log("HIIIIT" + hit.collider.name);
+        }
+        else
+        {
+            Debug.Log("not");
+            Debug.DrawRay(ray.origin, ray.direction * 1000.0f, Color.red);
+        }
+
+
+        
+        MovePlayer(originalPosition);
+    }
+
 
     public void MovePlayer(Transform newPos)
     {
+        Debug.Log(newPos);
         if (ActiveUnit != null)
         {
             // ActiveUnit.GetComponent<NavMeshAgent>().SetDestination(newPos.position);
             MovePlayer(newPos.position);
         }
-//Debug.Log("Fuck");
+
     }
 
     public void MovePlayer(Vector3 newPos)
     {
+        
         if (newPos != null)
         {
-            ActiveUnit.GetComponent<NavMeshAgent>().SetDestination(newPos);
+            if (ActiveUnit != null)
+            {
+                ActiveUnit.GetComponent<NavMeshAgent>().SetDestination(newPos);
+            }
+            
         }
       
 
@@ -105,10 +135,6 @@ public class RtsMover : MonoBehaviour {
          
     }
 
-    public void MoveToWoodPile()
-    {
-        
-    }
   
     
 

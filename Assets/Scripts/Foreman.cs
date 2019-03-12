@@ -139,13 +139,13 @@ public class Foreman : MonoBehaviour
                     switch (Random.Range(0, 3))
                     {
                         case 0:
-                            finalItemList.Add(new itemInfo(ToolList.ComboPipe, Random.Range(1, 3)));
+                            finalItemList.Add(new itemInfo(ToolList.ComboPipe, Random.Range(1, 2)));
                             break;
                         case 1:
-                            finalItemList.Add(new itemInfo(ToolList.ComboWood, Random.Range(1, 3)));
+                            finalItemList.Add(new itemInfo(ToolList.ComboWood, Random.Range(1, 1)));
                             break;
                         case 2:
-                            finalItemList.Add(new itemInfo(ToolList.Nails, Random.Range(1, 3)));
+                            finalItemList.Add(new itemInfo(ToolList.Nails, Random.Range(1, 2)));
                             break;
                         default:
                             Debug.Log("Error");
@@ -154,8 +154,8 @@ public class Foreman : MonoBehaviour
                     item1Name.text = finalItemList[0].tool.ToString();
                     break;
                 case 1:
-                    finalItemList.Add(new itemInfo(ToolList.ComboWood, Random.Range(1, 3)));
-                    finalItemList.Add(new itemInfo(ToolList.Nails, Random.Range(1, 3)));
+                    finalItemList.Add(new itemInfo(ToolList.ComboWood, Random.Range(1, 1)));
+                    finalItemList.Add(new itemInfo(ToolList.Nails, Random.Range(1, 2)));
                     item1Name.text = finalItemList[0].tool.ToString();
                     item2Name.text = finalItemList[1].tool.ToString();
                     break;
