@@ -2644,7 +2644,7 @@ GameObject:
   - component: {fileID: 364393087}
   - component: {fileID: 364393086}
   - component: {fileID: 364393085}
-  - component: {fileID: 364393091}
+  - component: {fileID: 364393090}
   - component: {fileID: 364393084}
   m_Layer: 0
   m_Name: PipeRecipticalBin
@@ -2697,7 +2697,7 @@ MonoBehaviour:
   CarryPipe: {fileID: 0}
   hoverSprite: {fileID: 21300014, guid: b72b888839472df4ea0690b5df9d30d7, type: 3}
   hoverSpriteObject: {fileID: 795468714}
-  MovePoint: {fileID: 0}
+  MovePoint: {fileID: 815635975}
   Gm: {fileID: 0}
   dirtyPlateOn: 0
   cleanPlateOn: 0
@@ -2783,7 +2783,7 @@ Transform:
   m_Father: {fileID: 1283704417}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!114 &364393091
+--- !u!114 &364393090
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2791,18 +2791,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 364393083}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e191d8f5fb7e90043b46fa130af1d96e, type: 3}
+  m_Script: {fileID: 11500000, guid: 05bbd389d11bfdb4da870937b4b99733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 534669906}
-        m_MethodName: MovePlayer
-        m_Mode: 2
+      - m_Target: {fileID: 364393084}
+        m_MethodName: SetInteractorAndMove
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 815635975}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -6479,7 +6479,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 958550545}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.078, y: -0.132, z: -0.025}
+  m_LocalPosition: {x: 0.97, y: -0.132, z: -0.025}
   m_LocalScale: {x: 1.0000046, y: 1, z: 0.9999991}
   m_Children: []
   m_Father: {fileID: 761998511}
@@ -7617,7 +7617,6 @@ GameObject:
   - component: {fileID: 1119787981}
   - component: {fileID: 1119787980}
   - component: {fileID: 1119787979}
-  - component: {fileID: 1119787986}
   - component: {fileID: 1119787985}
   m_Layer: 0
   m_Name: FormanRecipticalBin
@@ -7670,7 +7669,7 @@ MonoBehaviour:
   CarryPipe: {fileID: 0}
   hoverSprite: {fileID: 21300000, guid: 6a717ba927fc4a34eb60b65c17e66530, type: 3}
   hoverSpriteObject: {fileID: 745295344}
-  MovePoint: {fileID: 0}
+  MovePoint: {fileID: 1238652371}
   Gm: {fileID: 0}
   dirtyPlateOn: 0
   cleanPlateOn: 0
@@ -7765,48 +7764,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1119787978}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 534669906}
-          m_MethodName: MovePlayer
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 1119787984}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  delegates: []
---- !u!114 &1119787986
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1119787978}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e191d8f5fb7e90043b46fa130af1d96e, type: 3}
+  m_Script: {fileID: 11500000, guid: 05bbd389d11bfdb4da870937b4b99733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 534669906}
-        m_MethodName: MovePlayer
-        m_Mode: 2
+      - m_Target: {fileID: 1119787979}
+        m_MethodName: SetInteractorAndMove
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1238652371}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -7827,7 +7796,6 @@ GameObject:
   - component: {fileID: 1122551568}
   - component: {fileID: 1122551567}
   - component: {fileID: 1122551566}
-  - component: {fileID: 1122551573}
   - component: {fileID: 1122551572}
   m_Layer: 0
   m_Name: WoodRecipticalBin
@@ -7880,7 +7848,7 @@ MonoBehaviour:
   CarryPipe: {fileID: 0}
   hoverSprite: {fileID: 21300010, guid: b72b888839472df4ea0690b5df9d30d7, type: 3}
   hoverSpriteObject: {fileID: 1621811946}
-  MovePoint: {fileID: 0}
+  MovePoint: {fileID: 203501042}
   Gm: {fileID: 0}
   dirtyPlateOn: 0
   cleanPlateOn: 0
@@ -7974,59 +7942,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1122551565}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 534669906}
-          m_MethodName: MovePlayer
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 203501042}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 1122551566}
-          m_MethodName: SetClickedState
-          m_Mode: 3
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 4
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  delegates: []
---- !u!114 &1122551573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1122551565}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e191d8f5fb7e90043b46fa130af1d96e, type: 3}
+  m_Script: {fileID: 11500000, guid: 05bbd389d11bfdb4da870937b4b99733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 534669906}
-        m_MethodName: MovePlayer
-        m_Mode: 2
+      - m_Target: {fileID: 1122551566}
+        m_MethodName: SetInteractorAndMove
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 203501042}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -8592,8 +8519,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.1380064, y: 0.60080224, z: 1.4303023}
-  m_Center: {x: 0.08502942, y: -0.19959879, z: -0.1274257}
+  m_Size: {x: 2.1794424, y: 0.60080224, z: 1.4303025}
+  m_Center: {x: 0.60574675, y: -0.19959879, z: -0.12742575}
 --- !u!33 &1185560237
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -9890,8 +9817,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.1380062, y: 0.4740405, z: 1}
-  m_Center: {x: 0.0850294, y: -0.26297975, z: -1.44008e-16}
+  m_Size: {x: 2.4423368, y: 0.47404048, z: 0.9999999}
+  m_Center: {x: 0.7371947, y: -0.26297998, z: -1.7689852e-10}
 --- !u!33 &1361828206
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -11342,7 +11269,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1609228687}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.431, y: 0, z: -0.035}
+  m_LocalPosition: {x: 0.882, y: 0, z: -0.035}
   m_LocalScale: {x: 0.99999917, y: 1, z: 0.99999917}
   m_Children: []
   m_Father: {fileID: 1066994298}
@@ -13956,7 +13883,6 @@ GameObject:
   - component: {fileID: 2020975552}
   - component: {fileID: 2020975551}
   - component: {fileID: 2020975550}
-  - component: {fileID: 2020975555}
   - component: {fileID: 2020975549}
   - component: {fileID: 2020975548}
   - component: {fileID: 2020975554}
@@ -13991,28 +13917,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 2020975546}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 05bbd389d11bfdb4da870937b4b99733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 534669906}
-          m_MethodName: MovePlayer
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 2020975547}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  delegates: []
+  OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2020975549}
+        m_MethodName: SetInteractorAndMove
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &2020975549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14057,7 +13980,7 @@ MonoBehaviour:
   CarryPipe: {fileID: 0}
   hoverSprite: {fileID: 21300022, guid: b72b888839472df4ea0690b5df9d30d7, type: 3}
   hoverSpriteObject: {fileID: 1751388976}
-  MovePoint: {fileID: 0}
+  MovePoint: {fileID: 928698791}
   Gm: {fileID: 0}
   dirtyPlateOn: 0
   cleanPlateOn: 0
@@ -14153,33 +14076,6 @@ MonoBehaviour:
   requiredText: {fileID: 1269325841}
   woodCompleteButton: {fileID: 170532488}
   pipeCompleteButton: {fileID: 1265334374}
---- !u!114 &2020975555
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2020975546}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e191d8f5fb7e90043b46fa130af1d96e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 534669906}
-        m_MethodName: MovePlayer
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 928698791}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!1 &2021822519
 GameObject:
   m_ObjectHideFlags: 0
@@ -14900,7 +14796,6 @@ GameObject:
   - component: {fileID: 2099410741}
   - component: {fileID: 2099410740}
   - component: {fileID: 2099410739}
-  - component: {fileID: 2099410744}
   - component: {fileID: 2099410738}
   m_Layer: 0
   m_Name: PipeConnectorBin
@@ -14932,28 +14827,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 2099410736}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 05bbd389d11bfdb4da870937b4b99733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 534669906}
-          m_MethodName: MovePlayer
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 2099410737}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  delegates: []
+  OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2099410739}
+        m_MethodName: SetInteractorAndMove
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &2099410739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14998,7 +14890,7 @@ MonoBehaviour:
   CarryPipe: {fileID: 0}
   hoverSprite: {fileID: 21300018, guid: b72b888839472df4ea0690b5df9d30d7, type: 3}
   hoverSpriteObject: {fileID: 714842446}
-  MovePoint: {fileID: 0}
+  MovePoint: {fileID: 1293297460}
   Gm: {fileID: 0}
   dirtyPlateOn: 0
   cleanPlateOn: 0
@@ -15070,33 +14962,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2099410736}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &2099410744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2099410736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e191d8f5fb7e90043b46fa130af1d96e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 534669906}
-        m_MethodName: MovePlayer
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1293297460}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!1 &2099425545
 GameObject:
   m_ObjectHideFlags: 0
