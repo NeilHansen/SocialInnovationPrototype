@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class SliderCanvas : MonoBehaviour {
 
     
-    public Button positiveButton;
-    public Button negativeButton;
+    public Button leftButton;
+    public Button rightButton;
     public GameObject player;
 
     private Vector3 offset;
@@ -18,8 +18,8 @@ public class SliderCanvas : MonoBehaviour {
 	void Start () {
         offset = transform.position - player.transform.position;
 
-        positiveButton.gameObject.SetActive(false);
-        negativeButton.gameObject.SetActive(false);
+		leftButton.gameObject.SetActive(false);
+		rightButton.gameObject.SetActive(false);
         RotationToKeep = player.transform.rotation;
 
         //positiveButton.onClick.AddListener(PositiveRespond);
