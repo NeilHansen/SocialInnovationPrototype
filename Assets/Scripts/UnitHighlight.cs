@@ -148,7 +148,7 @@ public class UnitHighlight : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "InteractableAre")
+        if (other.gameObject.tag == "InteractableAre" )
         {
             if(other.gameObject.GetComponent<InteractableArea>().isInteracting == false)
             {
@@ -161,7 +161,7 @@ public class UnitHighlight : MonoBehaviour {
             }
 
         }
-        if (other.gameObject.tag == "constructionarea")
+        if (other.gameObject.tag == "constructionarea" && other.gameObject.GetComponent<InteractableAreaConstructionSite>().UnitToMoveTo == this.gameObject)
         {
             if (other.gameObject.GetComponent<InteractableAreaConstructionSite>().isInteracting == false)
             {

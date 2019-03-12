@@ -10,8 +10,10 @@ public class VisibilityManager : MonoBehaviour {
     
     public Vector3 OrginalPosition;
 
-	// Use this for initialization
-	void Start () {
+    public List<GameObject> Heavycarriers;
+
+    // Use this for initialization
+    void Start () {
         OrginalPosition = transform.position;
 	}
 	

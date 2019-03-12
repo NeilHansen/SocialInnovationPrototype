@@ -36,12 +36,27 @@ public class Customer : MonoBehaviour {
 
     //For dialogue
     private SliderCanvas[] playerCanvas;
-    private int talkStage = 0;
     private int talkTimes = 0;
+    GameManager Gm;
+
+    public enum Attitude
+    {
+        SuperSad, Sad, Cry,
+        Smile, BigSmile, Love,
+        Angry, Confused, Surprised,
+    }
+    
+    Attitude currentAttitude;
+    Attitude positiveRespond;
+    Attitude negativeRespond;
+
+    public float positiveMultiplier = 2.0f;
+    public float negativeMultiplier = 0.5f;
 
     // Use this for initialization
     void Start () {
-		customerPath = FindObjectOfType<CustomerMovePath>();
+        Gm = FindObjectOfType<GameManager>();
+        customerPath = FindObjectOfType<CustomerMovePath>();
         gameManager = FindObjectOfType<GameManager>();
         playerCanvas = FindObjectsOfType<SliderCanvas>();
         status = FindObjectOfType<Image>();
@@ -51,6 +66,7 @@ public class Customer : MonoBehaviour {
 
         if (gameObject.tag == "SpecialCustomer")
         {
+            SetUpDefaultAttitude();
             foreach (SliderCanvas sC in playerCanvas)
             {
                 sC.positiveButton.onClick.AddListener(PositiveRespond);
@@ -72,8 +88,13 @@ public class Customer : MonoBehaviour {
 	void Update () {
         
         CheckSpherecast();
-        TriggerDialogue();
-        CheckCustomerStatus();
+        
+
+        if (gameObject.tag == "SpecialCustomer")
+        {
+            TriggerDialogue();
+            CheckCustomerStatus();
+        }
         
         if (currentHitDistance < 2.5f && (currentHitObject.gameObject.tag == "Customer" || currentHitObject.gameObject.tag == "SpecialCustomer"))
             isMoving = false;
@@ -108,69 +129,172 @@ public class Customer : MonoBehaviour {
 
     void TriggerDialogue()
     {
-        if(gameObject.tag == "SpecialCustomer" )
+        
+        foreach (SliderCanvas sC in playerCanvas)
         {
-            foreach (SliderCanvas sC in playerCanvas)
+            if(Vector3.Distance(sC.gameObject.transform.position, transform.position) < 5.0f && talkTimes < 2)
             {
-                if(Vector3.Distance(sC.gameObject.transform.position, transform.position) < 5.0f && talkTimes < 2)
-                {
-                    sC.positiveButton.gameObject.SetActive(true);
-                    //sC.positiveButton.onClick.AddListener(PositiveRespond);
-                    sC.negativeButton.gameObject.SetActive(true);
-                    //sC.negativeButton.onClick.AddListener(NegativeRespond);
-                }
-                else
-                {
-                    sC.positiveButton.gameObject.SetActive(false);
-                    sC.negativeButton.gameObject.SetActive(false);
-                }
+                sC.positiveButton.gameObject.SetActive(true);
+                sC.negativeButton.gameObject.SetActive(true);
             }
+            else
+            {
+                sC.positiveButton.gameObject.SetActive(false);
+                sC.negativeButton.gameObject.SetActive(false);
+            }
+        }
             
+        
+    }
+
+    void SetUpDefaultAttitude()
+    {
+        switch (Random.Range(0, 3))
+        {
+            case 0:
+                currentAttitude = Attitude.SuperSad;
+                break;
+            case 1:
+                currentAttitude = Attitude.Sad;
+                break;
+            case 2:
+                currentAttitude = Attitude.Smile;
+                break;
         }
     }
 
     void CheckCustomerStatus()
     {
-        if (gameObject.tag == "SpecialCustomer")
+        ChangeRespond(currentAttitude);
+
+        if (talkTimes == 2)
         {
-            switch (talkStage)
+            if (currentAttitude == Attitude.Love)
             {
-                case 0:
-                    status.sprite = currentSituation[0];
-                    break;
-                case 1:
-                    status.sprite = currentSituation[1];
-                    break;
-                case 2:
-                    status.sprite = currentSituation[2];
-                    break;
-                case -1:
-                    status.sprite = currentSituation[3];
-                    break;
-                case -2:
-                    status.sprite = currentSituation[4];
-                    break;
-                default:
-                    break;
+                Gm.isBonusMultiplierOn = true;
+                Gm.specialCustomerBonusMultiplier = positiveMultiplier;
             }
+            if(currentAttitude == Attitude.Cry)
+            {
+                Gm.isBonusMultiplierOn = true;
+                Gm.specialCustomerBonusMultiplier = negativeMultiplier;
+            }
+            talkTimes++;
         }
     }
 
     public void PositiveRespond()
     {
-        if(talkTimes < 2)
+        if (talkTimes < 2)
         {
-            talkStage++;
             talkTimes++;
         }
+
+        ChangeStatus(positiveRespond);
     }
 
     public void NegativeRespond()
     {
         if(talkTimes < 2)
         {
-            talkStage--;
             talkTimes++;
+        }
+
+        ChangeStatus(negativeRespond);
+    }
+
+    void ChangeStatus(Attitude a)
+    {
+        switch(a)
+        {
+            case Attitude.SuperSad:
+                currentAttitude = Attitude.SuperSad;
+                status.sprite = sprite[0];
+                break;
+            case Attitude.Sad:
+                currentAttitude = Attitude.Sad;
+                status.sprite = sprite[1];
+                break;
+            case Attitude.Cry:
+                currentAttitude = Attitude.Cry;
+                status.sprite = sprite[2];
+                break;
+            case Attitude.Smile:
+                currentAttitude = Attitude.Smile;
+                status.sprite = sprite[3];
+                break;
+            case Attitude.BigSmile:
+                currentAttitude = Attitude.BigSmile;
+                status.sprite = sprite[4];
+                break;
+            case Attitude.Love:
+                currentAttitude = Attitude.Love;
+                status.sprite = sprite[5];
+                break;
+            case Attitude.Angry:
+                currentAttitude = Attitude.Angry;
+                status.sprite = sprite[6];
+                break;
+            case Attitude.Surprised:
+                currentAttitude = Attitude.Surprised;
+                status.sprite = sprite[7];
+                break;
+            case Attitude.Confused:
+                currentAttitude = Attitude.Confused;
+                status.sprite = sprite[8];
+                break;
+        }
+    }
+
+    public void ChangeRespond(Attitude a)
+    {
+        foreach (SliderCanvas sC in playerCanvas)
+        {
+            switch (a)
+            {
+                case Attitude.SuperSad:
+                    sC.negativeButton.image.sprite = sprite[6];
+                    sC.positiveButton.image.sprite = sprite[8];
+                    negativeRespond = Attitude.Angry;
+                    positiveRespond = Attitude.Surprised;
+                    break;
+                case Attitude.Sad:
+                    sC.negativeButton.image.sprite = sprite[7];
+                    sC.positiveButton.image.sprite = sprite[8];
+                    negativeRespond = Attitude.Confused;
+                    positiveRespond = Attitude.Surprised;
+                    break;
+                case Attitude.Smile:
+                    sC.negativeButton.image.sprite = sprite[7];
+                    sC.positiveButton.image.sprite = sprite[4];
+                    negativeRespond = Attitude.Confused;
+                    positiveRespond = Attitude.BigSmile;
+                    break;
+                case Attitude.Angry:
+                    sC.negativeButton.image.sprite = sprite[2];
+                    sC.positiveButton.image.sprite = sprite[7];
+                    negativeRespond = Attitude.Cry;
+                    positiveRespond = Attitude.Confused;
+                    break;
+                case Attitude.Confused:
+                    sC.negativeButton.image.sprite = sprite[6];
+                    sC.positiveButton.image.sprite = sprite[8];
+                    negativeRespond = Attitude.Angry;
+                    positiveRespond = Attitude.Surprised;
+                    break;
+                case Attitude.Surprised:
+                    sC.negativeButton.image.sprite = sprite[7];
+                    sC.positiveButton.image.sprite = sprite[4];
+                    negativeRespond = Attitude.Confused;
+                    positiveRespond = Attitude.BigSmile;
+                    break;
+                case Attitude.BigSmile:
+                    sC.negativeButton.image.sprite = sprite[8];
+                    sC.positiveButton.image.sprite = sprite[5];
+                    negativeRespond = Attitude.Surprised;
+                    positiveRespond = Attitude.Love;
+                    break;
+            }
         }
     }
     

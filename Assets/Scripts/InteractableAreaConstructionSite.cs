@@ -13,7 +13,8 @@ public class InteractableAreaConstructionSite : MonoBehaviour
     public AreaType areaType;
 
     public GameObject interactingUnit;
-
+    public GameObject UnitToMoveTo;
+    private RtsMover rtsMover;
 
     public Slider feedbackSlider;
     public Slider feedbackSlider2;
@@ -83,6 +84,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        rtsMover = Camera.main.GetComponent<RtsMover>();
         Gm = GameObject.FindObjectOfType<GameManager>();
         counterSpace = gameObject.GetComponent<CounterSpace>();
         hoverSpriteObject.GetComponent<Image>().sprite = hoverSprite;
@@ -119,9 +121,22 @@ public class InteractableAreaConstructionSite : MonoBehaviour
 
     }
 
+    private void OnMouseDown()
+    {
+        UnitToMoveTo = rtsMover.ActiveUnit;
+        if(UnitToMoveTo == carryWood)
+        {
+            UnitToMoveTo = rtsMover.ActiveUnit.GetComponent<VisibilityManager>().Heavycarriers[0].gameObject;
+        }
+        else if(UnitToMoveTo == CarryPipe)
+        {
+            UnitToMoveTo = rtsMover.ActiveUnit.GetComponent<VisibilityManager>().Heavycarriers[0].gameObject;
+        }
+    }
+
     private void OnMouseOver()
     {
-        Debug.Log("HOVERED OVER " + gameObject.name);
+      //  Debug.Log("HOVERED OVER " + gameObject.name);
         hoverSpriteObject.SetActive(true);
     }
 
@@ -220,6 +235,9 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                 interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.PipeConnector;
                 break;
             case AreaType.WoodPile:
+
+                carryWood.GetComponent<VisibilityManager>().Heavycarriers.Add(Heavycarriers[1]);
+
                 for (int i = 0; i < Heavycarriers.Count; i++)
                 {
                     //Set up the players to carry the wood
@@ -251,6 +269,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
 
 
             case AreaType.PipePile:
+                CarryPipe.GetComponent<VisibilityManager>().Heavycarriers.Add(Heavycarriers[1]);
                 for (int n = 0; n < Heavycarriers.Count; n++)
                 {
                     CarryPipe.GetComponent<VisibilityManager>().TurnonObject();
@@ -266,7 +285,6 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                         Heavycarriers[0].gameObject.GetComponent<UnitTaskController>().HeavyHoldPosition = PipeHoldPositions[0];
 
                     }
-
                     else
                     {
                         Heavycarriers[1].gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.LargePipe;
@@ -544,7 +562,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && other.gameObject == UnitToMoveTo)
         {
             interactingUnit = other.gameObject;
             switch (areaType)
@@ -908,6 +926,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
         {
             isInteracting = false;
             isComplete = false;
+            UnitToMoveTo = null;
 
             if (other.GetComponentInChildren<PlayerUI>())
             {
@@ -933,7 +952,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")// && this.gameObject.GetComponent<InteractableAreaConstructionSite>().UnitToMoveTo == other.gameObject)
         {
             interactingUnit = other.gameObject;
             switch (areaType)
@@ -946,6 +965,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                     if (interactingUnit.gameObject.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None)
                     {
                         Heavycarriers.Add(other.gameObject);
+                       // UnitToMoveTo = null;
                     }
                     break;
 
@@ -953,8 +973,8 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                     if (interactingUnit.gameObject.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None)
                     {
                         Heavycarriers.Add(other.gameObject);
-                    }
-
+                      //  UnitToMoveTo = null;
+                    } 
                     break;
 
             }

@@ -13,6 +13,7 @@ public class EndScreen : MonoBehaviour {
     GameManager GM;
 
 
+
     // Use this for initialization
     void Start () {
         
@@ -56,4 +57,7 @@ public class EndScreen : MonoBehaviour {
     {
         SceneManager.LoadScene(0);
     }
+
+   
+
 }

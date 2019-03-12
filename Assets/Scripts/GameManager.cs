@@ -37,9 +37,9 @@ public class GameManager : MonoBehaviour {
 
     public float timerMultiplier = 0.1f;
 
-
-
-
+    public Text specialCustomerBonusText;
+    public float specialCustomerBonusMultiplier = 1.0f;
+    public bool isBonusMultiplierOn = false;
 
 
 
@@ -48,9 +48,10 @@ public class GameManager : MonoBehaviour {
     void Start() {
         timerText.text = "" + (int)timeValue;
         timerTextBG.text = "" + (int)timeValue;
+        
         satisfactionMeter.maxValue = defautlSatisfactionLevel;
         //StartNewCustomer();
-       
+        specialCustomerBonusText.enabled = false;
     }
 
 
@@ -61,7 +62,7 @@ public class GameManager : MonoBehaviour {
         timeValue -= 1 * Time.deltaTime;
         timerText.text = "" + (int)timeValue;
         timerTextBG.text = "" + (int)timeValue;
-
+        specialCustomerBonusText.text = "x" + specialCustomerBonusMultiplier;
         if (timeValue <= 0)
         {
             Time.timeScale = 0.0f;
@@ -99,6 +100,16 @@ public class GameManager : MonoBehaviour {
 
         }
 
+        if (isBonusMultiplierOn)
+        {
+            specialCustomerBonusText.enabled = true;
+            //specialCustomerBonusMultiplier = 2.0f;
+        }
+        else
+        {
+            specialCustomerBonusText.enabled = false;
+            specialCustomerBonusMultiplier = 1.0f;
+        }
 
 
     }
@@ -120,22 +131,22 @@ public class GameManager : MonoBehaviour {
 
         if (satisfactionMeter.value > 1.04f)
         {
-            currentFoodValue = 100;
+            currentFoodValue = 100 * specialCustomerBonusMultiplier;
             StartCoroutine(FlashScoreAdded(0));
         }
 
         else if (satisfactionMeter.value > .38f)
         {
-            currentFoodValue = 50;
+            currentFoodValue = 50 * specialCustomerBonusMultiplier;
             StartCoroutine(FlashScoreAdded(1));
         }
         else
         {
-            currentFoodValue = 25;
+            currentFoodValue = 25 * specialCustomerBonusMultiplier;
             StartCoroutine(FlashScoreAdded(2));
         }
 
-
+        isBonusMultiplierOn = false;
 
         ScoreAdded.text = "+" + currentFoodValue;
         playerScore += currentFoodValue;

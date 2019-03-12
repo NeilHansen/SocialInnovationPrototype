@@ -6,9 +6,8 @@ using UnityEngine.UI;
 public class Foreman : MonoBehaviour
 {
 
-    //public CustomerMovePath foremanPath;
-    public MovePath movePath;
-    public GameManager gameManager;
+    public CustomerMovePath foremanPath;
+    public GameManagerConstruction gameManager;
     public bool leaveWhenMeterReachZero = false;
 
     public enum ToolList
@@ -41,6 +40,7 @@ public class Foreman : MonoBehaviour
     public bool isMoving;
     private float mass = 1.0f;
     private float speed = 3.0f;
+    private bool isLooping = false;
     private float curSpeed;
     private int curPathIndex;
     private float pathLength;
@@ -50,12 +50,10 @@ public class Foreman : MonoBehaviour
 
     // Use this for initialization
     void Start()
-    {   
-        //foremanPath = FindObjectOfType<CustomerMovePath>();
-        movePath = FindObjectOfType<MovePath>();
-        gameManager = FindObjectOfType<GameManager>();
-        //pathLength = foremanPath.Length;
-        pathLength = movePath.Length;
+    {
+        foremanPath = FindObjectOfType<CustomerMovePath>();
+        gameManager = FindObjectOfType<GameManagerConstruction>();
+        pathLength = foremanPath.Length;
         curPathIndex = 0;
         velocity = transform.forward;
         isCombo = IsCombo();
@@ -66,6 +64,32 @@ public class Foreman : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        //if (Input.GetKeyDown(KeyCode.Q))
+        //{
+        //    ReceiveItem(ToolList.Nails);
+        //}
+        //if (Input.GetKeyDown(KeyCode.W))
+        //{
+        //    ReceiveItem(ToolList.SmallPipe);
+        //}
+        //if (Input.GetKeyDown(KeyCode.E))
+        //{
+        //    ReceiveItem(ToolList.SmallWood);
+        //}
+        //if (Input.GetKeyDown(KeyCode.A))
+        //{
+        //    ReceiveItem(ToolList.ComboPipe);
+        //}
+        //if (Input.GetKeyDown(KeyCode.S))
+        //{
+        //    ReceiveItem(ToolList.ComboWood);
+        //}
+        //if (Input.GetKeyDown(KeyCode.D))
+        //{
+        //    ReceiveItem(ToolList.PipeConnector);
+        //}
+
         item1Quantity.text = "x " + finalItemList[0].amount.ToString();
         if (finalItemList.Count > 1)
             item2Quantity.text = "x " + finalItemList[1].amount.ToString();
@@ -76,20 +100,24 @@ public class Foreman : MonoBehaviour
         {
             isMoving = true;
             //Destroy(gameObject);
+            gameManager.AddScore();
             Destroy(gameObject.transform.parent.gameObject);
         }
+
 
         if (isMoving)
             AutoMove();
 
+
         //DONT DO THIS!!!!!
-        //if (transform.position.z <= -14.0f)
-        //{
-        //    if (gameObject.transform.parent == null)
-        //        Destroy(gameObject);
-        //    else
-        //        Destroy(gameObject.transform.parent.gameObject);
-        //}
+        if (transform.position.z <= -14.0f)
+        {
+            if (gameObject.transform.parent == null)
+                Destroy(gameObject);
+           
+            else
+                Destroy(gameObject.transform.parent.gameObject);
+        }
     }
 
     private void GenerateItems()
@@ -117,7 +145,7 @@ public class Foreman : MonoBehaviour
                             finalItemList.Add(new itemInfo(ToolList.ComboWood, Random.Range(1, 3)));
                             break;
                         case 2:
-                            finalItemList.Add(new itemInfo(ToolList.PipeConnector, Random.Range(1, 3)));
+                            finalItemList.Add(new itemInfo(ToolList.Nails, Random.Range(1, 3)));
                             break;
                         default:
                             Debug.Log("Error");
@@ -235,11 +263,10 @@ public class Foreman : MonoBehaviour
     {
         curSpeed = speed * Time.deltaTime;
 
-        //targetPoint = foremanPath.GetPoint(curPathIndex);
-        targetPoint = movePath.GetPoint(curPathIndex);
+        targetPoint = foremanPath.GetPoint(curPathIndex);
 
         //If reach the radius within the path then move to next point in the path
-        if (Vector3.Distance(transform.position, targetPoint) < movePath.Radius)
+        if (Vector3.Distance(transform.position, targetPoint) < foremanPath.Radius)
         {
             //Don't move the vehicle if path is finished 
             if (curPathIndex < pathLength - 1)
@@ -247,51 +274,36 @@ public class Foreman : MonoBehaviour
                 curPathIndex++;
                 if (curPathIndex == 2)
                 {
-                    //isMoving = false;
+                    isMoving = false;
                     return;
                 }
             }
+            else if (isLooping)
+                curPathIndex = 0;
             else
-            {
-                if (gameObject.transform.parent == null)
-                    Destroy(gameObject);
-                else
-                    Destroy(gameObject.transform.parent.gameObject);
                 return;
-            }
         }
 
         //Move the vehicle until the end point is reached in the path
         if (curPathIndex >= pathLength)
-        {
             return;
-        }
 
         //Calculate the next Velocity towards the path
-        //if (curPathIndex == pathLength - 1)
-        //{
-        //    Debug.Log("move1");
-        //    velocity += Steer(targetPoint, true);
-        //}
-        //else
-        //{
-        //    Debug.Log("move2");
-        //    velocity += Steer(targetPoint);
-        //}
-        velocity += Steer(targetPoint);
+        if (curPathIndex == pathLength - 1)
+            velocity += Steer(targetPoint, true);
+        else
+            velocity += Steer(targetPoint);
 
         transform.position += velocity; //Move the vehicle according to the velocity
 
         if (curPathIndex > 0)
-            playerDirection = movePath.GetPoint(curPathIndex) - movePath.GetPoint(curPathIndex - 1);
-            //playerDirection = movePath.locations[curPathIndex].transform.position - movePath.locations[curPathIndex - 1].transform.position;
-        //playerDirection = foremanPath.pointA[curPathIndex] - foremanPath.pointA[curPathIndex - 1];
+            playerDirection = foremanPath.pointA[curPathIndex] - foremanPath.pointA[curPathIndex - 1];
 
         transform.rotation = Quaternion.LookRotation(playerDirection); //Rotate the vehicle towards the desired Velocity
     }
 
     //Steering algorithm to steer the vector towards the target
-    public Vector3 Steer(Vector3 target)//, bool bFinalPoint = false)
+    public Vector3 Steer(Vector3 target, bool bFinalPoint = false)
     {
         //Calculate the directional vector from the current position towards the target point
         Vector3 desiredVelocity = (target - transform.position);

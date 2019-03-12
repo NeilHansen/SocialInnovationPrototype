@@ -72,8 +72,11 @@ public class RtsMover : MonoBehaviour {
 
     public void MovePlayer(Transform newPos)
     {
-       // ActiveUnit.GetComponent<NavMeshAgent>().SetDestination(newPos.position);
-        MovePlayer(newPos.position);
+        if (ActiveUnit != null)
+        {
+            // ActiveUnit.GetComponent<NavMeshAgent>().SetDestination(newPos.position);
+            MovePlayer(newPos.position);
+        }
 //Debug.Log("Fuck");
     }
 
