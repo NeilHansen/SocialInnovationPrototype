@@ -12,6 +12,7 @@ public class RtsMover : MonoBehaviour {
     //Moveing Wood
     public GameObject BigWood;
     public GameObject BigPipe;
+    bool AlreadyGivenPosition = false;
 
     [SerializeField]
     Vector3 originalPosition;
@@ -61,8 +62,8 @@ public class RtsMover : MonoBehaviour {
             }
 
 
-
-           MovePlayer(originalPosition);
+            //Causing issues
+         // MovePlayer(originalPosition);
             
           
         }
@@ -72,6 +73,7 @@ public class RtsMover : MonoBehaviour {
 
     public void MovePlayer(Transform newPos)
     {
+        Debug.Log(newPos);
         if (ActiveUnit != null)
         {
             // ActiveUnit.GetComponent<NavMeshAgent>().SetDestination(newPos.position);
@@ -82,6 +84,7 @@ public class RtsMover : MonoBehaviour {
 
     public void MovePlayer(Vector3 newPos)
     {
+        
         if (newPos != null)
         {
             ActiveUnit.GetComponent<NavMeshAgent>().SetDestination(newPos);
@@ -105,7 +108,7 @@ public class RtsMover : MonoBehaviour {
          
     }
 
-    public void MoveToWoodPile()
+    public void ClickedObject()
     {
         
     }

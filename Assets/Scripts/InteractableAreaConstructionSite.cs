@@ -53,6 +53,9 @@ public class InteractableAreaConstructionSite : MonoBehaviour
     public Sprite hoverSprite;
     public GameObject hoverSpriteObject;
 
+    [SerializeField]
+    Transform MovePoint;
+
 
 
 
@@ -126,12 +129,30 @@ public class InteractableAreaConstructionSite : MonoBehaviour
         UnitToMoveTo = rtsMover.ActiveUnit;
         if(UnitToMoveTo == carryWood)
         {
-            UnitToMoveTo = rtsMover.ActiveUnit.GetComponent<VisibilityManager>().Heavycarriers[0].gameObject;
+            if( rtsMover.ActiveUnit.GetComponent<VisibilityManager>().Heavycarriers[0].gameObject!= null)
+            {
+                UnitToMoveTo = rtsMover.ActiveUnit.GetComponent<VisibilityManager>().Heavycarriers[0].gameObject;
+            }
+
+            
+           
         }
         else if(UnitToMoveTo == CarryPipe)
         {
-            UnitToMoveTo = rtsMover.ActiveUnit.GetComponent<VisibilityManager>().Heavycarriers[0].gameObject;
+            if(rtsMover.ActiveUnit.GetComponent<VisibilityManager>().Heavycarriers[0].gameObject != null)
+            {
+                UnitToMoveTo = rtsMover.ActiveUnit.GetComponent<VisibilityManager>().Heavycarriers[0].gameObject;
+            }
+           
         }
+        //else
+        //{
+        //    if (MovePoint != null)
+        //    {
+        //        rtsMover.MovePlayer(MovePoint);
+        //    }
+           
+        //}
     }
 
     private void OnMouseOver()
@@ -1031,6 +1052,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
     {
         RtsMover Mover = FindObjectOfType<RtsMover>();
 
+       
         if (Heavycarriers.Count < 1)
         {
             Mover.MovePlayer(PipeHoldPositions[2].transform);
@@ -1046,6 +1068,9 @@ public class InteractableAreaConstructionSite : MonoBehaviour
             //Put feedback for unbable to complete here
         }
     }
+
+
+ 
 
 
 

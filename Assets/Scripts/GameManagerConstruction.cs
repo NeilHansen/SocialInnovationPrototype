@@ -45,6 +45,7 @@ public class GameManagerConstruction : MonoBehaviour {
     // Use this for initialization
     void Start() {
         timeValue = MaxTime;
+        HouseUI.AddToHouse(playerScore);
     }
 
     // Update is called once per frame
@@ -84,6 +85,7 @@ public class GameManagerConstruction : MonoBehaviour {
         playerScore++;
 
         HouseUI.AddToHouse(playerScore);
+       // timeValue = timeValue + 35;
 
         if (playerScore == 4)
         {

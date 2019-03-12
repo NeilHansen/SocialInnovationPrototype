@@ -161,11 +161,12 @@ public class UnitHighlight : MonoBehaviour {
             }
 
         }
-        if (other.gameObject.tag == "constructionarea" && other.gameObject.GetComponent<InteractableAreaConstructionSite>().UnitToMoveTo == this.gameObject)
+        if (other.gameObject.tag == "constructionarea" && other.gameObject.GetComponent<InteractableAreaConstructionSite>().UnitToMoveTo == rtsMover.ActiveUnit)
         {
             if (other.gameObject.GetComponent<InteractableAreaConstructionSite>().isInteracting == false)
             {
                 isInteracting = true;
+                
                 this.GetComponent<NavMeshAgent>().isStopped = true;
                 this.GetComponent<NavMeshAgent>().enabled = false;
                 rtsMover.ActiveUnit = null;
