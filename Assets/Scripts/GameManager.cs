@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour {
 
@@ -37,7 +38,7 @@ public class GameManager : MonoBehaviour {
 
     public float timerMultiplier = 0.1f;
 
-    public Text specialCustomerBonusText;
+    public GameObject specialCustomerBonusText;
     public float specialCustomerBonusMultiplier = 1.0f;
     public bool isBonusMultiplierOn = false;
 
@@ -51,7 +52,7 @@ public class GameManager : MonoBehaviour {
         
         satisfactionMeter.maxValue = defautlSatisfactionLevel;
         //StartNewCustomer();
-        specialCustomerBonusText.enabled = false;
+        specialCustomerBonusText.SetActive(false);
     }
 
 
@@ -62,7 +63,7 @@ public class GameManager : MonoBehaviour {
         timeValue -= 1 * Time.deltaTime;
         timerText.text = "" + (int)timeValue;
         timerTextBG.text = "" + (int)timeValue;
-        specialCustomerBonusText.text = "x" + specialCustomerBonusMultiplier;
+        specialCustomerBonusText.GetComponent<TextMeshProUGUI>().text = "x" + specialCustomerBonusMultiplier;
         if (timeValue <= 0)
         {
             Time.timeScale = 0.0f;
@@ -102,12 +103,12 @@ public class GameManager : MonoBehaviour {
 
         if (isBonusMultiplierOn)
         {
-            specialCustomerBonusText.enabled = true;
+            specialCustomerBonusText.SetActive(true);
             //specialCustomerBonusMultiplier = 2.0f;
         }
         else
         {
-            specialCustomerBonusText.enabled = false;
+            specialCustomerBonusText.SetActive(false);
             specialCustomerBonusMultiplier = 1.0f;
         }
 
