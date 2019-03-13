@@ -33,7 +33,7 @@ public class CustomerSpawn : MonoBehaviour {
             specialCustomerSpawn = true;
         }
 
-        if(specialCustomerSpawn && firstSpecialCustomerSpawn == 0)
+        if(specialCustomerSpawn && firstSpecialCustomerSpawn == 0.0f)
         {
             Instantiate(specialCustomerPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
             firstSpecialCustomerSpawn += 1.0f;
