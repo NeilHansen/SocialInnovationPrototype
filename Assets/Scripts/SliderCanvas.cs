@@ -5,20 +5,28 @@ using UnityEngine.UI;
 
 public class SliderCanvas : MonoBehaviour {
 
+    
+    public Button leftButton;
+    public Button rightButton;
     public GameObject player;
-    public Button positiveButton;
-    public Button negativeButton;
- 
 
     private Vector3 offset;
     private GameObject specialCustomer;
+    public Quaternion RotationToKeep;
 
 	// Use this for initialization
 	void Start () {
         offset = transform.position - player.transform.position;
+        if (leftButton != null)
+        {
+            leftButton.gameObject.SetActive(false);
+            rightButton.gameObject.SetActive(false);
+            RotationToKeep = player.transform.rotation;
+        }
+		
 
-        positiveButton.onClick.AddListener(PositiveRespond);
-        negativeButton.onClick.AddListener(NegativeRespond);
+        //positiveButton.onClick.AddListener(PositiveRespond);
+        //negativeButton.onClick.AddListener(NegativeRespond);
 	}
 	
 	// Update is called once per frame
@@ -26,24 +34,22 @@ public class SliderCanvas : MonoBehaviour {
         transform.position = player.transform.position + offset;
 
         specialCustomer = GameObject.FindGameObjectWithTag("SpecialCustomer");
+        player.transform.rotation = RotationToKeep;
 
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            positiveButton.enabled = true;
-            negativeButton.enabled = true;
-        }
+        //if(Vector3.Distance(specialCustomer.transform.position, transform.position) < 5.0f)
+        //{
+        //    positiveButton.gameObject.SetActive(true);
+        //    negativeButton.gameObject.SetActive(true);
+        //}
     }
 
     void PositiveRespond()
     {
-        Debug.Log(specialCustomer.GetComponent<Customer>().sprite[0].name);
         specialCustomer.GetComponent<Customer>().PositiveRespond();
     }
 
     void NegativeRespond()
     {
-        specialCustomer.GetComponent<Customer>().status.sprite = specialCustomer.GetComponent<Customer>().sprite[1];
+        specialCustomer.GetComponent<Customer>().NegativeRespond();
     }
-
-    
 }
