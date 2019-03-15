@@ -17,10 +17,13 @@ public class SliderCanvas : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         offset = transform.position - player.transform.position;
-
-		leftButton.gameObject.SetActive(false);
-		rightButton.gameObject.SetActive(false);
-        RotationToKeep = player.transform.rotation;
+        if (leftButton != null)
+        {
+            leftButton.gameObject.SetActive(false);
+            rightButton.gameObject.SetActive(false);
+            RotationToKeep = player.transform.rotation;
+        }
+		
 
         //positiveButton.onClick.AddListener(PositiveRespond);
         //negativeButton.onClick.AddListener(NegativeRespond);

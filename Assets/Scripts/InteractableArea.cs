@@ -65,6 +65,7 @@ public class InteractableArea : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        rtsMover = Camera.main.GetComponent<RtsMover>();
         Gm = GameObject.FindObjectOfType<GameManager>();
         counterSpace = gameObject.GetComponent<CounterSpace>();
         InvokeRepeating("TestDebug", 0.0f, 1.0f);
@@ -348,7 +349,7 @@ public class InteractableArea : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && other.gameObject == UnitToMoveTo)
         {
             interactingUnit = other.gameObject;
 
@@ -569,32 +570,12 @@ public class InteractableArea : MonoBehaviour
     {
 
         UnitToMoveTo = rtsMover.ActiveUnit;
-        if (UnitToMoveTo == carryWood)
+        if (MovePoint != null)
         {
-            if (rtsMover.ActiveUnit.GetComponent<VisibilityManager>().Heavycarriers[0].gameObject != null)
-            {
-                UnitToMoveTo = rtsMover.ActiveUnit.GetComponent<VisibilityManager>().Heavycarriers[0].gameObject;
-            }
-
-
-
+            rtsMover.MovePlayer(MovePoint);
         }
-        else if (UnitToMoveTo == CarryPipe)
-        {
-            if (rtsMover.ActiveUnit.GetComponent<VisibilityManager>().Heavycarriers[0].gameObject != null)
-            {
-                UnitToMoveTo = rtsMover.ActiveUnit.GetComponent<VisibilityManager>().Heavycarriers[0].gameObject;
-            }
 
-        }
-        else
-        {
-            if (MovePoint != null)
-            {
-                rtsMover.MovePlayer(MovePoint);
-            }
-
-        }
+        
     }
 
     public IEnumerator FlashFeedback(Image Player, Sprite image)
