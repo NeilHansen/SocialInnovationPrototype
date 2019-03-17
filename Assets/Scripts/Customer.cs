@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Customer : MonoBehaviour
 {
 
-	public CustomerMovePath customerPath;
+    public MovePath movePath;
 	public GameManager gameManager;
 	public bool leaveWhenMeterReachZero = false;
 
@@ -17,8 +17,7 @@ public class Customer : MonoBehaviour
 
 	public bool isMoving = true;
 	private float mass = 1.0f;
-	private float speed = 3.0f;
-	private bool isLooping = false;
+	private float speed = 5.0f;
 	private float curSpeed;
 	private int curPathIndex;
 	private float pathLength;
@@ -81,14 +80,13 @@ public class Customer : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
-		
 		Gm = FindObjectOfType<GameManager>();
-		customerPath = FindObjectOfType<CustomerMovePath>();
-		gameManager = FindObjectOfType<GameManager>();
+        movePath = FindObjectOfType<MovePath>();
+        gameManager = FindObjectOfType<GameManager>();
 		playerCanvas = FindObjectsOfType<SliderCanvas>();
 		status = FindObjectOfType<Image>();
-		pathLength = customerPath.Length;
-		curPathIndex = 0;
+        pathLength = movePath.Length;
+        curPathIndex = 0;
 		velocity = transform.forward;
 
 
@@ -117,7 +115,6 @@ public class Customer : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-
 		CheckSpherecast();
 
 
@@ -134,29 +131,8 @@ public class Customer : MonoBehaviour
 		if (currentHitDistance > 2.5f)
 			isMoving = true;
 
-		switch (curPathIndex)
-		{
-			case 1:
-				speed = 5.0f;
-				break;
-			case 2:
-				speed = 0.3f;
-				break;
-			case 3:
-				speed = 10.0f;
-				break;
-		}
-
 		if (isMoving)
 			AutoMove();
-
-		if (transform.position.z <= -12.0f)
-		{
-			if (gameObject.transform.parent == null)
-				Destroy(gameObject);
-			else
-				Destroy(gameObject.transform.parent.gameObject);
-		}
 	}
 
     void GenerateAttitudeList()
@@ -202,39 +178,35 @@ public class Customer : MonoBehaviour
 	Responds GenerateAttitude(Attitude cAttitude)
 	{
 		List<Responds> availableAttitudes = new List<Responds>();
-		//availableAttitudes.RemoveRange(0, availableAttitudes.Count);
+		availableAttitudes.RemoveRange(0, availableAttitudes.Count);
 		Responds retVal = new Responds();
 
 		foreach (Responds r in correctRespond)
 		{
-			if (r.customerAttitude != cAttitude || r.customerAttitude != Attitude.None)
+			if (r.customerAttitude != cAttitude && r.customerAttitude != Attitude.None)
 			{
 				availableAttitudes.Add(r);
+                Debug.Log(r.customerAttitude);
 			}
 		}
 
-		int tempRandom = Random.Range(0, 3);
-		if (tempRandom != previousRandoNum)
+		switch (Random.Range(0, 3))
 		{
-			previousRandoNum = tempRandom;
-			switch (tempRandom)
-			{
-				case 0:
-					retVal = availableAttitudes[0];
-					break;
-				case 1:
-					retVal = availableAttitudes[1];
-					break;
-				case 2:
-					retVal = availableAttitudes[2];
-					break;
-				case 3:
-					retVal = availableAttitudes[3];
-					break;
-				default:
-					Debug.Log("Error generating attitude");
-					break;
-			}
+			case 0:
+				retVal = availableAttitudes[0];
+				break;
+			case 1:
+				retVal = availableAttitudes[1];
+				break;
+			case 2:
+				retVal = availableAttitudes[2];
+				break;
+			case 3:
+				retVal = availableAttitudes[3];
+				break;
+			default:
+				Debug.Log("Error generating attitude");
+				break;
 		}
 
 		retVal.wrongAnswer = GenerateWrongRespond(retVal.correctAnswer);
@@ -375,6 +347,48 @@ public class Customer : MonoBehaviour
 		}
 	}
 
+    void ChangeStatus(Attitude a)
+    {
+        switch (a)
+        {
+            case Attitude.Angry:
+                status.sprite = sprite[0];
+                break;
+            case Attitude.BigSmile:
+                //currentAttitude = Attitude.Sad;
+                status.sprite = sprite[1];
+                break;
+            case Attitude.Confused:
+                //currentAttitude = Attitude.Cry;
+                status.sprite = sprite[2];
+                break;
+            case Attitude.Cry:
+                //currentAttitude = Attitude.Smile;
+                status.sprite = sprite[3];
+                break;
+            case Attitude.Frown:
+                //currentAttitude = Attitude.BigSmile;
+                status.sprite = sprite[4];
+                break;
+            case Attitude.Smile:
+                //currentAttitude = Attitude.Love;
+                status.sprite = sprite[5];
+                break;
+            case Attitude.SuperSad:
+                //currentAttitude = Attitude.Angry;
+                status.sprite = sprite[6];
+                break;
+            case Attitude.Surprised:
+                //currentAttitude = Attitude.Surprised;
+                status.sprite = sprite[7];
+                break;
+            case Attitude.Wink:
+                //currentAttitude = Attitude.Confused;
+                status.sprite = sprite[8];
+                break;
+        }
+    }
+
     void TriggerDialogue()
     {      
 		foreach (SliderCanvas sC in playerCanvas)
@@ -413,122 +427,30 @@ public class Customer : MonoBehaviour
         }
     }*/
 
-    public void PositiveRespond()
-    {
+    //public void PositiveRespond()
+    //{
 		
-        if (talkTimes < 2)
-        {
-            talkTimes++;
-        }
+    //    if (talkTimes < 2)
+    //    {
+    //        talkTimes++;
+    //    }
 
-        ChangeStatus(positiveRespond);
-    }
+    //    ChangeStatus(positiveRespond);
+    //}
 
-    public void NegativeRespond()
-    {
+    //public void NegativeRespond()
+    //{
 		
-        if(talkTimes < 2)
-        {
-            talkTimes++;
-        }
+    //    if(talkTimes < 2)
+    //    {
+    //        talkTimes++;
+    //    }
 
-        ChangeStatus(negativeRespond);
-    }
+    //    ChangeStatus(negativeRespond);
+    //}
 
-    void ChangeStatus(Attitude a)
-    {
-        switch(a)
-        {
-			case Attitude.Angry:
-                status.sprite = sprite[0];
-                break;
-            case Attitude.BigSmile:
-                //currentAttitude = Attitude.Sad;
-                status.sprite = sprite[1];
-                break;
-			case Attitude.Confused:
-                //currentAttitude = Attitude.Cry;
-                status.sprite = sprite[2];
-                break;
-            case Attitude.Cry:
-                //currentAttitude = Attitude.Smile;
-                status.sprite = sprite[3];
-                break;
-            case Attitude.Frown:
-                //currentAttitude = Attitude.BigSmile;
-                status.sprite = sprite[4];
-                break;
-            case Attitude.Smile:
-                //currentAttitude = Attitude.Love;
-                status.sprite = sprite[5];
-                break;
-			case Attitude.SuperSad:
-                //currentAttitude = Attitude.Angry;
-                status.sprite = sprite[6];
-                break;
-            case Attitude.Surprised:
-                //currentAttitude = Attitude.Surprised;
-                status.sprite = sprite[7];
-                break;
-            case Attitude.Wink:
-                //currentAttitude = Attitude.Confused;
-                status.sprite = sprite[8];
-                break;
-        }
-    }
-
-    /*public void ChangeRespond(Attitude a)
-    {
-        foreach (SliderCanvas sC in playerCanvas)
-        {
-            switch (a)
-            {
-                case Attitude.SuperSad:
-					sC.leftButton.image.sprite = sprite[6];
-					sC.rightButton.image.sprite = sprite[8];
-                    negativeRespond = Attitude.Angry;
-                    positiveRespond = Attitude.Surprised;
-                    break;
-                case Attitude.Sad:
-					sC.leftButton.image.sprite = sprite[7];
-					sC.rightButton.image.sprite = sprite[8];
-                    negativeRespond = Attitude.Confused;
-                    positiveRespond = Attitude.Surprised;
-                    break;
-                case Attitude.Smile:
-					sC.leftButton.image.sprite = sprite[7];
-					sC.rightButton.image.sprite = sprite[4];
-                    negativeRespond = Attitude.Confused;
-                    positiveRespond = Attitude.BigSmile;
-                    break;
-                case Attitude.Angry:
-					sC.leftButton.image.sprite = sprite[2];
-					sC.rightButton.image.sprite = sprite[7];
-                    negativeRespond = Attitude.Cry;
-                    positiveRespond = Attitude.Confused;
-                    break;
-                case Attitude.Confused:
-					sC.leftButton.image.sprite = sprite[6];
-					sC.rightButton.image.sprite = sprite[8];
-                    negativeRespond = Attitude.Angry;
-                    positiveRespond = Attitude.Surprised;
-                    break;
-                case Attitude.Surprised:
-					sC.leftButton.image.sprite = sprite[7];
-					sC.rightButton.image.sprite = sprite[4];
-                    negativeRespond = Attitude.Confused;
-                    positiveRespond = Attitude.BigSmile;
-                    break;
-                case Attitude.BigSmile:
-					sC.leftButton.image.sprite = sprite[8];
-					sC.rightButton.image.sprite = sprite[5];
-                    negativeRespond = Attitude.Surprised;
-                    positiveRespond = Attitude.Love;
-                    break;
-            }
-        }
-    }*/
     
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "CustomerWaitArea")
@@ -568,18 +490,28 @@ public class Customer : MonoBehaviour
     {
         curSpeed = speed * Time.deltaTime;
 
-        targetPoint = customerPath.GetPoint(curPathIndex);
-
+        targetPoint = movePath.GetPoint(curPathIndex);
         //If reach the radius within the path then move to next point in the path
-        if (Vector3.Distance(transform.position, targetPoint) < customerPath.Radius)
+        if (Vector3.Distance(transform.position, targetPoint) <= movePath.Radius)
         {
             //Don't move the vehicle if path is finished 
             if (curPathIndex < pathLength - 1)
+            {
                 curPathIndex++;
-            else if (isLooping)
-                curPathIndex = 0;
+                if (curPathIndex == 3)
+                {
+                    isMoving = false;
+                    return;
+                }
+            }
             else
+            {
+                if (gameObject.transform.parent == null)
+                    Destroy(gameObject);
+                else
+                    Destroy(gameObject.transform.parent.gameObject);
                 return;
+            }
         }
 
         //Move the vehicle until the end point is reached in the path
@@ -587,15 +519,16 @@ public class Customer : MonoBehaviour
             return;
 
         //Calculate the next Velocity towards the path
-        if (curPathIndex == pathLength - 1)
-            velocity += Steer(targetPoint, true);
-        else
+        //if (curPathIndex == pathLength - 1)
+        //    velocity += Steer(targetPoint, true);
+        //else
             velocity += Steer(targetPoint);
 
+        //velocity += Steer(targetPoint);
         transform.position += velocity; //Move the vehicle according to the velocity
 
         if(curPathIndex > 0)
-            playerDirection = customerPath.pointA[curPathIndex] - customerPath.pointA[curPathIndex - 1];
+            playerDirection = movePath.GetPoint(curPathIndex) - movePath.GetPoint(curPathIndex - 1);
 
         transform.rotation = Quaternion.LookRotation(playerDirection); //Rotate the vehicle towards the desired Velocity
     }
