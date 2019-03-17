@@ -54,6 +54,8 @@ public class UnitTaskController : MonoBehaviour
         ComboWood,
         ComboPipe,
         Nails,
+        GiftBox
+
     }
 
     // Put things on the table
@@ -69,7 +71,7 @@ public class UnitTaskController : MonoBehaviour
         ComboWood,
         ComboPipe,
         Nails,
-        PipeConnector
+        PipeConnector,
     }
     public ObjectHeld objectHolding;
 

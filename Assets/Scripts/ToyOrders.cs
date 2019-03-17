@@ -44,8 +44,8 @@ public class ToyOrders : MonoBehaviour {
 
         if (item1Received && item2Received && item3Received)
         {
-            Debug.Log("All items ready");
-            transform.position = new Vector3(0.0f, 0.0f, 0.0f);
+           // Debug.Log("All items ready");
+           // transform.position = new Vector3(0.0f, 0.0f, 0.0f);
             canPickUp = true;
         }
 
