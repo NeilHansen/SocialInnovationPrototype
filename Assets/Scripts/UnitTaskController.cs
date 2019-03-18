@@ -54,7 +54,11 @@ public class UnitTaskController : MonoBehaviour
         ComboWood,
         ComboPipe,
         Nails,
-        GiftBox
+        GiftBox,
+        Doll,
+        Ball,
+        Robot,
+        BaseballBat
 
     }
 
