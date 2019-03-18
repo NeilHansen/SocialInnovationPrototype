@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Customer : MonoBehaviour
 {
 
-    public MovePath movePath;
+    public CustomerMovePath movePath;
 	public GameManager gameManager;
 	public bool leaveWhenMeterReachZero = false;
 
@@ -81,7 +81,7 @@ public class Customer : MonoBehaviour
 	void Start()
 	{
 		Gm = FindObjectOfType<GameManager>();
-        movePath = FindObjectOfType<MovePath>();
+        movePath = FindObjectOfType<CustomerMovePath>();
         gameManager = FindObjectOfType<GameManager>();
 		playerCanvas = FindObjectsOfType<SliderCanvas>();
 		status = FindObjectOfType<Image>();

@@ -79,6 +79,9 @@ public class InteractableArea : MonoBehaviour
         Status = GameObject.FindGameObjectWithTag("PlayerCanvas1").transform.GetChild(1).GetComponent<Image>();
         Status2 = GameObject.FindGameObjectWithTag("Player Canvas2").transform.GetChild(1).GetComponent<Image>();
 
+        hoverSpriteObject.GetComponent<Image>().sprite = hoverSprite;
+        hoverSpriteObject.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -663,13 +666,13 @@ public class InteractableArea : MonoBehaviour
 
     }
 
-    //private void OnMouseOver()
-    //{
-    //    hoverSpriteObject.SetActive(true);
-    //}
+    private void OnMouseOver()
+    {
+        hoverSpriteObject.SetActive(true);
+    }
 
-    //private void OnMouseExit()
-    //{
-    //    hoverSpriteObject.SetActive(false);
-    //}
+    private void OnMouseExit()
+    {
+        hoverSpriteObject.SetActive(false);
+    }
 }
