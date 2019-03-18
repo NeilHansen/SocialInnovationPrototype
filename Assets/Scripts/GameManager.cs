@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour {
         {
             Time.timeScale = 0.0f;
             EndingScreen.SetActive(true);
-            EndingScreen.GetComponent<EndScreen>().EndGame();
+            EndingScreen.GetComponent<ToysEndGame>().EndGame();
             
         }
 

@@ -228,6 +228,9 @@ public class InteractableArea : MonoBehaviour
 
             case AreaType.Truck:
                 interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
+
+                GetComponent<ToyTruck>().AddPackage();
+
                 //Add Score to truck
                 //Respawn box   
                 GiftboxSpawn[] boxSpawnnerArray = FindObjectsOfType<GiftboxSpawn>();

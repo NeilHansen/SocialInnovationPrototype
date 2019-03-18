@@ -12,10 +12,10 @@ public class ToyTruck : MonoBehaviour {
     float CurrentLerpTime = 0;
     [SerializeField]
     float TotalLerpTime = 2;
-
+    public float TruckWaitTime=60;
     [SerializeField]
+    ToyDriveGameManager GM;
 
-    public float DriveSpeed;
 
 	// Use this for initialization
 	void Start () {
@@ -39,14 +39,14 @@ public class ToyTruck : MonoBehaviour {
         {
             StartCoroutine(MoveTruck(true));
             //Add to game score
-            packages = 0;
+            GM.AddScore();
            
         }
 
     }
 
 
-    public void TallyUpPackages()
+    public void Drive()
     {
         //When progress bar runs out tally up score and drive away
         StartCoroutine(MoveTruck(true));
@@ -66,7 +66,9 @@ public class ToyTruck : MonoBehaviour {
 
             float perc = CurrentLerpTime / TotalLerpTime;
 
-            transform.position= Vector3.Lerp (new Vector3 (MoveToPoints[0].position.x,transform.position.y, MoveToPoints[0].position.z), new Vector3( MoveToPoints[1].position.x, transform.position.y, MoveToPoints[1].position.z), perc);
+            Debug.Log(MoveToPoints[0].transform);
+            
+           gameObject.transform.position= Vector3.Lerp (new Vector3 (MoveToPoints[0].position.x,transform.position.y, MoveToPoints[0].position.z), new Vector3( MoveToPoints[1].position.x, transform.position.y, MoveToPoints[1].position.z), perc);
 
         }
 
@@ -78,11 +80,11 @@ public class ToyTruck : MonoBehaviour {
             {
                 CurrentLerpTime = TotalLerpTime;
             }
-
+          
             float perc = CurrentLerpTime / TotalLerpTime;
 
-
-            transform.position = Vector3.Lerp(new Vector3(MoveToPoints[1].position.x, transform.position.y, MoveToPoints[1].position.z), new Vector3(MoveToPoints[0].position.x, transform.position.y, MoveToPoints[0].position.z), perc);
+            Debug.Log(MoveToPoints[0].transform.position);
+            gameObject. transform.position = Vector3.Lerp(new Vector3(MoveToPoints[1].position.x, transform.position.y, MoveToPoints[1].position.z), new Vector3(MoveToPoints[0].position.x, transform.position.y, MoveToPoints[0].position.z), perc);
         }
     }
 
@@ -93,8 +95,12 @@ public class ToyTruck : MonoBehaviour {
 
     IEnumerator MoveTruck(bool leaving)
     {
+
         if (leaving)
         {
+            
+            GM.hasTruck = false;
+
             while (transform.position.x < MoveToPoints[1].position.x)
             {
                 LerpTruck(true);
@@ -103,14 +109,16 @@ public class ToyTruck : MonoBehaviour {
 
             CurrentLerpTime = 0;
             yield return new WaitForSeconds(1.5f);
-
+            packages = 0;
             while (transform.position.x > MoveToPoints[0].position.x)
             {
+
                 //DriveTruck In
                 LerpTruck(false);
                 yield return new WaitForFixedUpdate();
             }
 
+            GM.StartNewTruck();
             //Reset Progress meter
         }
 
@@ -120,10 +128,13 @@ public class ToyTruck : MonoBehaviour {
             while (transform.position.x > MoveToPoints[0].position.x)
             {
                 //DriveTruck In
+                Debug.Log("Lerp Truck");
                 LerpTruck(false);
                 yield return new WaitForFixedUpdate();
             }
             CurrentLerpTime = 0;
+            GM.StartNewTruck();
+
         }
 
 

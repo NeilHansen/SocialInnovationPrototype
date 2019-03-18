@@ -6,12 +6,12 @@ using TMPro;
 
 public class ToyDriveGameManager : MonoBehaviour {
 
-    public Text timerText;
-    public Text timerTextBG;
     public float timeValue;
 
+    public TextMeshProUGUI TimeRemaining;
+
     public Slider satisfactionMeter;
-    public bool hasCustomer = false;
+    public bool hasTruck = false;
     public float defautlSatisfactionLevel;
     public float defaultFoodValue;
 
@@ -19,6 +19,8 @@ public class ToyDriveGameManager : MonoBehaviour {
     public Text scoreText;
     private float currentFoodValue;
     public float playerScore;
+    public ToyTruck Truck;
+    public  float PointsPerPackage = 25;
 
     //satisfaction visual Mods
     [SerializeField]
@@ -35,10 +37,13 @@ public class ToyDriveGameManager : MonoBehaviour {
     [SerializeField]
     GameObject EndingScreen;
 
-    public float timerMultiplier = 0.1f;
+    float TimeTruckStarted;
+
+    //public float timerMultiplier = 0.1f;
 
 
     public bool isBonusMultiplierOn = false;
+    public TextMeshProUGUI PackageCounter;
 
 
 
@@ -46,10 +51,9 @@ public class ToyDriveGameManager : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        timerText.text = "" + (int)timeValue;
-        timerTextBG.text = "" + (int)timeValue;
+     
 
-        satisfactionMeter.maxValue = defautlSatisfactionLevel;
+        satisfactionMeter.maxValue = 1;
        
       
     }
@@ -61,85 +65,71 @@ public class ToyDriveGameManager : MonoBehaviour {
     {
         //Game timer
         timeValue -= 1 * Time.deltaTime;
-        timerText.text = "" + (int)timeValue;
-        timerTextBG.text = "" + (int)timeValue;
+        TimeRemaining.text =""+(int)timeValue ;
+
+        PackageCounter.text = "packages: " + Truck.packages + "/4";
+     
      
         if (timeValue <= 0)
         {
             Time.timeScale = 0.0f;
             EndingScreen.SetActive(true);
-            EndingScreen.GetComponent<EndScreen>().EndGame();
+            EndingScreen.GetComponent<ToysEndGame>().EndGame();
 
         }
 
-        if (hasCustomer)
-        {
-            satisfactionMeter.value -= Time.deltaTime * timerMultiplier;
-            if (satisfactionMeter.value > 1.04f)
-            {
-                satisfactionMeter.GetComponentInChildren<Image>().color = Colors[0];
-                SatisfactionFace.sprite = Satisfactionemojis[0];
-                SatisfactionText.color = Colors[0];
+        TruckWaitMeter();
 
-            }
 
-            else if (satisfactionMeter.value > .38f)
-            {
-                satisfactionMeter.GetComponentInChildren<Image>().color = Colors[1];
-                SatisfactionFace.sprite = Satisfactionemojis[1];
-                SatisfactionText.color = Colors[1];
 
-            }
 
-            else
-            {
-                satisfactionMeter.GetComponentInChildren<Image>().color = Colors[2];
-                SatisfactionFace.sprite = Satisfactionemojis[2];
-                SatisfactionText.color = Colors[2];
-
-            }
-
-        }
 
 
     }
 
-    public void Test()
+  
+    public void StartNewTruck()
     {
-        Debug.Log("test");
-    }
-
-    public void StartNewCustomer()
-    {
-        satisfactionMeter.value = defautlSatisfactionLevel;
-        hasCustomer = true;
+        satisfactionMeter.value = 1;
+        TimeTruckStarted = Time.time;
+        hasTruck = true;
     }
 
     public void AddScore()
     {
-        //currentFoodValue = defaultFoodValue * satisfactionMeter.value;
+        hasTruck = false;
+        Truck.Drive();
+        float CurrentScoreValue = PointsPerPackage * Truck.packages;
 
-        if (satisfactionMeter.value > 1.04f)
+        switch (Truck.packages)
         {
-          
-            StartCoroutine(FlashScoreAdded(0));
-        }
+             case 0:
+                StartCoroutine(FlashScoreAdded(2));
+                break;
 
-        else if (satisfactionMeter.value > .38f)
-        {
-           
-            StartCoroutine(FlashScoreAdded(1));
-        }
-        else
-        {
-            
-            StartCoroutine(FlashScoreAdded(2));
-        }
+            case 1:
+                StartCoroutine(FlashScoreAdded(2));
+                break;
 
-        isBonusMultiplierOn = false;
+            case 2:
+                StartCoroutine(FlashScoreAdded(1));
+                break;
 
-        ScoreAdded.text = "+" + currentFoodValue;
-        playerScore += currentFoodValue;
+            case 3:
+                StartCoroutine(FlashScoreAdded(1));
+                break;
+
+            case 4:
+                StartCoroutine(FlashScoreAdded(0));
+                break;
+
+
+        }
+        
+
+        ScoreAdded.text = "+" + CurrentScoreValue;
+        playerScore += CurrentScoreValue;
+
         scoreText.text = "Score: " + (int)playerScore;
     }
 
@@ -150,11 +140,54 @@ public class ToyDriveGameManager : MonoBehaviour {
 
     //Flashes the amount of points the player received
 
+    public void TruckWaitMeter()
+    {
+        if (hasTruck)
+        {
+            satisfactionMeter.value = (Truck.TruckWaitTime - (Time.time - TimeTruckStarted))/Truck.TruckWaitTime;
+
+            Debug.Log(satisfactionMeter.value + "This is the value");
+
+
+           
+            if (satisfactionMeter.value > .70f)
+            {
+                satisfactionMeter.GetComponentInChildren<Image>().color = Colors[0];
+                //SatisfactionFace.sprite = Satisfactionemojis[0];
+                SatisfactionText.color = Colors[0];
+
+            }
+
+            else if (satisfactionMeter.value > .245f)
+            {
+                satisfactionMeter.GetComponentInChildren<Image>().color = Colors[1];
+               // SatisfactionFace.sprite = Satisfactionemojis[1];
+                SatisfactionText.color = Colors[1];
+
+            }
+
+            else
+            {
+                satisfactionMeter.GetComponentInChildren<Image>().color = Colors[2];
+                //SatisfactionFace.sprite = Satisfactionemojis[2];
+                SatisfactionText.color = Colors[2];
+
+            }
+
+            if(satisfactionMeter.value <= 0)
+            {
+                AddScore();
+            }
+
+            
+
+        }
+    }
 
 
     IEnumerator FlashScoreAdded(int index)
     {
-        Debug.Log("COROUTINE");
+        
         ScoreAdded.enabled = true;
         ScoreAdded.color = Colors[index];
         yield return new WaitForSeconds(1);
