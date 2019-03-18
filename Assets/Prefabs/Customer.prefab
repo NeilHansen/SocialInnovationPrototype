@@ -198,18 +198,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d24d88206666ba24c96671a4f29f9c4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  customerPath: {fileID: 0}
+  movePath: {fileID: 0}
   gameManager: {fileID: 0}
   leaveWhenMeterReachZero: 0
+  currentSituation: []
   sprite: []
+  newSituationSprites: []
   status: {fileID: 0}
   isMoving: 1
   currentHitObject: {fileID: 0}
   maxRaycastDistance: 20
-  sphereRadius: 0.3
+  sphereRadius: 0.5
   layerMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  attitudeList: 
+  correctTimes: 0
+  positiveMultiplier: 2
+  negativeMultiplier: 0.5
+  happyPointText: {fileID: 0}
 --- !u!135 &135819962649302066
 SphereCollider:
   m_ObjectHideFlags: 1

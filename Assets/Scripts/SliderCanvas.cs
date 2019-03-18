@@ -43,13 +43,13 @@ public class SliderCanvas : MonoBehaviour {
         //}
     }
 
-    void PositiveRespond()
-    {
-        specialCustomer.GetComponent<Customer>().PositiveRespond();
-    }
+    //void PositiveRespond()
+    //{
+    //    specialCustomer.GetComponent<Customer>().PositiveRespond();
+    //}
 
-    void NegativeRespond()
-    {
-        specialCustomer.GetComponent<Customer>().NegativeRespond();
-    }
+    //void NegativeRespond()
+    //{
+    //    specialCustomer.GetComponent<Customer>().NegativeRespond();
+    //}
 }

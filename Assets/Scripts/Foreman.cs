@@ -65,31 +65,6 @@ public class Foreman : MonoBehaviour
     void Update()
     {
 
-        //if (Input.GetKeyDown(KeyCode.Q))
-        //{
-        //    ReceiveItem(ToolList.Nails);
-        //}
-        //if (Input.GetKeyDown(KeyCode.W))
-        //{
-        //    ReceiveItem(ToolList.SmallPipe);
-        //}
-        //if (Input.GetKeyDown(KeyCode.E))
-        //{
-        //    ReceiveItem(ToolList.SmallWood);
-        //}
-        //if (Input.GetKeyDown(KeyCode.A))
-        //{
-        //    ReceiveItem(ToolList.ComboPipe);
-        //}
-        //if (Input.GetKeyDown(KeyCode.S))
-        //{
-        //    ReceiveItem(ToolList.ComboWood);
-        //}
-        //if (Input.GetKeyDown(KeyCode.D))
-        //{
-        //    ReceiveItem(ToolList.PipeConnector);
-        //}
-
         item1Quantity.text = "x " + finalItemList[0].amount.ToString();
         if (finalItemList.Count > 1)
             item2Quantity.text = "x " + finalItemList[1].amount.ToString();
