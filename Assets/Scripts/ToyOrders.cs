@@ -9,7 +9,7 @@ public class ToyOrders : MonoBehaviour {
     {
         Ball,
         Doll,
-        Playdough,
+        BaseballBat,
         Robot
     }
 
@@ -54,7 +54,7 @@ public class ToyOrders : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.W))
             ReceiveItem(ToyList.Doll);
         if (Input.GetKeyDown(KeyCode.E))
-            ReceiveItem(ToyList.Playdough);
+            ReceiveItem(ToyList.BaseballBat);
         if (Input.GetKeyDown(KeyCode.R))
             ReceiveItem(ToyList.Robot);
     }
@@ -110,7 +110,7 @@ public class ToyOrders : MonoBehaviour {
         defaultItemList = new List<ToyList>();
         defaultItemList.Add(ToyList.Ball);
         defaultItemList.Add(ToyList.Doll);
-        defaultItemList.Add(ToyList.Playdough);
+        defaultItemList.Add(ToyList.BaseballBat);
         defaultItemList.Add(ToyList.Robot);
 
         //List<ToyList> shuffledList = new List<ToyList>();

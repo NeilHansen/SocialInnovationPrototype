@@ -20,11 +20,15 @@ public class InteractableArea : MonoBehaviour
 
     public Slider feedbackSlider;
     public Slider feedbackSlider2;
+    public Slider feedbackSlider3;
+    public Slider feedbackSlider4;
 
 
     //Player UI status
     public Image Status;
     public Image Status2;
+    public Image Status3;
+    public Image Status4;
     public Sprite[] FeedbackSprites;
     bool FeedBackFiredAlready = false;
 
@@ -57,7 +61,11 @@ public class InteractableArea : MonoBehaviour
         TrashCan,
         Counter,
         GiftBox,
-        Truck
+        Truck,
+        DollBin,
+        BallBin,
+        RobotBin,
+        BaseballBatBin
     }
 
     //Put things on the counters
@@ -75,9 +83,13 @@ public class InteractableArea : MonoBehaviour
         InvokeRepeating("TestDebug", 0.0f, 1.0f);
         feedbackSlider = GameObject.FindGameObjectWithTag("PlayerCanvas1").transform.GetChild(0).GetComponent<Slider>();
         feedbackSlider2 = GameObject.FindGameObjectWithTag("Player Canvas2").transform.GetChild(0).GetComponent<Slider>();
+        feedbackSlider3 = GameObject.FindGameObjectWithTag("Player Canvas3").transform.GetChild(0).GetComponent<Slider>();
+        feedbackSlider4 = GameObject.FindGameObjectWithTag("Player Canvas4").transform.GetChild(0).GetComponent<Slider>();
 
         Status = GameObject.FindGameObjectWithTag("PlayerCanvas1").transform.GetChild(1).GetComponent<Image>();
         Status2 = GameObject.FindGameObjectWithTag("Player Canvas2").transform.GetChild(1).GetComponent<Image>();
+        Status3 = GameObject.FindGameObjectWithTag("Player Canvas3").transform.GetChild(1).GetComponent<Image>();
+        Status4 = GameObject.FindGameObjectWithTag("Player Canvas4").transform.GetChild(1).GetComponent<Image>();
 
         hoverSpriteObject.GetComponent<Image>().sprite = hoverSprite;
         hoverSpriteObject.SetActive(false);
@@ -182,9 +194,36 @@ public class InteractableArea : MonoBehaviour
                 break;
 
             case AreaType.GiftBox:
-                interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.GiftBox;
-                Destroy(this.gameObject.transform.GetChild(1).gameObject);
-                this.gameObject.GetComponent<GiftboxSpawn>().hasBox = false;
+                if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Doll)
+                {
+                    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
+                    this.gameObject.GetComponentInChildren<ToyOrders>().ReceiveItem(ToyOrders.ToyList.Doll);
+                    Debug.Log("Added Doll!!");  
+                }
+                else if(interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Ball)
+                {
+                    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
+                    this.gameObject.GetComponentInChildren<ToyOrders>().ReceiveItem(ToyOrders.ToyList.Ball);
+                    Debug.Log("Added Ball!!");
+                }
+                else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Robot)
+                {
+                    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
+                    this.gameObject.GetComponentInChildren<ToyOrders>().ReceiveItem(ToyOrders.ToyList.Robot);
+                    Debug.Log("Added Robot!!");
+                }
+                else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.BaseballBat)
+                {
+                    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
+                    this.gameObject.GetComponentInChildren<ToyOrders>().ReceiveItem(ToyOrders.ToyList.BaseballBat);
+                    Debug.Log("Added Robot!!");
+                }
+                else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
+                {
+                    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.GiftBox;
+                    Destroy(this.gameObject.transform.GetChild(2).gameObject);
+                    this.gameObject.GetComponent<GiftboxSpawn>().hasBox = false;
+                }
                 break;
 
             case AreaType.Truck:
@@ -198,9 +237,21 @@ public class InteractableArea : MonoBehaviour
                     {
                         item.Respawn();
                     }
-                   
                 }
                 break;
+            case AreaType.DollBin:
+                interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.Doll;
+                break;
+            case AreaType.BallBin:
+                interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.Ball;
+                break;
+            case AreaType.RobotBin:
+                interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.Robot;
+                break;
+            case AreaType.BaseballBatBin:
+                interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.BaseballBat;
+                break;
+
             case AreaType.Counter:
                 //Nothing is on the counter
                 if (!isOnCounter)
@@ -393,9 +444,6 @@ public class InteractableArea : MonoBehaviour
                         if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
                         {
                             OnInteraction(interactingUnit);
-                            //isInteracting = true;
-                            //interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
-                            //interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
                         }
                         else
                         {
@@ -406,22 +454,17 @@ public class InteractableArea : MonoBehaviour
                         }
                     }
                     break;
+
                 case AreaType.CookingArea:
                     if (!isInteracting && !isComplete)
                     {
                         if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.RawFood && foodServings < 3)
                         {
                             OnInteraction(interactingUnit);
-                            //isInteracting = true;
-                            //interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
-                            //interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
                         }
                         else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.CleanPlate && foodServings > 0)
                         {
                             OnInteraction(interactingUnit);
-                            //isInteracting = true;
-                            //interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
-                            //interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
                         }
                         else
                         {
@@ -431,8 +474,8 @@ public class InteractableArea : MonoBehaviour
                             }
                         }
                     }
-
                     break;
+
                 case AreaType.SinkArea:
                     if (!isInteracting && !isComplete)
                     {
@@ -453,15 +496,13 @@ public class InteractableArea : MonoBehaviour
                         }
                     }
                     break;
+
                 case AreaType.ServingArea:
                     if (!isInteracting && !isComplete)
                     {
                         if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.CookedFood)
                         {
                             OnInteraction(interactingUnit);
-                            //isInteracting = true;
-                            //interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
-                            //interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
                         }
 
                         else
@@ -473,15 +514,13 @@ public class InteractableArea : MonoBehaviour
                         }
                     }
                     break;
+
                 case AreaType.DirtyDishReturn:
                     if (!isInteracting && !isComplete)
                     {
                         if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
                         {
                             OnInteraction(interactingUnit);
-                            //isInteracting = true;
-                            //interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
-                            //interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
                             interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.DirtyPlate;
                         }
                         else
@@ -493,15 +532,13 @@ public class InteractableArea : MonoBehaviour
                         }
                     }
                     break;
+
                 case AreaType.TrashCan:
                     if (!isInteracting && !isComplete)
                     {
                         if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType != UnitTaskController.TaskType.None)
                         {
                             OnInteraction(interactingUnit);
-                            //isInteracting = true;
-                            //interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
-                            //interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
                             interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
                         }
                         else
@@ -513,6 +550,7 @@ public class InteractableArea : MonoBehaviour
                         }
                     }
                     break;
+
                 case AreaType.Counter:
                     if (!isInteracting && !isComplete)
                     {
@@ -528,18 +566,49 @@ public class InteractableArea : MonoBehaviour
                         }
                     }
                     break;
+
                 case AreaType.GiftBox:
                     if (!isInteracting && !isComplete)
                     {
-                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None
-                        && interactingUnit.gameObject.name == "Unit1"
-                        && this.gameObject.GetComponentInChildren<ToyOrders>().canPickUp == true)
+                        if (interactingUnit.gameObject.name == "Unit1")
+                        {
+                            if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None
+                            && this.gameObject.GetComponentInChildren<ToyOrders>().canPickUp == true)
+                            {
+                                OnInteraction(interactingUnit);
+                            }
+                            else
+                            {
+                                if (FeedBackFiredAlready == false)
+                                {
+                                    NegativeFeedback(other);
+                                }
+                            }
+                        }
+                        else if(interactingUnit.gameObject.name != "Unit1")
+                        {
+                            if(interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType != UnitTaskController.TaskType.None)
+                            {
+                                OnInteraction(interactingUnit);
+                            }
+                            else
+                            {
+                                if (FeedBackFiredAlready == false)
+                                {
+                                    NegativeFeedback(other);
+                                }
+                            }
+                        }
+                        
+                    }
+                    break;
+
+                case AreaType.Truck:
+                    if (!isInteracting && !isComplete)
+                    {
+                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.GiftBox && interactingUnit.gameObject.name == "Unit1")
                         {
                             OnInteraction(interactingUnit);
-                            //isInteracting = true;
-                            //interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
-                            //interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
-                            //interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.GiftBox;
                         }
                         else
                         {
@@ -550,10 +619,62 @@ public class InteractableArea : MonoBehaviour
                         }
                     }
                     break;
-                case AreaType.Truck:
+
+                case AreaType.DollBin:
                     if (!isInteracting && !isComplete)
                     {
-                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.GiftBox && interactingUnit.gameObject.name == "Unit1")
+                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None )
+                        {
+                            OnInteraction(interactingUnit);
+                        }
+                        else
+                        {
+                            if (FeedBackFiredAlready == false)
+                            {
+                                NegativeFeedback(other);
+                            }
+                        }
+                    }
+                    break;
+
+                case AreaType.BallBin:
+                    if (!isInteracting && !isComplete)
+                    {
+                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
+                        {
+                            OnInteraction(interactingUnit);
+                        }
+                        else
+                        {
+                            if (FeedBackFiredAlready == false)
+                            {
+                                NegativeFeedback(other);
+                            }
+                        }
+                    }
+                    break;
+
+                case AreaType.RobotBin:
+                    if (!isInteracting && !isComplete)
+                    {
+                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
+                        {
+                            OnInteraction(interactingUnit);
+                        }
+                        else
+                        {
+                            if (FeedBackFiredAlready == false)
+                            {
+                                NegativeFeedback(other);
+                            }
+                        }
+                    }
+                    break;
+
+                case AreaType.BaseballBatBin:
+                    if (!isInteracting && !isComplete)
+                    {
+                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
                         {
                             OnInteraction(interactingUnit);
                         }

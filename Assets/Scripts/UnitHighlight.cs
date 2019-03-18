@@ -19,6 +19,7 @@ public class UnitHighlight : MonoBehaviour {
 
     void Start()
     {
+        rtsMover = Camera.main.GetComponent<RtsMover>();
         numberOfUnits = GameObject.FindGameObjectsWithTag("Player").Length;
     }
 
