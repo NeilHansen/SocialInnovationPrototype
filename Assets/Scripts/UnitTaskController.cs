@@ -58,7 +58,10 @@ public class UnitTaskController : MonoBehaviour
         Doll,
         Ball,
         Robot,
-        BaseballBat
+        BaseballBat,
+        Computer,
+        Console,
+        Clothes
 
     }
 

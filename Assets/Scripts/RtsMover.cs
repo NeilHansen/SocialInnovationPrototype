@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class RtsMover : MonoBehaviour {
+    public int numberofunits;
     public GameObject Unit1;
     public GameObject Unit2;
     public GameObject Unit3;
@@ -53,11 +54,11 @@ public class RtsMover : MonoBehaviour {
                 
                 originalPosition = hit.point;
                 Debug.DrawRay(ray.origin, ray.direction * 1000.0f, Color.green);
-                Debug.Log("HIIIIT" + hit.collider.name);
+              //  Debug.Log("HIIIIT" + hit.collider.name);
             }
             else
             {
-                Debug.Log("not");
+            //    Debug.Log("not");
                 Debug.DrawRay(ray.origin, ray.direction * 1000.0f, Color.red);
             }
 
@@ -96,7 +97,7 @@ public class RtsMover : MonoBehaviour {
 
     public void MovePlayer(Transform newPos)
     {
-        Debug.Log(newPos);
+       // Debug.Log(newPos);
         if (ActiveUnit != null)
         {
             // ActiveUnit.GetComponent<NavMeshAgent>().SetDestination(newPos.position);

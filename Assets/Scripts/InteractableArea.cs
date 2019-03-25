@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class InteractableArea : MonoBehaviour
 {
@@ -65,7 +66,13 @@ public class InteractableArea : MonoBehaviour
         DollBin,
         BallBin,
         RobotBin,
-        BaseballBatBin
+        BaseballBatBin,
+        TvStand,
+        TvBox,
+        ComputerBox,
+        ClothesBox,
+        ComputerDesk,
+        Closet
     }
 
     //Put things on the counters
@@ -81,15 +88,21 @@ public class InteractableArea : MonoBehaviour
         Gm = GameObject.FindObjectOfType<GameManager>();
         counterSpace = gameObject.GetComponent<CounterSpace>();
         InvokeRepeating("TestDebug", 0.0f, 1.0f);
+     
         feedbackSlider = GameObject.FindGameObjectWithTag("PlayerCanvas1").transform.GetChild(0).GetComponent<Slider>();
-        feedbackSlider2 = GameObject.FindGameObjectWithTag("Player Canvas2").transform.GetChild(0).GetComponent<Slider>();
-        feedbackSlider3 = GameObject.FindGameObjectWithTag("Player Canvas3").transform.GetChild(0).GetComponent<Slider>();
-        feedbackSlider4 = GameObject.FindGameObjectWithTag("Player Canvas4").transform.GetChild(0).GetComponent<Slider>();
-
         Status = GameObject.FindGameObjectWithTag("PlayerCanvas1").transform.GetChild(1).GetComponent<Image>();
-        Status2 = GameObject.FindGameObjectWithTag("Player Canvas2").transform.GetChild(1).GetComponent<Image>();
-        Status3 = GameObject.FindGameObjectWithTag("Player Canvas3").transform.GetChild(1).GetComponent<Image>();
-        Status4 = GameObject.FindGameObjectWithTag("Player Canvas4").transform.GetChild(1).GetComponent<Image>();
+        if (rtsMover.numberofunits > 2)
+        {
+            feedbackSlider2 = GameObject.FindGameObjectWithTag("Player Canvas2").transform.GetChild(0).GetComponent<Slider>();
+            feedbackSlider3 = GameObject.FindGameObjectWithTag("Player Canvas3").transform.GetChild(0).GetComponent<Slider>();
+            feedbackSlider4 = GameObject.FindGameObjectWithTag("Player Canvas4").transform.GetChild(0).GetComponent<Slider>();
+            Status2 = GameObject.FindGameObjectWithTag("Player Canvas2").transform.GetChild(1).GetComponent<Image>();
+            Status3 = GameObject.FindGameObjectWithTag("Player Canvas3").transform.GetChild(1).GetComponent<Image>();
+            Status4 = GameObject.FindGameObjectWithTag("Player Canvas4").transform.GetChild(1).GetComponent<Image>();
+        }
+       
+       
+        
 
         hoverSpriteObject.GetComponent<Image>().sprite = hoverSprite;
         hoverSpriteObject.SetActive(false);
@@ -250,6 +263,54 @@ public class InteractableArea : MonoBehaviour
                 break;
             case AreaType.BaseballBatBin:
                 interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.BaseballBat;
+                break;
+            case AreaType.TvStand:
+                if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Console)
+                {
+                    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
+                   
+                    Debug.Log("placed console!!");
+                }
+                break;
+            case AreaType.TvBox:
+                if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
+                {
+                    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.Console;
+
+                    Debug.Log("Picked up console!!");
+                }
+                break;
+            case AreaType.ComputerDesk:
+                if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Computer)
+                {
+                    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
+
+                    Debug.Log("placed computer!!");
+                }
+                break;
+            case AreaType.ComputerBox:
+                if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
+                {
+                    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.Computer;
+
+                    Debug.Log("Picked up Computer!!");
+                }
+                break;
+            case AreaType.Closet:
+                if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Clothes)
+                {
+                    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
+
+                    Debug.Log("placed clothes!!");
+                }
+                break;
+            case AreaType.ClothesBox:
+                if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
+                {
+                    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.Clothes;
+
+                    Debug.Log("Picked up clothes!!");
+                }
                 break;
 
             case AreaType.Counter:
@@ -560,9 +621,6 @@ public class InteractableArea : MonoBehaviour
                         if (isOnCounter || objectPlayerHolding != UnitTaskController.ObjectHeld.None)
                         {
                             OnInteraction(interactingUnit);
-                            //isInteracting = true;
-                            //interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
-                            //interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
                         }
                     }
                     break;
@@ -687,6 +745,109 @@ public class InteractableArea : MonoBehaviour
                         }
                     }
                     break;
+
+                case AreaType.TvStand:
+                    if (!isInteracting && !isComplete)
+                    {
+                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Console)
+                        {
+                            OnInteraction(interactingUnit);
+                        }
+                        else
+                        {
+                            if (FeedBackFiredAlready == false)
+                            {
+                                NegativeFeedback(other);
+                            }
+                        }
+                    }
+                    break;
+
+                case AreaType.TvBox:
+                    if (!isInteracting && !isComplete)
+                    {
+                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
+                        {
+                            OnInteraction(interactingUnit);
+                        }
+                        else
+                        {
+                            if (FeedBackFiredAlready == false)
+                            {
+                                NegativeFeedback(other);
+                            }
+                        }
+                    }
+                    break;
+
+                case AreaType.ComputerDesk:
+                    if (!isInteracting && !isComplete)
+                    {
+                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Computer)
+                        {
+                            OnInteraction(interactingUnit);
+                        }
+                        else
+                        {
+                            if (FeedBackFiredAlready == false)
+                            {
+                                NegativeFeedback(other);
+                            }
+                        }
+                    }
+                    break;
+
+                case AreaType.ComputerBox:
+                    if (!isInteracting && !isComplete)
+                    {
+                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
+                        {
+                            OnInteraction(interactingUnit);
+                        }
+                        else
+                        {
+                            if (FeedBackFiredAlready == false)
+                            {
+                                NegativeFeedback(other);
+                            }
+                        }
+                    }
+                    break;
+
+                case AreaType.Closet:
+                    if (!isInteracting && !isComplete)
+                    {
+                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Clothes)
+                        {
+                            OnInteraction(interactingUnit);
+                        }
+                        else
+                        {
+                            if (FeedBackFiredAlready == false)
+                            {
+                                NegativeFeedback(other);
+                            }
+                        }
+                    }
+                    break;
+
+                case AreaType.ClothesBox:
+                    if (!isInteracting && !isComplete)
+                    {
+                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
+                        {
+                            OnInteraction(interactingUnit);
+                        }
+                        else
+                        {
+                            if (FeedBackFiredAlready == false)
+                            {
+                                NegativeFeedback(other);
+                            }
+                        }
+                    }
+                    break;
+
             }
 
 
