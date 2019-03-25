@@ -99,7 +99,7 @@ public class InteractableArea : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      //  Debug.Log(isOnCounter + " " + objectPlayerHolding);
+        //  Debug.Log(isOnCounter + " " + objectPlayerHolding);
         customers = FindObjectsOfType<Customer>();
         if (gameObject.name == "CookingInteractableArea")
         {
@@ -139,7 +139,7 @@ public class InteractableArea : MonoBehaviour
 
     void Complete(AreaType type, PlayerUI UI)
     {
-    //    Debug.Log("COMPLETE");
+        //    Debug.Log("COMPLETE");
         isInteracting = false;
         isComplete = true;
         interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = false;
@@ -198,9 +198,9 @@ public class InteractableArea : MonoBehaviour
                 {
                     interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
                     this.gameObject.GetComponentInChildren<ToyOrders>().ReceiveItem(ToyOrders.ToyList.Doll);
-                    Debug.Log("Added Doll!!");  
+                    Debug.Log("Added Doll!!");
                 }
-                else if(interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Ball)
+                else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Ball)
                 {
                     interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
                     this.gameObject.GetComponentInChildren<ToyOrders>().ReceiveItem(ToyOrders.ToyList.Ball);
@@ -228,13 +228,10 @@ public class InteractableArea : MonoBehaviour
 
             case AreaType.Truck:
                 interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
-
-                GetComponent<ToyTruck>().AddPackage();
-
                 //Add Score to truck
                 //Respawn box   
                 GiftboxSpawn[] boxSpawnnerArray = FindObjectsOfType<GiftboxSpawn>();
-                foreach(GiftboxSpawn item in boxSpawnnerArray)
+                foreach (GiftboxSpawn item in boxSpawnnerArray)
                 {
                     if (item.hasBox == false)
                     {
@@ -318,7 +315,7 @@ public class InteractableArea : MonoBehaviour
                                 if (dirtyPlateOn)
                                     break;
                                 //Different object, switch place
-                                else 
+                                else
                                 {
                                     if (cleanPlateOn)
                                     {
@@ -421,13 +418,13 @@ public class InteractableArea : MonoBehaviour
                     }
                 }
                 break;
-               
+
         }
 
 
     }
 
-   
+
 
     private void OnTriggerStay(Collider other)
     {
@@ -588,9 +585,9 @@ public class InteractableArea : MonoBehaviour
                                 }
                             }
                         }
-                        else if(interactingUnit.gameObject.name != "Unit1")
+                        else if (interactingUnit.gameObject.name != "Unit1")
                         {
-                            if(interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType != UnitTaskController.TaskType.None)
+                            if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType != UnitTaskController.TaskType.None)
                             {
                                 OnInteraction(interactingUnit);
                             }
@@ -602,7 +599,7 @@ public class InteractableArea : MonoBehaviour
                                 }
                             }
                         }
-                        
+
                     }
                     break;
 
@@ -626,7 +623,7 @@ public class InteractableArea : MonoBehaviour
                 case AreaType.DollBin:
                     if (!isInteracting && !isComplete)
                     {
-                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None )
+                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
                         {
                             OnInteraction(interactingUnit);
                         }
@@ -696,7 +693,7 @@ public class InteractableArea : MonoBehaviour
             if (other.gameObject.GetComponentInChildren<PlayerUI>())
             {
                 PlayerUI UI = other.gameObject.GetComponentInChildren<PlayerUI>();
-        
+
                 if (isInteracting && !isComplete)
                 {
                     UI.TaskInProgress(startTime);
@@ -707,7 +704,7 @@ public class InteractableArea : MonoBehaviour
                         Complete(areaType, UI);
                     }
                 }
-            }   
+            }
         }
     }
 
@@ -724,7 +721,7 @@ public class InteractableArea : MonoBehaviour
         {
             isInteracting = false;
             isComplete = false;
-
+            UnitToMoveTo = null;
             if (other.GetComponentInChildren<PlayerUI>())
             {
                 other.GetComponentInChildren<PlayerUI>().TurnOffUI();
@@ -741,8 +738,6 @@ public class InteractableArea : MonoBehaviour
             {
                 case AreaType.Counter:
                     objectPlayerHolding = interactingUnit.gameObject.GetComponent<UnitTaskController>().objectHolding;
-                    break;
-                default:
                     break;
             }
         }
@@ -772,7 +767,9 @@ public class InteractableArea : MonoBehaviour
             rtsMover.MovePlayer(MovePoint);
         }
 
-        
+
+
+
     }
 
     public IEnumerator FlashFeedback(Image Player, Sprite image)

@@ -113,13 +113,14 @@ public class UnitHighlight : MonoBehaviour {
     }
 
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other )
     {
-        if (other.gameObject.tag == "InteractableAre" )
+        if (other.gameObject.tag == "InteractableAre" && other.gameObject.GetComponent<InteractableArea>().UnitToMoveTo == rtsMover.ActiveUnit)
         {
             if(other.gameObject.GetComponent<InteractableArea>().isInteracting == false)
             {
                 isInteracting = true;
+
                 this.GetComponent<NavMeshAgent>().isStopped = true;
                 this.GetComponent<NavMeshAgent>().enabled = false;
                 rtsMover.ActiveUnit = null;
