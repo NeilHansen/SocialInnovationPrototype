@@ -79,6 +79,8 @@ public class UnitTaskController : MonoBehaviour
         ComboPipe,
         Nails,
         PipeConnector,
+        LargePipe,
+        LargeWood
     }
     public ObjectHeld objectHolding;
 

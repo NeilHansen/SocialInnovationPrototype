@@ -15,6 +15,8 @@ public class ToyTruck : MonoBehaviour {
     public float TruckWaitTime=60;
     [SerializeField]
     ToyDriveGameManager GM;
+    [SerializeField]
+    float PackageCapacity=4;
 
 
 	// Use this for initialization
@@ -35,7 +37,8 @@ public class ToyTruck : MonoBehaviour {
     public void AddPackage()
     {
         packages++;
-        if (packages >= 4)
+        Debug.Log("The package number is" + packages);
+        if (packages >= 2)
         {
             StartCoroutine(MoveTruck(true));
             //Add to game score

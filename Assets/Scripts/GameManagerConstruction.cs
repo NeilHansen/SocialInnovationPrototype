@@ -85,7 +85,11 @@ public class GameManagerConstruction : MonoBehaviour {
         playerScore++;
 
         HouseUI.AddToHouse(playerScore);
-       // timeValue = timeValue + 35;
+        timeValue = timeValue + 15;
+        if (timeValue > MaxTime)
+        {
+            timeValue = MaxTime;
+        }
 
         if (playerScore == 4)
         {

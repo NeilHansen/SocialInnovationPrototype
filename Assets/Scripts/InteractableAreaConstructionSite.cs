@@ -135,30 +135,42 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                 {
                     interactingUnit.GetComponent<UnitTaskController>().currentTaskType = UnitTaskController.TaskType.None;
                     StartCoroutine(interactingUnit.GetComponent<UnitTaskController>().GetComponentInChildren<PlayerUI>().FlashFeedback(true));
-                    BenchHasWood = true;
+
+                    if (woodRecipticalBin.GetComponent<InteractableAreaConstructionSite>().numberOfBoards < 4)
+                    {
+                        woodRecipticalBin.GetComponent<InteractableAreaConstructionSite>().numberOfBoards += 2;
+                    }
+                    
+                    // BenchHasWood = true;
                 }
                 else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.LargePipe)
                 {
                     interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
                     StartCoroutine(interactingUnit.GetComponent<UnitTaskController>().GetComponentInChildren<PlayerUI>().FlashFeedback(true));
-                    BenchHasPipe = true;
-                }
-                else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None && BenchHasWood)
-                {
-                    if (woodRecipticalBin.GetComponent<InteractableAreaConstructionSite>().numberOfBoards < 4)
-                    {
-                        woodRecipticalBin.GetComponent<InteractableAreaConstructionSite>().numberOfBoards += 2;
-                        BenchHasWood = false;
-                    }
-                }
-                else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None && BenchHasPipe)
-                {
-                    if (pipeRecipticalBin.GetComponent<InteractableAreaConstructionSite>().numberOfPipes < 4)
+
+                    if(pipeRecipticalBin.GetComponent<InteractableAreaConstructionSite>().numberOfPipes < 4)
                     {
                         pipeRecipticalBin.GetComponent<InteractableAreaConstructionSite>().numberOfPipes += 2;
-                        BenchHasPipe = false;
                     }
+                    
+                    //BenchHasPipe = true;
                 }
+                //else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None && BenchHasWood)
+                //{
+                //    if (woodRecipticalBin.GetComponent<InteractableAreaConstructionSite>().numberOfBoards < 4)
+                //    {
+                //        woodRecipticalBin.GetComponent<InteractableAreaConstructionSite>().numberOfBoards += 2;
+                //        BenchHasWood = false;
+                //    }
+                //}
+                //else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None && BenchHasPipe)
+                //{
+                //    if (pipeRecipticalBin.GetComponent<InteractableAreaConstructionSite>().numberOfPipes < 4)
+                //    {
+                //        pipeRecipticalBin.GetComponent<InteractableAreaConstructionSite>().numberOfPipes += 2;
+                //        BenchHasPipe = false;
+                //    }
+                //}
                 break;
 
             case AreaType.WoodRecipticalBin:
@@ -176,7 +188,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                 break;
 
             case AreaType.WoodPile:
-                interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.LargePipe;
+                interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.LargeWood;
                 break;
 
             case AreaType.PipePile:
@@ -361,31 +373,41 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                     break;
 
                 case AreaType.WoodPile:
+
                  if(!isInteracting && !isComplete)
                     {
-                        OnInteraction(interactingUnit);
-                    }
-                    else
-                    {
-                        if (FeedBackFiredAlready == false)
+                        if(interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
                         {
-                            NegativeFeedback(other);
+                            OnInteraction(interactingUnit);
+                        }
+                       
+ else
+                        {
+                            if (FeedBackFiredAlready == false)
+                            {
+                                NegativeFeedback(other);
+                            }
                         }
                     }
+                  
                     break;
                     
                 case AreaType.PipePile:
                     if (!isInteracting && !isComplete)
                     {
-                        OnInteraction(interactingUnit);
-                    }
-                    else
-                    {
-                        if (FeedBackFiredAlready == false)
+                        if(interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
                         {
-                            NegativeFeedback(other);
+                            OnInteraction(interactingUnit);
+                        }
+                        else
+                        {
+                            if (FeedBackFiredAlready == false)
+                            {
+                                NegativeFeedback(other);
+                            }
                         }
                     }
+               
                     break;
 
                 case AreaType.CraftingStation:

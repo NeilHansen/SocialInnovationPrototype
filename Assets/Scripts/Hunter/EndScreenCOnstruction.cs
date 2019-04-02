@@ -14,7 +14,7 @@ public class EndScreenCOnstruction : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		
+        EndGame();
 	}
 	
 	// Update is called once per frame
@@ -25,14 +25,14 @@ public class EndScreenCOnstruction : MonoBehaviour {
     public void EndGame()
     {
         int StarAmount = 3;
-       
+        Debug.Log("The time value is" + GM.timeValue / GM.MaxTime);
 
-        if (GM.MaxTime/GM.timeValue>=.70f )
+        if (GM.timeValue/GM.MaxTime>=.70f )
         {
             StarAmount = 3;
         }
 
-        else if (GM.MaxTime / GM.timeValue >= .245f)
+        else if (GM.timeValue / GM.MaxTime >= .245f)
         {
             StarAmount = 2;
         }

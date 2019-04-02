@@ -67,7 +67,7 @@ public class ToyDriveGameManager : MonoBehaviour {
         timeValue -= 1 * Time.deltaTime;
         TimeRemaining.text =""+(int)timeValue ;
 
-        PackageCounter.text = "packages: " + Truck.packages + "/4";
+        PackageCounter.text = "packages: " + Truck.packages + "/2";
      
      
         if (timeValue <= 0)
@@ -100,6 +100,7 @@ public class ToyDriveGameManager : MonoBehaviour {
         hasTruck = false;
         Truck.Drive();
         float CurrentScoreValue = PointsPerPackage * Truck.packages;
+        
 
         switch (Truck.packages)
         {
@@ -129,6 +130,7 @@ public class ToyDriveGameManager : MonoBehaviour {
 
         ScoreAdded.text = "+" + CurrentScoreValue;
         playerScore += CurrentScoreValue;
+        //Debug.Log("the player score is" + playerScore);
 
         scoreText.text = "Score: " + (int)playerScore;
     }
@@ -146,7 +148,7 @@ public class ToyDriveGameManager : MonoBehaviour {
         {
             satisfactionMeter.value = (Truck.TruckWaitTime - (Time.time - TimeTruckStarted))/Truck.TruckWaitTime;
 
-            Debug.Log(satisfactionMeter.value + "This is the value");
+            
 
 
            

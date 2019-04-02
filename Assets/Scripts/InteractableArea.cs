@@ -242,6 +242,7 @@ public class InteractableArea : MonoBehaviour
             case AreaType.Truck:
                 interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
                 //Add Score to truck
+                GetComponent<ToyTruck>().AddPackage();
                 //Respawn box   
                 GiftboxSpawn[] boxSpawnnerArray = FindObjectsOfType<GiftboxSpawn>();
                 foreach (GiftboxSpawn item in boxSpawnnerArray)
@@ -628,7 +629,7 @@ public class InteractableArea : MonoBehaviour
                 case AreaType.GiftBox:
                     if (!isInteracting && !isComplete)
                     {
-                        if (interactingUnit.gameObject.name == "Unit1")
+                        if (interactingUnit.gameObject.name == "Unit1" && GetComponentInChildren<ToyOrders>().canPickUp)
                         {
                             if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None
                             && this.gameObject.GetComponentInChildren<ToyOrders>().canPickUp == true)
@@ -643,7 +644,7 @@ public class InteractableArea : MonoBehaviour
                                 }
                             }
                         }
-                        else if (interactingUnit.gameObject.name != "Unit1")
+                        else //if (interactingUnit.gameObject.name != "Unit1")
                         {
                             if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType != UnitTaskController.TaskType.None)
                             {
