@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     Color[] Colors;
     [SerializeField]
+    Sprite[] BarColors;
+    [SerializeField]
     Sprite[] Satisfactionemojis;
     [SerializeField]
     Image SatisfactionFace;
@@ -35,6 +37,9 @@ public class GameManager : MonoBehaviour {
     //endScreen
     [SerializeField]
     GameObject EndingScreen;
+
+    [SerializeField]
+    Image Fill;
 
     public float timerMultiplier = 0.1f;
 
@@ -75,17 +80,17 @@ public class GameManager : MonoBehaviour {
         if (hasCustomer)
         {
             satisfactionMeter.value -= Time.deltaTime * timerMultiplier;
-            if (satisfactionMeter.value > 1.04f)
+            if (satisfactionMeter.value > 0.991f)
             {
-                satisfactionMeter.GetComponentInChildren<Image>().color = Colors[0];
+                Fill.sprite = BarColors[0];
                 SatisfactionFace.sprite = Satisfactionemojis[0];
                 SatisfactionText.color = Colors[0];
 
             }
 
-            else if (satisfactionMeter.value > .38f)
+            else if (satisfactionMeter.value > .515f)
             {
-                satisfactionMeter.GetComponentInChildren<Image>().color = Colors[1];
+                Fill.sprite = BarColors[1];
                 SatisfactionFace.sprite = Satisfactionemojis[1];
                 SatisfactionText.color = Colors[1];
 
@@ -93,7 +98,7 @@ public class GameManager : MonoBehaviour {
 
             else
             {
-                satisfactionMeter.GetComponentInChildren<Image>().color = Colors[2];
+                Fill.sprite = BarColors[2];
                 SatisfactionFace.sprite = Satisfactionemojis[2];
                 SatisfactionText.color = Colors[2];
 

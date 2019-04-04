@@ -36,6 +36,10 @@ public class ToyDriveGameManager : MonoBehaviour {
     //endScreen
     [SerializeField]
     GameObject EndingScreen;
+    [SerializeField]
+    Sprite[] BarColor;
+    [SerializeField]
+    Image Fill;
 
     float TimeTruckStarted;
 
@@ -154,7 +158,7 @@ public class ToyDriveGameManager : MonoBehaviour {
            
             if (satisfactionMeter.value > .70f)
             {
-                satisfactionMeter.GetComponentInChildren<Image>().color = Colors[0];
+                Fill.sprite = BarColor[0];
                 //SatisfactionFace.sprite = Satisfactionemojis[0];
                 SatisfactionText.color = Colors[0];
 
@@ -162,15 +166,15 @@ public class ToyDriveGameManager : MonoBehaviour {
 
             else if (satisfactionMeter.value > .245f)
             {
-                satisfactionMeter.GetComponentInChildren<Image>().color = Colors[1];
-               // SatisfactionFace.sprite = Satisfactionemojis[1];
+                Fill.sprite = BarColor[1];
+                // SatisfactionFace.sprite = Satisfactionemojis[1];
                 SatisfactionText.color = Colors[1];
 
             }
 
             else
             {
-                satisfactionMeter.GetComponentInChildren<Image>().color = Colors[2];
+                Fill.sprite = BarColor[2];
                 //SatisfactionFace.sprite = Satisfactionemojis[2];
                 SatisfactionText.color = Colors[2];
 

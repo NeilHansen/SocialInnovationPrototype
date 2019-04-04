@@ -24,6 +24,9 @@ public class GameManagerConstruction : MonoBehaviour {
     //satisfaction visual Mods
     [SerializeField]
     Color[] Colors;
+
+    [SerializeField]
+    Sprite[] BarColors;
     [SerializeField]
     Sprite[] Satisfactionemojis;
     [SerializeField]
@@ -37,6 +40,8 @@ public class GameManagerConstruction : MonoBehaviour {
     GameObject EndingScreen;
     [SerializeField]
     ConstructionUI HouseUI;
+    [SerializeField]
+    Image Fill;
     
 
     public float timerMultiplier = 0.1f;
@@ -106,17 +111,17 @@ public class GameManagerConstruction : MonoBehaviour {
     public void PreformanceMeter()
     {
         satisfactionMeter.value = timeValue / MaxTime;
-        if (satisfactionMeter.value > .70f)
+        if (satisfactionMeter.value > .66f)
         {
-            satisfactionMeter.GetComponentInChildren<Image>().color = Colors[0];
+            Fill.sprite= BarColors[0];
             SatisfactionFace.sprite = Satisfactionemojis[0];
             SatisfactionText.color = Colors[0];
 
         }
 
-        else if (satisfactionMeter.value > .245f)
+        else if (satisfactionMeter.value > .327f)
         {
-            satisfactionMeter.GetComponentInChildren<Image>().color = Colors[1];
+            Fill.sprite = BarColors[1];
             SatisfactionFace.sprite = Satisfactionemojis[1];
             SatisfactionText.color = Colors[1];
 
@@ -124,7 +129,7 @@ public class GameManagerConstruction : MonoBehaviour {
 
         else
         {
-            satisfactionMeter.GetComponentInChildren<Image>().color = Colors[2];
+            Fill.sprite = BarColors[2];
             SatisfactionFace.sprite = Satisfactionemojis[2];
             SatisfactionText.color = Colors[2];
 

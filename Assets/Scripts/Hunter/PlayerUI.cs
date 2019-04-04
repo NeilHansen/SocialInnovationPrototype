@@ -38,9 +38,9 @@ public class PlayerUI : MonoBehaviour {
     public void TaskInProgress(float TimeToComplete)
     {
         TaskProgressSlider.gameObject.SetActive(true);
-        Status.gameObject.SetActive(true);
+       // Status.gameObject.SetActive(true);
         TaskProgressSlider.maxValue = TimeToComplete;
-        Status.sprite = FeedbackSprites[0];
+        //Status.sprite = FeedbackSprites[0];
         TaskProgressSlider.value = CurrentProgress;
         //Handles task bar
   
@@ -96,11 +96,11 @@ public class PlayerUI : MonoBehaviour {
 
         if (IsPositive)
         {
-            Status.sprite = FeedbackSprites[1];
+            Status.sprite = FeedbackSprites[0];
         }
         else
         {
-            Status.sprite = FeedbackSprites[2];
+            Status.sprite = FeedbackSprites[1];
         }
         CurrentProgress = 0;
         yield return new WaitForSeconds(1);
