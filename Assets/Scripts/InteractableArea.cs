@@ -55,6 +55,10 @@ public class InteractableArea : MonoBehaviour
     private bool hasCompleted = false;
     public GameObject ConsoleCanvas;
 
+    public TutorialManager tm;
+
+    public bool TutorialComplete;
+
     public enum AreaType
     {
         None,
@@ -270,7 +274,7 @@ public class InteractableArea : MonoBehaviour
                 interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.BaseballBat;
                 break;
             case AreaType.TvStand:
-                if(!hasCompleted)
+                if(!hasCompleted && !TutorialComplete)
                 {
                     if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Console)
                     {
@@ -278,9 +282,11 @@ public class InteractableArea : MonoBehaviour
                         objectToplace.SetActive(true);
                         hasCompleted = true;
                         Debug.Log("placed console!!");
+                        TutorialComplete = true;
+                        tm.NextTutorialPeice();
                     }
                 }
-                else
+                else 
                 {
                     //if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
                     //{
@@ -289,10 +295,11 @@ public class InteractableArea : MonoBehaviour
                 }
                 break;
             case AreaType.TvBox:
-                if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
+                if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None )
                 {
                     interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.Console;
-                    Destroy(this.gameObject);
+                    //Destroy(this.gameObject);
+                    Destroy(this.gameObject, 0.5f);
                     Debug.Log("Picked up console!!");
                 }
                 break;
@@ -305,6 +312,8 @@ public class InteractableArea : MonoBehaviour
                         objectToplace.SetActive(true);
                         hasCompleted = true;
                         Debug.Log("placed computer!!");
+                        TutorialComplete = true;
+                        tm.NextTutorialPeice();
                     }
                 }
                 else
@@ -313,10 +322,11 @@ public class InteractableArea : MonoBehaviour
                 }
                 break;
             case AreaType.ComputerBox:
-                if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
+                if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None )
                 {
                     interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.Computer;
-                    Destroy(this.gameObject);
+                 //   this.gameObject.SetActive(false);
+                    Destroy(this.gameObject, 0.5f);
                     Debug.Log("Picked up Computer!!");
                 }
                 break;
@@ -324,15 +334,17 @@ public class InteractableArea : MonoBehaviour
                 if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Clothes)
                 {
                     interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
-
+                    tm.NextTutorialPeice();
+                    TutorialComplete = true;
                     Debug.Log("placed clothes!!");
                 }
                 break;
             case AreaType.ClothesBox:
-                if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
+                if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None )
                 {
                     interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.Clothes;
-                    Destroy(this.gameObject);
+                    // Destroy(this.gameObject);
+                    Destroy(this.gameObject, 0.5f);
                     Debug.Log("Picked up clothes!!");
                 }
                 break;
@@ -773,7 +785,7 @@ public class InteractableArea : MonoBehaviour
                 case AreaType.TvStand:
                     if (!isInteracting && !isComplete)
                     {
-                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Console)
+                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Console || this.TutorialComplete)
                         {
                             OnInteraction(interactingUnit);
                         }
@@ -796,7 +808,7 @@ public class InteractableArea : MonoBehaviour
                 case AreaType.TvBox:
                     if (!isInteracting && !isComplete)
                     {
-                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
+                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None && tm.tutorialProgress == 3)
                         {
                             OnInteraction(interactingUnit);
                         }
@@ -813,7 +825,7 @@ public class InteractableArea : MonoBehaviour
                 case AreaType.ComputerDesk:
                     if (!isInteracting && !isComplete)
                     {
-                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Computer)
+                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Computer || this.TutorialComplete)
                         {
                             OnInteraction(interactingUnit);
                         }
@@ -830,7 +842,7 @@ public class InteractableArea : MonoBehaviour
                 case AreaType.ComputerBox:
                     if (!isInteracting && !isComplete)
                     {
-                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
+                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None && tm.tutorialProgress == 1)
                         {
                             OnInteraction(interactingUnit);
                         }
@@ -847,7 +859,7 @@ public class InteractableArea : MonoBehaviour
                 case AreaType.Closet:
                     if (!isInteracting && !isComplete)
                     {
-                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Clothes)
+                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Clothes || this.TutorialComplete)
                         {
                             OnInteraction(interactingUnit);
                         }
@@ -864,7 +876,7 @@ public class InteractableArea : MonoBehaviour
                 case AreaType.ClothesBox:
                     if (!isInteracting && !isComplete)
                     {
-                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
+                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None && tm.tutorialProgress == 2)
                         {
                             OnInteraction(interactingUnit);
                         }
@@ -966,15 +978,15 @@ public class InteractableArea : MonoBehaviour
 
     }
 
-    public IEnumerator FlashFeedback(Image Player, Sprite image)
-    {
-        Player.gameObject.SetActive(true);
-        Player.sprite = image;
-        yield return new WaitForSeconds(1);
+    //public IEnumerator FlashFeedback(Image Player, Sprite image)
+    //{
+    //    Player.gameObject.SetActive(true);
+    //    Player.sprite = image;
+    //    yield return new WaitForSeconds(1);
 
-        Player.gameObject.SetActive(false);
-        StopCoroutine("FlashFeedback");
-    }
+    //    Player.gameObject.SetActive(false);
+    //    StopCoroutine("FlashFeedback");
+    //}
 
     void TestDebug()
     {

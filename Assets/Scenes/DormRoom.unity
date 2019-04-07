@@ -477,6 +477,8 @@ MonoBehaviour:
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 1732786616}
   ConsoleCanvas: {fileID: 2116916930}
+  tm: {fileID: 0}
+  TutorialComplete: 0
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -2533,6 +2535,16 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114973849185017476, guid: cc7dcb15d871cd743a01d9f0745cbd54,
+        type: 2}
+      propertyPath: Tutorial.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114973849185017476, guid: cc7dcb15d871cd743a01d9f0745cbd54,
+        type: 2}
+      propertyPath: Tutorial.Array.data[3].convoParts.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 224280676137055356, guid: cc7dcb15d871cd743a01d9f0745cbd54,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -2623,6 +2635,11 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114973849185017476, guid: cc7dcb15d871cd743a01d9f0745cbd54,
+        type: 2}
+      propertyPath: tm
+      value: 
+      objectReference: {fileID: 1309621369}
     - target: {fileID: 114675890910234540, guid: cc7dcb15d871cd743a01d9f0745cbd54,
         type: 2}
       propertyPath: m_havePropertiesChanged
@@ -2633,10 +2650,31 @@ Prefab:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 223998793652373774, guid: cc7dcb15d871cd743a01d9f0745cbd54,
+    - target: {fileID: 114973849185017476, guid: cc7dcb15d871cd743a01d9f0745cbd54,
         type: 2}
-      propertyPath: m_SortingOrder
-      value: -1
+      propertyPath: Tutorial.Array.data[3].convoParts.Array.data[0].Convo
+      value: Awesome, Now that you have everthing set up. Go check out you game console
+        for access to mini games
+      objectReference: {fileID: 0}
+    - target: {fileID: 114973849185017476, guid: cc7dcb15d871cd743a01d9f0745cbd54,
+        type: 2}
+      propertyPath: Tutorial.Array.data[3].convoParts.Array.data[1].Convo
+      value: Let's set your Tv and game console up next.
+      objectReference: {fileID: 0}
+    - target: {fileID: 114973849185017476, guid: cc7dcb15d871cd743a01d9f0745cbd54,
+        type: 2}
+      propertyPath: Tutorial.Array.data[3].convoParts.Array.data[2].Convo
+      value: Good Call.
+      objectReference: {fileID: 0}
+    - target: {fileID: 114973849185017476, guid: cc7dcb15d871cd743a01d9f0745cbd54,
+        type: 2}
+      propertyPath: Tutorial.Array.data[3].convoParts.Array.data[2].PlayerSpeaking
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114973849185017476, guid: cc7dcb15d871cd743a01d9f0745cbd54,
+        type: 2}
+      propertyPath: Tutorial.Array.data[3].convoEnd
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc7dcb15d871cd743a01d9f0745cbd54, type: 2}
@@ -2734,6 +2772,8 @@ MonoBehaviour:
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 1271390856}
   ConsoleCanvas: {fileID: 0}
+  tm: {fileID: 0}
+  TutorialComplete: 0
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -2991,6 +3031,10 @@ Prefab:
     - target: {fileID: 4406900278803162, guid: 5d1825f18b6548b4cada79c10eb3bf4e, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1424017382116486, guid: 5d1825f18b6548b4cada79c10eb3bf4e, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d1825f18b6548b4cada79c10eb3bf4e, type: 2}
@@ -3468,6 +3512,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 2.163268
       objectReference: {fileID: 0}
+    - target: {fileID: 1401315054691790, guid: e0f257647c970dc4fa4dceb2c54301a7, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0f257647c970dc4fa4dceb2c54301a7, type: 2}
   m_IsPrefabAsset: 0
@@ -3562,6 +3610,8 @@ MonoBehaviour:
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 0}
   ConsoleCanvas: {fileID: 0}
+  tm: {fileID: 1309621369}
+  TutorialComplete: 0
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -4083,7 +4133,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 477600151}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.2258167, y: 2.7001796, z: 2.357214}
@@ -4130,6 +4180,8 @@ MonoBehaviour:
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 0}
   ConsoleCanvas: {fileID: 0}
+  tm: {fileID: 0}
+  TutorialComplete: 0
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -4235,6 +4287,8 @@ MonoBehaviour:
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 1732786616}
   ConsoleCanvas: {fileID: 2116916930}
+  tm: {fileID: 1309621369}
+  TutorialComplete: 0
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -5212,6 +5266,10 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 1401315054691790, guid: e0f257647c970dc4fa4dceb2c54301a7, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0f257647c970dc4fa4dceb2c54301a7, type: 2}
   m_IsPrefabAsset: 0
@@ -5306,6 +5364,8 @@ MonoBehaviour:
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 0}
   ConsoleCanvas: {fileID: 0}
+  tm: {fileID: 1309621369}
+  TutorialComplete: 0
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -5775,11 +5835,10 @@ Transform:
   m_Children:
   - {fileID: 704406435}
   - {fileID: 340242467}
-  - {fileID: 2136043692}
+  - {fileID: 1496569988}
   - {fileID: 527417596}
   - {fileID: 1944779935}
   - {fileID: 1664344371}
-  - {fileID: 1496569988}
   - {fileID: 1414130113}
   - {fileID: 572160948}
   - {fileID: 399820551}
@@ -6255,6 +6314,8 @@ MonoBehaviour:
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 0}
   ConsoleCanvas: {fileID: 0}
+  tm: {fileID: 1309621369}
+  TutorialComplete: 0
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -6509,6 +6570,8 @@ MonoBehaviour:
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 0}
   ConsoleCanvas: {fileID: 0}
+  tm: {fileID: 0}
+  TutorialComplete: 0
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -9745,6 +9808,8 @@ MonoBehaviour:
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 0}
   ConsoleCanvas: {fileID: 0}
+  tm: {fileID: 0}
+  TutorialComplete: 0
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -10247,6 +10312,10 @@ Prefab:
       propertyPath: m_Name
       value: SM_MovingBoxTv
       objectReference: {fileID: 0}
+    - target: {fileID: 1401315054691790, guid: e0f257647c970dc4fa4dceb2c54301a7, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0f257647c970dc4fa4dceb2c54301a7, type: 2}
   m_IsPrefabAsset: 0
@@ -10329,6 +10398,8 @@ MonoBehaviour:
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 0}
   ConsoleCanvas: {fileID: 0}
+  tm: {fileID: 1309621369}
+  TutorialComplete: 0
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -10408,6 +10479,8 @@ MonoBehaviour:
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 0}
   ConsoleCanvas: {fileID: 0}
+  tm: {fileID: 0}
+  TutorialComplete: 0
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -10808,6 +10881,8 @@ MonoBehaviour:
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 0}
   ConsoleCanvas: {fileID: 0}
+  tm: {fileID: 0}
+  TutorialComplete: 0
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -11485,6 +11560,8 @@ MonoBehaviour:
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 0}
   ConsoleCanvas: {fileID: 0}
+  tm: {fileID: 0}
+  TutorialComplete: 0
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -11686,6 +11763,10 @@ Prefab:
     - target: {fileID: 4602135529221604, guid: eb41764ca1a8d8c4884e643fbfa916a6, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: 1386892323258004, guid: eb41764ca1a8d8c4884e643fbfa916a6, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb41764ca1a8d8c4884e643fbfa916a6, type: 2}
@@ -12397,6 +12478,56 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 00c4c06b4b3448c4da3d613b8be5d0cd,
     type: 3}
   m_PrefabInternal: {fileID: 1304609477}
+--- !u!1 &1309621368
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1309621370}
+  - component: {fileID: 1309621369}
+  m_Layer: 0
+  m_Name: TutorialManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1309621369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1309621368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2878ae5d728ba97439f66eda59feab89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 21415875}
+  convoCanvas: {fileID: 2102320960}
+  tutorialProgress: 0
+  tutorialEnd: 4
+  compBox: {fileID: 399820552}
+  clothesBox: {fileID: 572160949}
+  tvBox: {fileID: 1115388226}
+  comp: {fileID: 1496569987}
+  clothes: {fileID: 704406434}
+  tv: {fileID: 484242195}
+--- !u!4 &1309621370
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1309621368}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 400.65482, y: 280.3506, z: 14.628654}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1332127833
 GameObject:
   m_ObjectHideFlags: 0
@@ -12892,6 +13023,8 @@ MonoBehaviour:
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 1271390856}
   ConsoleCanvas: {fileID: 0}
+  tm: {fileID: 0}
+  TutorialComplete: 0
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -13232,7 +13365,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4865414545535704, guid: 55d3b4f520a215a4fa11ec5ac6209833, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -41.448593
+      value: -42.268593
       objectReference: {fileID: 0}
     - target: {fileID: 4865414545535704, guid: 55d3b4f520a215a4fa11ec5ac6209833, type: 2}
       propertyPath: m_LocalRotation.x
@@ -13252,7 +13385,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4865414545535704, guid: 55d3b4f520a215a4fa11ec5ac6209833, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4865414545535704, guid: 55d3b4f520a215a4fa11ec5ac6209833, type: 2}
       propertyPath: m_LocalScale.x
@@ -13269,6 +13402,10 @@ Prefab:
     - target: {fileID: 1439422425879444, guid: 55d3b4f520a215a4fa11ec5ac6209833, type: 2}
       propertyPath: m_TagString
       value: InteractableAre
+      objectReference: {fileID: 0}
+    - target: {fileID: 1439422425879444, guid: 55d3b4f520a215a4fa11ec5ac6209833, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55d3b4f520a215a4fa11ec5ac6209833, type: 2}
@@ -14221,7 +14358,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1496569987}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.82}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1365563079}
@@ -14229,8 +14366,9 @@ Transform:
   - {fileID: 910461659}
   - {fileID: 832714874}
   - {fileID: 629131034}
+  - {fileID: 2136043692}
   m_Father: {fileID: 633610346}
-  m_RootOrder: 6
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1496569989
 MonoBehaviour:
@@ -14301,6 +14439,8 @@ MonoBehaviour:
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 1271390856}
   ConsoleCanvas: {fileID: 0}
+  tm: {fileID: 1309621369}
+  TutorialComplete: 0
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -15788,6 +15928,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 2.5400028
       objectReference: {fileID: 0}
+    - target: {fileID: 1276601927949436, guid: ce7a6acc982ef3847a9d89ed0e0cdca3, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce7a6acc982ef3847a9d89ed0e0cdca3, type: 2}
   m_IsPrefabAsset: 0
@@ -16045,7 +16189,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1679120925
 Transform:
   m_ObjectHideFlags: 0
@@ -18323,6 +18467,8 @@ MonoBehaviour:
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 0}
   ConsoleCanvas: {fileID: 0}
+  tm: {fileID: 0}
+  TutorialComplete: 0
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -18486,6 +18632,10 @@ Prefab:
     - target: {fileID: 4147772657057658, guid: 8a2b4cf88c54ed14ba14fc9b1170bee6, type: 2}
       propertyPath: m_LocalScale.z
       value: 2.5400028
+      objectReference: {fileID: 0}
+    - target: {fileID: 1768629428981270, guid: 8a2b4cf88c54ed14ba14fc9b1170bee6, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a2b4cf88c54ed14ba14fc9b1170bee6, type: 2}
@@ -19875,6 +20025,8 @@ MonoBehaviour:
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 0}
   ConsoleCanvas: {fileID: 0}
+  tm: {fileID: 0}
+  TutorialComplete: 0
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -20364,6 +20516,8 @@ MonoBehaviour:
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 0}
   ConsoleCanvas: {fileID: 0}
+  tm: {fileID: 0}
+  TutorialComplete: 0
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -20526,6 +20680,11 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9429eb8e60b148b45bafefec13b5341b, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &2102320960 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1453900880197976, guid: cc7dcb15d871cd743a01d9f0745cbd54,
+    type: 2}
+  m_PrefabInternal: {fileID: 313928448}
 --- !u!1 &2105631694
 GameObject:
   m_ObjectHideFlags: 0
@@ -20682,7 +20841,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2116916931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20934,6 +21093,8 @@ MonoBehaviour:
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 0}
   ConsoleCanvas: {fileID: 0}
+  tm: {fileID: 0}
+  TutorialComplete: 0
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -21052,7 +21213,7 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 633610346}
+    m_TransformParent: {fileID: 1496569988}
     m_Modifications:
     - target: {fileID: 4646702098253702, guid: f7e1c4095f1255d40b2df40c2cb779c2, type: 2}
       propertyPath: m_LocalPosition.x
@@ -21084,19 +21245,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4646702098253702, guid: f7e1c4095f1255d40b2df40c2cb779c2, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4646702098253702, guid: f7e1c4095f1255d40b2df40c2cb779c2, type: 2}
       propertyPath: m_LocalScale.x
-      value: 2.5400085
+      value: 2.5400114
       objectReference: {fileID: 0}
     - target: {fileID: 4646702098253702, guid: f7e1c4095f1255d40b2df40c2cb779c2, type: 2}
       propertyPath: m_LocalScale.y
-      value: 2.5400028
+      value: 2.5400038
       objectReference: {fileID: 0}
     - target: {fileID: 4646702098253702, guid: f7e1c4095f1255d40b2df40c2cb779c2, type: 2}
       propertyPath: m_LocalScale.z
-      value: 2.5400028
+      value: 2.5400038
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7e1c4095f1255d40b2df40c2cb779c2, type: 2}

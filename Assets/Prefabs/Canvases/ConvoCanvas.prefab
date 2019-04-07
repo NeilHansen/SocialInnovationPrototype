@@ -376,8 +376,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_fontColorGradient:
     topLeft: {r: 1, g: 1, b: 1, a: 1}
@@ -577,14 +577,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ded7b2c7a3ae54148972ababae2fa216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  convoParts:
-  - Convo: Hi
-    PlayerSpeaking: 1
-  - Convo: Hello
-    PlayerSpeaking: 0
-  - Convo: Hey
-    PlayerSpeaking: 1
-  convoEnd: 4
+  tm: {fileID: 0}
+  Tutorial:
+  - convoParts:
+    - Convo: Hello Welcome
+      PlayerSpeaking: 0
+    - Convo: Hi, Thank you!
+      PlayerSpeaking: 1
+    - Convo: Looks Like you just got here, Do you need any help unpacking?
+      PlayerSpeaking: 0
+    - Convo: Sure Thanks!
+      PlayerSpeaking: 1
+    - Convo: Might as well start with you conputer, Click on a your player or press
+        1 gain control of them. Then click on a object to send them to interact with
+        it
+      PlayerSpeaking: 0
+    convoEnd: 6
+  - convoParts:
+    - Convo: Good job! Why don't you put away your clothes. next?
+      PlayerSpeaking: 0
+    - Convo: Yeah, Good idea!
+      PlayerSpeaking: 1
+    convoEnd: 3
+  - convoParts:
+    - Convo: Wow you have alot of clothes, notice that some tasks take longer then
+        others.
+      PlayerSpeaking: 0
+    - Convo: Let's set your Tv and game console up next.
+      PlayerSpeaking: 0
+    - Convo: Good Call.
+      PlayerSpeaking: 1
+    convoEnd: 4
   convoText: {fileID: 114675890910234540}
   playerImage: {fileID: 1365399652900942}
   NPCImage: {fileID: 1512131624766670}
@@ -662,7 +685,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_TargetDisplay: 0
 --- !u!224 &224054999845733700
 RectTransform:
