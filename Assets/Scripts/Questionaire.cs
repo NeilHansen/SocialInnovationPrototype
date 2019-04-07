@@ -21,6 +21,14 @@ public class Questionaire : MonoBehaviour {
 	private int questionIndex = 0;
 	private string chosenAnswer = null;
 	private int score = 0;
+    private bool QuizComplete=false;
+    private bool StartedGame=false;
+    [SerializeField]
+    GameObject QuizScreen;
+    [SerializeField]
+    GameObject StartGameScreen;
+    [SerializeField]
+    GameObject QuitGameScreen;
 
     public class Questions
     {
@@ -149,35 +157,56 @@ public class Questionaire : MonoBehaviour {
 		answerCText.gameObject.SetActive(false);
 		answerDText.gameObject.SetActive(false);
 		questionText.text = "You got " + score * 100 / questionList.Count + "%";
+        QuizComplete = true;
+        
 	}
 
     void NextQuestion()
 	{
-		
-		//Only move to the next question if picked 1 answer
-		if (chosenAnswer != null)
-		{
-			//Check if answer is correct
-			if (chosenAnswer == questionList[questionIndex].correctAnswer)
-			{
-				score += 1;
-			}
-			//Check if there're still question left
-            if (questionIndex != questionList.Count - 1)
+        if (QuizComplete)
+        {
+            QuizScreen.SetActive(false);
+            if (!StartedGame)
             {
-				questionIndex += 1;
-				DisplayQuestion();
-				chosenAnswer = null;
-				aButton.image.color = Color.white;
-				bButton.image.color = Color.white;
-				cButton.image.color = Color.white;
-				dButton.image.color = Color.white;
-			}
-			else
-            {
-                DisplayResult();
+                StartGameScreen.SetActive(true);
+                StartedGame = true;
             }
-		}
+            else
+            {
+                QuitGameScreen.SetActive(true);
+                QuitGameScreen.GetComponent<EndScreenCOnstruction>().EndGame();
+            }
+            
+        }
+
+        else
+        {
+            //Only move to the next question if picked 1 answer
+            if (chosenAnswer != null)
+            {
+                //Check if answer is correct
+                if (chosenAnswer == questionList[questionIndex].correctAnswer)
+                {
+                    score += 1;
+                }
+                //Check if there're still question left
+                if (questionIndex != questionList.Count - 1)
+                {
+                    questionIndex += 1;
+                    DisplayQuestion();
+                    chosenAnswer = null;
+                    aButton.image.color = Color.white;
+                    bButton.image.color = Color.white;
+                    cButton.image.color = Color.white;
+                    dButton.image.color = Color.white;
+                }
+                else
+                {
+                    DisplayResult();
+                }
+            }
+        }
+		
 	}
 
 	void Start()
@@ -208,10 +237,58 @@ public class Questionaire : MonoBehaviour {
 
 
 		DisplayQuestion();
+        Time.timeScale = 0;
     }
 
     // Update is called once per frame
     void Update () {
 		
 	}
+
+
+  public void InitializeQuestionaire()
+    {
+        //Turns on everything
+        questionIndex = 0;
+        aButton.gameObject.SetActive(true);
+        bButton.gameObject.SetActive(true);
+        cButton.gameObject.SetActive(true);
+        dButton.gameObject.SetActive(true);
+        answerAText.gameObject.SetActive(true);
+        answerBText.gameObject.SetActive(true);
+        answerCText.gameObject.SetActive(true);
+        answerDText.gameObject.SetActive(true);
+
+
+        QuizScreen.SetActive(true);
+        QuizComplete = false;
+        readTextFile("Assets/Resources/Questionaire.txt");
+
+        ShuffleQuestionaire();
+        foreach (Questions q in questionList)
+        {
+            ShuffleAnswers(q.answers);
+        }
+
+        foreach (Questions q in questionList)
+        {
+            Debug.Log(q.question);
+            foreach (string s in q.answers)
+            {
+                Debug.Log(s);
+            }
+            Debug.Log("Correct: " + q.correctAnswer);
+        }
+
+        aButton.onClick.AddListener(delegate { ChooseAnswer(0); });
+        bButton.onClick.AddListener(delegate { ChooseAnswer(1); });
+        cButton.onClick.AddListener(delegate { ChooseAnswer(2); });
+        dButton.onClick.AddListener(delegate { ChooseAnswer(3); });
+        nextButton.onClick.AddListener(NextQuestion);
+
+
+        DisplayQuestion();
+        Time.timeScale = 0;
+    }
 }
+

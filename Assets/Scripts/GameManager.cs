@@ -72,8 +72,8 @@ public class GameManager : MonoBehaviour {
         if (timeValue <= 0)
         {
             Time.timeScale = 0.0f;
-            EndingScreen.SetActive(true);
-            EndingScreen.GetComponent<ToysEndGame>().EndGame();
+            //EndingScreen.SetActive(true);
+            EndingScreen.GetComponent<Questionaire>().InitializeQuestionaire();
             
         }
 

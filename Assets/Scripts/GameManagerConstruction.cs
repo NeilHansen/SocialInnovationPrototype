@@ -98,8 +98,9 @@ public class GameManagerConstruction : MonoBehaviour {
 
         if (playerScore == 4)
         {
-            EndingScreen.SetActive(true);
-            EndingScreen.GetComponent<EndScreenCOnstruction>().EndGame();
+            //Ending quiz screen
+            EndingScreen.GetComponent<Questionaire>().InitializeQuestionaire();
+            //EndingScreen.GetComponent<EndScreenCOnstruction>().EndGame();
             Time.timeScale = 0f;
         }
         //ScoreAdded.text = "+" + currentFoodValue;
