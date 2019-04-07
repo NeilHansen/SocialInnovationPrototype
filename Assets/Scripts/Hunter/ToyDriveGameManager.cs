@@ -42,6 +42,7 @@ public class ToyDriveGameManager : MonoBehaviour {
     Image Fill;
 
     float TimeTruckStarted;
+    bool GameComplete = false;
 
     //public float timerMultiplier = 0.1f;
 
@@ -74,11 +75,12 @@ public class ToyDriveGameManager : MonoBehaviour {
         PackageCounter.text = "packages: " + Truck.packages + "/2";
      
      
-        if (timeValue <= 0)
+        if (timeValue <= 0&& !GameComplete)
         {
+            GameComplete = true;
             Time.timeScale = 0.0f;
             EndingScreen.SetActive(true);
-            EndingScreen.GetComponent<ToysEndGame>().EndGame();
+            EndingScreen.GetComponent<Questionaire>().InitializeQuestionaire();
 
         }
 

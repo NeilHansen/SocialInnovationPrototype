@@ -55,6 +55,10 @@ public class EndScreen : MonoBehaviour {
 
     public void RestartGame()
     {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    public void LoaddDorm()
+    {
         SceneManager.LoadScene(0);
     }
 

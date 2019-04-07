@@ -58,7 +58,12 @@ public class ToysEndGame : MonoBehaviour {
 
     public void RestartGame()
     {
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void LoadDormRoom()
+    {
+        SceneManager.LoadScene(0);
     }
 
 

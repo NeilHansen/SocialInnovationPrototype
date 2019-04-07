@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour {
     //endScreen
     [SerializeField]
     GameObject EndingScreen;
+    bool EndGameInitiated=false;
 
     [SerializeField]
     Image Fill;
@@ -69,8 +70,9 @@ public class GameManager : MonoBehaviour {
         timerText.text = "" + (int)timeValue;
         timerTextBG.text = "" + (int)timeValue;
         specialCustomerBonusText.GetComponent<TextMeshProUGUI>().text = "x" + specialCustomerBonusMultiplier;
-        if (timeValue <= 0)
+        if (timeValue <= 0&&!EndGameInitiated)
         {
+            EndGameInitiated = true;
             Time.timeScale = 0.0f;
             //EndingScreen.SetActive(true);
             EndingScreen.GetComponent<Questionaire>().InitializeQuestionaire();

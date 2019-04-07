@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Questionaire : MonoBehaviour {
 
@@ -173,8 +174,37 @@ public class Questionaire : MonoBehaviour {
             }
             else
             {
+                //Will switch ending screen depending on the game mode
+              
+                switch (SceneManager.GetActiveScene().buildIndex)
+                {
+                    case 0:
+                        //Do nothing
+                        break;
+
+                    case 1:
+                        //Cooks in the kitchen end screen
+                        QuitGameScreen.GetComponent<EndScreen>().EndGame();
+
+                        break;
+                    case 2:
+                        //Habitats for humanity
+                        QuitGameScreen.GetComponent<EndScreenCOnstruction>().EndGame();
+                        break;
+
+                        case 3:
+                        QuitGameScreen.GetComponent<ToysEndGame>().EndGame();
+                        //Toys for tots
+                        break;
+                    case 4:
+                        //Final game mode
+                        break;
+                }
+
+                
+
                 QuitGameScreen.SetActive(true);
-                QuitGameScreen.GetComponent<EndScreenCOnstruction>().EndGame();
+                //QuitGameScreen.GetComponent<EndScreenCOnstruction>().EndGame();
             }
             
         }
