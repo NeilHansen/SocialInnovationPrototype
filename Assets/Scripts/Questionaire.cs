@@ -21,7 +21,7 @@ public class Questionaire : MonoBehaviour {
 
 	private int questionIndex = 0;
 	private string chosenAnswer = null;
-	private int score = 0;
+	public int score = 0;
     private bool QuizComplete=false;
     private bool StartedGame=false;
     [SerializeField]
@@ -149,6 +149,7 @@ public class Questionaire : MonoBehaviour {
 
     void DisplayResult()
 	{
+        Debug.Log("DisplayResults");
 		aButton.gameObject.SetActive(false);
 		bButton.gameObject.SetActive(false);
 		cButton.gameObject.SetActive(false);
@@ -164,8 +165,10 @@ public class Questionaire : MonoBehaviour {
 
     void NextQuestion()
 	{
+        Debug.Log("The quiz is complete is" + QuizComplete);
         if (QuizComplete)
         {
+            
             QuizScreen.SetActive(false);
             if (!StartedGame)
             {
@@ -279,6 +282,7 @@ public class Questionaire : MonoBehaviour {
   public void InitializeQuestionaire()
     {
         //Turns on everything
+        QuizComplete = false;
         questionIndex = 0;
         aButton.gameObject.SetActive(true);
         bButton.gameObject.SetActive(true);
@@ -291,7 +295,7 @@ public class Questionaire : MonoBehaviour {
 
 
         QuizScreen.SetActive(true);
-        QuizComplete = false;
+        
         readTextFile("Assets/Resources/Questionaire.txt");
 
         ShuffleQuestionaire();
@@ -314,7 +318,7 @@ public class Questionaire : MonoBehaviour {
         bButton.onClick.AddListener(delegate { ChooseAnswer(1); });
         cButton.onClick.AddListener(delegate { ChooseAnswer(2); });
         dButton.onClick.AddListener(delegate { ChooseAnswer(3); });
-        nextButton.onClick.AddListener(NextQuestion);
+        //nextButton.onClick.AddListener(NextQuestion);
 
 
         DisplayQuestion();

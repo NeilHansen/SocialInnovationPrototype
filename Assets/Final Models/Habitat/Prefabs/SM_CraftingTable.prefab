@@ -128,12 +128,15 @@ GameObject:
   - component: {fileID: 23387616052558616}
   - component: {fileID: 65039448708452996}
   - component: {fileID: 65780010344144850}
+  - component: {fileID: 114527970423427410}
+  - component: {fileID: 114112397764301038}
+  - component: {fileID: 114348780389385452}
   m_Layer: 0
   m_Name: SM_CraftingTable
   m_TagString: constructionarea
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1765909868647498
 GameObject:
@@ -201,7 +204,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1958889470583254
 GameObject:
@@ -277,7 +280,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1899662211995714}
   m_LocalRotation: {x: 0.49835303, y: -0.50164163, z: -0.50164163, w: 0.49835303}
-  m_LocalPosition: {x: -0.4548237, y: 0.48728472, z: 0.16901018}
+  m_LocalPosition: {x: -0.4544, y: 0.5486, z: 0.169}
   m_LocalScale: {x: 0.45214176, y: 0.33110595, z: 1.0189186}
   m_Children: []
   m_Father: {fileID: 4448530089649884}
@@ -335,8 +338,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.88581294, y: 0.38016033, z: 0.33923227}
-  m_Center: {x: -0.44290614, y: 0.17259, z: 0.16350062}
+  m_Size: {x: 0.88581216, y: 0.1250355, z: 0.69424874}
+  m_Center: {x: -0.44288778, y: 0.39269418, z: 0.3410089}
 --- !u!65 &65780010344144850
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -344,11 +347,11 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1738527711140124}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.24, y: 0.68, z: 0.33923227}
-  m_Center: {x: -0.44290614, y: 0.33, z: 0.16350062}
+  m_Size: {x: 1.24, y: 0.67999995, z: 0.73815215}
+  m_Center: {x: -0.44290334, y: 0.3300003, z: 0.3629606}
 --- !u!114 &114017044538363220
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -466,6 +469,33 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114112397764301038
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1738527711140124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05bbd389d11bfdb4da870937b4b99733, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: SetInteractorAndMove
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114243862639634346
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -572,6 +602,30 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114348780389385452
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1738527711140124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1627b2868f2612f419d1ee92fd2ac2f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  areaManager: {fileID: 0}
+  images:
+  - {fileID: 21300000, guid: 63a1e175839c2dd4cbebd64c987e7e7f, type: 3}
+  - {fileID: 21300000, guid: 2d95d900e16ccef4cb7e3906608d9874, type: 3}
+  - {fileID: 21300000, guid: 73504884065561f4b8e9ac85ecc626f5, type: 3}
+  - {fileID: 21300000, guid: 3ff66a5963efef242a2d41fb7575be5a, type: 3}
+  - {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  woodImage: {fileID: 1975022417422182}
+  plusImage: {fileID: 1733686964428972}
+  connectorImage: {fileID: 1765909868647498}
+  requiredText: {fileID: 1980719955872160}
+  woodCompleteButton: {fileID: 1792435095149752}
+  pipeCompleteButton: {fileID: 1476969543881806}
 --- !u!114 &114353063913243998
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -670,6 +724,56 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114527970423427410
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1738527711140124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0096727377e98ec4b8add7e0b6429797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 0
+  startTime: 2
+  isInteracting: 0
+  isComplete: 0
+  areaType: 10
+  interactingUnit: {fileID: 0}
+  UnitToMoveTo: {fileID: 0}
+  feedbackSlider: {fileID: 0}
+  feedbackSlider2: {fileID: 0}
+  feedbackSlider3: {fileID: 0}
+  feedbackSlider4: {fileID: 0}
+  Status: {fileID: 0}
+  Status2: {fileID: 0}
+  Status3: {fileID: 0}
+  Status4: {fileID: 0}
+  FeedbackSprites: []
+  woodRecipticalBin: {fileID: 0}
+  pipeRecipticalBin: {fileID: 0}
+  BenchHasWood: 0
+  BenchHasPipe: 0
+  numberOfBoards: 0
+  numberOfPipes: 0
+  numberOfNails: 0
+  numberOfConnectors: 0
+  numberOfComboWood: 0
+  numberOfComboPipe: 0
+  Heavycarriers: []
+  WoodHoldPositions: []
+  carryWood: {fileID: 0}
+  PipeHoldPositions: []
+  CarryPipe: {fileID: 0}
+  hoverSprite: {fileID: 21300022, guid: b72b888839472df4ea0690b5df9d30d7, type: 3}
+  hoverSpriteObject: {fileID: 1958889470583254}
+  MovePoint: {fileID: 4468014776595850}
+  Gm: {fileID: 0}
+  dirtyPlateOn: 0
+  cleanPlateOn: 0
+  filledPlateOn: 0
+  rawFoodOn: 0
 --- !u!114 &114567365748296058
 MonoBehaviour:
   m_ObjectHideFlags: 1
