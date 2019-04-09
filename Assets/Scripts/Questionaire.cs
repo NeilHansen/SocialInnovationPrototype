@@ -44,6 +44,14 @@ public class Questionaire : MonoBehaviour {
     }
     private List<Questions> questionList;
 
+	void SaveTextFile(List<Questions> qList)
+    {
+		string path = "Assets/Resources/Questionaire_Shuffled.txt";
+		StreamWriter writer = new StreamWriter(path, true);
+		writer.WriteLine(qList.Capacity);
+		writer.Close();
+    }
+
     void readTextFile(string file_path)
     {
         StreamReader inp_stm = new StreamReader(file_path);
@@ -158,7 +166,7 @@ public class Questionaire : MonoBehaviour {
 		answerBText.gameObject.SetActive(false);
 		answerCText.gameObject.SetActive(false);
 		answerDText.gameObject.SetActive(false);
-		questionText.text = "You got " + score * 100 / questionList.Count + "%";
+		questionText.text = "You got " + score * 100 / 5 + "%";
         QuizComplete = true;
         
 	}
@@ -223,7 +231,8 @@ public class Questionaire : MonoBehaviour {
                     score += 1;
                 }
                 //Check if there're still question left
-                if (questionIndex != questionList.Count - 1)
+                //if (questionIndex != questionList.Count - 1)
+				if (questionIndex <= 3)
                 {
                     questionIndex += 1;
                     DisplayQuestion();
@@ -242,15 +251,19 @@ public class Questionaire : MonoBehaviour {
 		
 	}
 
+
+
 	void Start()
     {
-        readTextFile("Assets/Resources/Questionaire.txt");
+        readTextFile("Assets/Resources/Questionaire Real.txt");
 
         ShuffleQuestionaire();
         foreach (Questions q in questionList)
         {
             ShuffleAnswers(q.answers);
         }
+
+		SaveTextFile(questionList);
 
         foreach (Questions q in questionList)
         {
@@ -296,7 +309,7 @@ public class Questionaire : MonoBehaviour {
 
         QuizScreen.SetActive(true);
         
-        readTextFile("Assets/Resources/Questionaire.txt");
+        readTextFile("Assets/Resources/Questionaire.txt");      
 
         ShuffleQuestionaire();
         foreach (Questions q in questionList)
