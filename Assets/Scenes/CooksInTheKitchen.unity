@@ -1298,6 +1298,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &212483117 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114801328957625100, guid: fc7f7143c33476845b9f86dc31da740a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1367952860}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &233913619
 GameObject:
   m_ObjectHideFlags: 0
@@ -2950,7 +2956,7 @@ MonoBehaviour:
   isComplete: 0
   areaType: 4
   foodServings: 0
-  UnitToMoveTo: {fileID: 0}
+  UnitToMoveTo: {fileID: 1435730057}
   feedbackSlider: {fileID: 0}
   feedbackSlider2: {fileID: 0}
   feedbackSlider3: {fileID: 0}
@@ -2975,6 +2981,8 @@ MonoBehaviour:
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 0}
   ConsoleCanvas: {fileID: 0}
+  tm: {fileID: 0}
+  TutorialComplete: 0
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -4879,6 +4887,8 @@ MonoBehaviour:
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 0}
   ConsoleCanvas: {fileID: 0}
+  tm: {fileID: 0}
+  TutorialComplete: 0
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -5232,6 +5242,8 @@ MonoBehaviour:
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 0}
   ConsoleCanvas: {fileID: 0}
+  tm: {fileID: 0}
+  TutorialComplete: 0
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -6363,7 +6375,7 @@ MonoBehaviour:
   isComplete: 0
   areaType: 5
   foodServings: 0
-  UnitToMoveTo: {fileID: 0}
+  UnitToMoveTo: {fileID: 2046482724}
   feedbackSlider: {fileID: 0}
   feedbackSlider2: {fileID: 0}
   feedbackSlider3: {fileID: 0}
@@ -6388,6 +6400,8 @@ MonoBehaviour:
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 0}
   ConsoleCanvas: {fileID: 0}
+  tm: {fileID: 0}
+  TutorialComplete: 0
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -6644,6 +6658,8 @@ MonoBehaviour:
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 0}
   ConsoleCanvas: {fileID: 0}
+  tm: {fileID: 0}
+  TutorialComplete: 0
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -8213,6 +8229,8 @@ MonoBehaviour:
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 0}
   ConsoleCanvas: {fileID: 0}
+  tm: {fileID: 0}
+  TutorialComplete: 0
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -8472,6 +8490,30 @@ Prefab:
       value: 
       objectReference: {fileID: 1833165188571064, guid: 5958e8eb0f80bc24ab28c1bf719b0da6,
         type: 2}
+    - target: {fileID: 1601312878765102, guid: ef8fab0d4ac1af64ab6e24e5f5098833, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1656460125115712, guid: ef8fab0d4ac1af64ab6e24e5f5098833, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1205118462572642, guid: ef8fab0d4ac1af64ab6e24e5f5098833, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1700887587926852, guid: ef8fab0d4ac1af64ab6e24e5f5098833, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1995534288013792, guid: ef8fab0d4ac1af64ab6e24e5f5098833, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1685320495402994, guid: ef8fab0d4ac1af64ab6e24e5f5098833, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef8fab0d4ac1af64ab6e24e5f5098833, type: 2}
   m_IsPrefabAsset: 0
@@ -8817,6 +8859,8 @@ MonoBehaviour:
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 0}
   ConsoleCanvas: {fileID: 0}
+  tm: {fileID: 0}
+  TutorialComplete: 0
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -9932,6 +9976,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 00c4c06b4b3448c4da3d613b8be5d0cd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00c4c06b4b3448c4da3d613b8be5d0cd, type: 3}
   m_IsPrefabAsset: 0
@@ -10171,6 +10219,8 @@ MonoBehaviour:
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 0}
   ConsoleCanvas: {fileID: 0}
+  tm: {fileID: 0}
+  TutorialComplete: 0
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -12916,6 +12966,8 @@ MonoBehaviour:
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 0}
   ConsoleCanvas: {fileID: 0}
+  tm: {fileID: 0}
+  TutorialComplete: 0
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -14182,8 +14234,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 23bf71e9e1b7827479d3f21720d96260, type: 3}
   - {fileID: 21300000, guid: 372cff60c50e56545b9534a87a501726, type: 3}
   - {fileID: 21300000, guid: 28dd10d454462724e8b8fbad62c0210c, type: 3}
-  SatisfactionFace: {fileID: 0}
-  SatisfactionText: {fileID: 0}
+  SatisfactionFace: {fileID: 1979448447}
+  SatisfactionText: {fileID: 212483117}
   ScoreAdded: {fileID: 97617017}
   EndingScreen: {fileID: 1856723940}
   Fill: {fileID: 788036528}
@@ -14622,6 +14674,8 @@ MonoBehaviour:
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 0}
   ConsoleCanvas: {fileID: 0}
+  tm: {fileID: 0}
+  TutorialComplete: 0
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -14958,6 +15012,8 @@ MonoBehaviour:
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 0}
   ConsoleCanvas: {fileID: 0}
+  tm: {fileID: 0}
+  TutorialComplete: 0
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -15049,6 +15105,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4795096118501486, guid: f9d50eeafe51c8a4ab2c7afab5f0e560,
     type: 2}
   m_PrefabInternal: {fileID: 1976121718}
+--- !u!114 &1979448447 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114526941223981382, guid: fc7f7143c33476845b9f86dc31da740a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1367952860}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!114 &1982390288 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114825128495136630, guid: 812f6bb2397b56d4fa805583683168a2,
@@ -15315,6 +15377,8 @@ MonoBehaviour:
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 0}
   ConsoleCanvas: {fileID: 0}
+  tm: {fileID: 0}
+  TutorialComplete: 0
   dirtyPlateOn: 0
   cleanPlateOn: 1
   filledPlateOn: 0
@@ -16337,7 +16401,7 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2074349949}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -16439,6 +16503,8 @@ MonoBehaviour:
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 0}
   ConsoleCanvas: {fileID: 0}
+  tm: {fileID: 0}
+  TutorialComplete: 0
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -16939,6 +17005,8 @@ MonoBehaviour:
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 0}
   ConsoleCanvas: {fileID: 0}
+  tm: {fileID: 0}
+  TutorialComplete: 0
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -17362,6 +17430,8 @@ MonoBehaviour:
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 0}
   ConsoleCanvas: {fileID: 0}
+  tm: {fileID: 0}
+  TutorialComplete: 0
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
