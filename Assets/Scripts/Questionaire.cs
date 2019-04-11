@@ -12,6 +12,7 @@ public class Questionaire : MonoBehaviour {
 	public Text answerBText;
 	public Text answerCText;
 	public Text answerDText;
+	public Text resultText;
     
 	public Button aButton;
 	public Button bButton;
@@ -148,7 +149,7 @@ public class Questionaire : MonoBehaviour {
 
 	void DisplayQuestion()
 	{
-		questionText.text = questionList[questionIndex].question;
+		questionText.text = "Q" + (questionIndex + 1).ToString() + ". " + questionList[questionIndex].question;
 		answerAText.text = questionList[questionIndex].answers[0];
 		answerBText.text = questionList[questionIndex].answers[1];
 		answerCText.text = questionList[questionIndex].answers[2];
@@ -157,6 +158,7 @@ public class Questionaire : MonoBehaviour {
 
     void DisplayResult()
 	{
+		
         Debug.Log("DisplayResults");
 		aButton.gameObject.SetActive(false);
 		bButton.gameObject.SetActive(false);
@@ -168,7 +170,7 @@ public class Questionaire : MonoBehaviour {
 		answerDText.gameObject.SetActive(false);
 		questionText.text = "You got " + score * 100 / 5 + "%";
         QuizComplete = true;
-        
+
 	}
 
     void NextQuestion()
@@ -228,7 +230,7 @@ public class Questionaire : MonoBehaviour {
                 //Check if answer is correct
                 if (chosenAnswer == questionList[questionIndex].correctAnswer)
                 {
-                    score += 1;
+					score += 1;
                 }
                 //Check if there're still question left
                 //if (questionIndex != questionList.Count - 1)
@@ -246,6 +248,7 @@ public class Questionaire : MonoBehaviour {
                 {
                     DisplayResult();
                 }
+				resultText.text = score + "/5";
             }
         }
 		
@@ -263,7 +266,7 @@ public class Questionaire : MonoBehaviour {
             ShuffleAnswers(q.answers);
         }
 
-		SaveTextFile(questionList);
+		//SaveTextFile(questionList);
 
         foreach (Questions q in questionList)
         {
