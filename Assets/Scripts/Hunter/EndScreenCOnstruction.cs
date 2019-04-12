@@ -109,9 +109,9 @@ public class EndScreenCOnstruction : MonoBehaviour {
 
 
 
-    public void RestartGame()
+    public void RestartGame(string scene)
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(scene);
     }
     public void LoadDorm()
     {
