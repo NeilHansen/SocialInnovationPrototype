@@ -12878,7 +12878,7 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 2020975554}
+      objectReference: {fileID: 1705592602}
     - target: {fileID: 223603015891383140, guid: bced5ee23a8cb06469617c6180b5c09e,
         type: 2}
       propertyPath: m_Camera
@@ -12888,7 +12888,17 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 2020975554}
+      objectReference: {fileID: 1705592602}
+    - target: {fileID: 114252252211704388, guid: bced5ee23a8cb06469617c6180b5c09e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CompleteWood
+      objectReference: {fileID: 0}
+    - target: {fileID: 114017044538363220, guid: bced5ee23a8cb06469617c6180b5c09e,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CompletePipe
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bced5ee23a8cb06469617c6180b5c09e, type: 2}
   m_IsPrefabAsset: 0
@@ -12897,6 +12907,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4448530089649884, guid: bced5ee23a8cb06469617c6180b5c09e,
     type: 2}
   m_PrefabInternal: {fileID: 1705592600}
+--- !u!114 &1705592602 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114348780389385452, guid: bced5ee23a8cb06469617c6180b5c09e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1705592600}
+  m_Script: {fileID: 11500000, guid: 1627b2868f2612f419d1ee92fd2ac2f5, type: 3}
 --- !u!1 &1714529414
 GameObject:
   m_ObjectHideFlags: 0

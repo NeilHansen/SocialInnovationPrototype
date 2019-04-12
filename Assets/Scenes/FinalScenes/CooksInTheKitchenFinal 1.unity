@@ -112,7 +112,7 @@ NavMeshSettings:
     accuratePlacement: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 7b4675f01429d79438ae042e46ed338b, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: e4c46f98cad5e3345b7ff633ccfe11ff, type: 2}
 --- !u!1 &21415875 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1619013625320734, guid: ef8fab0d4ac1af64ab6e24e5f5098833,
@@ -1739,6 +1739,12 @@ Prefab:
     - {fileID: 114429326428133140, guid: 812f6bb2397b56d4fa805583683168a2, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 812f6bb2397b56d4fa805583683168a2, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &261446249 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114025075365999010, guid: 812f6bb2397b56d4fa805583683168a2,
+    type: 2}
+  m_PrefabInternal: {fileID: 261446248}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &264263558
 Prefab:
   m_ObjectHideFlags: 0
@@ -6208,23 +6214,35 @@ Prefab:
         type: 2}
       propertyPath: dirtyPlate
       value: 
-      objectReference: {fileID: 1621233114559586, guid: 6dcd10bd0fcea7f42ac14525d2c5dd51,
-        type: 2}
+      objectReference: {fileID: 842428728}
     - target: {fileID: 114933761260322676, guid: b364c6c5073d110449214fc59224b699,
         type: 2}
       propertyPath: cleanPlate
       value: 
-      objectReference: {fileID: 1854379385724520, guid: 6ec234609da2ab84599b8d05112070c2,
-        type: 2}
+      objectReference: {fileID: 842428727}
     - target: {fileID: 114933761260322676, guid: b364c6c5073d110449214fc59224b699,
         type: 2}
       propertyPath: rawFood
       value: 
-      objectReference: {fileID: 1833165188571064, guid: 5958e8eb0f80bc24ab28c1bf719b0da6,
-        type: 2}
+      objectReference: {fileID: 842428726}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b364c6c5073d110449214fc59224b699, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &842428726 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1435565800325310, guid: b364c6c5073d110449214fc59224b699,
+    type: 2}
+  m_PrefabInternal: {fileID: 842428725}
+--- !u!1 &842428727 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1592907428333384, guid: b364c6c5073d110449214fc59224b699,
+    type: 2}
+  m_PrefabInternal: {fileID: 842428725}
+--- !u!1 &842428728 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1119066694210200, guid: b364c6c5073d110449214fc59224b699,
+    type: 2}
+  m_PrefabInternal: {fileID: 842428725}
 --- !u!1 &844789239
 GameObject:
   m_ObjectHideFlags: 0
@@ -8482,20 +8500,17 @@ Prefab:
         type: 2}
       propertyPath: dirtyPlate
       value: 
-      objectReference: {fileID: 1621233114559586, guid: 6dcd10bd0fcea7f42ac14525d2c5dd51,
-        type: 2}
+      objectReference: {fileID: 1052265677}
     - target: {fileID: 114135885561573822, guid: ef8fab0d4ac1af64ab6e24e5f5098833,
         type: 2}
       propertyPath: cleanPlate
       value: 
-      objectReference: {fileID: 1854379385724520, guid: 6ec234609da2ab84599b8d05112070c2,
-        type: 2}
+      objectReference: {fileID: 1052265676}
     - target: {fileID: 114135885561573822, guid: ef8fab0d4ac1af64ab6e24e5f5098833,
         type: 2}
       propertyPath: rawFood
       value: 
-      objectReference: {fileID: 1833165188571064, guid: 5958e8eb0f80bc24ab28c1bf719b0da6,
-        type: 2}
+      objectReference: {fileID: 1052265675}
     - target: {fileID: 1601312878765102, guid: ef8fab0d4ac1af64ab6e24e5f5098833, type: 2}
       propertyPath: m_IsActive
       value: 0
@@ -8523,6 +8538,21 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef8fab0d4ac1af64ab6e24e5f5098833, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1052265675 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1286176173065112, guid: ef8fab0d4ac1af64ab6e24e5f5098833,
+    type: 2}
+  m_PrefabInternal: {fileID: 1052265674}
+--- !u!1 &1052265676 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1352987030643406, guid: ef8fab0d4ac1af64ab6e24e5f5098833,
+    type: 2}
+  m_PrefabInternal: {fileID: 1052265674}
+--- !u!1 &1052265677 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1741258459019002, guid: ef8fab0d4ac1af64ab6e24e5f5098833,
+    type: 2}
+  m_PrefabInternal: {fileID: 1052265674}
 --- !u!4 &1063401181 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4771034560622844, guid: 49c2b82b448481f41b43f0e03f41172e,
@@ -13694,7 +13724,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Stars:
   - {fileID: 1111916258}
-  - {fileID: 1709020940}
+  - {fileID: 261446249}
   - {fileID: 1709020940}
   ScoreText: {fileID: 2016055082}
   GM: {fileID: 1875669972}

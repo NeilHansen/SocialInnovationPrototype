@@ -10,6 +10,7 @@ public class UnitTaskController : MonoBehaviour
 
     public GameObject exclamationPoint;
 
+    //for cooks in kitchen
     public GameObject dirtyPlate;
     public GameObject cleanPlate;
     public GameObject filledPlate;
@@ -18,8 +19,22 @@ public class UnitTaskController : MonoBehaviour
     [HideInInspector]
     public GameObject companion;
     //For heavy object
+    //for construction 
     public GameObject BigwoodOBJ;
-    public GameObject HeavyHoldPosition;
+    public GameObject BigPipe;
+    public GameObject smallWood;
+    public GameObject smallPipe;
+    public GameObject nails;
+    public GameObject connector;
+    public GameObject comboWood;
+    public GameObject comboPipe;
+
+    // from toys for tots
+    public GameObject gift;
+    public GameObject robot;
+    public GameObject ball;
+    public GameObject bat;
+    public GameObject doll;
 
     public TaskType CurrentTaskType
     {
@@ -80,7 +95,15 @@ public class UnitTaskController : MonoBehaviour
         Nails,
         PipeConnector,
         LargePipe,
-        LargeWood
+        LargeWood,
+        GiftBox,
+        Doll,
+        Ball,
+        Robot,
+        BaseballBat,
+        Computer,
+        Console,
+        Clothes
     }
     public ObjectHeld objectHolding;
 
@@ -188,6 +211,30 @@ public class UnitTaskController : MonoBehaviour
                 break;
             case TaskType.Nails:
                 objectHolding = ObjectHeld.Nails;
+                break;
+            case TaskType.Counter:
+                break;
+            case TaskType.LargeWood:
+                break;
+            case TaskType.LargePipe:
+                break;
+            case TaskType.PipeConnector:
+                break;
+            case TaskType.GiftBox:
+                break;
+            case TaskType.Doll:
+                break;
+            case TaskType.Ball:
+                break;
+            case TaskType.Robot:
+                break;
+            case TaskType.BaseballBat:
+                break;
+            case TaskType.Computer:
+                break;
+            case TaskType.Console:
+                break;
+            case TaskType.Clothes:
                 break;
         }
     }
