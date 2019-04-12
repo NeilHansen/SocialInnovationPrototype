@@ -12,6 +12,7 @@ public class Questionaire : MonoBehaviour {
 	public Text answerBText;
 	public Text answerCText;
 	public Text answerDText;
+	public Text resultText;
     
 	public Button aButton;
 	public Button bButton;
@@ -43,6 +44,14 @@ public class Questionaire : MonoBehaviour {
         }
     }
     private List<Questions> questionList;
+
+	void SaveTextFile(List<Questions> qList)
+    {
+		string path = "Assets/Resources/Questionaire_Shuffled.txt";
+		StreamWriter writer = new StreamWriter(path, true);
+		writer.WriteLine(qList.Capacity);
+		writer.Close();
+    }
 
     void readTextFile(string file_path)
     {
@@ -140,7 +149,7 @@ public class Questionaire : MonoBehaviour {
 
 	void DisplayQuestion()
 	{
-		questionText.text = questionList[questionIndex].question;
+		questionText.text = "Q" + (questionIndex + 1).ToString() + ". " + questionList[questionIndex].question;
 		answerAText.text = questionList[questionIndex].answers[0];
 		answerBText.text = questionList[questionIndex].answers[1];
 		answerCText.text = questionList[questionIndex].answers[2];
@@ -149,6 +158,7 @@ public class Questionaire : MonoBehaviour {
 
     void DisplayResult()
 	{
+		
         Debug.Log("DisplayResults");
 		aButton.gameObject.SetActive(false);
 		bButton.gameObject.SetActive(false);
@@ -158,9 +168,9 @@ public class Questionaire : MonoBehaviour {
 		answerBText.gameObject.SetActive(false);
 		answerCText.gameObject.SetActive(false);
 		answerDText.gameObject.SetActive(false);
-		questionText.text = "You got " + score * 100 / questionList.Count + "%";
+		questionText.text = "You got " + score * 100 / 5 + "%";
         QuizComplete = true;
-        
+
 	}
 
     void NextQuestion()
@@ -220,10 +230,11 @@ public class Questionaire : MonoBehaviour {
                 //Check if answer is correct
                 if (chosenAnswer == questionList[questionIndex].correctAnswer)
                 {
-                    score += 1;
+					score += 1;
                 }
                 //Check if there're still question left
-                if (questionIndex != questionList.Count - 1)
+                //if (questionIndex != questionList.Count - 1)
+				if (questionIndex <= 3)
                 {
                     questionIndex += 1;
                     DisplayQuestion();
@@ -237,20 +248,25 @@ public class Questionaire : MonoBehaviour {
                 {
                     DisplayResult();
                 }
+				resultText.text = score + "/5";
             }
         }
 		
 	}
 
+
+
 	void Start()
     {
-        readTextFile("Assets/Resources/Questionaire.txt");
+        readTextFile("Assets/Resources/Questionaire Real.txt");
 
         ShuffleQuestionaire();
         foreach (Questions q in questionList)
         {
             ShuffleAnswers(q.answers);
         }
+
+		//SaveTextFile(questionList);
 
         foreach (Questions q in questionList)
         {
@@ -296,7 +312,7 @@ public class Questionaire : MonoBehaviour {
 
         QuizScreen.SetActive(true);
         
-        readTextFile("Assets/Resources/Questionaire.txt");
+        readTextFile("Assets/Resources/Questionaire.txt");      
 
         ShuffleQuestionaire();
         foreach (Questions q in questionList)

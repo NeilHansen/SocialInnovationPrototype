@@ -476,22 +476,49 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                 case AreaType.FormanReturn:
                     if (!isInteracting && !isComplete)
                     {
+                
                         objectPlayerHolding = interactingUnit.gameObject.GetComponent<UnitTaskController>().objectHolding;
                         Foreman foreman = FindObjectOfType<Foreman>();
-                        objectPlayerHolding = interactingUnit.gameObject.GetComponent<UnitTaskController>().objectHolding;
+                        bool Founditem = false;
                         foreach (Foreman.itemInfo item in foreman.finalItemList)
                         {
+
                             if (item.tool.ToString() == objectPlayerHolding.ToString())
                             {
-                                OnInteraction(interactingUnit);
+                                Founditem = true;
+                                break;
                             }
                             else
                             {
-                                if (FeedBackFiredAlready == false)
-                                {
-                                    NegativeFeedback(other);
-                                }
+                                Founditem = false;
                             }
+
+
+
+                            //if (item.tool.ToString() == objectPlayerHolding.ToString())
+                            //{
+                            //    Debug.Log("NOT PIECE OF SHIT");
+                            //    OnInteraction(interactingUnit);
+                            //}
+                            //else
+                            //{
+                            //    if (FeedBackFiredAlready == false)
+                            //    {
+                            //        NegativeFeedback(other);
+                            //        Debug.Log("PIECE OF SHIT");
+                            //    }
+                            //}
+                        }
+
+                        if (Founditem)
+                        {
+                            Debug.Log("NOT PIECE OF SHIT");
+                            OnInteraction(interactingUnit);
+                        }
+                        else if(FeedBackFiredAlready == false)
+                        {
+                            NegativeFeedback(other);
+                            Debug.Log("PIECE OF SHIT");
                         }
                     }
                     break;
@@ -571,32 +598,11 @@ public class InteractableAreaConstructionSite : MonoBehaviour
     public void SetInteractorAndMove()
     {
 
+
         UnitToMoveTo = rtsMover.ActiveUnit;
-        if (UnitToMoveTo == carryWood)
+        if (MovePoint != null)
         {
-            if (rtsMover.ActiveUnit.GetComponent<VisibilityManager>().Heavycarriers[0].gameObject != null)
-            {
-                UnitToMoveTo = rtsMover.ActiveUnit.GetComponent<VisibilityManager>().Heavycarriers[0].gameObject;
-            }
-
-
-
-        }
-        else if (UnitToMoveTo == CarryPipe)
-        {
-            if (rtsMover.ActiveUnit.GetComponent<VisibilityManager>().Heavycarriers[0].gameObject != null)
-            {
-                UnitToMoveTo = rtsMover.ActiveUnit.GetComponent<VisibilityManager>().Heavycarriers[0].gameObject;
-            }
-
-        }
-        else
-        {
-            if (MovePoint != null)
-            {
-                rtsMover.MovePlayer(MovePoint);
-            }
-
+            rtsMover.MovePlayer(MovePoint);
         }
     }
     public IEnumerator FlashFeedback(Image Player, Sprite image)

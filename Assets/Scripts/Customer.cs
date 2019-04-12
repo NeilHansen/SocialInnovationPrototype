@@ -38,8 +38,12 @@ public class Customer : MonoBehaviour
 	private SliderCanvas[] playerCanvas;
 	private int talkTimes = 0;
 	GameManager Gm;
+    public GameObject UnitToMoveTo;
+    private RtsMover rtsMover;
+    [SerializeField]
+    Transform MovePoint;
 
-	int previousRandoNum;
+    int previousRandoNum;
 
 	public enum Attitude
 	{
@@ -80,7 +84,8 @@ public class Customer : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
-		Gm = FindObjectOfType<GameManager>();
+        rtsMover = Camera.main.GetComponent<RtsMover>();
+        Gm = FindObjectOfType<GameManager>();
         movePath = FindObjectOfType<CustomerMovePath>();
         gameManager = FindObjectOfType<GameManager>();
 		playerCanvas = FindObjectsOfType<SliderCanvas>();
@@ -483,6 +488,15 @@ public class Customer : MonoBehaviour
         {
             currentHitDistance = maxRaycastDistance;
             currentHitObject = null;
+        }
+    }
+
+    public void SetInteractorAndMove()
+    {
+        UnitToMoveTo = rtsMover.ActiveUnit;
+        if (MovePoint != null)
+        {
+            rtsMover.MovePlayer(MovePoint);
         }
     }
 
