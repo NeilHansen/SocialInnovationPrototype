@@ -13,6 +13,7 @@ public class Questionaire : MonoBehaviour {
 	public Text answerCText;
 	public Text answerDText;
 	public Text resultText;
+    public TextAsset questionaireInput;
     
 	public Button aButton;
 	public Button bButton;
@@ -31,6 +32,7 @@ public class Questionaire : MonoBehaviour {
     GameObject StartGameScreen;
     [SerializeField]
     GameObject QuitGameScreen;
+    private string path;
 
     public class Questions
     {
@@ -45,15 +47,12 @@ public class Questionaire : MonoBehaviour {
     }
     private List<Questions> questionList;
 
-	void SaveTextFile(List<Questions> qList)
+    private void Awake()
     {
-		string path = "Assets/Resources/Questionaire_Shuffled.txt";
-		StreamWriter writer = new StreamWriter(path, true);
-		writer.WriteLine(qList.Capacity);
-		writer.Close();
+        path = Path.Combine(Application.streamingAssetsPath, "Questionaire Real.txt");
     }
 
-    void readTextFile(string file_path)
+    void ReadTextFile(string file_path)
     {
         StreamReader inp_stm = new StreamReader(file_path);
 
@@ -254,19 +253,18 @@ public class Questionaire : MonoBehaviour {
 		
 	}
 
-
+    
 
 	void Start()
     {
-        readTextFile("Assets/Resources/Questionaire Real.txt");
+
+        ReadTextFile(path);
 
         ShuffleQuestionaire();
         foreach (Questions q in questionList)
         {
             ShuffleAnswers(q.answers);
         }
-
-		//SaveTextFile(questionList);
 
         foreach (Questions q in questionList)
         {
@@ -278,7 +276,7 @@ public class Questionaire : MonoBehaviour {
             Debug.Log("Correct: " + q.correctAnswer);
         }
 
-		aButton.onClick.AddListener(delegate { ChooseAnswer(0); });
+        aButton.onClick.AddListener(delegate { ChooseAnswer(0); });
 		bButton.onClick.AddListener(delegate { ChooseAnswer(1); });
 		cButton.onClick.AddListener(delegate { ChooseAnswer(2); });
 		dButton.onClick.AddListener(delegate { ChooseAnswer(3); });
@@ -312,7 +310,7 @@ public class Questionaire : MonoBehaviour {
 
         QuizScreen.SetActive(true);
         
-        readTextFile("Assets/Resources/Questionaire.txt");      
+        ReadTextFile(path);      
 
         ShuffleQuestionaire();
         foreach (Questions q in questionList)
