@@ -289,6 +289,7 @@ public class InteractableArea : MonoBehaviour
                         Debug.Log("placed console!!");
                         TutorialComplete = true;
                         tm.NextTutorialPeice();
+                        ExitInteraction();
                     }
                 }
                 else 
@@ -296,6 +297,7 @@ public class InteractableArea : MonoBehaviour
                     //if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
                     //{
                     ConsoleCanvas.SetActive(true);
+                    ExitInteraction();
                     //}
                 }
                 break;
@@ -304,7 +306,8 @@ public class InteractableArea : MonoBehaviour
                 {
                     interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.Console;
                     //Destroy(this.gameObject);
-                    Destroy(this.gameObject, 0.5f);
+                    ExitInteraction();
+                    Destroy(this.gameObject);
                     Debug.Log("Picked up console!!");
                 }
                 break;
@@ -330,9 +333,11 @@ public class InteractableArea : MonoBehaviour
                 if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None )
                 {
                     interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.Computer;
-                 //   this.gameObject.SetActive(false);
-                    Destroy(this.gameObject, 0.5f);
+                    //   this.gameObject.SetActive(false);
+                    ExitInteraction();
+                    Destroy(this.gameObject);
                     Debug.Log("Picked up Computer!!");
+
                 }
                 break;
             case AreaType.Closet:
@@ -349,7 +354,8 @@ public class InteractableArea : MonoBehaviour
                 {
                     interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.Clothes;
                     // Destroy(this.gameObject);
-                    Destroy(this.gameObject, 0.5f);
+                    ExitInteraction();
+                    Destroy(this.gameObject);
                     Debug.Log("Picked up clothes!!");
                 }
                 break;
@@ -926,18 +932,34 @@ public class InteractableArea : MonoBehaviour
         interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
     }
 
+    private void ExitInteraction()
+    {
+        isInteracting = false;
+        isComplete = false;
+        interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete = false;
+        UnitToMoveTo = null;
+        if (interactingUnit.GetComponentInChildren<PlayerUI>())
+        {
+            interactingUnit.GetComponentInChildren<PlayerUI>().TurnOffUI();
+        }
+    }
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
             isInteracting = false;
-            //isComplete = false;
+            isComplete = false;
             interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete = false;
             UnitToMoveTo = null;
             if (other.GetComponentInChildren<PlayerUI>())
             {
                 other.GetComponentInChildren<PlayerUI>().TurnOffUI();
             }
+
+            //if(this.areaType == AreaType.TvBox && this.TutorialComplete || this.areaType == AreaType.ComputerBox && this.TutorialComplete || this.areaType == AreaType.ClothesBox && this.TutorialComplete)
+            //{
+            //    Destroy(this.gameObject);
+            //}
         }
     }
 

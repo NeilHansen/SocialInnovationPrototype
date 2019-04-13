@@ -33,6 +33,8 @@ public class ConversationManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
         NextConvoPeice();
+
+        
 	}
 	
 	// Update is called once per frame
