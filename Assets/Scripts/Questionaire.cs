@@ -167,7 +167,7 @@ public class Questionaire : MonoBehaviour {
 		answerBText.gameObject.SetActive(false);
 		answerCText.gameObject.SetActive(false);
 		answerDText.gameObject.SetActive(false);
-		questionText.text = "You got " + score * 100 / 5 + "%";
+		questionText.text = "You got " + score * 100 / 10 + "%";
         QuizComplete = true;
 
 	}
@@ -247,7 +247,7 @@ public class Questionaire : MonoBehaviour {
                 {
                     DisplayResult();
                 }
-				resultText.text = score + "/5";
+				resultText.text = score + "/10";
             }
         }
 		
