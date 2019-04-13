@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour {
             {
                 Fill.sprite = BarColors[0];
                 SatisfactionFace.sprite = Satisfactionemojis[0];
-                SatisfactionText.color = Colors[0];
+                //SatisfactionText.color = Colors[0];
 
             }
 
@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviour {
             {
                 Fill.sprite = BarColors[1];
                 SatisfactionFace.sprite = Satisfactionemojis[1];
-                SatisfactionText.color = Colors[1];
+                //SatisfactionText.color = Colors[1];
 
             }
 
@@ -102,7 +102,7 @@ public class GameManager : MonoBehaviour {
             {
                 Fill.sprite = BarColors[2];
                 SatisfactionFace.sprite = Satisfactionemojis[2];
-                SatisfactionText.color = Colors[2];
+                //SatisfactionText.color = Colors[2];
 
             }
 

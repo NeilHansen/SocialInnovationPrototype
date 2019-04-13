@@ -42,6 +42,12 @@ public class GameManagerConstruction : MonoBehaviour {
     ConstructionUI HouseUI;
     [SerializeField]
     Image Fill;
+
+    //HOUSECHANGE
+    [SerializeField]
+    GameObject[] HouseObject;
+
+
     
 
     public float timerMultiplier = 0.1f;
@@ -88,6 +94,7 @@ public class GameManagerConstruction : MonoBehaviour {
     public void AddScore()
     {
         playerScore++;
+        SwapHouse();
 
         HouseUI.AddToHouse(playerScore);
         timeValue = timeValue + 15;
@@ -158,7 +165,31 @@ public class GameManagerConstruction : MonoBehaviour {
 
 
 
+    public void SwapHouse()
+    {
+        switch (playerScore-1)
+        {
+            case 0:
+                
+                HouseObject[0].SetActive(true);
+                break;
 
+            case 1:
+                HouseObject[0].SetActive(false);
+                HouseObject[1].SetActive(true);
+                break;
+
+            case 2:
+                HouseObject[1].SetActive(false);
+                HouseObject[2].SetActive(true);
+                break;
+
+            case 3:
+                HouseObject[2].SetActive(false);
+                HouseObject[3].SetActive(true);
+                break;
+        }
+    }
 
 }
 
