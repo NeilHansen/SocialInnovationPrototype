@@ -6,6 +6,7 @@ public class UnitTaskController : MonoBehaviour
 {
 
     public bool isInteracting = false;
+    public bool IsComplete = false;
     public TaskType currentTaskType;
 
     public GameObject exclamationPoint;

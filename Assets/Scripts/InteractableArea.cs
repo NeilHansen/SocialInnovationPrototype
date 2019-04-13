@@ -162,10 +162,13 @@ public class InteractableArea : MonoBehaviour
     {
         //    Debug.Log("COMPLETE");
         isInteracting = false;
-        isComplete = true;
+        //isComplete = true;
         interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = false;
         interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = false;
+        interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete = true;
+
         StartCoroutine(UI.FlashFeedback(true));
+
 
         switch (type)
         {
@@ -215,6 +218,8 @@ public class InteractableArea : MonoBehaviour
                 break;
 
             case AreaType.GiftBox:
+             
+                
                 if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Doll)
                 {
                     interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
@@ -536,7 +541,7 @@ public class InteractableArea : MonoBehaviour
                     break;
 
                 case AreaType.PreperationArea:
-                    if (!isInteracting && !isComplete)
+                    if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
                     {
                         if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
                         {
@@ -553,7 +558,7 @@ public class InteractableArea : MonoBehaviour
                     break;
 
                 case AreaType.CookingArea:
-                    if (!isInteracting && !isComplete)
+                    if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete==false)
                     {
                         if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.RawFood && foodServings < 3)
                         {
@@ -574,7 +579,7 @@ public class InteractableArea : MonoBehaviour
                     break;
 
                 case AreaType.SinkArea:
-                    if (!isInteracting && !isComplete)
+                    if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
                     {
                         if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.DirtyPlate)
                         {
@@ -595,7 +600,7 @@ public class InteractableArea : MonoBehaviour
                     break;
 
                 case AreaType.ServingArea:
-                    if (!isInteracting && !isComplete)
+                    if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
                     {
                         if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.CookedFood)
                         {
@@ -613,7 +618,7 @@ public class InteractableArea : MonoBehaviour
                     break;
 
                 case AreaType.DirtyDishReturn:
-                    if (!isInteracting && !isComplete)
+                    if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
                     {
                         if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
                         {
@@ -631,7 +636,7 @@ public class InteractableArea : MonoBehaviour
                     break;
 
                 case AreaType.TrashCan:
-                    if (!isInteracting && !isComplete)
+                    if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
                     {
                         if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType != UnitTaskController.TaskType.None)
                         {
@@ -649,7 +654,7 @@ public class InteractableArea : MonoBehaviour
                     break;
 
                 case AreaType.Counter:
-                    if (!isInteracting && !isComplete)
+                    if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
                     {
                         objectPlayerHolding = interactingUnit.gameObject.GetComponent<UnitTaskController>().objectHolding;
                         //Nothing on counter
@@ -662,7 +667,7 @@ public class InteractableArea : MonoBehaviour
                     break;
 
                 case AreaType.GiftBox:
-                    if (!isInteracting && !isComplete)
+                    if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
                     {
                         if (interactingUnit.gameObject.name == "Unit1" && GetComponentInChildren<ToyOrders>().canPickUp)
                         {
@@ -698,7 +703,7 @@ public class InteractableArea : MonoBehaviour
                     break;
 
                 case AreaType.Truck:
-                    if (!isInteracting && !isComplete)
+                    if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
                     {
                         if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.GiftBox && interactingUnit.gameObject.name == "Unit1")
                         {
@@ -715,7 +720,7 @@ public class InteractableArea : MonoBehaviour
                     break;
 
                 case AreaType.DollBin:
-                    if (!isInteracting && !isComplete)
+                    if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
                     {
                         if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
                         {
@@ -732,7 +737,7 @@ public class InteractableArea : MonoBehaviour
                     break;
 
                 case AreaType.BallBin:
-                    if (!isInteracting && !isComplete)
+                    if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
                     {
                         if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
                         {
@@ -749,7 +754,7 @@ public class InteractableArea : MonoBehaviour
                     break;
 
                 case AreaType.RobotBin:
-                    if (!isInteracting && !isComplete)
+                    if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
                     {
                         if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
                         {
@@ -766,7 +771,7 @@ public class InteractableArea : MonoBehaviour
                     break;
 
                 case AreaType.BaseballBatBin:
-                    if (!isInteracting && !isComplete)
+                    if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
                     {
                         if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
                         {
@@ -783,7 +788,7 @@ public class InteractableArea : MonoBehaviour
                     break;
 
                 case AreaType.TvStand:
-                    if (!isInteracting && !isComplete)
+                    if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
                     {
                         if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Console || this.TutorialComplete)
                         {
@@ -806,7 +811,7 @@ public class InteractableArea : MonoBehaviour
                     break;
 
                 case AreaType.TvBox:
-                    if (!isInteracting && !isComplete)
+                    if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
                     {
                         if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None && tm.tutorialProgress == 3)
                         {
@@ -823,7 +828,7 @@ public class InteractableArea : MonoBehaviour
                     break;
 
                 case AreaType.ComputerDesk:
-                    if (!isInteracting && !isComplete)
+                    if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
                     {
                         if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Computer || this.TutorialComplete)
                         {
@@ -840,7 +845,7 @@ public class InteractableArea : MonoBehaviour
                     break;
 
                 case AreaType.ComputerBox:
-                    if (!isInteracting && !isComplete)
+                    if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
                     {
                         if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None && tm.tutorialProgress == 1)
                         {
@@ -857,7 +862,7 @@ public class InteractableArea : MonoBehaviour
                     break;
 
                 case AreaType.Closet:
-                    if (!isInteracting && !isComplete)
+                    if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
                     {
                         if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Clothes || this.TutorialComplete)
                         {
@@ -874,7 +879,7 @@ public class InteractableArea : MonoBehaviour
                     break;
 
                 case AreaType.ClothesBox:
-                    if (!isInteracting && !isComplete)
+                    if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
                     {
                         if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None && tm.tutorialProgress == 2)
                         {
@@ -926,7 +931,8 @@ public class InteractableArea : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             isInteracting = false;
-            isComplete = false;
+            //isComplete = false;
+            interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete = false;
             UnitToMoveTo = null;
             if (other.GetComponentInChildren<PlayerUI>())
             {

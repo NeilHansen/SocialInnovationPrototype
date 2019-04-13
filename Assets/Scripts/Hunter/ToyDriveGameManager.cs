@@ -40,7 +40,8 @@ public class ToyDriveGameManager : MonoBehaviour {
     Sprite[] BarColor;
     [SerializeField]
     Image Fill;
-
+    [SerializeField]
+    InteractableArea TruckInteractable;
     float TimeTruckStarted;
     bool GameComplete = false;
 
@@ -182,7 +183,7 @@ public class ToyDriveGameManager : MonoBehaviour {
 
             }
 
-            if(satisfactionMeter.value <= 0)
+            if(satisfactionMeter.value <= 0&& TruckInteractable.isInteracting==false)
             {
                 AddScore();
             }

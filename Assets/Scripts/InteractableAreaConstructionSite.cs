@@ -115,7 +115,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
     void Complete(AreaType type, PlayerUI UI)
     {
         isInteracting = false;
-        isComplete = true;
+        interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete = true;
         interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = false;
         interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = false;
         StartCoroutine(UI.FlashFeedback(true));
@@ -310,7 +310,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                     break;
 
                 case AreaType.CuttingArea:
-                    if (!isInteracting && !isComplete)
+                    if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
                     {
                         if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.LargeWood && !BenchHasWood)
                         {
@@ -339,7 +339,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                     break;
 
                 case AreaType.WoodRecipticalBin:
-                    if (!isInteracting && !isComplete)
+                    if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
                     {
                         if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None && this.numberOfBoards > 0)
                         {
@@ -356,7 +356,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                     break;
 
                 case AreaType.PipeRecipticalBin:
-                    if (!isInteracting && !isComplete)
+                    if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
                     {
                         if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None && this.numberOfPipes > 0)
                         {
@@ -374,7 +374,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
 
                 case AreaType.WoodPile:
 
-                 if(!isInteracting && !isComplete)
+                 if(!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
                     {
                         if(interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
                         {
@@ -393,7 +393,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                     break;
                     
                 case AreaType.PipePile:
-                    if (!isInteracting && !isComplete)
+                    if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
                     {
                         if(interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
                         {
@@ -411,7 +411,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                     break;
 
                 case AreaType.CraftingStation:
-                    if (!isInteracting && !isComplete)
+                    if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
                     {
                         if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.SmallWood && numberOfPipes == 0)
                         {
@@ -440,7 +440,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                     break;
 
                 case AreaType.PipeConnector:
-                    if (!isInteracting && !isComplete)
+                    if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
                     {
                         if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
                         {
@@ -457,7 +457,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                     break;
 
                 case AreaType.NailsBin:
-                    if (!isInteracting && !isComplete)
+                    if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
                     {
                         if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
                         {
@@ -474,7 +474,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                     break;
 
                 case AreaType.FormanReturn:
-                    if (!isInteracting && !isComplete)
+                    if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
                     {
                 
                         objectPlayerHolding = interactingUnit.gameObject.GetComponent<UnitTaskController>().objectHolding;
@@ -529,7 +529,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
 
                 PlayerUI UI = other.gameObject.GetComponentInChildren<PlayerUI>();
 
-                if (isInteracting && !isComplete)
+                if (isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
                 {
 
                     UI.TaskInProgress(startTime);
@@ -556,7 +556,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             isInteracting = false;
-            isComplete = false;
+            interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete = false;
             UnitToMoveTo = null;
 
             if (other.GetComponentInChildren<PlayerUI>())
