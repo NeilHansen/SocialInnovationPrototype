@@ -7,25 +7,25 @@ using UnityEngine.SceneManagement;
 
 public class Questionaire : MonoBehaviour {
 
-	public Text questionText;
-	public Text answerAText;
-	public Text answerBText;
-	public Text answerCText;
-	public Text answerDText;
-	public Text resultText;
+    public Text questionText;
+    public Text answerAText;
+    public Text answerBText;
+    public Text answerCText;
+    public Text answerDText;
+    public Text resultText;
     public TextAsset questionaireInput;
-    
-	public Button aButton;
-	public Button bButton;
-	public Button cButton;
-	public Button dButton;
-	public Button nextButton;
 
-	private int questionIndex = 0;
-	private string chosenAnswer = null;
-	public int score = 0;
-    private bool QuizComplete=false;
-    private bool StartedGame=false;
+    public Button aButton;
+    public Button bButton;
+    public Button cButton;
+    public Button dButton;
+    public Button nextButton;
+
+    private int questionIndex = 0;
+    private string chosenAnswer = null;
+    public int score = 0;
+    private bool QuizComplete = false;
+    private bool StartedGame = false;
     [SerializeField]
     GameObject QuizScreen;
     [SerializeField]
@@ -33,6 +33,16 @@ public class Questionaire : MonoBehaviour {
     [SerializeField]
     GameObject QuitGameScreen;
     private string path;
+
+    [SerializeField]
+    Sprite[] ButtonStates;
+
+    [SerializeField]
+    Sprite[] NextButtonState;
+
+    
+
+
 
     public class Questions
     {
@@ -117,28 +127,28 @@ public class Questionaire : MonoBehaviour {
 
     public void ChooseAnswer(int a)
 	{
-		aButton.image.color = Color.white;
-		bButton.image.color = Color.white;
-		cButton.image.color = Color.white;
-		dButton.image.color = Color.white;
+		aButton.image.sprite = ButtonStates[0];
+        bButton.image.sprite = ButtonStates[0];
+        cButton.image.sprite = ButtonStates[0];
+        dButton.image.sprite = ButtonStates[0];
 
 		switch (a)
 		{ 
 			case 0:
-				aButton.image.color = Color.green;
+                aButton.image.sprite = ButtonStates[1];
 				chosenAnswer = answerAText.text;
 				break;
 			case 1:
-				bButton.image.color = Color.green;
-				chosenAnswer = answerBText.text;
+				bButton.image.sprite= ButtonStates[1];
+                chosenAnswer = answerBText.text;
 				break;
 			case 2:
-				cButton.image.color = Color.green;
-				chosenAnswer = answerCText.text;
+				cButton.image.sprite= ButtonStates[1];
+                chosenAnswer = answerCText.text;
 				break;
 			case 3:
-				dButton.image.color = Color.green;
-				chosenAnswer = answerDText.text;
+				dButton.image.sprite= ButtonStates[1];
+                chosenAnswer = answerDText.text;
 				break;
 			default:
 				Debug.Log("Error clicking button");
@@ -175,6 +185,10 @@ public class Questionaire : MonoBehaviour {
     void NextQuestion()
 	{
         Debug.Log("The quiz is complete is" + QuizComplete);
+        aButton.image.sprite = ButtonStates[0];
+        bButton.image.sprite = ButtonStates[0];
+        cButton.image.sprite = ButtonStates[0];
+        dButton.image.sprite = ButtonStates[0];
         if (QuizComplete)
         {
             
@@ -338,5 +352,78 @@ public class Questionaire : MonoBehaviour {
         DisplayQuestion();
         Time.timeScale = 0;
     }
+
+
+    //Hover Events
+    public void HoverQuestionButton(int Button)
+    {
+        
+        switch (Button)
+        {
+            case 0:
+                aButton.GetComponent<Image>().sprite = ButtonStates[1]; 
+                break;
+
+            case 1:
+                bButton.GetComponent<Image>().sprite = ButtonStates[1];
+                break;
+
+            case 2:
+                cButton.GetComponent<Image>().sprite = ButtonStates[1];
+                break;
+
+            case 3:
+                dButton.GetComponent<Image>().sprite = ButtonStates[1];
+                break;
+        }
+
+           
+    }
+
+    public void UnhoverButton(int B)
+    {
+        switch (B)
+        {
+            case 0:
+
+                if(chosenAnswer != answerAText.text)
+                {
+                    aButton.GetComponent<Image>().sprite = ButtonStates[0];
+                }
+                
+                break;
+
+            case 1:
+
+                if(chosenAnswer != answerBText.text)
+                {
+                    bButton.GetComponent<Image>().sprite = ButtonStates[0];
+                }
+               
+                break;
+
+            case 2:
+                if(chosenAnswer != answerCText.text)
+                {
+                    cButton.GetComponent<Image>().sprite = ButtonStates[0];
+                }
+
+               
+                break;
+
+            case 3:
+
+                if (chosenAnswer != answerDText.text)
+                dButton.GetComponent<Image>().sprite = ButtonStates[0];
+                break;
+        }
+
+    }
+
+    public void SetNExtButton(int state)
+    {
+        nextButton.image.sprite=NextButtonState[state];
+    }
+
 }
 
