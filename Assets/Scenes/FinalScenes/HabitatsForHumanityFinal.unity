@@ -2149,6 +2149,18 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: HabitatsForHumanityFinal
       objectReference: {fileID: 0}
+    - target: {fileID: 1294492344224286, guid: 812f6bb2397b56d4fa805583683168a2, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1955467007636884, guid: 812f6bb2397b56d4fa805583683168a2, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1053436997483936, guid: 812f6bb2397b56d4fa805583683168a2, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 812f6bb2397b56d4fa805583683168a2, type: 2}
   m_IsPrefabAsset: 0
@@ -3839,6 +3851,11 @@ Prefab:
       propertyPath: m_Color.b
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114943256293259826, guid: fc7f7143c33476845b9f86dc31da740a,
+        type: 2}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc7f7143c33476845b9f86dc31da740a, type: 2}
   m_IsPrefabAsset: 0
@@ -5451,9 +5468,44 @@ Prefab:
       propertyPath: rtsMover
       value: 
       objectReference: {fileID: 534669906}
+    - target: {fileID: 114070298181663536, guid: b364c6c5073d110449214fc59224b699,
+        type: 2}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114933761260322676, guid: b364c6c5073d110449214fc59224b699,
+        type: 2}
+      propertyPath: connector
+      value: 
+      objectReference: {fileID: 668992812}
+    - target: {fileID: 114933761260322676, guid: b364c6c5073d110449214fc59224b699,
+        type: 2}
+      propertyPath: comboWood
+      value: 
+      objectReference: {fileID: 668992814}
+    - target: {fileID: 114933761260322676, guid: b364c6c5073d110449214fc59224b699,
+        type: 2}
+      propertyPath: comboPipe
+      value: 
+      objectReference: {fileID: 668992813}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b364c6c5073d110449214fc59224b699, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &668992812 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1699000717155920, guid: b364c6c5073d110449214fc59224b699,
+    type: 2}
+  m_PrefabInternal: {fileID: 668992811}
+--- !u!1 &668992813 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1541687178223436, guid: b364c6c5073d110449214fc59224b699,
+    type: 2}
+  m_PrefabInternal: {fileID: 668992811}
+--- !u!1 &668992814 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1799347995635110, guid: b364c6c5073d110449214fc59224b699,
+    type: 2}
+  m_PrefabInternal: {fileID: 668992811}
 --- !u!1 &669629241
 GameObject:
   m_ObjectHideFlags: 0
@@ -8411,9 +8463,44 @@ Prefab:
       propertyPath: rtsMover
       value: 
       objectReference: {fileID: 534669906}
+    - target: {fileID: 114774277544504000, guid: e625c2e6c7db4534eb3ca95a96591e3f,
+        type: 2}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114091425699631988, guid: e625c2e6c7db4534eb3ca95a96591e3f,
+        type: 2}
+      propertyPath: connector
+      value: 
+      objectReference: {fileID: 1040523056}
+    - target: {fileID: 114091425699631988, guid: e625c2e6c7db4534eb3ca95a96591e3f,
+        type: 2}
+      propertyPath: comboWood
+      value: 
+      objectReference: {fileID: 1040523058}
+    - target: {fileID: 114091425699631988, guid: e625c2e6c7db4534eb3ca95a96591e3f,
+        type: 2}
+      propertyPath: comboPipe
+      value: 
+      objectReference: {fileID: 1040523057}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e625c2e6c7db4534eb3ca95a96591e3f, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1040523056 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1799989101987624, guid: e625c2e6c7db4534eb3ca95a96591e3f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1040523055}
+--- !u!1 &1040523057 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1245263399122396, guid: e625c2e6c7db4534eb3ca95a96591e3f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1040523055}
+--- !u!1 &1040523058 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1498634644807540, guid: e625c2e6c7db4534eb3ca95a96591e3f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1040523055}
 --- !u!1 &1049028039 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1765909868647498, guid: bced5ee23a8cb06469617c6180b5c09e,
@@ -16240,9 +16327,44 @@ Prefab:
       propertyPath: rtsMover
       value: 
       objectReference: {fileID: 534669906}
+    - target: {fileID: 114462364058206578, guid: ef8fab0d4ac1af64ab6e24e5f5098833,
+        type: 2}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114135885561573822, guid: ef8fab0d4ac1af64ab6e24e5f5098833,
+        type: 2}
+      propertyPath: connector
+      value: 
+      objectReference: {fileID: 2092578875}
+    - target: {fileID: 114135885561573822, guid: ef8fab0d4ac1af64ab6e24e5f5098833,
+        type: 2}
+      propertyPath: comboWood
+      value: 
+      objectReference: {fileID: 2092578877}
+    - target: {fileID: 114135885561573822, guid: ef8fab0d4ac1af64ab6e24e5f5098833,
+        type: 2}
+      propertyPath: comboPipe
+      value: 
+      objectReference: {fileID: 2092578876}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef8fab0d4ac1af64ab6e24e5f5098833, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &2092578875 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1233414876251950, guid: ef8fab0d4ac1af64ab6e24e5f5098833,
+    type: 2}
+  m_PrefabInternal: {fileID: 2092578874}
+--- !u!1 &2092578876 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1653606099186348, guid: ef8fab0d4ac1af64ab6e24e5f5098833,
+    type: 2}
+  m_PrefabInternal: {fileID: 2092578874}
+--- !u!1 &2092578877 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1495125353740006, guid: ef8fab0d4ac1af64ab6e24e5f5098833,
+    type: 2}
+  m_PrefabInternal: {fileID: 2092578874}
 --- !u!1 &2099410736
 GameObject:
   m_ObjectHideFlags: 0

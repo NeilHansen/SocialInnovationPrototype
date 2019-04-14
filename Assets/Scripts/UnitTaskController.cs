@@ -149,7 +149,14 @@ public class UnitTaskController : MonoBehaviour
                 dirtyPlate.SetActive(false);
                 filledPlate.SetActive(false);
                 rawFood.SetActive(false);
+                comboWood.SetActive(false);
+                comboPipe.SetActive(false);
+                smallWood.SetActive(false);
+                smallPipe.SetActive(false);
                 BigwoodOBJ.SetActive(false);
+                BigPipe.SetActive(false);
+                nails.SetActive(false);
+                connector.SetActive(false);
                 cardboardBox.SetActive(false);
                 objectHolding = ObjectHeld.None;
                 isInteracting = false;
@@ -173,6 +180,15 @@ public class UnitTaskController : MonoBehaviour
                 dirtyPlate.SetActive(false);
                 filledPlate.SetActive(false);
                 rawFood.SetActive(false);
+                comboWood.SetActive(false);
+                comboPipe.SetActive(false);
+                smallWood.SetActive(false);
+                smallPipe.SetActive(false);
+                BigwoodOBJ.SetActive(false);
+                BigPipe.SetActive(false);
+                nails.SetActive(false);
+                connector.SetActive(false);
+                cardboardBox.SetActive(false);
                 isInteracting = true;
                 objectHolding = ObjectHeld.None;
                 break;
@@ -205,25 +221,25 @@ public class UnitTaskController : MonoBehaviour
                 objectHolding = ObjectHeld.None;
                 break;
             case TaskType.ComboWood:
-                //comboWood.SetActive(true);
-                //comboPipe.SetActive(false);
-                //smallWood.SetActive(false);
-                //smallPipe.SetActive(false);
-                //BigwoodOBJ.SetActive(false);
-                //BigPipe.SetActive(false);
-                //nails.SetActive(false);
-                //connector.SetActive(false);
+                comboWood.SetActive(true);
+                comboPipe.SetActive(false);
+                smallWood.SetActive(false);
+                smallPipe.SetActive(false);
+                BigwoodOBJ.SetActive(false);
+                BigPipe.SetActive(false);
+                nails.SetActive(false);
+                connector.SetActive(false);
                 objectHolding = ObjectHeld.ComboWood;
                 break;
             case TaskType.ComboPipe:
-                //comboWood.SetActive(false);
-                //comboPipe.SetActive(true);
-                //smallWood.SetActive(false);
-                //smallPipe.SetActive(false);
-                //BigwoodOBJ.SetActive(false);
-                //BigPipe.SetActive(false);
-                //nails.SetActive(false);
-                //connector.SetActive(false);
+                comboWood.SetActive(false);
+                comboPipe.SetActive(true);
+                smallWood.SetActive(false);
+                smallPipe.SetActive(false);
+                BigwoodOBJ.SetActive(false);
+                BigPipe.SetActive(false);
+                nails.SetActive(false);
+                connector.SetActive(false);
                 objectHolding = ObjectHeld.ComboPipe;
                 break;
             case TaskType.SmallWood:
@@ -297,14 +313,14 @@ public class UnitTaskController : MonoBehaviour
                 objectHolding = ObjectHeld.LargePipe;
                 break;
             case TaskType.PipeConnector:
-                //comboWood.SetActive(false);
-                //comboPipe.SetActive(false);
-                //smallWood.SetActive(false);
-                //smallPipe.SetActive(false);
-                //BigwoodOBJ.SetActive(false);
-                //BigPipe.SetActive(false);
-                //nails.SetActive(false);
-                //connector.SetActive(true);
+                comboWood.SetActive(false);
+                comboPipe.SetActive(false);
+                smallWood.SetActive(false);
+                smallPipe.SetActive(false);
+                BigwoodOBJ.SetActive(false);
+                BigPipe.SetActive(false);
+                nails.SetActive(false);
+                connector.SetActive(true);
                 objectHolding = ObjectHeld.PipeConnector;
                 break;
             case TaskType.GiftBox:

@@ -859,9 +859,49 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114021090283490604, guid: e625c2e6c7db4534eb3ca95a96591e3f,
+        type: 2}
+      propertyPath: rtsMover
+      value: 
+      objectReference: {fileID: 534669906}
+    - target: {fileID: 114774277544504000, guid: e625c2e6c7db4534eb3ca95a96591e3f,
+        type: 2}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114091425699631988, guid: e625c2e6c7db4534eb3ca95a96591e3f,
+        type: 2}
+      propertyPath: connector
+      value: 
+      objectReference: {fileID: 93191081}
+    - target: {fileID: 114091425699631988, guid: e625c2e6c7db4534eb3ca95a96591e3f,
+        type: 2}
+      propertyPath: comboWood
+      value: 
+      objectReference: {fileID: 93191083}
+    - target: {fileID: 114091425699631988, guid: e625c2e6c7db4534eb3ca95a96591e3f,
+        type: 2}
+      propertyPath: comboPipe
+      value: 
+      objectReference: {fileID: 93191082}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e625c2e6c7db4534eb3ca95a96591e3f, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &93191081 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1799989101987624, guid: e625c2e6c7db4534eb3ca95a96591e3f,
+    type: 2}
+  m_PrefabInternal: {fileID: 93191080}
+--- !u!1 &93191082 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1245263399122396, guid: e625c2e6c7db4534eb3ca95a96591e3f,
+    type: 2}
+  m_PrefabInternal: {fileID: 93191080}
+--- !u!1 &93191083 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1498634644807540, guid: e625c2e6c7db4534eb3ca95a96591e3f,
+    type: 2}
+  m_PrefabInternal: {fileID: 93191080}
 --- !u!1 &97617016
 GameObject:
   m_ObjectHideFlags: 0
@@ -1033,6 +1073,11 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114943256293259826, guid: fc7f7143c33476845b9f86dc31da740a,
+        type: 2}
+      propertyPath: m_Interactable
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc7f7143c33476845b9f86dc31da740a, type: 2}
@@ -5189,7 +5234,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4900949017559990, guid: 2784792ca3807ad42baafd35e6b5c6a1, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.637
+      value: 0.713
       objectReference: {fileID: 0}
     - target: {fileID: 4900949017559990, guid: 2784792ca3807ad42baafd35e6b5c6a1, type: 2}
       propertyPath: m_LocalPosition.z
@@ -5220,9 +5265,49 @@ Prefab:
       propertyPath: Unit
       value: 
       objectReference: {fileID: 2126652771}
+    - target: {fileID: 114704326983718900, guid: 2784792ca3807ad42baafd35e6b5c6a1,
+        type: 2}
+      propertyPath: rtsMover
+      value: 
+      objectReference: {fileID: 534669906}
+    - target: {fileID: 114935307017997836, guid: 2784792ca3807ad42baafd35e6b5c6a1,
+        type: 2}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114097919791518206, guid: 2784792ca3807ad42baafd35e6b5c6a1,
+        type: 2}
+      propertyPath: connector
+      value: 
+      objectReference: {fileID: 839382474}
+    - target: {fileID: 114097919791518206, guid: 2784792ca3807ad42baafd35e6b5c6a1,
+        type: 2}
+      propertyPath: comboWood
+      value: 
+      objectReference: {fileID: 839382476}
+    - target: {fileID: 114097919791518206, guid: 2784792ca3807ad42baafd35e6b5c6a1,
+        type: 2}
+      propertyPath: comboPipe
+      value: 
+      objectReference: {fileID: 839382475}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2784792ca3807ad42baafd35e6b5c6a1, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &839382474 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1695267212788092, guid: 2784792ca3807ad42baafd35e6b5c6a1,
+    type: 2}
+  m_PrefabInternal: {fileID: 839382473}
+--- !u!1 &839382475 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1728351139345908, guid: 2784792ca3807ad42baafd35e6b5c6a1,
+    type: 2}
+  m_PrefabInternal: {fileID: 839382473}
+--- !u!1 &839382476 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1706985552271404, guid: 2784792ca3807ad42baafd35e6b5c6a1,
+    type: 2}
+  m_PrefabInternal: {fileID: 839382473}
 --- !u!1 &841939949
 GameObject:
   m_ObjectHideFlags: 0
@@ -5361,9 +5446,44 @@ Prefab:
       propertyPath: rtsMover
       value: 
       objectReference: {fileID: 534669906}
+    - target: {fileID: 114070298181663536, guid: b364c6c5073d110449214fc59224b699,
+        type: 2}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114933761260322676, guid: b364c6c5073d110449214fc59224b699,
+        type: 2}
+      propertyPath: connector
+      value: 
+      objectReference: {fileID: 842428726}
+    - target: {fileID: 114933761260322676, guid: b364c6c5073d110449214fc59224b699,
+        type: 2}
+      propertyPath: comboWood
+      value: 
+      objectReference: {fileID: 842428728}
+    - target: {fileID: 114933761260322676, guid: b364c6c5073d110449214fc59224b699,
+        type: 2}
+      propertyPath: comboPipe
+      value: 
+      objectReference: {fileID: 842428727}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b364c6c5073d110449214fc59224b699, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &842428726 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1699000717155920, guid: b364c6c5073d110449214fc59224b699,
+    type: 2}
+  m_PrefabInternal: {fileID: 842428725}
+--- !u!1 &842428727 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1541687178223436, guid: b364c6c5073d110449214fc59224b699,
+    type: 2}
+  m_PrefabInternal: {fileID: 842428725}
+--- !u!1 &842428728 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1799347995635110, guid: b364c6c5073d110449214fc59224b699,
+    type: 2}
+  m_PrefabInternal: {fileID: 842428725}
 --- !u!1 &848327082
 GameObject:
   m_ObjectHideFlags: 0
@@ -7327,9 +7447,44 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114462364058206578, guid: ef8fab0d4ac1af64ab6e24e5f5098833,
+        type: 2}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114135885561573822, guid: ef8fab0d4ac1af64ab6e24e5f5098833,
+        type: 2}
+      propertyPath: connector
+      value: 
+      objectReference: {fileID: 1052265675}
+    - target: {fileID: 114135885561573822, guid: ef8fab0d4ac1af64ab6e24e5f5098833,
+        type: 2}
+      propertyPath: comboWood
+      value: 
+      objectReference: {fileID: 1052265677}
+    - target: {fileID: 114135885561573822, guid: ef8fab0d4ac1af64ab6e24e5f5098833,
+        type: 2}
+      propertyPath: comboPipe
+      value: 
+      objectReference: {fileID: 1052265676}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef8fab0d4ac1af64ab6e24e5f5098833, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1052265675 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1233414876251950, guid: ef8fab0d4ac1af64ab6e24e5f5098833,
+    type: 2}
+  m_PrefabInternal: {fileID: 1052265674}
+--- !u!1 &1052265676 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1653606099186348, guid: ef8fab0d4ac1af64ab6e24e5f5098833,
+    type: 2}
+  m_PrefabInternal: {fileID: 1052265674}
+--- !u!1 &1052265677 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1495125353740006, guid: ef8fab0d4ac1af64ab6e24e5f5098833,
+    type: 2}
+  m_PrefabInternal: {fileID: 1052265674}
 --- !u!1 &1093868099
 GameObject:
   m_ObjectHideFlags: 0

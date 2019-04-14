@@ -122,7 +122,7 @@ public class InteractableArea : MonoBehaviour
     {
         //  Debug.Log(isOnCounter + " " + objectPlayerHolding);
         customers = FindObjectsOfType<Customer>();
-        if (gameObject.name == "CookingInteractableArea")
+        if (gameObject.name == "StoveInteractable")
         {
             switch (foodServings)
             {
@@ -999,6 +999,11 @@ public class InteractableArea : MonoBehaviour
         if (MovePoint != null)
         {
             rtsMover.MovePlayer(MovePoint);
+        }
+
+        else
+        {
+            rtsMover.GroundMove();
         }
 
 

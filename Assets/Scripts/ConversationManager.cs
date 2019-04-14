@@ -30,6 +30,9 @@ public class ConversationManager : MonoBehaviour {
     public TextMeshProUGUI convoText;
     public GameObject playerImage;
     public GameObject NPCImage;
+
+    public Sprite[] NextStates;
+    public Button NextButton;
     // Use this for initialization
     void Start () {
         NextConvoPeice();
@@ -87,6 +90,22 @@ public class ConversationManager : MonoBehaviour {
                 }
             }
 
-        }       
+        } 
+        
     }
+
+
+    public void ChangeNextButton(bool Hover)
+    {
+        if (Hover)
+        {
+            NextButton.image.sprite = NextStates[1];
+        }
+
+        else
+        {
+            NextButton.image.sprite = NextStates[0];
+        }
+    }
+
 }
