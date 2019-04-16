@@ -12058,7 +12058,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.4, y: 0.52, z: 0.25098795}
+  m_Size: {x: 0.4, y: 0.67, z: 0.25098795}
   m_Center: {x: -0.11641183, y: -0.05, z: 0.12549397}
 --- !u!65 &1494225362
 BoxCollider:
@@ -12070,8 +12070,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.23282366, y: 0.31633636, z: 0.25098795}
-  m_Center: {x: -0.11641183, y: -0.15816818, z: 0.12549397}
+  m_Size: {x: 0.23282366, y: 0.44, z: 0.48}
+  m_Center: {x: -0.11641183, y: -0.15816818, z: 0.21}
 --- !u!1 &1494784530
 GameObject:
   m_ObjectHideFlags: 0
@@ -13118,6 +13118,16 @@ Prefab:
     - target: {fileID: 4827740854909166, guid: 0a8fead5ee6c9b44b818c13ab46ee65a, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 65726374168368262, guid: 0a8fead5ee6c9b44b818c13ab46ee65a,
+        type: 2}
+      propertyPath: m_Size.z
+      value: 0.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 65726374168368262, guid: 0a8fead5ee6c9b44b818c13ab46ee65a,
+        type: 2}
+      propertyPath: m_Center.z
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a8fead5ee6c9b44b818c13ab46ee65a, type: 2}
