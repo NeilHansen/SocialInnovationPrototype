@@ -2170,7 +2170,12 @@ Prefab:
     - target: {fileID: 224156576971921046, guid: 812f6bb2397b56d4fa805583683168a2,
         type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 224521567980112286, guid: 812f6bb2397b56d4fa805583683168a2,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 812f6bb2397b56d4fa805583683168a2, type: 2}
@@ -2625,6 +2630,10 @@ Prefab:
         type: 2}
       propertyPath: m_isInputParsingRequired
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1281088411101856, guid: cc7dcb15d871cd743a01d9f0745cbd54, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc7dcb15d871cd743a01d9f0745cbd54, type: 2}
@@ -4386,7 +4395,37 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1933389412038856, guid: 9ddd3fe134b4ac44095abb15403fd36d, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114096117528093448, guid: 9ddd3fe134b4ac44095abb15403fd36d,
+        type: 2}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114096117528093448, guid: 9ddd3fe134b4ac44095abb15403fd36d,
+        type: 2}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 114096117528093448, guid: 9ddd3fe134b4ac44095abb15403fd36d,
+        type: 2}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 224374264157732134, guid: 9ddd3fe134b4ac44095abb15403fd36d,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -580
+      objectReference: {fileID: 0}
+    - target: {fileID: 224150773997210740, guid: 9ddd3fe134b4ac44095abb15403fd36d,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -580
+      objectReference: {fileID: 0}
+    - target: {fileID: 224813490494485672, guid: 9ddd3fe134b4ac44095abb15403fd36d,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -580.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ddd3fe134b4ac44095abb15403fd36d, type: 2}
@@ -17782,6 +17821,7 @@ MonoBehaviour:
   timerText: {fileID: 966032480}
   timerTextBG: {fileID: 1809361145}
   timeValue: 181
+  TimeText: {fileID: 0}
   satisfactionMeter: {fileID: 2041238253}
   hasCustomer: 0
   defautlSatisfactionLevel: 1.5

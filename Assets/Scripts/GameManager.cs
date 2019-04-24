@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour {
     public Text timerText;
     public Text timerTextBG;
     public float timeValue;
+    public TextMeshProUGUI TimeText;
 
     public Slider satisfactionMeter;
     public bool hasCustomer = false;
@@ -53,8 +54,9 @@ public class GameManager : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
-        timerText.text = "" + (int)timeValue;
-        timerTextBG.text = "" + (int)timeValue;
+       // timerText.text = "" + (int)timeValue;
+       // timerTextBG.text = "" + (int)timeValue;
+        TimeText.text =""+(int)timeValue;
         
         satisfactionMeter.maxValue = defautlSatisfactionLevel;
         //StartNewCustomer();
@@ -67,8 +69,9 @@ public class GameManager : MonoBehaviour {
     void Update() {
         //Game timer
         timeValue -= 1 * Time.deltaTime;
-        timerText.text = "" + (int)timeValue;
-        timerTextBG.text = "" + (int)timeValue;
+        //timerText.text = "" + (int)timeValue;
+        //timerTextBG.text = "" + (int)timeValue;
+        TimeText.text = "" + (int)timeValue;
         specialCustomerBonusText.GetComponent<TextMeshProUGUI>().text = "x" + specialCustomerBonusMultiplier;
         if (timeValue <= 0&&!EndGameInitiated)
         {

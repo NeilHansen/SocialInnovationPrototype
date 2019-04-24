@@ -160,7 +160,7 @@ GameObject:
   - component: {fileID: 114825128495136630}
   - component: {fileID: 114788740954270514}
   m_Layer: 5
-  m_Name: BackToDormRoom
+  m_Name: Dorm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -229,14 +229,14 @@ GameObject:
   - component: {fileID: 224412598940311252}
   - component: {fileID: 222987209977714968}
   - component: {fileID: 114732832372845856}
-  - component: {fileID: 114429326428133140}
+  - component: {fileID: 114930346485970634}
   m_Layer: 5
   m_Name: EndScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1955467007636884
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,7 +260,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1294492344224286}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -314,7 +314,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1955467007636884}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -401,7 +401,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114429326428133140}
+      - m_Target: {fileID: 114930346485970634}
         m_MethodName: RestartGame
         m_Mode: 1
         m_Arguments:
@@ -430,7 +430,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114429326428133140}
+        - m_Target: {fileID: 114930346485970634}
           m_MethodName: ChangeRestartButton
           m_Mode: 6
           m_Arguments:
@@ -447,7 +447,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114429326428133140}
+        - m_Target: {fileID: 114930346485970634}
           m_MethodName: ChangeRestartButton
           m_Mode: 6
           m_Arguments:
@@ -515,38 +515,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114429326428133140
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1720177704066304}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d6185a6faba8ac48bb56ab251e2105a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Stars:
-  - {fileID: 114097941721365200}
-  - {fileID: 114025075365999010}
-  - {fileID: 114593298465966698}
-  ScoreText: {fileID: 114476903580115036}
-  GM: {fileID: 0}
-  TryAgain: {fileID: 114289073061293614}
-  ReturnToDorm: {fileID: 114825128495136630}
-  TryAgainSprite:
-  - {fileID: 21300002, guid: 0fb102433f7c5dd41ab971c2ac820279, type: 3}
-  - {fileID: 21300006, guid: 0fb102433f7c5dd41ab971c2ac820279, type: 3}
-  RTDSprite:
-  - {fileID: 21300000, guid: 0fb102433f7c5dd41ab971c2ac820279, type: 3}
-  - {fileID: 21300004, guid: 0fb102433f7c5dd41ab971c2ac820279, type: 3}
-  Medal: {fileID: 114414669527492572}
-  MedalType:
-  - {fileID: 21300014, guid: 0fb102433f7c5dd41ab971c2ac820279, type: 3}
-  - {fileID: 21300016, guid: 0fb102433f7c5dd41ab971c2ac820279, type: 3}
-  - {fileID: 21300018, guid: 0fb102433f7c5dd41ab971c2ac820279, type: 3}
-  QuizScoreText: {fileID: 114571200223136102}
-  QuizData: {fileID: 0}
 --- !u!114 &114451203872761532
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -671,11 +639,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -787,11 +755,11 @@ MonoBehaviour:
     lineCount: 2
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -811,7 +779,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1053436997483936}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -902,7 +870,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114429326428133140}
+        - m_Target: {fileID: 114930346485970634}
           m_MethodName: changeReturnToDormButton
           m_Mode: 6
           m_Arguments:
@@ -919,7 +887,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114429326428133140}
+        - m_Target: {fileID: 114930346485970634}
           m_MethodName: changeReturnToDormButton
           m_Mode: 6
           m_Arguments:
@@ -972,8 +940,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114429326428133140}
-        m_MethodName: LoadDorm
+      - m_Target: {fileID: 114930346485970634}
+        m_MethodName: LoaddDorm
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1039,6 +1007,38 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114930346485970634
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1720177704066304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17f88add50d58dd41b94e1a147d78d2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Stars:
+  - {fileID: 114097941721365200}
+  - {fileID: 114025075365999010}
+  - {fileID: 114593298465966698}
+  ScoreText: {fileID: 114476903580115036}
+  GM: {fileID: 0}
+  TryAgain: {fileID: 114289073061293614}
+  ReturnToDorm: {fileID: 114825128495136630}
+  TryAgainSprite:
+  - {fileID: 21300002, guid: 0fb102433f7c5dd41ab971c2ac820279, type: 3}
+  - {fileID: 21300006, guid: 0fb102433f7c5dd41ab971c2ac820279, type: 3}
+  RTDSprite:
+  - {fileID: 21300000, guid: 0fb102433f7c5dd41ab971c2ac820279, type: 3}
+  - {fileID: 21300004, guid: 0fb102433f7c5dd41ab971c2ac820279, type: 3}
+  Medal: {fileID: 114414669527492572}
+  MedalType:
+  - {fileID: 21300014, guid: 0fb102433f7c5dd41ab971c2ac820279, type: 3}
+  - {fileID: 21300016, guid: 0fb102433f7c5dd41ab971c2ac820279, type: 3}
+  - {fileID: 21300018, guid: 0fb102433f7c5dd41ab971c2ac820279, type: 3}
+  QuizScoreText: {fileID: 114571200223136102}
+  QuizData: {fileID: 0}
 --- !u!222 &222053478382289614
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -1148,7 +1148,7 @@ RectTransform:
   m_LocalScale: {x: 1.2039425, y: 1.2039425, z: 1.2039425}
   m_Children: []
   m_Father: {fileID: 224412598940311252}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1166,11 +1166,11 @@ RectTransform:
   m_LocalScale: {x: 0.49083424, y: 0.4908348, z: 0.49083406}
   m_Children: []
   m_Father: {fileID: 224412598940311252}
-  m_RootOrder: 9
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 27, y: -536}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 27, y: 80}
   m_SizeDelta: {x: 785, y: 164}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224263378942521652
@@ -1184,7 +1184,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224412598940311252}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1205,15 +1205,15 @@ RectTransform:
   - {fileID: 224769378821939036}
   - {fileID: 224420122153159484}
   - {fileID: 224731283228464084}
-  - {fileID: 224143225278014268}
-  - {fileID: 224714082892928808}
   - {fileID: 224440404611820822}
-  - {fileID: 224263378942521652}
-  - {fileID: 224521567980112286}
+  - {fileID: 224714082892928808}
+  - {fileID: 224143225278014268}
   - {fileID: 224156576971921046}
+  - {fileID: 224263378942521652}
+  - {fileID: 224671237007888278}
+  - {fileID: 224521567980112286}
   - {fileID: 224817340875681484}
   - {fileID: 224697170525623960}
-  - {fileID: 224671237007888278}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1251,7 +1251,7 @@ RectTransform:
   m_LocalScale: {x: 1.2039425, y: 1.2039425, z: 1.4039}
   m_Children: []
   m_Father: {fileID: 224412598940311252}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1269,11 +1269,11 @@ RectTransform:
   m_LocalScale: {x: 0.5606435, y: 0.5606435, z: 0.5606435}
   m_Children: []
   m_Father: {fileID: 224412598940311252}
-  m_RootOrder: 8
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 22, y: -412}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 22, y: 204}
   m_SizeDelta: {x: 515, y: 163}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224606430279030416
@@ -1305,7 +1305,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 0.9999999, z: 1}
   m_Children: []
   m_Father: {fileID: 224412598940311252}
-  m_RootOrder: 12
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1323,7 +1323,7 @@ RectTransform:
   m_LocalScale: {x: 1.1161015, y: 1.1161045, z: 1.116103}
   m_Children: []
   m_Father: {fileID: 224412598940311252}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1395,7 +1395,7 @@ RectTransform:
   m_LocalScale: {x: 1.759, y: 1.759, z: 1.759}
   m_Children: []
   m_Father: {fileID: 224412598940311252}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
