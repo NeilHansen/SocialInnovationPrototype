@@ -84,6 +84,8 @@ public class CraftingStation : MonoBehaviour {
             pipeCompleteButton.SetActive(true);
           
         }
+
+         
     }
 
     public void CompleteWood()

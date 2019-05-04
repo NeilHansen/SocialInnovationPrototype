@@ -177,7 +177,16 @@ public class Questionaire : MonoBehaviour {
 		answerBText.gameObject.SetActive(false);
 		answerCText.gameObject.SetActive(false);
 		answerDText.gameObject.SetActive(false);
-		questionText.text = "You got " + score * 100 / 10 + "%";
+        if (!StartedGame)
+        {
+            questionText.text = "Your current score is " + score * 100 / 10 + "%";
+        }
+
+        else
+        {
+            questionText.text = "Your final score is " + score * 100 / 10 + "%";
+        }
+		//questionText.text = "You got " + score * 100 / 10 + "%";
         QuizComplete = true;
 
 	}
@@ -350,6 +359,7 @@ public class Questionaire : MonoBehaviour {
 
 
         DisplayQuestion();
+        resultText.text = score + "/10";
         Time.timeScale = 0;
     }
 

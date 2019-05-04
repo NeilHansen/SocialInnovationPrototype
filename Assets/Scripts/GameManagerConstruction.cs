@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameManagerConstruction : MonoBehaviour {
 
 
-    public Text timerText;
-    public Text timerTextBG;
+   
     public float timeValue;
     public float MaxTime;
+    public TextMeshProUGUI TimeLeft;
 
     public Slider satisfactionMeter;
     public bool hasCustomer = false;
@@ -20,6 +21,7 @@ public class GameManagerConstruction : MonoBehaviour {
     public Text scoreText;
     private float currentFoodValue;
     public int playerScore;
+    public int HouseAmount;
 
     //satisfaction visual Mods
     [SerializeField]
@@ -47,6 +49,8 @@ public class GameManagerConstruction : MonoBehaviour {
     [SerializeField]
     GameObject[] HouseObject;
 
+    bool GameComplete = false;
+
 
     
 
@@ -65,18 +69,37 @@ public class GameManagerConstruction : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             AddScore();
+            
         }
 
 
         timeValue -= 1 * Time.deltaTime;
+        TimeLeft.text = "" + (int)timeValue;
         PreformanceMeter();
+
+        if(timeValue<=0 && !GameComplete)
+        {
+            EndGame();
+        }
         
+
        
         
         //timerText.text = "" + (int)timeValue;
         //timerTextBG.text = "" + (int)timeValue;
 
 
+
+    }
+
+
+    public void EndGame()
+    {
+        GameComplete = true;
+        //Ending quiz screen
+        EndingScreen.GetComponent<Questionaire>().InitializeQuestionaire();
+        //EndingScreen.GetComponent<EndScreenCOnstruction>().EndGame();
+        Time.timeScale = 0f;
 
     }
 
@@ -93,22 +116,20 @@ public class GameManagerConstruction : MonoBehaviour {
 
     public void AddScore()
     {
-        playerScore++;
+        HouseAmount++;
+        playerScore += 75;
         SwapHouse();
 
-        HouseUI.AddToHouse(playerScore);
+        HouseUI.AddToHouse(HouseAmount);
         timeValue = timeValue + 15;
         if (timeValue > MaxTime)
         {
             timeValue = MaxTime;
         }
 
-        if (playerScore == 4)
+        if (HouseAmount == 4)
         {
-            //Ending quiz screen
-            EndingScreen.GetComponent<Questionaire>().InitializeQuestionaire();
-            //EndingScreen.GetComponent<EndScreenCOnstruction>().EndGame();
-            Time.timeScale = 0f;
+            EndGame();
         }
         //ScoreAdded.text = "+" + currentFoodValue;
       
@@ -167,7 +188,7 @@ public class GameManagerConstruction : MonoBehaviour {
 
     public void SwapHouse()
     {
-        switch (playerScore-1)
+        switch (HouseAmount-1)
         {
             case 0:
                 

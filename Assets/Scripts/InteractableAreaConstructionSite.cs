@@ -427,11 +427,11 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                         {
                             OnInteraction(interactingUnit);
                         }
-                        else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Nails && numberOfPipes == 0)
+                        else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Nails && numberOfPipes == 0 && numberOfNails<1)
                         {
                             OnInteraction(interactingUnit);
                         }
-                        else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.PipeConnector && numberOfBoards == 0)
+                        else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.PipeConnector && numberOfBoards == 0 && numberOfConnectors<1)
                         {
                             OnInteraction(interactingUnit);
                         }
