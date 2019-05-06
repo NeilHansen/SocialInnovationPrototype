@@ -38,7 +38,7 @@ public class ToyTruck : MonoBehaviour {
     {
         packages++;
         Debug.Log("The package number is" + packages);
-        if (packages >= 2)
+        if (packages >0)
         {
             StartCoroutine(MoveTruck(true));
             //Add to game score

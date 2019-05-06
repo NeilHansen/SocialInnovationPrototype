@@ -1497,6 +1497,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &182890997 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114989103165344170, guid: 1ccd7db975fd3594c89f18b92f8fd771,
+    type: 2}
+  m_PrefabInternal: {fileID: 440718195}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &204176996
 GameObject:
   m_ObjectHideFlags: 0
@@ -1785,7 +1791,7 @@ Prefab:
         type: 2}
       propertyPath: answerBText
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 824712309}
     - target: {fileID: 114197138787338814, guid: 6d3436ea25b0e614e806f8a0598dd4b6,
         type: 2}
       propertyPath: answerCText
@@ -1845,7 +1851,12 @@ Prefab:
         type: 2}
       propertyPath: resultText
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 182890997}
+    - target: {fileID: 114197138787338814, guid: 6d3436ea25b0e614e806f8a0598dd4b6,
+        type: 2}
+      propertyPath: questionaireInput
+      value: 
+      objectReference: {fileID: 4900000, guid: 0778a1ce738a9ca49a15d3a796a3ac8d, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d3436ea25b0e614e806f8a0598dd4b6, type: 2}
   m_IsPrefabAsset: 0
@@ -3122,7 +3133,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1235507020963700, guid: 1ccd7db975fd3594c89f18b92f8fd771, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ccd7db975fd3594c89f18b92f8fd771, type: 2}
@@ -5707,6 +5718,12 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c37bd4a9028833438131fc3acab78a2, type: 3}
   m_IsPrefabAsset: 0
+--- !u!114 &824712309 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114532073302157236, guid: 1ccd7db975fd3594c89f18b92f8fd771,
+    type: 2}
+  m_PrefabInternal: {fileID: 440718195}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &824730960
 GameObject:
   m_ObjectHideFlags: 0
@@ -12994,7 +13011,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1f49bd14450a8641a5cefc241220e6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeValue: 320
+  timeValue: 120
   TimeRemaining: {fileID: 1598851724}
   satisfactionMeter: {fileID: 1297449500}
   hasTruck: 0

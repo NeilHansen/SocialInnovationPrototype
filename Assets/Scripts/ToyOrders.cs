@@ -25,10 +25,10 @@ public class ToyOrders : MonoBehaviour {
     }
 
     private List<ToyList> defaultItemList;
-    private List<ItemInfo> finalItemList;
+    public List<ItemInfo> finalItemList;
     public Text item1Name, item2Name, item3Name;
     public Text item1Quantity, item2Quantity, item3Quantity;
-    private bool item1Received, item2Received, item3Received;
+    public bool item1Received, item2Received, item3Received;
     public bool canPickUp = false;
 
     // Use this for initialization

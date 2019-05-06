@@ -37,34 +37,34 @@ public class ConstructionUI : MonoBehaviour {
 
             case 0:
                 //House.sprite = HouseImages[0];
-                ProgressText.text = "House Progress: " + Score + "/4";
+                ProgressText.text = "House Progress: " + Score + "/3";
                 break;
 
 
             case 1:
                
                // House.sprite = HouseImages[1];
-                ProgressText.text = "House Progress: " + Score + "/4";
+                ProgressText.text = "House Progress: " + Score + "/3";
 
                 break;
 
             case 2:
                
                 //House.sprite = HouseImages[2];
-                ProgressText.text = "House Progress: " + Score + "/4";
+                ProgressText.text = "House Progress: " + Score + "/3";
 
                 break;
 
             case 3:
               
                // House.sprite = HouseImages[3];
-                ProgressText.text = "House Progress: " + Score + "/4";
+                ProgressText.text = "House Progress: " + Score + "/3";
                 break;
 
             case 4:
               
                // House.sprite = HouseImages[4];
-                ProgressText.text = "House Progress: " + Score + "/4";
+                ProgressText.text = "House Progress: " + Score + "/3";
                 break;
 
         }
