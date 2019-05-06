@@ -68,9 +68,25 @@ public class Customer : MonoBehaviour
 		public Attitude wrongAnswer;
 	}
 
+    public class Scenario
+    {
+        public int stage = 0;
+        public Attitude firstCustomerAttidude;
+        public Attitude firstCorrectAnswer;
+        public Attitude firstWrongAnswer;
+        public Attitude secondCustomerAttitude;
+        public Attitude secondCorrectAnswer;
+        public Attitude secondWrongAnswer;
+    }
+
+    public List<Scenario> scenariosList;
+
+    Scenario currentScenario;
+
 	public List<Responds> correctRespond;
 
-	Responds currentAttitude;
+    //Responds currentAttitude;
+    Attitude currentAttitude;
 	Attitude positiveRespond;
 	Attitude negativeRespond;
 
@@ -96,25 +112,28 @@ public class Customer : MonoBehaviour
 
 
 		if (gameObject.tag == "SpecialCustomer")
-		{         
-			GenerateAttitudeList();
-            GenerateCorrectRespondList();
+		{
+            GenerateAttitudeList();
+            GenerateScenarios();
+            //GenerateCorrectRespondList();
 
-			currentAttitude = GenerateAttitude(Attitude.None);
-			foreach (SliderCanvas sC in playerCanvas)
-			{
-				AssignButtonFunction(currentAttitude, sC);
-			}
-		}
-		int rando = Random.Range(0, 2);
-		if (rando != 1)
-		{
-			currentSituation = newSituationSprites;
-		}
-		else
-		{
-			currentSituation = sprite;
-		}
+            //currentAttitude = GenerateAttitude(Attitude.None);
+
+            //foreach (SliderCanvas sC in playerCanvas)
+            //{
+            //	AssignButtonFunction(currentAttitude, sC);
+            //}
+            ResetRespond();
+        }
+		//int rando = Random.Range(0, 2);
+		//if (rando != 1)
+		//{
+		//	currentSituation = newSituationSprites;
+		//}
+		//else
+		//{
+		//	currentSituation = sprite;
+		//}
 	}
 
 	// Update is called once per frame
@@ -122,11 +141,11 @@ public class Customer : MonoBehaviour
 	{
 		CheckSpherecast();
 
-
 		if (gameObject.tag == "SpecialCustomer")
 		{
-			TriggerDialogue();
-			ChangeStatus(currentAttitude.customerAttitude);
+            MovePoint.transform.position = transform.position + new Vector3(0.0f, 0.0f, 3.0f);
+            TriggerDialogue();
+			//ChangeStatus(currentAttitude.customerAttitude);
 			happyPointText.text = correctTimes.ToString();
 		}
 
@@ -141,153 +160,194 @@ public class Customer : MonoBehaviour
 	}
 
     void GenerateAttitudeList()
-	{
-		attitudeList = new List<Attitude>();
-		attitudeList.Add(Attitude.Angry);
-		attitudeList.Add(Attitude.BigSmile);
-		attitudeList.Add(Attitude.Confused);
-		attitudeList.Add(Attitude.Cry);
-		attitudeList.Add(Attitude.Frown);
-		attitudeList.Add(Attitude.None);
-		attitudeList.Add(Attitude.Smile);
-		attitudeList.Add(Attitude.SuperSad);
-		attitudeList.Add(Attitude.Surprised);
-		attitudeList.Add(Attitude.Wink);
-	}
+    {
+        attitudeList = new List<Attitude>();
+        attitudeList.Add(Attitude.Angry);
+        attitudeList.Add(Attitude.BigSmile);
+        attitudeList.Add(Attitude.Confused);
+        attitudeList.Add(Attitude.Cry);
+        attitudeList.Add(Attitude.Frown);
+        attitudeList.Add(Attitude.None);
+        attitudeList.Add(Attitude.Smile);
+        attitudeList.Add(Attitude.SuperSad);
+        attitudeList.Add(Attitude.Surprised);
+        attitudeList.Add(Attitude.Wink);
+    }
 
-	void GenerateCorrectRespondList()
-	{
-		correctRespond = new List<Responds>();
-		Responds temp1 = new Responds();
-		temp1.customerAttitude = Attitude.Angry;
-		temp1.correctAnswer = Attitude.Wink;
-		temp1.wrongAnswer = Attitude.None;
-		correctRespond.Add(temp1);
-		Responds temp2 = new Responds();
-		temp2.customerAttitude = Attitude.Cry;
-		temp2.correctAnswer = Attitude.BigSmile;
-		temp2.wrongAnswer = Attitude.None;
-		correctRespond.Add(temp2);
-		Responds temp3 = new Responds();
-		temp3.customerAttitude = Attitude.Confused;
-		temp3.correctAnswer = Attitude.Surprised;
-		temp3.wrongAnswer = Attitude.None;
-		correctRespond.Add(temp3);
-		Responds temp4 = new Responds();
-		temp4.customerAttitude = Attitude.Frown;
-		temp4.correctAnswer = Attitude.Smile;
-		temp4.wrongAnswer = Attitude.None;
-		correctRespond.Add(temp4);
-	}
+    void GenerateScenarios()
+    {
+        scenariosList = new List<Scenario>();
 
-	Responds GenerateAttitude(Attitude cAttitude)
-	{
-		List<Responds> availableAttitudes = new List<Responds>();
-		availableAttitudes.RemoveRange(0, availableAttitudes.Count);
-		Responds retVal = new Responds();
+        Scenario scenario1 = new Scenario();
+        scenario1.firstCustomerAttidude = Attitude.Angry;
+        scenario1.firstCorrectAnswer = Attitude.Surprised;
+        scenario1.firstWrongAnswer = Attitude.Cry;
+        scenario1.secondCustomerAttitude = Attitude.Confused;
+        scenario1.secondCorrectAnswer = Attitude.Smile;
+        scenario1.secondWrongAnswer = Attitude.Angry;
+        scenariosList.Add(scenario1);
 
-		foreach (Responds r in correctRespond)
-		{
-			if (r.customerAttitude != cAttitude && r.customerAttitude != Attitude.None)
-			{
-				availableAttitudes.Add(r);
-                Debug.Log(r.customerAttitude);
-			}
-		}
+        Scenario scenario2 = new Scenario();
+        scenario2.firstCustomerAttidude = Attitude.Cry;
+        scenario2.firstCorrectAnswer = Attitude.Smile;
+        scenario2.firstWrongAnswer = Attitude.Angry;
+        scenario2.secondCustomerAttitude = Attitude.Frown;
+        scenario2.secondCorrectAnswer = Attitude.BigSmile;
+        scenario2.secondWrongAnswer = Attitude.Confused;
+        scenariosList.Add(scenario2);
 
-		switch (Random.Range(0, 3))
-		{
-			case 0:
-				retVal = availableAttitudes[0];
-				break;
-			case 1:
-				retVal = availableAttitudes[1];
-				break;
-			case 2:
-				retVal = availableAttitudes[2];
-				break;
-			case 3:
-				retVal = availableAttitudes[3];
-				break;
-			default:
-				Debug.Log("Error generating attitude");
-				break;
-		}
+        Scenario scenario3 = new Scenario();
+        scenario3.firstCustomerAttidude = Attitude.Confused;
+        scenario3.firstCorrectAnswer = Attitude.Surprised;
+        scenario3.firstWrongAnswer = Attitude.Cry;
+        scenario3.secondCustomerAttitude = Attitude.Frown;
+        scenario3.secondCorrectAnswer = Attitude.Smile;
+        scenario3.secondWrongAnswer = Attitude.Wink;
+        scenariosList.Add(scenario3);
 
-		retVal.wrongAnswer = GenerateWrongRespond(retVal.correctAnswer);
-		Debug.Log(retVal.customerAttitude + " " + retVal.correctAnswer + " " + retVal.wrongAnswer);
+        Scenario scenario4 = new Scenario();
+        scenario4.firstCustomerAttidude = Attitude.Frown;
+        scenario4.firstCorrectAnswer = Attitude.BigSmile;
+        scenario4.firstWrongAnswer = Attitude.Angry;
+        scenario4.secondCustomerAttitude = Attitude.Surprised;
+        scenario4.secondCorrectAnswer = Attitude.Wink;
+        scenario4.secondWrongAnswer = Attitude.Confused;
+        scenariosList.Add(scenario4);
+    }
 
-		return retVal;
-	}
+    //void GenerateCorrectRespondList()
+    //{
+    //	correctRespond = new List<Responds>();
+    //	Responds temp1 = new Responds();
+    //	temp1.customerAttitude = Attitude.Angry;
+    //	temp1.correctAnswer = Attitude.Wink;
+    //	temp1.wrongAnswer = Attitude.None;
+    //	correctRespond.Add(temp1);
+    //	Responds temp2 = new Responds();
+    //	temp2.customerAttitude = Attitude.Cry;
+    //	temp2.correctAnswer = Attitude.BigSmile;
+    //	temp2.wrongAnswer = Attitude.None;
+    //	correctRespond.Add(temp2);
+    //	Responds temp3 = new Responds();
+    //	temp3.customerAttitude = Attitude.Confused;
+    //	temp3.correctAnswer = Attitude.Surprised;
+    //	temp3.wrongAnswer = Attitude.None;
+    //	correctRespond.Add(temp3);
+    //	Responds temp4 = new Responds();
+    //	temp4.customerAttitude = Attitude.Frown;
+    //	temp4.correctAnswer = Attitude.Smile;
+    //	temp4.wrongAnswer = Attitude.None;
+    //	correctRespond.Add(temp4);
+    //}
 
-    Attitude GenerateWrongRespond(Attitude a)
-	{
-		Attitude retValue = Attitude.None;
-		List<Attitude> avaiAttitudes = new List<Attitude>();
+    //Responds GenerateAttitude(Attitude cAttitude)
+    //{
+    //	List<Responds> availableAttitudes = new List<Responds>();
+    //	availableAttitudes.RemoveRange(0, availableAttitudes.Count);
+    //	Responds retVal = new Responds();
 
-		foreach(Attitude at in attitudeList)
-		{
-			if(at != a && at!= Attitude.None)
-			{
-				avaiAttitudes.Add(at);
-			}
-		}
+    //	foreach (Responds r in correctRespond)
+    //	{
+    //		if (r.customerAttitude != cAttitude && r.customerAttitude != Attitude.None)
+    //		{
+    //			availableAttitudes.Add(r);
+    //               Debug.Log(r.customerAttitude);
+    //		}
+    //	}
 
-		switch(Random.Range(0,8))
-		{
-			case 0:
-				retValue = avaiAttitudes[0];
-				break;
-			case 1:
-				retValue = avaiAttitudes[1];
-				break;
-			case 2:
-				retValue = avaiAttitudes[2];
-				break;
-			case 3:
-				retValue = avaiAttitudes[3];
-                break;
-			case 4:
-				retValue = avaiAttitudes[4];
-                break;
-			case 5:
-				retValue = avaiAttitudes[5];
-                break;
-			case 6:
-				retValue = avaiAttitudes[6];
-                break;
-			case 7:
-				retValue = avaiAttitudes[7];
-                break;
-			case 8:
-				retValue = avaiAttitudes[8];
-                break;
-			default:
-				Debug.Log("Error generating wrong respond");
-				break;
-		}
+    //	switch (Random.Range(0, 3))
+    //	{
+    //		case 0:
+    //			retVal = availableAttitudes[0];
+    //			break;
+    //		case 1:
+    //			retVal = availableAttitudes[1];
+    //			break;
+    //		case 2:
+    //			retVal = availableAttitudes[2];
+    //			break;
+    //		case 3:
+    //			retVal = availableAttitudes[3];
+    //			break;
+    //		default:
+    //			Debug.Log("Error generating attitude");
+    //			break;
+    //	}
 
-		return retValue;
-	}
+    //	retVal.wrongAnswer = GenerateWrongRespond(retVal.correctAnswer);
+    //	Debug.Log(retVal.customerAttitude + " " + retVal.correctAnswer + " " + retVal.wrongAnswer);
 
-	void AssignButtonFunction(Responds cAttitude, SliderCanvas slider)
+    //	return retVal;
+    //}
+
+    //   Attitude GenerateWrongRespond(Attitude a)
+    //{
+    //	Attitude retValue = Attitude.None;
+    //	List<Attitude> avaiAttitudes = new List<Attitude>();
+
+    //	foreach(Attitude at in attitudeList)
+    //	{
+    //		if(at != a && at!= Attitude.None)
+    //		{
+    //			avaiAttitudes.Add(at);
+    //		}
+    //	}
+
+    //	switch(Random.Range(0,8))
+    //	{
+    //		case 0:
+    //			retValue = avaiAttitudes[0];
+    //			break;
+    //		case 1:
+    //			retValue = avaiAttitudes[1];
+    //			break;
+    //		case 2:
+    //			retValue = avaiAttitudes[2];
+    //			break;
+    //		case 3:
+    //			retValue = avaiAttitudes[3];
+    //               break;
+    //		case 4:
+    //			retValue = avaiAttitudes[4];
+    //               break;
+    //		case 5:
+    //			retValue = avaiAttitudes[5];
+    //               break;
+    //		case 6:
+    //			retValue = avaiAttitudes[6];
+    //               break;
+    //		case 7:
+    //			retValue = avaiAttitudes[7];
+    //               break;
+    //		case 8:
+    //			retValue = avaiAttitudes[8];
+    //               break;
+    //		default:
+    //			Debug.Log("Error generating wrong respond");
+    //			break;
+    //	}
+
+    //	return retValue;
+    //}
+
+    void AssignButtonFunction(Attitude positiveRespond, Attitude negativeRespond, SliderCanvas slider)
 	{
 		slider.leftButton.onClick.RemoveAllListeners();
         slider.rightButton.onClick.RemoveAllListeners();
-		Attitude correct = cAttitude.correctAnswer;
-		Attitude wrong = cAttitude.wrongAnswer;
+		//Attitude correct = cAttitude.correctAnswer;
+		//Attitude wrong = cAttitude.wrongAnswer;
 		Debug.Log(correctTimes);
         switch (Random.Range(0,2))
 		{
 			case 0:
-				AssignButtonImage(slider.leftButton, correct);
-				AssignButtonImage(slider.rightButton, wrong);
+				AssignButtonImage(slider.leftButton, positiveRespond);
+				AssignButtonImage(slider.rightButton, negativeRespond);
 				slider.leftButton.onClick.AddListener(CorrectRespond);
 				slider.rightButton.onClick.AddListener(ResetRespond);
 				break;
 			case 1:
-				AssignButtonImage(slider.leftButton, wrong);
-                AssignButtonImage(slider.rightButton, correct);
+				AssignButtonImage(slider.leftButton, negativeRespond);
+                AssignButtonImage(slider.rightButton, positiveRespond);
 				slider.leftButton.onClick.AddListener(ResetRespond);
 				slider.rightButton.onClick.AddListener(CorrectRespond);
 				break;
@@ -300,25 +360,50 @@ public class Customer : MonoBehaviour
 
     void CorrectRespond()
 	{
-		correctTimes += 1;
-        if(correctTimes >= 2)
+        Debug.Log("COrrect choice");
+        correctTimes += 1;
+        currentScenario.stage += 1;
+        if (currentScenario.stage >= 2)
 		{
+            Debug.Log("Finish");
 			Gm.isBonusMultiplierOn = true;
             Gm.specialCustomerBonusMultiplier = positiveMultiplier;
+            ChangeStatus(Attitude.BigSmile);
 		}
-		ResetRespond();
+        else
+        {
+            Debug.Log("Reach Stage 2");
+            currentAttitude = currentScenario.secondCustomerAttitude;
+            ChangeStatus(currentAttitude);
+            positiveRespond = currentScenario.secondCorrectAnswer;
+            negativeRespond = currentScenario.secondWrongAnswer;
+            foreach (SliderCanvas sC in playerCanvas)
+            {
+                AssignButtonFunction(positiveRespond, negativeRespond, sC);
+            }
+        }
+		//ResetRespond();
 	}
 
     void ResetRespond()
-	{
-		currentAttitude = GenerateAttitude(currentAttitude.customerAttitude);
+    {
+        correctTimes = 0;
+        int rand = Random.Range(0, 3);
+        currentScenario = scenariosList[rand];
+        currentScenario.stage = 0;
+        //currentAttitude = GenerateAttitude(currentAttitude.customerAttitude);
+        currentAttitude = currentScenario.firstCustomerAttidude;
+        ChangeStatus(currentAttitude);
+        positiveRespond = currentScenario.firstCorrectAnswer;
+        negativeRespond = currentScenario.firstWrongAnswer;
         foreach (SliderCanvas sC in playerCanvas)
         {
-            AssignButtonFunction(currentAttitude, sC);
+            AssignButtonFunction(positiveRespond, negativeRespond, sC);
         }
-	}
+        Debug.Log("Generate new scenario number: " + rand);
+    }
 
-	void AssignButtonImage(Button button, Attitude a)
+    void AssignButtonImage(Button button, Attitude a)
 	{
 		switch (a)
 		{
@@ -395,20 +480,21 @@ public class Customer : MonoBehaviour
     }
 
     void TriggerDialogue()
-    {      
+    {
 		foreach (SliderCanvas sC in playerCanvas)
 		{
 			if (Vector3.Distance(sC.gameObject.transform.position, transform.position) < 5.0f && correctTimes < 2)
 			{
 				sC.leftButton.gameObject.SetActive(true);
 				sC.rightButton.gameObject.SetActive(true);
-			}
+            }
 			else
 			{
 				sC.leftButton.gameObject.SetActive(false);
 				sC.rightButton.gameObject.SetActive(false);
 			}
-		}
+
+        }
     }
     
 
