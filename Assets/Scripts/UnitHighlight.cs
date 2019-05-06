@@ -15,6 +15,8 @@ public class UnitHighlight : MonoBehaviour {
 
     private int numberOfUnits = 0;
 
+    private GameObject specialCustomer = null;
+
     //For keeping The players on Big Wood
     
 
@@ -79,9 +81,18 @@ public class UnitHighlight : MonoBehaviour {
                 }
             }
         }
+    }
 
-
-
+    private void Update()
+    {
+        if(specialCustomer != null)
+        {
+            if(Vector3.Distance(specialCustomer.transform.position, transform.position) > 5.0f)
+            {
+                specialCustomer.GetComponent<SphereCollider>().enabled = true;
+                specialCustomer = null;
+            }
+        }
     }
 
     private void OnMouseEnter()
@@ -149,6 +160,7 @@ public class UnitHighlight : MonoBehaviour {
             isClicked = false;
             other.gameObject.GetComponent<SphereCollider>().enabled = false;
             Debug.Log(this.gameObject.name + " is talking to special customer");
+            specialCustomer = other.gameObject;
         }
     }
 
@@ -156,7 +168,7 @@ public class UnitHighlight : MonoBehaviour {
     {
         if (other.gameObject.tag == "SpecialCustomer")
         {
-            other.gameObject.GetComponent<SphereCollider>().enabled = true;
+            //other.gameObject.GetComponent<SphereCollider>().enabled = true;
         }
     }
 

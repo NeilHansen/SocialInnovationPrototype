@@ -48,6 +48,8 @@ public class InteractableArea : MonoBehaviour
 
     [SerializeField]
     Transform MovePoint;
+    [SerializeField]
+    Transform MovePoint2;
 
     public GameObject giftboxPrefab;
 
@@ -998,7 +1000,24 @@ public class InteractableArea : MonoBehaviour
         UnitToMoveTo = rtsMover.ActiveUnit;
         if (MovePoint != null)
         {
-            rtsMover.MovePlayer(MovePoint);
+            if (areaType == AreaType.Counter)
+            {
+                if ((UnitToMoveTo.transform.position - transform.parent.parent.position).x >= 0)
+                {
+                    rtsMover.MovePlayer(MovePoint2);
+                    //MovePoint2 = null;
+                }
+                else
+                {
+                    rtsMover.MovePlayer(MovePoint);
+                    //MovePoint = null;
+                }
+            }
+            else
+            {
+                rtsMover.MovePlayer(MovePoint);
+                //MovePoint = null;
+            }
         }
 
         else
