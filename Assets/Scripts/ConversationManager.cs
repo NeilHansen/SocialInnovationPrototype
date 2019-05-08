@@ -33,12 +33,14 @@ public class ConversationManager : MonoBehaviour {
 
     public Sprite[] NextStates;
     public Button NextButton;
+
+    private JSONPlayerSaver JSONSave;
+
     // Use this for initialization
     void Start () {
+        JSONSave = FindObjectOfType<JSONPlayerSaver>();
         NextConvoPeice();
-
-        
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -59,17 +61,24 @@ public class ConversationManager : MonoBehaviour {
 
     public void NextConvoPeice()
     {
-        int ii = PlayerPrefs.GetInt("tutorialProgress");
+        //int ii = PlayerPrefs.GetInt("tutorialProgress");
+        int ii = JSONSave.LoadData(JSONSave.dataPath).progress;
         if(ii > tm.tutorialEnd)
         {
             Debug.Log("finishedTutorial");
         }
         convoIndex++;
-        if (convoIndex == Tutorial[ii].convoEnd)
+        if (convoIndex >= Tutorial[ii].convoEnd)
         {
             this.gameObject.SetActive(false);
             tm.TurnOffControls(false);
-            PlayerPrefs.SetInt("tutorialProgress", ii+=1);
+            //PlayerPrefs.SetInt("tutorialProgress", ii+=1);
+
+            ii += 1;
+            JSONSave.playerData.progress = ii;
+            PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
+            data.progress = ii;
+            JSONSave.SaveData(data, JSONSave.dataPath);
         }
         else
         {

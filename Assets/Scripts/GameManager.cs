@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour {
     public bool isBonusMultiplierOn = false;
 
 
-
+    private JSONPlayerSaver JSONSave;
 
     // Use this for initialization
     void Start() {
@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour {
             Time.timeScale = 0.0f;
             //EndingScreen.SetActive(true);
             EndingScreen.GetComponent<Questionaire>().InitializeQuestionaire();
-            
+            SaveGameScore();
         }
 
         if (hasCustomer)
@@ -123,6 +123,17 @@ public class GameManager : MonoBehaviour {
         }
 
 
+    }
+
+    void SaveGameScore()
+    {
+        JSONSave = FindObjectOfType<JSONPlayerSaver>();
+        PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
+        if (playerScore > data.gameScoreCooks)
+        {
+            data.gameScoreCooks = (int)playerScore;
+            JSONSave.SaveData(data, JSONSave.dataPath);
+        }
     }
 
     public void Test()
