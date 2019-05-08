@@ -481,6 +481,7 @@ MonoBehaviour:
   hoverSprite: {fileID: 21300000, guid: a905bd099face7045a2e7e52f6753efa, type: 3}
   hoverSpriteObject: {fileID: 1519538327}
   MovePoint: {fileID: 293331375}
+  MovePoint2: {fileID: 0}
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 1732786616}
   ConsoleCanvas: {fileID: 2116916930}
@@ -2728,6 +2729,7 @@ MonoBehaviour:
   hoverSprite: {fileID: 21300000, guid: ace2c99e8e77ceb449e48fd0b630473e, type: 3}
   hoverSpriteObject: {fileID: 2105631694}
   MovePoint: {fileID: 1008208132}
+  MovePoint2: {fileID: 0}
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 1271390856}
   ConsoleCanvas: {fileID: 0}
@@ -3650,6 +3652,7 @@ MonoBehaviour:
   hoverSprite: {fileID: 21300000, guid: ace2c99e8e77ceb449e48fd0b630473e, type: 3}
   hoverSpriteObject: {fileID: 1218774958}
   MovePoint: {fileID: 42284583}
+  MovePoint2: {fileID: 0}
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 0}
   ConsoleCanvas: {fileID: 0}
@@ -4220,6 +4223,7 @@ MonoBehaviour:
   hoverSprite: {fileID: 21300000, guid: 27550f489dc759b4887c573808016f20, type: 3}
   hoverSpriteObject: {fileID: 1380511250}
   MovePoint: {fileID: 112067714}
+  MovePoint2: {fileID: 0}
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 0}
   ConsoleCanvas: {fileID: 0}
@@ -5672,6 +5676,7 @@ MonoBehaviour:
   hoverSprite: {fileID: 21300000, guid: 27550f489dc759b4887c573808016f20, type: 3}
   hoverSpriteObject: {fileID: 515648931}
   MovePoint: {fileID: 1440992803}
+  MovePoint2: {fileID: 0}
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 0}
   ConsoleCanvas: {fileID: 0}
@@ -6646,6 +6651,7 @@ MonoBehaviour:
   hoverSprite: {fileID: 21300000, guid: 27550f489dc759b4887c573808016f20, type: 3}
   hoverSpriteObject: {fileID: 1380511250}
   MovePoint: {fileID: 112067714}
+  MovePoint2: {fileID: 0}
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 0}
   ConsoleCanvas: {fileID: 0}
@@ -6902,6 +6908,7 @@ MonoBehaviour:
   hoverSprite: {fileID: 21300000, guid: faa68e138905a754f94e6ad430a4ab3e, type: 3}
   hoverSpriteObject: {fileID: 601712554}
   MovePoint: {fileID: 1228847974}
+  MovePoint2: {fileID: 0}
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 0}
   ConsoleCanvas: {fileID: 0}
@@ -9536,6 +9543,7 @@ MonoBehaviour:
   hoverSprite: {fileID: 21300000, guid: 4ed9b0825814f4647a07c8827e4928b9, type: 3}
   hoverSpriteObject: {fileID: 258603090}
   MovePoint: {fileID: 1892580347}
+  MovePoint2: {fileID: 0}
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 0}
   ConsoleCanvas: {fileID: 0}
@@ -10320,6 +10328,7 @@ MonoBehaviour:
   hoverSprite: {fileID: 21300000, guid: a905bd099face7045a2e7e52f6753efa, type: 3}
   hoverSpriteObject: {fileID: 1009918564}
   MovePoint: {fileID: 960654012}
+  MovePoint2: {fileID: 0}
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 0}
   ConsoleCanvas: {fileID: 0}
@@ -10401,6 +10410,7 @@ MonoBehaviour:
   hoverSprite: {fileID: 21300000, guid: 5807c3133507624498fcc1f654e70a99, type: 3}
   hoverSpriteObject: {fileID: 532218514}
   MovePoint: {fileID: 500906450}
+  MovePoint2: {fileID: 0}
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 0}
   ConsoleCanvas: {fileID: 0}
@@ -10807,6 +10817,7 @@ MonoBehaviour:
   hoverSprite: {fileID: 21300000, guid: ace2c99e8e77ceb449e48fd0b630473e, type: 3}
   hoverSpriteObject: {fileID: 1218774958}
   MovePoint: {fileID: 42284583}
+  MovePoint2: {fileID: 0}
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 0}
   ConsoleCanvas: {fileID: 0}
@@ -11389,6 +11400,7 @@ MonoBehaviour:
   hoverSprite: {fileID: 21300000, guid: 27550f489dc759b4887c573808016f20, type: 3}
   hoverSpriteObject: {fileID: 515648931}
   MovePoint: {fileID: 1440992803}
+  MovePoint2: {fileID: 0}
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 0}
   ConsoleCanvas: {fileID: 0}
@@ -12335,6 +12347,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1309621370}
   - component: {fileID: 1309621369}
+  - component: {fileID: 1309621371}
   m_Layer: 0
   m_Name: TutorialManager
   m_TagString: Untagged
@@ -12376,6 +12389,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1309621371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1309621368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 880a2defa7f762a46ad89899ccdc7ae4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerData:
+    progress: 0
+  dataPath: 
 --- !u!1 &1331560454
 GameObject:
   m_ObjectHideFlags: 0
@@ -12876,6 +12903,7 @@ MonoBehaviour:
   hoverSprite: {fileID: 21300000, guid: ace2c99e8e77ceb449e48fd0b630473e, type: 3}
   hoverSpriteObject: {fileID: 2105631694}
   MovePoint: {fileID: 1008208132}
+  MovePoint2: {fileID: 0}
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 1271390856}
   ConsoleCanvas: {fileID: 0}
@@ -14380,6 +14408,7 @@ MonoBehaviour:
   hoverSprite: {fileID: 21300000, guid: ace2c99e8e77ceb449e48fd0b630473e, type: 3}
   hoverSpriteObject: {fileID: 2105631694}
   MovePoint: {fileID: 1008208132}
+  MovePoint2: {fileID: 0}
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 1271390856}
   ConsoleCanvas: {fileID: 0}
@@ -18245,6 +18274,7 @@ MonoBehaviour:
   hoverSprite: {fileID: 21300000, guid: 932fa14274769d245b5c8a633af15d25, type: 3}
   hoverSpriteObject: {fileID: 1741164986}
   MovePoint: {fileID: 1362342718}
+  MovePoint2: {fileID: 0}
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 0}
   ConsoleCanvas: {fileID: 0}
@@ -19868,6 +19898,7 @@ MonoBehaviour:
   hoverSprite: {fileID: 21300000, guid: c9038b08c9ecc81449fc706b0b49f363, type: 3}
   hoverSpriteObject: {fileID: 1016742188}
   MovePoint: {fileID: 945613008}
+  MovePoint2: {fileID: 0}
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 0}
   ConsoleCanvas: {fileID: 0}
@@ -20363,6 +20394,7 @@ MonoBehaviour:
   hoverSprite: {fileID: 21300000, guid: a905bd099face7045a2e7e52f6753efa, type: 3}
   hoverSpriteObject: {fileID: 1009918564}
   MovePoint: {fileID: 960654012}
+  MovePoint2: {fileID: 0}
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 0}
   ConsoleCanvas: {fileID: 0}
@@ -20802,6 +20834,7 @@ MonoBehaviour:
   hoverSprite: {fileID: 21300000, guid: 6630377bf71054b4f86644c59f27db89, type: 3}
   hoverSpriteObject: {fileID: 1822319184}
   MovePoint: {fileID: 994989560}
+  MovePoint2: {fileID: 0}
   giftboxPrefab: {fileID: 0}
   objectToplace: {fileID: 0}
   ConsoleCanvas: {fileID: 0}

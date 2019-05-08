@@ -335,9 +335,9 @@ public class InteractableArea : MonoBehaviour
                 if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None )
                 {
                     interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.Computer;
-                    //   this.gameObject.SetActive(false);
+                       this.gameObject.SetActive(false);
                     ExitInteraction();
-                    Destroy(this.gameObject);
+                  //  Destroy(this.gameObject);
                     Debug.Log("Picked up Computer!!");
 
                 }
@@ -348,6 +348,7 @@ public class InteractableArea : MonoBehaviour
                     interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
                     tm.NextTutorialPeice();
                     TutorialComplete = true;
+                    this.gameObject.SetActive(false);
                     Debug.Log("placed clothes!!");
                 }
                 break;
@@ -357,7 +358,8 @@ public class InteractableArea : MonoBehaviour
                     interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.Clothes;
                     // Destroy(this.gameObject);
                     ExitInteraction();
-                    Destroy(this.gameObject);
+                    //  Destroy(this.gameObject);
+                    this.gameObject.SetActive(false);
                     Debug.Log("Picked up clothes!!");
                 }
                 break;
