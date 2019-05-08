@@ -677,7 +677,7 @@ public class InteractableArea : MonoBehaviour
                 case AreaType.GiftBox:
                     if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
                     {
-                        if (interactingUnit.gameObject.name == "Unit1" && GetComponentInChildren<ToyOrders>().canPickUp)
+                        if (interactingUnit.gameObject.name == "Unit4" && GetComponentInChildren<ToyOrders>().canPickUp)
                         {
                             if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None
                             && this.gameObject.GetComponentInChildren<ToyOrders>().canPickUp == true)
@@ -713,7 +713,7 @@ public class InteractableArea : MonoBehaviour
                 case AreaType.Truck:
                     if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
                     {
-                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.GiftBox && interactingUnit.gameObject.name == "Unit1")
+                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.GiftBox && interactingUnit.gameObject.name == "Unit4")
                         {
                             OnInteraction(interactingUnit);
                         }

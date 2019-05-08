@@ -85,7 +85,7 @@ public class ToyDriveGameManager : MonoBehaviour {
 
         }
 
-        TruckWaitMeter();
+        //TruckWaitMeter();
 
 
 
