@@ -16,6 +16,8 @@ public class TutorialManager : MonoBehaviour {
     public GameObject clothes;
     public GameObject tv;
 
+    private JSONPlayerSaver JSONSave;
+
 
     private void Awake()
     {
@@ -24,8 +26,11 @@ public class TutorialManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        tutorialProgress = PlayerPrefs.GetInt("tutorialProgress");
-		if(tutorialProgress == 0)
+        JSONSave = FindObjectOfType<JSONPlayerSaver>();
+
+        //tutorialProgress = PlayerPrefs.GetInt("tutorialProgress");
+        tutorialProgress = JSONSave.LoadData(JSONSave.dataPath).progress;
+        if (tutorialProgress == 0)
         {
             StartTutorial();
             TurnOffControls(true);
@@ -36,7 +41,12 @@ public class TutorialManager : MonoBehaviour {
             convoCanvas.SetActive(false);
             FinishTutorial();
         }
-	}
+        if (tutorialProgress != 0 && tutorialProgress <= 4)
+        {
+            ResetTutorial();
+            TurnOffControls(true);
+        }
+    }
 
     public void StartTutorial()
     {
@@ -59,19 +69,34 @@ public class TutorialManager : MonoBehaviour {
 
     public void ResetTutorial()
     {
-        PlayerPrefs.SetInt("tutorialProgress", 0);
+        //PlayerPrefs.SetInt("tutorialProgress", 0);
+        //PlayerData data = new PlayerData();
+        PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
+        data.progress = 0;
+        JSONSave.SaveData(data, JSONSave.dataPath);
+
         convoCanvas.GetComponent<ConversationManager>().RestartTutorial();
         Debug.Log("ResetTutorial");
         TurnOffControls(true);
+        compBox.SetActive(true);
+        tvBox.SetActive(true);
+        clothesBox.SetActive(true);
     }
 
     public void FinishTutorial()
     {
-        PlayerPrefs.SetInt("tutorialProgress", 4);
+        //PlayerPrefs.SetInt("tutorialProgress", 4);
+        PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
+        data.progress = 4;
+        JSONSave.SaveData(data, JSONSave.dataPath);
+
         TurnOffControls(false);
-        Destroy(compBox);
-        Destroy(tvBox);
-        Destroy(clothesBox);
+        //Destroy(compBox);
+        //Destroy(tvBox);
+        //Destroy(clothesBox);
+        compBox.SetActive(false);
+        tvBox.SetActive(false);
+        clothesBox.SetActive(false);
         comp.GetComponent<InteractableArea>().TutorialComplete = true;
         tv.GetComponent<InteractableArea>().TutorialComplete = true;
         clothes.GetComponent<InteractableArea>().TutorialComplete = true;
@@ -90,7 +115,10 @@ public class TutorialManager : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        tutorialProgress = PlayerPrefs.GetInt("tutorialProgress");
+        //tutorialProgress = PlayerPrefs.GetInt("tutorialProgress");
+        Debug.Log(tutorialProgress);
+        tutorialProgress = JSONSave.LoadData(JSONSave.dataPath).progress;
+
         if (tutorialProgress == 0)
         {
             StartTutorial();

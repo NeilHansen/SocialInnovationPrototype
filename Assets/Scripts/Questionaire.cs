@@ -40,8 +40,8 @@ public class Questionaire : MonoBehaviour {
     [SerializeField]
     Sprite[] NextButtonState;
 
-    
 
+    JSONPlayerSaver JSONSave;
 
 
     public class Questions
@@ -167,7 +167,9 @@ public class Questionaire : MonoBehaviour {
 
     void DisplayResult()
 	{
-		
+        PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
+        string sceneName = SceneManager.GetActiveScene().name;
+
         Debug.Log("DisplayResults");
 		aButton.gameObject.SetActive(false);
 		bButton.gameObject.SetActive(false);
@@ -180,16 +182,73 @@ public class Questionaire : MonoBehaviour {
         if (!StartedGame)
         {
             questionText.text = "Your current score is " + score * 100 / 10 + "%";
+            
+            if(sceneName.Contains("Cook"))
+            {
+                if(score > data.preQuizScoreCooks)
+                    data.preQuizScoreCooks = score;
+            }
+            else if(sceneName.Contains("Habitat"))
+            {
+                if (score > data.preQuizScoreHabitats)
+                    data.preQuizScoreHabitats = score;
+            }
+            else if(sceneName.Contains("Toy"))
+            {
+                if (score > data.preQuizScoreToys)
+                    data.preQuizScoreToys = score;
+            }
+            else
+            {
+                Debug.Log("Error cant find scene name to save pre quiz score");
+            }
         }
-
         else
         {
             questionText.text = "Your final score is " + score * 100 / 10 + "%";
+
+            if (sceneName.Contains("Cook"))
+            {
+                if(score > data.postQuizScoreCooks)
+                    data.postQuizScoreCooks = score;
+            }
+            else if (sceneName.Contains("Habitat"))
+            {
+                if (score > data.postQuizScoreHabitats)
+                    data.postQuizScoreHabitats = score;
+            }
+            else if (sceneName.Contains("Toy"))
+            {
+                if (score > data.postQuizScoreToys)
+                    data.postQuizScoreToys = score;
+            }
+            else
+            {
+                Debug.Log("Error cant find scene name to save post quiz score");
+            }
         }
 		//questionText.text = "You got " + score * 100 / 10 + "%";
         QuizComplete = true;
 
-	}
+        if (sceneName.Contains("Cook"))
+        {
+            data.totalQuizScoreCooks = data.preQuizScoreCooks + data.postQuizScoreCooks;
+        }
+        else if (sceneName.Contains("Habitat"))
+        {
+            data.totalQuizScoreHabitats = data.preQuizScoreHabitats + data.postQuizScoreHabitats;
+        }
+        else if (sceneName.Contains("Toy"))
+        {
+            data.totalQuizScoreToys = data.preQuizScoreToys + data.postQuizScoreToys;
+        }
+        else
+        {
+            Debug.Log("Error cant find scene name to save total quiz score");
+        }
+
+        JSONSave.SaveData(data, JSONSave.dataPath);
+    }
 
     void NextQuestion()
 	{
@@ -280,6 +339,7 @@ public class Questionaire : MonoBehaviour {
 
 	void Start()
     {
+        JSONSave = FindObjectOfType<JSONPlayerSaver>();
 
         ReadTextFile(path);
 
