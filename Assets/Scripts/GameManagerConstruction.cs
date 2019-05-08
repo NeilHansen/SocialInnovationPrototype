@@ -61,6 +61,7 @@ public class GameManagerConstruction : MonoBehaviour {
     void Start() {
         timeValue = MaxTime;
         HouseUI.AddToHouse(playerScore);
+        SwapHouse();
     }
 
     // Update is called once per frame
@@ -127,7 +128,7 @@ public class GameManagerConstruction : MonoBehaviour {
             timeValue = MaxTime;
         }
 
-        if (HouseAmount == 4)
+        if (HouseAmount == 3)
         {
             EndGame();
         }
@@ -188,7 +189,7 @@ public class GameManagerConstruction : MonoBehaviour {
 
     public void SwapHouse()
     {
-        switch (HouseAmount-1)
+        switch (HouseAmount)
         {
             case 0:
                 
