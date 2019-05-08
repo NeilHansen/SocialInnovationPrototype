@@ -9,8 +9,9 @@ public class JSONPlayerSaver : MonoBehaviour {
     public string dataPath;
 
 	// Use this for initialization
-	void Start () {
-        dataPath = Path.Combine(Application.streamingAssetsPath, "PlayerData.txt");
+	void Awake () {
+        // dataPath = Path.Combine(Application.streamingAssetsPath, "PlayerData.txt");
+        dataPath =(Application.streamingAssetsPath +  "/PlayerData.txt");
     }
 	
     public void SaveData(PlayerData data, string path)

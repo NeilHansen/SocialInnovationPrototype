@@ -81,6 +81,10 @@ public class TutorialManager : MonoBehaviour {
         compBox.SetActive(true);
         tvBox.SetActive(true);
         clothesBox.SetActive(true);
+        comp.GetComponent<InteractableArea>().TutorialComplete = false;
+        tv.GetComponent<InteractableArea>().TutorialComplete = false;
+        clothes.GetComponent<InteractableArea>().TutorialComplete = false;
+        //tv.GetComponent<InteractableArea>().isComplete = false;
     }
 
     public void FinishTutorial()
@@ -100,7 +104,8 @@ public class TutorialManager : MonoBehaviour {
         comp.GetComponent<InteractableArea>().TutorialComplete = true;
         tv.GetComponent<InteractableArea>().TutorialComplete = true;
         clothes.GetComponent<InteractableArea>().TutorialComplete = true;
-        tv.GetComponent<InteractableArea>().isComplete = true;
+       // tv.GetComponent<InteractableArea>().isComplete = true;
+        convoCanvas.SetActive(false);
 
     }
 
