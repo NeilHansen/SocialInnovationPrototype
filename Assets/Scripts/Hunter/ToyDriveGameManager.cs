@@ -73,7 +73,7 @@ public class ToyDriveGameManager : MonoBehaviour {
         timeValue -= 1 * Time.deltaTime;
         TimeRemaining.text =""+(int)timeValue ;
 
-        PackageCounter.text = "packages: " + Truck.packages + "/2";
+        PackageCounter.text = "packages: " + Truck.packages + "/1";
      
      
         if (timeValue <= 0&& !GameComplete)
@@ -85,7 +85,7 @@ public class ToyDriveGameManager : MonoBehaviour {
 
         }
 
-        TruckWaitMeter();
+        //TruckWaitMeter();
 
 
 

@@ -48,6 +48,8 @@ public class InteractableArea : MonoBehaviour
 
     [SerializeField]
     Transform MovePoint;
+    [SerializeField]
+    Transform MovePoint2;
 
     public GameObject giftboxPrefab;
 
@@ -675,7 +677,7 @@ public class InteractableArea : MonoBehaviour
                 case AreaType.GiftBox:
                     if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
                     {
-                        if (interactingUnit.gameObject.name == "Unit1" && GetComponentInChildren<ToyOrders>().canPickUp)
+                        if (interactingUnit.gameObject.name == "Unit4" && GetComponentInChildren<ToyOrders>().canPickUp)
                         {
                             if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None
                             && this.gameObject.GetComponentInChildren<ToyOrders>().canPickUp == true)
@@ -711,7 +713,7 @@ public class InteractableArea : MonoBehaviour
                 case AreaType.Truck:
                     if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
                     {
-                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.GiftBox && interactingUnit.gameObject.name == "Unit1")
+                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.GiftBox && interactingUnit.gameObject.name == "Unit4")
                         {
                             OnInteraction(interactingUnit);
                         }
@@ -998,7 +1000,24 @@ public class InteractableArea : MonoBehaviour
         UnitToMoveTo = rtsMover.ActiveUnit;
         if (MovePoint != null)
         {
-            rtsMover.MovePlayer(MovePoint);
+            if (areaType == AreaType.Counter)
+            {
+                if ((UnitToMoveTo.transform.position - transform.parent.parent.position).x >= 0)
+                {
+                    rtsMover.MovePlayer(MovePoint2);
+                    //MovePoint2 = null;
+                }
+                else
+                {
+                    rtsMover.MovePlayer(MovePoint);
+                    //MovePoint = null;
+                }
+            }
+            else
+            {
+                rtsMover.MovePlayer(MovePoint);
+                //MovePoint = null;
+            }
         }
 
         else
