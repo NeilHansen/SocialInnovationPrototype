@@ -110,9 +110,6 @@ public class InteractableArea : MonoBehaviour
             Status3 = GameObject.FindGameObjectWithTag("Player Canvas3").transform.GetChild(1).GetComponent<Image>();
             Status4 = GameObject.FindGameObjectWithTag("Player Canvas4").transform.GetChild(1).GetComponent<Image>();
         }
-       
-       
-        
 
         hoverSpriteObject.GetComponent<Image>().sprite = hoverSprite;
         hoverSpriteObject.SetActive(false);
@@ -296,11 +293,11 @@ public class InteractableArea : MonoBehaviour
                 }
                 else 
                 {
-                    //if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
-                    //{
+                    if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
+                    {
                     ConsoleCanvas.SetActive(true);
                     ExitInteraction();
-                    //}
+                    }
                 }
                 break;
             case AreaType.TvBox:
@@ -348,7 +345,7 @@ public class InteractableArea : MonoBehaviour
                     interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
                     tm.NextTutorialPeice();
                     TutorialComplete = true;
-                    this.gameObject.SetActive(false);
+                    //this.gameObject.SetActive(false);
                     Debug.Log("placed clothes!!");
                 }
                 break;
@@ -798,17 +795,16 @@ public class InteractableArea : MonoBehaviour
                     break;
 
                 case AreaType.TvStand:
+                   
                     if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
                     {
-                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Console || this.TutorialComplete)
+                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None && TutorialComplete)
                         {
                             OnInteraction(interactingUnit);
                         }
-                        else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None && hasCompleted)
+                        else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Console )
                         {
-
                             OnInteraction(interactingUnit);
-
                         }
                         else
                         {
