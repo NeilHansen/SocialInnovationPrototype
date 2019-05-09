@@ -113,6 +113,7 @@ public class InteractableArea : MonoBehaviour
 
         hoverSpriteObject.GetComponent<Image>().sprite = hoverSprite;
         hoverSpriteObject.SetActive(false);
+        this.gameObject.GetComponent<Outline>().enabled = false;
 
     }
 
@@ -1045,11 +1046,24 @@ public class InteractableArea : MonoBehaviour
 
     private void OnMouseOver()
     {
-        hoverSpriteObject.SetActive(true);
+        //hoverSpriteObject.SetActive(true);
+        this.gameObject.GetComponent<Outline>().enabled = true;
+       // this.gameObject.transform.GetChildCount.<Outline>().enabled = true;
+        if (areaType == AreaType.GiftBox)
+        {
+            Debug.Log("Here");
+            this.gameObject.GetComponentInChildren<Outline>().enabled = true;
+        }
+
     }
 
     private void OnMouseExit()
     {
-        hoverSpriteObject.SetActive(false);
+       // hoverSpriteObject.SetActive(false);
+        this.gameObject.GetComponent<Outline>().enabled = false;
+        if (this.areaType == AreaType.GiftBox)
+        {
+
+        }
     }
 }

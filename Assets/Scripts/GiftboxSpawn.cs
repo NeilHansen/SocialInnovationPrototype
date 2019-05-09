@@ -11,7 +11,7 @@ public class GiftboxSpawn : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        GameObject box =  Instantiate(giftboxPrefab, transform.position, transform.rotation);
+        GameObject box =  Instantiate(giftboxPrefab, transform.position, Quaternion.Euler(-90.0f, 0.0f, 0.0f));
         box.transform.parent = this.gameObject.transform;
         hasBox = true;
     }
@@ -36,7 +36,7 @@ public class GiftboxSpawn : MonoBehaviour {
     {
         if (!hasBox)
         {
-            GameObject box = Instantiate(giftboxPrefab, transform.position, transform.rotation);
+            GameObject box = Instantiate(giftboxPrefab, transform.position,  Quaternion.Euler(-90.0f,0.0f,0.0f));
             box.transform.parent = this.gameObject.transform;
         }
     }

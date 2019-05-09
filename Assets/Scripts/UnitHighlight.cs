@@ -99,6 +99,7 @@ public class UnitHighlight : MonoBehaviour {
     {
         this.gameObject.GetComponent<Renderer>().material = Green;
         playerMesh.GetComponent<Renderer>().material = Green;
+        this.GetComponent<Outline>().enabled = true;
     }
 
     private void OnMouseOver()
@@ -106,6 +107,7 @@ public class UnitHighlight : MonoBehaviour {
         this.gameObject.GetComponent<Renderer>().material = Green;
         playerMesh.GetComponent<Renderer>().material = Green;
         this.rtsMover.enabled = false;
+        
     }
 
 
@@ -114,6 +116,7 @@ public class UnitHighlight : MonoBehaviour {
         this.rtsMover.enabled = true;
         this.gameObject.GetComponent<Renderer>().material = Red;
         playerMesh.GetComponent<Renderer>().material = Red;
+        this.GetComponent<Outline>().enabled = false;
     }
 
     private void OnMouseDown()
