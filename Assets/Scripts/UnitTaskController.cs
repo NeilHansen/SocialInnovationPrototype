@@ -158,6 +158,11 @@ public class UnitTaskController : MonoBehaviour
                 nails.SetActive(false);
                 connector.SetActive(false);
                 cardboardBox.SetActive(false);
+                gift.SetActive(false);
+                doll.SetActive(false);
+                robot.SetActive(false);
+                ball.SetActive(false);
+                bat.SetActive(false);
                 objectHolding = ObjectHeld.None;
                 isInteracting = false;
                 break;
@@ -332,16 +337,73 @@ public class UnitTaskController : MonoBehaviour
                 BigPipe.SetActive(false);
                 nails.SetActive(false);
                 connector.SetActive(false);
+                gift.SetActive(true);
                 objectHolding = ObjectHeld.GiftBox;
 
                 break;
             case TaskType.Doll:
+                comboWood.SetActive(false);
+                comboPipe.SetActive(false);
+                smallWood.SetActive(false);
+                smallPipe.SetActive(false);
+                BigwoodOBJ.SetActive(false);
+                BigPipe.SetActive(false);
+                nails.SetActive(false);
+                connector.SetActive(false);
+                gift.SetActive(false);
+                doll.SetActive(true);
+                robot.SetActive(false);
+                ball.SetActive(false);
+                bat.SetActive(false);
+                objectHolding = ObjectHeld.Doll;
                 break;
             case TaskType.Ball:
+                comboWood.SetActive(false);
+                comboPipe.SetActive(false);
+                smallWood.SetActive(false);
+                smallPipe.SetActive(false);
+                BigwoodOBJ.SetActive(false);
+                BigPipe.SetActive(false);
+                nails.SetActive(false);
+                connector.SetActive(false);
+                gift.SetActive(false);
+                doll.SetActive(false);
+                robot.SetActive(false);
+                ball.SetActive(true);
+                bat.SetActive(false);
+                objectHolding = ObjectHeld.Ball;
                 break;
             case TaskType.Robot:
+                comboWood.SetActive(false);
+                comboPipe.SetActive(false);
+                smallWood.SetActive(false);
+                smallPipe.SetActive(false);
+                BigwoodOBJ.SetActive(false);
+                BigPipe.SetActive(false);
+                nails.SetActive(false);
+                connector.SetActive(false);
+                gift.SetActive(false);
+                doll.SetActive(false);
+                robot.SetActive(true);
+                ball.SetActive(false);
+                bat.SetActive(false);
+                objectHolding = ObjectHeld.Robot;
                 break;
             case TaskType.BaseballBat:
+                comboWood.SetActive(false);
+                comboPipe.SetActive(false);
+                smallWood.SetActive(false);
+                smallPipe.SetActive(false);
+                BigwoodOBJ.SetActive(false);
+                BigPipe.SetActive(false);
+                nails.SetActive(false);
+                connector.SetActive(false);
+                gift.SetActive(false);
+                doll.SetActive(false);
+                robot.SetActive(false);
+                ball.SetActive(false);
+                bat.SetActive(true);
+                objectHolding = ObjectHeld.BaseballBat;
                 break;
             case TaskType.Computer:
                 cardboardBox.SetActive(true);

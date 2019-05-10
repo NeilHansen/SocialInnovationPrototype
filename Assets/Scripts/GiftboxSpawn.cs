@@ -11,8 +11,8 @@ public class GiftboxSpawn : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        GameObject box =  Instantiate(giftboxPrefab, transform.position, Quaternion.Euler(-90.0f, 0.0f, 0.0f));
-        box.transform.parent = this.gameObject.transform;
+       // GameObject box =  Instantiate(giftboxPrefab, transform.position, Quaternion.Euler(-90.0f, 0.0f, 0.0f));
+       // box.transform.parent = this.gameObject.transform;
         hasBox = true;
     }
 	
@@ -20,24 +20,26 @@ public class GiftboxSpawn : MonoBehaviour {
 	void Update () {
 		if(Input.GetKeyDown(KeyCode.P))
         {
-            GameObject box =  Instantiate(giftboxPrefab, transform.position, transform.rotation);
-            box.transform.parent = this.gameObject.transform;
+           // GameObject box =  Instantiate(giftboxPrefab, transform.position, transform.rotation);
+          //  box.transform.parent = this.gameObject.transform;
        
         }
-        //if (hasBox == false)
-        //{
-        //    Respawn();
-        //    hasBox = true;
-        //}
+        if (hasBox == false)
+        {
+            Respawn();
+            hasBox = true;
+        }
 
     }
 
-   public void Respawn()
+    public void Respawn()
     {
         if (!hasBox)
         {
-            GameObject box = Instantiate(giftboxPrefab, transform.position,  Quaternion.Euler(-90.0f,0.0f,0.0f));
-            box.transform.parent = this.gameObject.transform;
+            giftboxPrefab.SetActive(true);
+            // GameObject box = Instantiate(giftboxPrefab, transform.position,  Quaternion.Euler(-90.0f,0.0f,0.0f));
+            // box.transform.parent = this.gameObject.transform;
+            giftboxPrefab.GetComponent<ToyOrders>().GenerateItems();
         }
     }
 }
