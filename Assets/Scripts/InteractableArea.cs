@@ -223,32 +223,41 @@ public class InteractableArea : MonoBehaviour
                 if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Doll)
                 {
                     interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
-                    this.gameObject.GetComponentInChildren<ToyOrders>().ReceiveItem(ToyOrders.ToyList.Doll);
+                    //this.gameObject.GetComponentInChildren<ToyOrders>().ReceiveItem(ToyOrders.ToyList.Doll);
+                    this.gameObject.GetComponent<GiftboxSpawn>().giftboxPrefab.GetComponent<ToyOrders>().ReceiveItem(ToyOrders.ToyList.Doll);
                     Debug.Log("Added Doll!!");
                 }
                 else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Ball)
                 {
                     interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
-                    this.gameObject.GetComponentInChildren<ToyOrders>().ReceiveItem(ToyOrders.ToyList.Ball);
+                   // this.gameObject.GetComponentInChildren<ToyOrders>().ReceiveItem(ToyOrders.ToyList.Ball);
+                    this.gameObject.GetComponent<GiftboxSpawn>().giftboxPrefab.GetComponent<ToyOrders>().ReceiveItem(ToyOrders.ToyList.Ball);
                     Debug.Log("Added Ball!!");
                 }
                 else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Robot)
                 {
                     interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
-                    this.gameObject.GetComponentInChildren<ToyOrders>().ReceiveItem(ToyOrders.ToyList.Robot);
+                   // this.gameObject.GetComponentInChildren<ToyOrders>().ReceiveItem(ToyOrders.ToyList.Robot);
+                    this.gameObject.GetComponent<GiftboxSpawn>().giftboxPrefab.GetComponent<ToyOrders>().ReceiveItem(ToyOrders.ToyList.Robot);
                     Debug.Log("Added Robot!!");
                 }
                 else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.BaseballBat)
                 {
                     interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
-                    this.gameObject.GetComponentInChildren<ToyOrders>().ReceiveItem(ToyOrders.ToyList.BaseballBat);
+                   // this.gameObject.GetComponentInChildren<ToyOrders>().ReceiveItem(ToyOrders.ToyList.BaseballBat);
+                    this.gameObject.GetComponent<GiftboxSpawn>().giftboxPrefab.GetComponent<ToyOrders>().ReceiveItem(ToyOrders.ToyList.BaseballBat);
                     Debug.Log("Added Robot!!");
                 }
                 else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
                 {
                     interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.GiftBox;
-                    Destroy(this.gameObject.transform.GetChild(2).gameObject);
+                    //Destroy(this.gameObject.transform.GetChild(2).gameObject);
                     this.gameObject.GetComponent<GiftboxSpawn>().hasBox = false;
+                   // this.gameObject.SetActive(false);
+
+                    this.gameObject.GetComponent<GiftboxSpawn>().giftboxPrefab.SetActive(false);
+
+
                 }
                 break;
 
@@ -256,13 +265,16 @@ public class InteractableArea : MonoBehaviour
                 interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
                 //Add Score to truck
                 GetComponent<ToyTruck>().AddPackage();
+                //this.gameObject.GetComponent<GiftboxSpawn>().hasBox = false;
                 //Respawn box   
                 GiftboxSpawn[] boxSpawnnerArray = FindObjectsOfType<GiftboxSpawn>();
                 foreach (GiftboxSpawn item in boxSpawnnerArray)
                 {
                     if (item.hasBox == false)
                     {
+                        //this.gameObject.GetComponent<GiftboxSpawn>().giftboxPrefab.SetActive(true);
                         item.Respawn();
+
                     }
                 }
                 break;
@@ -677,10 +689,10 @@ public class InteractableArea : MonoBehaviour
                 case AreaType.GiftBox:
                     if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
                     {
-                        if (interactingUnit.gameObject.name == "Unit4" && GetComponentInChildren<ToyOrders>().canPickUp)
+                        if (interactingUnit.gameObject.name == "Unit4" &&   this.gameObject.GetComponent<GiftboxSpawn>().giftboxPrefab.GetComponent<ToyOrders>().canPickUp)
                         {
                             if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None
-                            && this.gameObject.GetComponentInChildren<ToyOrders>().canPickUp == true)
+                            && this.gameObject.GetComponent<GiftboxSpawn>().giftboxPrefab.GetComponent<ToyOrders>().canPickUp == true)
                             {
                                 OnInteraction(interactingUnit);
                             }
@@ -1049,11 +1061,11 @@ public class InteractableArea : MonoBehaviour
         //hoverSpriteObject.SetActive(true);
         this.gameObject.GetComponent<Outline>().enabled = true;
        // this.gameObject.transform.GetChildCount.<Outline>().enabled = true;
-        if (areaType == AreaType.GiftBox)
-        {
-            Debug.Log("Here");
-            this.gameObject.GetComponentInChildren<Outline>().enabled = true;
-        }
+        //if (areaType == AreaType.GiftBox)
+        //{
+        //    Debug.Log("Here");
+        //    this.gameObject.GetComponentInChildren<Outline>().enabled = true;
+        //}
 
     }
 
@@ -1061,9 +1073,9 @@ public class InteractableArea : MonoBehaviour
     {
        // hoverSpriteObject.SetActive(false);
         this.gameObject.GetComponent<Outline>().enabled = false;
-        if (this.areaType == AreaType.GiftBox)
-        {
+    //    if (this.areaType == AreaType.GiftBox)
+    //    {
 
-        }
+    //    }
     }
 }

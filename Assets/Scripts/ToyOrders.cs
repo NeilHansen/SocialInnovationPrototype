@@ -57,9 +57,12 @@ public class ToyOrders : MonoBehaviour {
             ReceiveItem(ToyList.BaseballBat);
         if (Input.GetKeyDown(KeyCode.R))
             ReceiveItem(ToyList.Robot);
+        if (Input.GetKeyDown(KeyCode.G))
+            GenerateItems();
+
     }
 
-    void GenerateItems()
+    public void GenerateItems()
     {
         finalItemList = new List<ItemInfo>();
         
@@ -72,6 +75,12 @@ public class ToyOrders : MonoBehaviour {
         item1Name.text = finalItemList[0].toy.ToString();
         item2Name.text = finalItemList[1].toy.ToString();
         item3Name.text = finalItemList[2].toy.ToString();
+
+        item1Received = false;
+        item2Received = false;
+        item3Received = false;
+        canPickUp = false;
+
     }
 
     public void ReceiveItem(ToyList t)
