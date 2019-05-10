@@ -16,6 +16,11 @@ public class TutorialManager : MonoBehaviour {
     public GameObject clothes;
     public GameObject tv;
 
+
+    public GameObject console;
+    public GameObject laptop;
+
+
     private JSONPlayerSaver JSONSave;
 
 
@@ -129,6 +134,30 @@ public class TutorialManager : MonoBehaviour {
             StartTutorial();
             TurnOffControls(true);
         }
+
+        //switch(tutorialProgress)
+        //{
+        //    case 0:
+        //        console.SetActive(false);
+        //        laptop.SetActive(false);
+        //        break;
+        //    case 1:
+        //        console.SetActive(false);
+        //        laptop.SetActive(false);
+        //        break;
+        //    case 2:
+        //        console.SetActive(false);
+        //        laptop.SetActive(true);
+        //        break;
+        //    case 3:
+        //        console.SetActive(false);
+        //        laptop.SetActive(true);
+        //        break;
+        //    case 4:
+        //        console.SetActive(true);
+        //        laptop.SetActive(true);
+        //        break;
+        //}
         
 
         if (Input.GetKeyDown(KeyCode.R))
