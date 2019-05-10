@@ -97,6 +97,8 @@ public class InteractableAreaConstructionSite : MonoBehaviour
         Status2 = GameObject.FindGameObjectWithTag("Player Canvas2").transform.GetChild(1).GetComponent<Image>();
         Status3 = GameObject.FindGameObjectWithTag("Player Canvas3").transform.GetChild(1).GetComponent<Image>();
 
+        this.gameObject.GetComponent<Outline>().enabled = false;
+
     }
 
     // Update is called once per frame
@@ -628,12 +630,14 @@ public class InteractableAreaConstructionSite : MonoBehaviour
 
     private void OnMouseOver()
     {
-        hoverSpriteObject.SetActive(true);
+        //hoverSpriteObject.SetActive(true);
+        this.gameObject.GetComponent<Outline>().enabled = true;
     }
 
     private void OnMouseExit()
     {
-        hoverSpriteObject.SetActive(false);
+        //hoverSpriteObject.SetActive(false);
+        this.gameObject.GetComponent<Outline>().enabled = false;
     }
 
 }
