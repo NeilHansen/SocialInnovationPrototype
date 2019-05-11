@@ -504,7 +504,9 @@ public class Customer : MonoBehaviour
 		{
 			if (Vector3.Distance(sC.gameObject.transform.position, transform.position) < 5.0f && correctTimes < 2)
 			{
+                rtsMover.StopPlayer();
                 rtsMover.ActiveUnit = null;
+               
                 sC.leftButton.gameObject.SetActive(true);
 				sC.rightButton.gameObject.SetActive(true);
             }

@@ -106,8 +106,10 @@ public class RtsMover : MonoBehaviour {
 
     public void StopPlayer()
     {
-       
-    }
+        Debug.Log("THEACTIVEUNITIS" + ActiveUnit);
+        ActiveUnit.GetComponentInChildren<UnitHighlight>().TurnRed();
+        ActiveUnit = null;
+   }
 
     public void MovePlayer(Transform newPos)
     {
@@ -149,6 +151,7 @@ public class RtsMover : MonoBehaviour {
 
          
     }
+
 
   
     

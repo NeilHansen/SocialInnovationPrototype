@@ -193,4 +193,11 @@ public class UnitHighlight : MonoBehaviour {
         
         
     }
+
+
+    public void TurnRed()
+    {
+        this.gameObject.GetComponent<Renderer>().material = Red;
+        playerMesh.GetComponent<Renderer>().material = Red;
+    }
 }
