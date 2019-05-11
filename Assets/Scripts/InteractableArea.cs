@@ -118,6 +118,29 @@ public class InteractableArea : MonoBehaviour
         hoverSpriteObject.SetActive(false);
         this.gameObject.GetComponent<Outline>().enabled = false;
 
+        if (TutorialComplete)
+        {
+            switch (areaType)
+            {
+                case AreaType.TvStand:
+                    tv.SetActive(true);
+                    break;
+                case AreaType.ComputerDesk:
+                    comp.SetActive(true);
+                    break;
+            }
+        }else
+        {
+            switch (areaType)
+            {
+                case AreaType.TvStand:
+                    tv.SetActive(false);
+                    break;
+                case AreaType.ComputerDesk:
+                    comp.SetActive(false);
+                    break;
+            }
+        }
     }
 
     // Update is called once per frame
@@ -159,6 +182,33 @@ public class InteractableArea : MonoBehaviour
             isOnCounter = true;
         else
             isOnCounter = false;
+
+
+
+        if (TutorialComplete)
+        {
+            switch (areaType)
+            {
+                case AreaType.TvStand:
+                    tv.SetActive(true);
+                    break;
+                case AreaType.ComputerDesk:
+                    comp.SetActive(true);
+                    break;
+            }
+        }
+        else
+        {
+            switch (areaType)
+            {
+                case AreaType.TvStand:
+                    tv.SetActive(false);
+                    break;
+                case AreaType.ComputerDesk:
+                    comp.SetActive(false);
+                    break;
+            }
+        }
     }
 
     void Complete(AreaType type, PlayerUI UI)
