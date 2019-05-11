@@ -702,7 +702,7 @@ public class InteractableArea : MonoBehaviour
                 case AreaType.GiftBox:
                     if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
                     {
-                        if (interactingUnit.gameObject.name == "Unit4" &&   this.gameObject.GetComponent<GiftboxSpawn>().giftboxPrefab.GetComponent<ToyOrders>().canPickUp)
+                        if (  this.gameObject.GetComponent<GiftboxSpawn>().giftboxPrefab.GetComponent<ToyOrders>().canPickUp)
                         {
                             if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None
                             && this.gameObject.GetComponent<GiftboxSpawn>().giftboxPrefab.GetComponent<ToyOrders>().canPickUp == true)
@@ -1199,7 +1199,7 @@ public class InteractableArea : MonoBehaviour
                     break;
 
                 case AreaType.Truck:
-                        if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.GiftBox && rtsMover.ActiveUnit.gameObject.name == "Unit4")
+                        if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.GiftBox )
                         {
                             this.GetComponent<Outline>().OutlineColor = Color.green;
                         }
