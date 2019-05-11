@@ -1116,7 +1116,8 @@ public class InteractableArea : MonoBehaviour
                     break;
 
                 case AreaType.CookingArea:
-                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.RawFood)
+                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.RawFood ||
+                        rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.CleanPlate)
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.green;
                     }
@@ -1127,7 +1128,7 @@ public class InteractableArea : MonoBehaviour
                     break;
 
                 case AreaType.SinkArea:
-                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.DirtyPlate)
+                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.DirtyPlate )
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.green;
                     }
@@ -1171,7 +1172,8 @@ public class InteractableArea : MonoBehaviour
                     break;
 
                 case AreaType.Counter:
-                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType != UnitTaskController.TaskType.None)
+                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType != UnitTaskController.TaskType.None||
+                        rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None)
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.green;
                     }
@@ -1182,7 +1184,8 @@ public class InteractableArea : MonoBehaviour
                     break;
 
                 case AreaType.GiftBox:
-                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType != UnitTaskController.TaskType.None)
+                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType != UnitTaskController.TaskType.None ||
+                        rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None && rtsMover.ActiveUnit.gameObject.name == "Unit4")
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.green;
                     }

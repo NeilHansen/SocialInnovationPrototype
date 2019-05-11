@@ -13,6 +13,7 @@ public class RtsMover : MonoBehaviour {
     //Moveing Wood
     public GameObject BigWood;
     public GameObject BigPipe;
+    public bool StopMove;
     bool AlreadyGivenPosition = false;
 
     [SerializeField]
@@ -90,10 +91,23 @@ public class RtsMover : MonoBehaviour {
         }
 
 
+        if (!StopMove)
+        {
+            MovePlayer(originalPosition);
+        }
+        else
+        {
+            ActiveUnit = null;
+            StopMove = false;
+        }
+
         
-        MovePlayer(originalPosition);
     }
 
+    public void StopPlayer()
+    {
+       
+    }
 
     public void MovePlayer(Transform newPos)
     {
