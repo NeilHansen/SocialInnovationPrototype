@@ -9,6 +9,7 @@ public class Customer : MonoBehaviour
     public CustomerMovePath movePath;
 	public GameManager gameManager;
 	public bool leaveWhenMeterReachZero = false;
+    
 
 	public Sprite[] currentSituation;
 	public Sprite[] sprite;
@@ -24,6 +25,7 @@ public class Customer : MonoBehaviour
 	private Vector3 targetPoint;
 	private Vector3 playerDirection;
 	private Vector3 velocity;
+    
 
 	//Spherecast stuff
 	public GameObject currentHitObject;
@@ -33,6 +35,7 @@ public class Customer : MonoBehaviour
 	public LayerMask layerMask;
 	private Vector3 origin;
 	private Vector3 direction;
+
 
 	//For dialogue
 	private SliderCanvas[] playerCanvas;
@@ -44,6 +47,8 @@ public class Customer : MonoBehaviour
     Transform MovePoint;
 
     int previousRandoNum;
+    
+    public SphereCollider TalkRadius;
 
 	public enum Attitude
 	{
@@ -96,6 +101,7 @@ public class Customer : MonoBehaviour
 	public float negativeMultiplier = 0.5f;
 
 	public Text happyPointText;
+    public bool CanTalk=false;
 
 	// Use this for initialization
 	void Start()
@@ -109,6 +115,8 @@ public class Customer : MonoBehaviour
         pathLength = movePath.Length;
         curPathIndex = 0;
 		velocity = transform.forward;
+       
+        
 
 
 		if (gameObject.tag == "SpecialCustomer")
@@ -139,12 +147,18 @@ public class Customer : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+        
 		CheckSpherecast();
 
 		if (gameObject.tag == "SpecialCustomer")
 		{
             MovePoint.transform.position = transform.position + new Vector3(0.0f, 0.0f, 3.0f);
-            TriggerDialogue();
+            if (CanTalk)
+            {
+                TriggerDialogue();
+                
+            }
+            
 			//ChangeStatus(currentAttitude.customerAttitude);
 			happyPointText.text = correctTimes.ToString();
 		}
@@ -334,6 +348,8 @@ public class Customer : MonoBehaviour
 	{
 		slider.leftButton.onClick.RemoveAllListeners();
         slider.rightButton.onClick.RemoveAllListeners();
+
+        
 		//Attitude correct = cAttitude.correctAnswer;
 		//Attitude wrong = cAttitude.wrongAnswer;
 		Debug.Log(correctTimes);
@@ -360,6 +376,8 @@ public class Customer : MonoBehaviour
 
     void CorrectRespond()
 	{
+        
+
         Debug.Log("COrrect choice");
         correctTimes += 1;
         currentScenario.stage += 1;
@@ -387,6 +405,7 @@ public class Customer : MonoBehaviour
 
     void ResetRespond()
     {
+        
         correctTimes = 0;
         int rand = Random.Range(0, 3);
         currentScenario = scenariosList[rand];
@@ -485,7 +504,8 @@ public class Customer : MonoBehaviour
 		{
 			if (Vector3.Distance(sC.gameObject.transform.position, transform.position) < 5.0f && correctTimes < 2)
 			{
-				sC.leftButton.gameObject.SetActive(true);
+                rtsMover.ActiveUnit = null;
+                sC.leftButton.gameObject.SetActive(true);
 				sC.rightButton.gameObject.SetActive(true);
             }
 			else
@@ -662,4 +682,8 @@ public class Customer : MonoBehaviour
         Debug.DrawLine(origin, origin + direction * currentHitDistance);
         Gizmos.DrawWireSphere(origin + direction * currentHitDistance, sphereRadius);
     }
+
+
+  
+   
 }

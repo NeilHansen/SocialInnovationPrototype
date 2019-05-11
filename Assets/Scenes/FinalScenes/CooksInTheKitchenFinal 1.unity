@@ -169,6 +169,10 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 1.9392899
       objectReference: {fileID: 0}
+    - target: {fileID: 1980742067293930, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
   m_IsPrefabAsset: 0
@@ -3563,17 +3567,9 @@ Prefab:
       propertyPath: m_Name
       value: FrontNormalCounter (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 4018824283038304, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 2.3159344
-      objectReference: {fileID: 0}
-    - target: {fileID: 4018824283038304, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 2.0843408
-      objectReference: {fileID: 0}
-    - target: {fileID: 4018824283038304, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1.9392935
+    - target: {fileID: 1980742067293930, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
@@ -4083,6 +4079,10 @@ Prefab:
     - target: {fileID: 4018824283038304, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
       propertyPath: m_LocalScale.y
       value: 1.9392935
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980742067293930, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
@@ -6353,6 +6353,10 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 1.9392902
       objectReference: {fileID: 0}
+    - target: {fileID: 1980742067293930, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
   m_IsPrefabAsset: 0
@@ -7711,6 +7715,8 @@ MonoBehaviour:
   ConsoleCanvas: {fileID: 0}
   tm: {fileID: 0}
   TutorialComplete: 0
+  tv: {fileID: 0}
+  comp: {fileID: 0}
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -8132,6 +8138,103 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1621233114559586, guid: 6dcd10bd0fcea7f42ac14525d2c5dd51,
     type: 2}
   m_PrefabInternal: {fileID: 504621594}
+--- !u!1 &506123215
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 506123220}
+  - component: {fileID: 506123219}
+  - component: {fileID: 506123218}
+  - component: {fileID: 506123217}
+  - component: {fileID: 506123216}
+  m_Layer: 0
+  m_Name: talktrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &506123216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 506123215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d007a78b53a2f974aae282fb7283b7b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &506123217
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 506123215}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &506123218
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 506123215}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &506123219
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 506123215}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &506123220
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 506123215}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.336, y: 0.14, z: -9.488}
+  m_LocalScale: {x: 1, y: 1, z: 2.9682171}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 125
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &515092823
 Prefab:
   m_ObjectHideFlags: 0
@@ -8684,6 +8787,7 @@ MonoBehaviour:
   ActiveUnit: {fileID: 0}
   BigWood: {fileID: 0}
   BigPipe: {fileID: 0}
+  StopMove: 0
   originalPosition: {x: 0, y: 0, z: 0}
   mask:
     serializedVersion: 2
@@ -9404,6 +9508,10 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 1.9392935
       objectReference: {fileID: 0}
+    - target: {fileID: 1980742067293930, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
   m_IsPrefabAsset: 0
@@ -9677,6 +9785,10 @@ Prefab:
     - target: {fileID: 4018824283038304, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
       propertyPath: m_LocalScale.y
       value: 1.9392902
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980742067293930, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
@@ -10556,7 +10668,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4018824283038304, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.8086
+      value: 0.7668
       objectReference: {fileID: 0}
     - target: {fileID: 4018824283038304, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
       propertyPath: m_LocalPosition.z
@@ -10592,7 +10704,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4018824283038304, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
       propertyPath: m_LocalScale.y
-      value: 2.0327573
+      value: 1.9264442
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
@@ -10815,6 +10927,10 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1980742067293930, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
   m_IsPrefabAsset: 0
@@ -10885,6 +11001,10 @@ Prefab:
     - target: {fileID: 1980742067293930, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980742067293930, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
@@ -12668,6 +12788,10 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1980742067293930, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
   m_IsPrefabAsset: 0
@@ -12852,6 +12976,10 @@ Prefab:
     - target: {fileID: 4018824283038304, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
       propertyPath: m_LocalScale.y
       value: 1.9392902
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980742067293930, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
@@ -13243,6 +13371,8 @@ MonoBehaviour:
   ConsoleCanvas: {fileID: 0}
   tm: {fileID: 0}
   TutorialComplete: 0
+  tv: {fileID: 0}
+  comp: {fileID: 0}
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -13466,6 +13596,7 @@ MonoBehaviour:
   ActiveUnit: {fileID: 0}
   BigWood: {fileID: 0}
   BigPipe: {fileID: 0}
+  StopMove: 0
   originalPosition: {x: 0, y: 0, z: 0}
   mask:
     serializedVersion: 2
@@ -13730,7 +13861,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4018824283038304, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
       propertyPath: m_LocalScale.x
-      value: 3.7564456
+      value: 3.792883
       objectReference: {fileID: 0}
     - target: {fileID: 4018824283038304, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
       propertyPath: m_LocalScale.z
@@ -13739,6 +13870,10 @@ Prefab:
     - target: {fileID: 4018824283038304, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
       propertyPath: m_LocalScale.y
       value: 1.9392935
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980742067293930, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
@@ -14626,6 +14761,8 @@ MonoBehaviour:
   ConsoleCanvas: {fileID: 0}
   tm: {fileID: 0}
   TutorialComplete: 0
+  tv: {fileID: 0}
+  comp: {fileID: 0}
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -14640,8 +14777,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.6399994, y: 0.9594003, z: 1.0046968}
-  m_Center: {x: -11.37, y: 0.48470008, z: -6.721503}
+  m_Size: {x: 1.6399994, y: 0.9594003, z: 1.8518639}
+  m_Center: {x: -11.37, y: 0.48470008, z: -6.2979193}
 --- !u!65 &851469298
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16960,7 +17097,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 0
-  startTime: 2
+  startTime: 1
   isInteracting: 0
   isComplete: 0
   areaType: 2
@@ -16993,6 +17130,8 @@ MonoBehaviour:
   ConsoleCanvas: {fileID: 0}
   tm: {fileID: 0}
   TutorialComplete: 0
+  tv: {fileID: 0}
+  comp: {fileID: 0}
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -22029,6 +22168,10 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1980742067293930, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
   m_IsPrefabAsset: 0
@@ -22758,6 +22901,10 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1980742067293930, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
   m_IsPrefabAsset: 0
@@ -23418,6 +23565,10 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 1.9392899
       objectReference: {fileID: 0}
+    - target: {fileID: 1980742067293930, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
   m_IsPrefabAsset: 0
@@ -23892,6 +24043,8 @@ MonoBehaviour:
   ConsoleCanvas: {fileID: 0}
   tm: {fileID: 0}
   TutorialComplete: 0
+  tv: {fileID: 0}
+  comp: {fileID: 0}
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -25059,11 +25212,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4018824283038304, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.055799995
+      value: 0.0558
       objectReference: {fileID: 0}
     - target: {fileID: 4018824283038304, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.8086
+      value: 0.7668
       objectReference: {fileID: 0}
     - target: {fileID: 4018824283038304, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
       propertyPath: m_LocalPosition.z
@@ -25099,7 +25252,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4018824283038304, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
       propertyPath: m_LocalScale.y
-      value: 2.03276
+      value: 1.9264466
       objectReference: {fileID: 0}
     - target: {fileID: 1980742067293930, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
       propertyPath: m_Name
@@ -25175,6 +25328,10 @@ Prefab:
     - target: {fileID: 1980742067293930, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980742067293930, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
@@ -25659,6 +25816,8 @@ MonoBehaviour:
   ConsoleCanvas: {fileID: 0}
   tm: {fileID: 0}
   TutorialComplete: 0
+  tv: {fileID: 0}
+  comp: {fileID: 0}
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -26763,6 +26922,8 @@ MonoBehaviour:
   ConsoleCanvas: {fileID: 0}
   tm: {fileID: 0}
   TutorialComplete: 0
+  tv: {fileID: 0}
+  comp: {fileID: 0}
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -27769,6 +27930,8 @@ MonoBehaviour:
   ConsoleCanvas: {fileID: 0}
   tm: {fileID: 0}
   TutorialComplete: 0
+  tv: {fileID: 0}
+  comp: {fileID: 0}
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -29167,6 +29330,8 @@ MonoBehaviour:
   ConsoleCanvas: {fileID: 0}
   tm: {fileID: 0}
   TutorialComplete: 0
+  tv: {fileID: 0}
+  comp: {fileID: 0}
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -29694,6 +29859,8 @@ MonoBehaviour:
   ConsoleCanvas: {fileID: 0}
   tm: {fileID: 0}
   TutorialComplete: 0
+  tv: {fileID: 0}
+  comp: {fileID: 0}
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -29708,8 +29875,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.15, y: 0.97, z: 1.37}
-  m_Center: {x: 0.48, y: 0.486, z: 2.59}
+  m_Size: {x: 1.5286062, y: 0.97, z: 2.3205504}
+  m_Center: {x: 0.43839458, y: 0.486, z: 2.1147249}
 --- !u!65 &1324192258
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30280,7 +30447,7 @@ Prefab:
     - target: {fileID: 224689086181905234, guid: fc7f7143c33476845b9f86dc31da740a,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -111.29999
+      value: -111.30078
       objectReference: {fileID: 0}
     - target: {fileID: 224689086181905234, guid: fc7f7143c33476845b9f86dc31da740a,
         type: 2}
@@ -30875,6 +31042,10 @@ Prefab:
     - target: {fileID: 4018824283038304, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
       propertyPath: m_LocalScale.y
       value: 1.9392902
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980742067293930, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
@@ -33081,6 +33252,10 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1980742067293930, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
   m_IsPrefabAsset: 0
@@ -34293,6 +34468,8 @@ MonoBehaviour:
   ConsoleCanvas: {fileID: 0}
   tm: {fileID: 0}
   TutorialComplete: 0
+  tv: {fileID: 0}
+  comp: {fileID: 0}
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -35226,6 +35403,8 @@ MonoBehaviour:
   ConsoleCanvas: {fileID: 0}
   tm: {fileID: 0}
   TutorialComplete: 0
+  tv: {fileID: 0}
+  comp: {fileID: 0}
   dirtyPlateOn: 0
   cleanPlateOn: 1
   filledPlateOn: 0
@@ -35856,6 +36035,8 @@ MonoBehaviour:
   ConsoleCanvas: {fileID: 0}
   tm: {fileID: 0}
   TutorialComplete: 0
+  tv: {fileID: 0}
+  comp: {fileID: 0}
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -36513,6 +36694,10 @@ Prefab:
     - target: {fileID: 4018824283038304, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
       propertyPath: m_LocalScale.y
       value: 1.9392935
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980742067293930, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
@@ -38389,7 +38574,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4018824283038304, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.8086
+      value: 0.7668
       objectReference: {fileID: 0}
     - target: {fileID: 4018824283038304, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
       propertyPath: m_LocalPosition.z
@@ -38425,7 +38610,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4018824283038304, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
       propertyPath: m_LocalScale.y
-      value: 2.03276
+      value: 1.9264466
       objectReference: {fileID: 0}
     - target: {fileID: 1980742067293930, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
       propertyPath: m_Name
@@ -39893,6 +40078,8 @@ MonoBehaviour:
   ConsoleCanvas: {fileID: 0}
   tm: {fileID: 0}
   TutorialComplete: 0
+  tv: {fileID: 0}
+  comp: {fileID: 0}
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -40454,6 +40641,8 @@ MonoBehaviour:
   ConsoleCanvas: {fileID: 0}
   tm: {fileID: 0}
   TutorialComplete: 0
+  tv: {fileID: 0}
+  comp: {fileID: 0}
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -43442,6 +43631,10 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 1.9392935
       objectReference: {fileID: 0}
+    - target: {fileID: 1980742067293930, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 459e65a9d79d5b448aeb5ac18b5efc50, type: 2}
   m_IsPrefabAsset: 0
@@ -45570,6 +45763,21 @@ Prefab:
       propertyPath: m_AnchoredPosition.y
       value: -540.15137
       objectReference: {fileID: 0}
+    - target: {fileID: 224546245797257704, guid: 9cdd8a6febaf0e94b9ebb6c8ae851e65,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 440.91797
+      objectReference: {fileID: 0}
+    - target: {fileID: 224581704656363992, guid: 9cdd8a6febaf0e94b9ebb6c8ae851e65,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 1479.082
+      objectReference: {fileID: 0}
+    - target: {fileID: 224349918459245836, guid: 9cdd8a6febaf0e94b9ebb6c8ae851e65,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -428.80078
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cdd8a6febaf0e94b9ebb6c8ae851e65, type: 2}
   m_IsPrefabAsset: 0
@@ -45785,6 +45993,8 @@ MonoBehaviour:
   ConsoleCanvas: {fileID: 0}
   tm: {fileID: 0}
   TutorialComplete: 0
+  tv: {fileID: 0}
+  comp: {fileID: 0}
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
