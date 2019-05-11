@@ -56,10 +56,13 @@ public class InteractableArea : MonoBehaviour
     public GameObject objectToplace;
     private bool hasCompleted = false;
     public GameObject ConsoleCanvas;
+    public GameObject CharacterCreator;
 
     public TutorialManager tm;
 
     public bool TutorialComplete;
+    public GameObject tv;
+    public GameObject comp;
 
     public enum AreaType
     {
@@ -299,6 +302,7 @@ public class InteractableArea : MonoBehaviour
                         objectToplace.SetActive(true);
                         hasCompleted = true;
                         Debug.Log("placed console!!");
+                        tv.SetActive(true);
                         TutorialComplete = true;
                         tm.NextTutorialPeice();
                         ExitInteraction();
@@ -334,6 +338,7 @@ public class InteractableArea : MonoBehaviour
                         Debug.Log("placed computer!!");
                         TutorialComplete = true;
                         tm.NextTutorialPeice();
+                        comp.SetActive(true);
                     }
                 }
                 else
@@ -360,6 +365,14 @@ public class InteractableArea : MonoBehaviour
                     TutorialComplete = true;
                     //this.gameObject.SetActive(false);
                     Debug.Log("placed clothes!!");
+                }
+                else
+                {
+                    if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
+                    {
+                        CharacterCreator.SetActive(true);
+                        ExitInteraction();
+                    }
                 }
                 break;
             case AreaType.ClothesBox:
@@ -599,7 +612,7 @@ public class InteractableArea : MonoBehaviour
                     break;
 
                 case AreaType.SinkArea:
-                    if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
+                    if (/*!isInteracting &&*/ interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
                     {
                         if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.DirtyPlate)
                         {
@@ -883,7 +896,18 @@ public class InteractableArea : MonoBehaviour
                 case AreaType.Closet:
                     if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
                     {
-                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Clothes || this.TutorialComplete)
+                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None || this.TutorialComplete)
+                        {
+                            OnInteraction(interactingUnit);
+                        }
+                        //else
+                        //{
+                        //    if (FeedBackFiredAlready == false)
+                        //    {
+                        //        NegativeFeedback(other);
+                        //    }
+                        //}
+                         else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Clothes)
                         {
                             OnInteraction(interactingUnit);
                         }
@@ -1060,12 +1084,243 @@ public class InteractableArea : MonoBehaviour
     {
         //hoverSpriteObject.SetActive(true);
         this.gameObject.GetComponent<Outline>().enabled = true;
-       // this.gameObject.transform.GetChildCount.<Outline>().enabled = true;
+        // this.gameObject.transform.GetChildCount.<Outline>().enabled = true;
         //if (areaType == AreaType.GiftBox)
         //{
         //    Debug.Log("Here");
         //    this.gameObject.GetComponentInChildren<Outline>().enabled = true;
         //}
+        if (rtsMover.ActiveUnit == null)
+        {
+            this.GetComponent<Outline>().OutlineColor = Color.red;
+        }
+        else
+        {
+
+
+            switch (areaType)
+            {
+                case AreaType.None:
+
+                    break;
+
+                case AreaType.PreperationArea:
+                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None)
+                    {
+                        this.GetComponent<Outline>().OutlineColor = Color.green;
+                    }
+                    else
+                    {
+                        this.GetComponent<Outline>().OutlineColor = Color.red;
+                    }
+                    break;
+
+                case AreaType.CookingArea:
+                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.RawFood)
+                    {
+                        this.GetComponent<Outline>().OutlineColor = Color.green;
+                    }
+                    else
+                    {
+                        this.GetComponent<Outline>().OutlineColor = Color.red;
+                    }
+                    break;
+
+                case AreaType.SinkArea:
+                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.DirtyPlate)
+                    {
+                        this.GetComponent<Outline>().OutlineColor = Color.green;
+                    }
+                    else
+                    {
+                        this.GetComponent<Outline>().OutlineColor = Color.red;
+                    }
+                    break;
+
+                case AreaType.ServingArea:
+                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.CookedFood)
+                    {
+                        this.GetComponent<Outline>().OutlineColor = Color.green;
+                    }
+                    else
+                    {
+                        this.GetComponent<Outline>().OutlineColor = Color.red;
+                    }
+                    break;
+
+                case AreaType.DirtyDishReturn:
+                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None)
+                    {
+                        this.GetComponent<Outline>().OutlineColor = Color.green;
+                    }
+                    else
+                    {
+                        this.GetComponent<Outline>().OutlineColor = Color.red;
+                    }
+                    break;
+
+                case AreaType.TrashCan:
+                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType != UnitTaskController.TaskType.None)
+                    {
+                        this.GetComponent<Outline>().OutlineColor = Color.green;
+                    }
+                    else
+                    {
+                        this.GetComponent<Outline>().OutlineColor = Color.red;
+                    }
+                    break;
+
+                case AreaType.Counter:
+                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType != UnitTaskController.TaskType.None)
+                    {
+                        this.GetComponent<Outline>().OutlineColor = Color.green;
+                    }
+                    else
+                    {
+                        this.GetComponent<Outline>().OutlineColor = Color.red;
+                    }
+                    break;
+
+                case AreaType.GiftBox:
+                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType != UnitTaskController.TaskType.None)
+                    {
+                        this.GetComponent<Outline>().OutlineColor = Color.green;
+                    }
+                    else
+                    {
+                        this.GetComponent<Outline>().OutlineColor = Color.red;
+                    }
+                    break;
+
+                case AreaType.Truck:
+                        if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.GiftBox && rtsMover.ActiveUnit.gameObject.name == "Unit4")
+                        {
+                            this.GetComponent<Outline>().OutlineColor = Color.green;
+                        }
+                        else
+                        {
+                            this.GetComponent<Outline>().OutlineColor = Color.red;
+                        }
+                    break;
+
+                case AreaType.DollBin:
+                        if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None)
+                        {
+                            this.GetComponent<Outline>().OutlineColor = Color.green;
+                        }
+                        else
+                        {
+                            this.GetComponent<Outline>().OutlineColor = Color.red;
+                        }
+                    
+                    break;
+
+                case AreaType.BallBin:
+                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None)
+                    {
+                        this.GetComponent<Outline>().OutlineColor = Color.green;
+                    }
+                    else
+                    {
+                        this.GetComponent<Outline>().OutlineColor = Color.red;
+                    }
+                    break;
+
+                case AreaType.RobotBin:
+                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None)
+                    {
+                        this.GetComponent<Outline>().OutlineColor = Color.green;
+                    }
+                    else
+                    {
+                        this.GetComponent<Outline>().OutlineColor = Color.red;
+                    }
+                    break;
+
+                case AreaType.BaseballBatBin:
+                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None)
+                    {
+                        this.GetComponent<Outline>().OutlineColor = Color.green;
+                    }
+                    else
+                    {
+                        this.GetComponent<Outline>().OutlineColor = Color.red;
+                    }
+                    break;
+
+                case AreaType.TvStand:
+
+                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.Console && tm.tutorialProgress >= 3
+                         || rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None && tm.tutorialProgress == 4)
+                    {
+                        this.GetComponent<Outline>().OutlineColor = Color.green;
+                    }
+                    else
+                    {
+                        this.GetComponent<Outline>().OutlineColor = Color.red;
+                    }
+                    break;
+
+                case AreaType.TvBox:
+                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None && tm.tutorialProgress == 3)
+                    {
+                        this.GetComponent<Outline>().OutlineColor = Color.green;
+                    }
+                    else
+                    {
+                        this.GetComponent<Outline>().OutlineColor = Color.red;
+                    }
+                    break;
+
+                case AreaType.ComputerDesk:
+                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.Computer && tm.tutorialProgress >= 1
+                        || rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None && tm.tutorialProgress == 4 )
+                    {
+                        this.GetComponent<Outline>().OutlineColor = Color.green;
+                    }
+                    else
+                    {
+                        this.GetComponent<Outline>().OutlineColor = Color.red;
+                    }
+                    break;
+
+                case AreaType.ComputerBox:
+                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None && tm.tutorialProgress == 1)
+                    {
+                        this.GetComponent<Outline>().OutlineColor = Color.green;
+                    }
+                    else
+                    {
+                        this.GetComponent<Outline>().OutlineColor = Color.red;
+                    }
+                    break;
+
+                case AreaType.Closet:
+                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.Clothes && tm.tutorialProgress >= 2
+                         || rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None && tm.tutorialProgress == 4)
+                    {
+                        this.GetComponent<Outline>().OutlineColor = Color.green;
+                        
+                    }
+                    else
+                    {
+                        this.GetComponent<Outline>().OutlineColor = Color.red;
+                    }
+                    break;
+
+                case AreaType.ClothesBox:
+                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None && tm.tutorialProgress == 2)
+                    {
+                        this.GetComponent<Outline>().OutlineColor = Color.green;
+                    }
+                    else
+                    {
+                        this.GetComponent<Outline>().OutlineColor = Color.red;
+                    }
+                    break;
+
+            }
+        }
 
     }
 

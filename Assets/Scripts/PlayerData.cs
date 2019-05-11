@@ -16,4 +16,6 @@ public class PlayerData
     public int postQuizScoreToys;
     public int totalQuizScoreToys;
     public int gameScoreToys;
+    public int playerHead;
+    public int playerBody;
 }
