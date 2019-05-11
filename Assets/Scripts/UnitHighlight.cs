@@ -11,6 +11,8 @@ public class UnitHighlight : MonoBehaviour {
     public Material Green;
     public Material Red;
     public bool isClicked = false;
+    public bool isHovered = false;
+
     public bool isInteracting = false;
 
     private int numberOfUnits = 0;
@@ -28,15 +30,17 @@ public class UnitHighlight : MonoBehaviour {
 
     // Update is called once per frame
     void LateUpdate () {
-        if(isClicked)
+        if(isClicked || isHovered)
         {
-            this.gameObject.GetComponent<Renderer>().material = Green;
-            playerMesh.GetComponent<Renderer>().material = Green;
+            //this.gameObject.GetComponent<Renderer>().material = Green;
+           // playerMesh.GetComponent<Renderer>().material = Green;
+            this.GetComponent<Outline>().enabled = true;
         }
         else
         {
-            this.gameObject.GetComponent<Renderer>().material = Red;
-            playerMesh.GetComponent<Renderer>().material = Red;
+            //this.gameObject.GetComponent<Renderer>().material = Red;
+            //playerMesh.GetComponent<Renderer>().material = Red;
+            this.GetComponent<Outline>().enabled = false;
         }
 
         if (Input.GetKeyDown("1"))
@@ -97,26 +101,32 @@ public class UnitHighlight : MonoBehaviour {
 
     private void OnMouseEnter()
     {
-        this.gameObject.GetComponent<Renderer>().material = Green;
-        playerMesh.GetComponent<Renderer>().material = Green;
+      //  this.gameObject.GetComponent<Renderer>().material = Green;
+     //   playerMesh.GetComponent<Renderer>().material = Green;
         this.GetComponent<Outline>().enabled = true;
+        isHovered = true;
     }
 
     private void OnMouseOver()
     {
-        this.gameObject.GetComponent<Renderer>().material = Green;
-        playerMesh.GetComponent<Renderer>().material = Green;
+        //  this.gameObject.GetComponent<Renderer>().material = Green;
+        // playerMesh.GetComponent<Renderer>().material = Green;
+        this.GetComponent<Outline>().enabled = true;
         this.rtsMover.enabled = false;
-        
+        isHovered = true;
+
+
     }
 
 
     private void OnMouseExit()
     {
         this.rtsMover.enabled = true;
-        this.gameObject.GetComponent<Renderer>().material = Red;
-        playerMesh.GetComponent<Renderer>().material = Red;
+        // this.gameObject.GetComponent<Renderer>().material = Red;
+        //  playerMesh.GetComponent<Renderer>().material = Red;
+        
         this.GetComponent<Outline>().enabled = false;
+        isHovered = false;
     }
 
     private void OnMouseDown()
@@ -179,13 +189,15 @@ public class UnitHighlight : MonoBehaviour {
     {
         
             isClicked = true;
-            this.gameObject.GetComponent<Renderer>().material = Green;
-            playerMesh.GetComponent<Renderer>().material = Green;
+        // this.gameObject.GetComponent<Renderer>().material = Green;
+        //  playerMesh.GetComponent<Renderer>().material = Green;
+        this.GetComponent<Outline>().enabled = true;
         if (rtsMover.ActiveUnit != null)
             {
                 rtsMover.ActiveUnit.GetComponent<UnitHighlight>().isClicked = false;
-                rtsMover.ActiveUnit.GetComponent<Renderer>().material = Red;
-                playerMesh.GetComponent<Renderer>().material = Red;
+            // rtsMover.ActiveUnit.GetComponent<Renderer>().material = Red;
+            // playerMesh.GetComponent<Renderer>().material = Red;
+            this.GetComponent<Outline>().enabled = false;
         }
             rtsMover.ActiveUnit = this.gameObject;
             this.GetComponent<NavMeshAgent>().enabled = true;
@@ -197,7 +209,7 @@ public class UnitHighlight : MonoBehaviour {
 
     public void TurnRed()
     {
-        this.gameObject.GetComponent<Renderer>().material = Red;
-        playerMesh.GetComponent<Renderer>().material = Red;
+       // this.gameObject.GetComponent<Renderer>().material = Red;
+      //  playerMesh.GetComponent<Renderer>().material = Red;
     }
 }
