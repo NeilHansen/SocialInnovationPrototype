@@ -1031,16 +1031,23 @@ public class InteractableArea : MonoBehaviour
 
     public void SetInteractorAndMove()
     {
-
-        UnitToMoveTo = rtsMover.ActiveUnit;
-        if (MovePoint != null)
+        if (rtsMover.ActiveUnit != null)
         {
-            if (areaType == AreaType.Counter)
+            UnitToMoveTo = rtsMover.ActiveUnit;
+            if (MovePoint != null)
             {
-                if ((UnitToMoveTo.transform.position - transform.parent.parent.position).x >= 0)
+                if (areaType == AreaType.Counter)
                 {
-                    rtsMover.MovePlayer(MovePoint2);
-                    //MovePoint2 = null;
+                    if ((UnitToMoveTo.transform.position - transform.parent.parent.position).x >= 0)
+                    {
+                        rtsMover.MovePlayer(MovePoint2);
+                        //MovePoint2 = null;
+                    }
+                    else
+                    {
+                        rtsMover.MovePlayer(MovePoint);
+                        //MovePoint = null;
+                    }
                 }
                 else
                 {
@@ -1048,18 +1055,14 @@ public class InteractableArea : MonoBehaviour
                     //MovePoint = null;
                 }
             }
+
             else
             {
-                rtsMover.MovePlayer(MovePoint);
-                //MovePoint = null;
+                rtsMover.GroundMove();
             }
-        }
 
-        else
-        {
-            rtsMover.GroundMove();
-        }
 
+        }
 
 
 
