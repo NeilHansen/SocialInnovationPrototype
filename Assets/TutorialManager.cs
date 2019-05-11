@@ -40,17 +40,25 @@ public class TutorialManager : MonoBehaviour {
             StartTutorial();
             TurnOffControls(true);
         }
-        else if(tutorialProgress <= tutorialEnd)
+        else if (tutorialProgress == tutorialEnd)
         {
-            TurnOffControls(false);
-            convoCanvas.SetActive(false);
-            FinishTutorial();
+            comp.GetComponent<InteractableArea>().TutorialComplete = false;
+            tv.GetComponent<InteractableArea>().TutorialComplete = false;
+            clothes.GetComponent<InteractableArea>().TutorialComplete = false;
         }
-        if (tutorialProgress != 0 && tutorialProgress <= 4)
-        {
-            ResetTutorial();
-            TurnOffControls(true);
-        }
+        //else if(tutorialProgress <= tutorialEnd)
+        //{
+        //    TurnOffControls(false);
+        //    convoCanvas.SetActive(false);
+        //    FinishTutorial();
+        //}
+        //else if (tutorialProgress != 0 && tutorialProgress <= 4)
+        //{
+        //    ResetTutorial();
+        //    TurnOffControls(true);
+        //}
+
+
     }
 
     public void StartTutorial()
