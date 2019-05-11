@@ -56,6 +56,7 @@ public class InteractableArea : MonoBehaviour
     public GameObject objectToplace;
     private bool hasCompleted = false;
     public GameObject ConsoleCanvas;
+    public GameObject CharacterCreator;
 
     public TutorialManager tm;
 
@@ -364,6 +365,14 @@ public class InteractableArea : MonoBehaviour
                     TutorialComplete = true;
                     //this.gameObject.SetActive(false);
                     Debug.Log("placed clothes!!");
+                }
+                else
+                {
+                    if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
+                    {
+                        CharacterCreator.SetActive(true);
+                        ExitInteraction();
+                    }
                 }
                 break;
             case AreaType.ClothesBox:
@@ -887,7 +896,18 @@ public class InteractableArea : MonoBehaviour
                 case AreaType.Closet:
                     if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
                     {
-                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Clothes || this.TutorialComplete)
+                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None || this.TutorialComplete)
+                        {
+                            OnInteraction(interactingUnit);
+                        }
+                        //else
+                        //{
+                        //    if (FeedBackFiredAlready == false)
+                        //    {
+                        //        NegativeFeedback(other);
+                        //    }
+                        //}
+                         else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Clothes)
                         {
                             OnInteraction(interactingUnit);
                         }
@@ -1096,7 +1116,8 @@ public class InteractableArea : MonoBehaviour
                     break;
 
                 case AreaType.CookingArea:
-                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.RawFood)
+                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.RawFood ||
+                        rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.CleanPlate)
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.green;
                     }
@@ -1107,7 +1128,7 @@ public class InteractableArea : MonoBehaviour
                     break;
 
                 case AreaType.SinkArea:
-                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.DirtyPlate)
+                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.DirtyPlate )
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.green;
                     }
@@ -1151,7 +1172,8 @@ public class InteractableArea : MonoBehaviour
                     break;
 
                 case AreaType.Counter:
-                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType != UnitTaskController.TaskType.None)
+                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType != UnitTaskController.TaskType.None||
+                        rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None)
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.green;
                     }
@@ -1162,7 +1184,8 @@ public class InteractableArea : MonoBehaviour
                     break;
 
                 case AreaType.GiftBox:
-                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType != UnitTaskController.TaskType.None)
+                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType != UnitTaskController.TaskType.None ||
+                        rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None && rtsMover.ActiveUnit.gameObject.name == "Unit4")
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.green;
                     }
@@ -1230,7 +1253,7 @@ public class InteractableArea : MonoBehaviour
 
                 case AreaType.TvStand:
 
-                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.Console
+                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.Console && tm.tutorialProgress >= 3
                          || rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None && tm.tutorialProgress == 4)
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.green;
@@ -1253,7 +1276,7 @@ public class InteractableArea : MonoBehaviour
                     break;
 
                 case AreaType.ComputerDesk:
-                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.Computer 
+                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.Computer && tm.tutorialProgress >= 1
                         || rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None && tm.tutorialProgress == 4 )
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.green;
@@ -1276,7 +1299,7 @@ public class InteractableArea : MonoBehaviour
                     break;
 
                 case AreaType.Closet:
-                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.Clothes
+                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.Clothes && tm.tutorialProgress >= 2
                          || rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None && tm.tutorialProgress == 4)
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.green;
