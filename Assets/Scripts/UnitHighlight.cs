@@ -146,8 +146,9 @@ public class UnitHighlight : MonoBehaviour {
 
                 this.GetComponent<NavMeshAgent>().isStopped = true;
                 this.GetComponent<NavMeshAgent>().enabled = false;
-                rtsMover.ActiveUnit = null;
-                isClicked = false;
+                this.GetComponent<NavMeshAgent>().enabled = true;
+                // rtsMover.ActiveUnit = null;
+                // isClicked = false;
                 //this.GetComponent<NavMeshAgent>().isStopped = false;
             }
 
@@ -160,8 +161,9 @@ public class UnitHighlight : MonoBehaviour {
                 
                 this.GetComponent<NavMeshAgent>().isStopped = true;
                 this.GetComponent<NavMeshAgent>().enabled = false;
-                rtsMover.ActiveUnit = null;
-                isClicked = false;
+                this.GetComponent<NavMeshAgent>().enabled = true;
+                // rtsMover.ActiveUnit = null;
+                // isClicked = false;
                 //this.GetComponent<NavMeshAgent>().isStopped = false;
             }
 
