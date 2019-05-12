@@ -20,6 +20,9 @@ public class TutorialManager : MonoBehaviour {
     public GameObject console;
     public GameObject laptop;
 
+    public GameObject CharecterCreationPanel;
+    public GameObject ConsolePanel;
+
 
     private JSONPlayerSaver JSONSave;
 
@@ -142,6 +145,11 @@ public class TutorialManager : MonoBehaviour {
         {
             StartTutorial();
             TurnOffControls(true);
+        }
+
+        if (CharecterCreationPanel.activeSelf || ConsolePanel.activeSelf)
+        {
+            FindObjectOfType<RtsMover>().ActiveUnit = null;
         }
 
         //switch(tutorialProgress)
