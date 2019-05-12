@@ -18,6 +18,6 @@ public class TitleScreen : MonoBehaviour {
 
     public void ToTheDorm()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 }

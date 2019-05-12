@@ -277,21 +277,24 @@ public class Questionaire : MonoBehaviour {
                         break;
 
                     case 1:
-                        //Cooks in the kitchen end screen
-                        QuitGameScreen.GetComponent<EndScreen>().EndGame();
+                        //dorm do nothing
+                        
 
                         break;
                     case 2:
-                        //Habitats for humanity
-                        QuitGameScreen.GetComponent<EndScreenCOnstruction>().EndGame();
+                        //Cooks in the kitchen end screen
+                        QuitGameScreen.GetComponent<EndScreen>().EndGame();
+                        
                         break;
 
                         case 3:
-                        QuitGameScreen.GetComponent<ToysEndGame>().EndGame();
-                        //Toys for tots
+                        QuitGameScreen.GetComponent<EndScreenCOnstruction>().EndGame();
+
+                        //Habitats for humanity
                         break;
                     case 4:
-                        //Final game mode
+                        //Toys for tots
+                        QuitGameScreen.GetComponent<ToysEndGame>().EndGame();
                         break;
                 }
 
