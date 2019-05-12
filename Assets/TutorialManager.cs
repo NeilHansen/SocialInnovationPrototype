@@ -45,6 +45,7 @@ public class TutorialManager : MonoBehaviour {
             comp.GetComponent<InteractableArea>().TutorialComplete = false;
             tv.GetComponent<InteractableArea>().TutorialComplete = false;
             clothes.GetComponent<InteractableArea>().TutorialComplete = false;
+            FinishTutorial();
         }
         //else if(tutorialProgress <= tutorialEnd)
         //{

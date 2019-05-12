@@ -19026,7 +19026,7 @@ MonoBehaviour:
   OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1365563082}
+      - m_Target: {fileID: 0}
         m_MethodName: SetInteractorAndMove
         m_Mode: 1
         m_Arguments:
@@ -19039,58 +19039,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &1365563082
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1365563080}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bd2690994db8544cb23a840af5cf659, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timer: 0
-  startTime: 2
-  isInteracting: 0
-  isComplete: 0
-  areaType: 18
-  foodServings: 0
-  UnitToMoveTo: {fileID: 0}
-  feedbackSlider: {fileID: 0}
-  feedbackSlider2: {fileID: 0}
-  feedbackSlider3: {fileID: 0}
-  feedbackSlider4: {fileID: 0}
-  Status: {fileID: 0}
-  Status2: {fileID: 0}
-  Status3: {fileID: 0}
-  Status4: {fileID: 0}
-  FeedbackSprites:
-  - {fileID: 21300000, guid: 97fdb73e3fd02b143a0a4e5381a2996d, type: 3}
-  - {fileID: 21300000, guid: cb9ad482dbfd41e47af8cc575ea6add6, type: 3}
-  - {fileID: 21300000, guid: 83f08cae26cc9f0489058658058d7c96, type: 3}
-  fillLevel1: {fileID: 0}
-  fillLevel2: {fileID: 0}
-  fillLevel3: {fileID: 0}
-  Gm: {fileID: 1875669972}
-  carryWood: {fileID: 0}
-  CarryPipe: {fileID: 0}
-  hoverSprite: {fileID: 21300000, guid: ace2c99e8e77ceb449e48fd0b630473e, type: 3}
-  hoverSpriteObject: {fileID: 2105631694}
-  MovePoint: {fileID: 1008208132}
-  MovePoint2: {fileID: 0}
-  giftboxPrefab: {fileID: 0}
-  objectToplace: {fileID: 1271390856}
-  ConsoleCanvas: {fileID: 0}
-  CharacterCreator: {fileID: 0}
-  tm: {fileID: 0}
-  TutorialComplete: 0
-  tv: {fileID: 733916103}
-  comp: {fileID: 1128919236}
-  dirtyPlateOn: 0
-  cleanPlateOn: 0
-  filledPlateOn: 0
-  rawFoodOn: 0
 --- !u!65 &1365563083
 BoxCollider:
   m_ObjectHideFlags: 0
