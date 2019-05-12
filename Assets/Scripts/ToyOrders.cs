@@ -31,21 +31,64 @@ public class ToyOrders : MonoBehaviour {
     public bool item1Received, item2Received, item3Received;
     public bool canPickUp = false;
 
+    public GameObject firstSprite;
+    public GameObject secondSprte;
+    public GameObject thirdSprite;
+
+    public GameObject check1;
+    public GameObject check2;
+    public GameObject check3;
+
+    public Sprite ball;
+    public Sprite doll;
+    public Sprite robot;
+    public Sprite bat;
+
+
+
     // Use this for initialization
     void Start () {
         GenerateItems();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-        item1Quantity.text = "x " + finalItemList[0].amount.ToString();
-        item2Quantity.text = "x " + finalItemList[1].amount.ToString();
-        item3Quantity.text = "x " + finalItemList[2].amount.ToString();
+
+    // Update is called once per frame
+    void Update() {
+        //item1Quantity.text = "x " + finalItemList[0].amount.ToString();
+        //item2Quantity.text = "x " + finalItemList[1].amount.ToString();
+        //item3Quantity.text = "x " + finalItemList[2].amount.ToString();
+
+        if(finalItemList[0].amount <= 0)
+        {
+            item1Quantity.text = "";
+        }
+        else
+        {
+            item1Quantity.text = "x " + finalItemList[0].amount.ToString();
+        }
+
+        if (finalItemList[1].amount <= 0)
+        {
+            item2Quantity.text = "";
+        }
+        else
+        {
+            item2Quantity.text = "x " + finalItemList[1].amount.ToString();
+        }
+
+        if (finalItemList[2].amount <= 0)
+        {
+            item3Quantity.text = "";
+        }
+        else
+        {
+            item3Quantity.text = "x " + finalItemList[2].amount.ToString();
+        }
+
 
         if (item1Received && item2Received && item3Received)
         {
-           // Debug.Log("All items ready");
-           // transform.position = new Vector3(0.0f, 0.0f, 0.0f);
+            // Debug.Log("All items ready");
+            // transform.position = new Vector3(0.0f, 0.0f, 0.0f);
             canPickUp = true;
         }
 
@@ -60,10 +103,67 @@ public class ToyOrders : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.G))
             GenerateItems();
 
+        //lazy way to change ui
+        if (finalItemList[0].toy == ToyList.Ball)
+        {
+            firstSprite.GetComponent<Image>().sprite = ball;
+        }
+        else if (finalItemList[0].toy == ToyList.Doll)
+        {
+            firstSprite.GetComponent<Image>().sprite = doll;
+        }
+        else if (finalItemList[0].toy == ToyList.Robot)
+        {
+            firstSprite.GetComponent<Image>().sprite = robot;
+        }
+        else if (finalItemList[0].toy == ToyList.BaseballBat)
+        {
+            firstSprite.GetComponent<Image>().sprite = bat;
+        }
+
+        if (finalItemList[1].toy == ToyList.Ball)
+        {
+            secondSprte.GetComponent<Image>().sprite = ball;
+        }
+        else if (finalItemList[1].toy == ToyList.Doll)
+        {
+            secondSprte.GetComponent<Image>().sprite = doll;
+        }
+        else if (finalItemList[1].toy == ToyList.Robot)
+        {
+            secondSprte.GetComponent<Image>().sprite = robot;
+        }
+        else if (finalItemList[1].toy == ToyList.BaseballBat)
+        {
+            secondSprte.GetComponent<Image>().sprite = bat;
+        }
+
+
+        if (finalItemList[2].toy == ToyList.Ball)
+        {
+            thirdSprite.GetComponent<Image>().sprite = ball;
+        }
+        else if (finalItemList[2].toy == ToyList.Doll)
+        {
+            thirdSprite.GetComponent<Image>().sprite = doll;
+        }
+        else if (finalItemList[2].toy == ToyList.Robot)
+        {
+            thirdSprite.GetComponent<Image>().sprite = robot;
+        }
+        else if (finalItemList[2].toy == ToyList.BaseballBat)
+        {
+            thirdSprite.GetComponent<Image>().sprite = bat;
+        }
+
+
+
+
     }
 
     public void GenerateItems()
     {
+       
         finalItemList = new List<ItemInfo>();
         
         List<ToyList> shuffledList = ShuffleList();
@@ -76,9 +176,14 @@ public class ToyOrders : MonoBehaviour {
         item2Name.text = finalItemList[1].toy.ToString();
         item3Name.text = finalItemList[2].toy.ToString();
 
+
         item1Received = false;
         item2Received = false;
         item3Received = false;
+        check1.SetActive(false);
+        check2.SetActive(false);
+        check3.SetActive(false);
+        
         canPickUp = false;
 
     }
@@ -98,12 +203,18 @@ public class ToyOrders : MonoBehaviour {
                     {
                         case 0:
                             item1Received = true;
+                            check1.SetActive(true);
+                            item1Name.enabled = false;
                             break;
                         case 1:
                             item2Received = true;
+                            check2.SetActive(true);
+                            item2Name.enabled = false;
                             break;
                         case 2:
                             item3Received = true;
+                            check3.SetActive(true);
+                            item3Name.enabled = false;
                             break;
                         default:
                             Debug.Log("Error");
