@@ -56,6 +56,7 @@ public class GameManagerConstruction : MonoBehaviour {
 
     public float timerMultiplier = 0.1f;
 
+    private JSONPlayerSaver JSONSave;
 
     // Use this for initialization
     void Start() {
@@ -80,6 +81,7 @@ public class GameManagerConstruction : MonoBehaviour {
 
         if(timeValue<=0 && !GameComplete)
         {
+            
             EndGame();
         }
         
@@ -93,6 +95,18 @@ public class GameManagerConstruction : MonoBehaviour {
 
     }
 
+    void SaveGameScore()
+    {
+        
+        JSONSave = FindObjectOfType<JSONPlayerSaver>();
+        PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
+        if (playerScore > data.gameScoreHabitats)
+        {
+            data.gameScoreHabitats = (int)playerScore;
+            JSONSave.SaveData(data, JSONSave.dataPath);
+        }
+    }
+
 
     public void EndGame()
     {
@@ -101,7 +115,7 @@ public class GameManagerConstruction : MonoBehaviour {
         EndingScreen.GetComponent<Questionaire>().InitializeQuestionaire();
         //EndingScreen.GetComponent<EndScreenCOnstruction>().EndGame();
         Time.timeScale = 0f;
-
+        SaveGameScore();
     }
 
     public void Test()

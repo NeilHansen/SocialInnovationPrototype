@@ -54,7 +54,7 @@ public class ToyDriveGameManager : MonoBehaviour {
     public TextMeshProUGUI PackageCounter;
 
 
-
+    private JSONPlayerSaver JSONSave;
 
     // Use this for initialization
     void Start()
@@ -85,7 +85,7 @@ public class ToyDriveGameManager : MonoBehaviour {
             Time.timeScale = 0.0f;
             EndingScreen.SetActive(true);
             EndingScreen.GetComponent<Questionaire>().InitializeQuestionaire();
-
+            SaveGameScore();
         }
 
         //TruckWaitMeter();
@@ -97,7 +97,18 @@ public class ToyDriveGameManager : MonoBehaviour {
 
     }
 
-  
+    void SaveGameScore()
+    {
+
+        JSONSave = FindObjectOfType<JSONPlayerSaver>();
+        PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
+        if (playerScore > data.gameScoreToys)
+        {
+            data.gameScoreToys = (int)playerScore;
+            JSONSave.SaveData(data, JSONSave.dataPath);
+        }
+    }
+
     public void StartNewTruck()
     {
         satisfactionMeter.value = 1;
