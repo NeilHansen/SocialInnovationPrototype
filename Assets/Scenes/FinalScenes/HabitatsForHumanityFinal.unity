@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.574817, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2253,6 +2253,7 @@ GameObject:
   m_Component:
   - component: {fileID: 111589752}
   - component: {fileID: 111589753}
+  - component: {fileID: 111589754}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2318,6 +2319,34 @@ MonoBehaviour:
   - {fileID: 396708143}
   - {fileID: 2114066029}
   timerMultiplier: 0.1
+--- !u!114 &111589754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 111589751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 880a2defa7f762a46ad89899ccdc7ae4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerData:
+    progress: 0
+    preQuizScoreCooks: 0
+    postQuizScoreCooks: 0
+    totalQuizScoreCooks: 0
+    gameScoreCooks: 0
+    preQuizScoreHabitats: 0
+    postQuizScoreHabitats: 0
+    totalQuizScoreHabitats: 0
+    gameScoreHabitats: 0
+    preQuizScoreToys: 0
+    postQuizScoreToys: 0
+    totalQuizScoreToys: 0
+    gameScoreToys: 0
+    playerHead: 0
+    playerBody: 0
+  dataPath: 
 --- !u!1 &116615743
 GameObject:
   m_ObjectHideFlags: 0
@@ -4080,7 +4109,7 @@ Prefab:
     - target: {fileID: 114930346485970634, guid: 812f6bb2397b56d4fa805583683168a2,
         type: 2}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224606430279030416, guid: 812f6bb2397b56d4fa805583683168a2,
         type: 2}
