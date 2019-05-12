@@ -119,7 +119,7 @@ public class EndScreen : MonoBehaviour
     }
     public void LoaddDorm()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
         Time.timeScale = 1;
     }
 

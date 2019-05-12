@@ -109,7 +109,7 @@ public class ToysEndGame : MonoBehaviour {
 
     public void LoadDormRoom()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
         Time.timeScale = 1;
     }
 
