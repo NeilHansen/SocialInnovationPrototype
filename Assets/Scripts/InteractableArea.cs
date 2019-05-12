@@ -209,6 +209,8 @@ public class InteractableArea : MonoBehaviour
                     break;
             }
         }
+
+        OnMouseOver();
     }
 
     void Complete(AreaType type, PlayerUI UI)
@@ -1161,10 +1163,12 @@ public class InteractableArea : MonoBehaviour
                     if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None)
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.green;
+                        this.gameObject.GetComponent<Outline>().enabled = true;
                     }
                     else
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.red;
+                        this.gameObject.GetComponent<Outline>().enabled = false;
                     }
                     break;
 
@@ -1173,10 +1177,12 @@ public class InteractableArea : MonoBehaviour
                         rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.CleanPlate)
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.green;
+                        this.gameObject.GetComponent<Outline>().enabled = true;
                     }
                     else
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.red;
+                        this.gameObject.GetComponent<Outline>().enabled = false;
                     }
                     break;
 
@@ -1184,10 +1190,12 @@ public class InteractableArea : MonoBehaviour
                     if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.DirtyPlate )
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.green;
+                        this.gameObject.GetComponent<Outline>().enabled = true;
                     }
                     else
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.red;
+                        this.gameObject.GetComponent<Outline>().enabled = false;
                     }
                     break;
 
@@ -1195,10 +1203,12 @@ public class InteractableArea : MonoBehaviour
                     if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.CookedFood)
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.green;
+                        this.gameObject.GetComponent<Outline>().enabled = true;
                     }
                     else
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.red;
+                        this.gameObject.GetComponent<Outline>().enabled = false;
                     }
                     break;
 
@@ -1206,10 +1216,12 @@ public class InteractableArea : MonoBehaviour
                     if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None)
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.green;
+                        this.gameObject.GetComponent<Outline>().enabled = true;
                     }
                     else
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.red;
+                        this.gameObject.GetComponent<Outline>().enabled = false;
                     }
                     break;
 
@@ -1217,10 +1229,12 @@ public class InteractableArea : MonoBehaviour
                     if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType != UnitTaskController.TaskType.None)
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.green;
+                        this.gameObject.GetComponent<Outline>().enabled = true;
                     }
                     else
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.red;
+                        this.gameObject.GetComponent<Outline>().enabled = false;
                     }
                     break;
 
@@ -1229,10 +1243,12 @@ public class InteractableArea : MonoBehaviour
                         rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None)
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.green;
+                        this.gameObject.GetComponent<Outline>().enabled = true;
                     }
                     else
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.red;
+                        this.gameObject.GetComponent<Outline>().enabled = false;
                     }
                     break;
 
@@ -1241,10 +1257,12 @@ public class InteractableArea : MonoBehaviour
                         rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None && rtsMover.ActiveUnit.gameObject.name == "Unit4")
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.green;
+                        this.gameObject.GetComponent<Outline>().enabled = true;
                     }
                     else
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.red;
+                        this.gameObject.GetComponent<Outline>().enabled = false;
                     }
                     break;
 
@@ -1252,22 +1270,26 @@ public class InteractableArea : MonoBehaviour
                         if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.GiftBox )
                         {
                             this.GetComponent<Outline>().OutlineColor = Color.green;
-                        }
+                        this.gameObject.GetComponent<Outline>().enabled = true;
+                    }
                         else
                         {
                             this.GetComponent<Outline>().OutlineColor = Color.red;
-                        }
+                        this.gameObject.GetComponent<Outline>().enabled = false;
+                    }
                     break;
 
                 case AreaType.DollBin:
                         if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None)
                         {
                             this.GetComponent<Outline>().OutlineColor = Color.green;
-                        }
+                        this.gameObject.GetComponent<Outline>().enabled = true;
+                    }
                         else
                         {
                             this.GetComponent<Outline>().OutlineColor = Color.red;
-                        }
+                        this.gameObject.GetComponent<Outline>().enabled = false;
+                    }
                     
                     break;
 
@@ -1275,10 +1297,12 @@ public class InteractableArea : MonoBehaviour
                     if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None)
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.green;
+                        this.gameObject.GetComponent<Outline>().enabled = true;
                     }
                     else
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.red;
+                        this.gameObject.GetComponent<Outline>().enabled = false;
                     }
                     break;
 
@@ -1286,10 +1310,12 @@ public class InteractableArea : MonoBehaviour
                     if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None)
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.green;
+                        this.gameObject.GetComponent<Outline>().enabled = true;
                     }
                     else
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.red;
+                        this.gameObject.GetComponent<Outline>().enabled = false;
                     }
                     break;
 
@@ -1297,10 +1323,12 @@ public class InteractableArea : MonoBehaviour
                     if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None)
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.green;
+                        this.gameObject.GetComponent<Outline>().enabled = true;
                     }
                     else
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.red;
+                        this.gameObject.GetComponent<Outline>().enabled = false;
                     }
                     break;
 
@@ -1310,10 +1338,12 @@ public class InteractableArea : MonoBehaviour
                          || rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None && tm.tutorialProgress == 4)
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.green;
+                        this.gameObject.GetComponent<Outline>().enabled = true;
                     }
                     else
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.red;
+                        this.gameObject.GetComponent<Outline>().enabled = false;
                     }
                     break;
 
@@ -1321,10 +1351,12 @@ public class InteractableArea : MonoBehaviour
                     if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None && tm.tutorialProgress == 3)
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.green;
+                        this.gameObject.GetComponent<Outline>().enabled = true;
                     }
                     else
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.red;
+                        this.gameObject.GetComponent<Outline>().enabled = false;
                     }
                     break;
 
@@ -1333,10 +1365,12 @@ public class InteractableArea : MonoBehaviour
                         || rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None && tm.tutorialProgress == 4 )
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.green;
+                        this.gameObject.GetComponent<Outline>().enabled = true;
                     }
                     else
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.red;
+                        this.gameObject.GetComponent<Outline>().enabled = false;
                     }
                     break;
 
@@ -1344,10 +1378,12 @@ public class InteractableArea : MonoBehaviour
                     if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None && tm.tutorialProgress == 1)
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.green;
+                        this.gameObject.GetComponent<Outline>().enabled = true;
                     }
                     else
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.red;
+                        this.gameObject.GetComponent<Outline>().enabled = false;
                     }
                     break;
 
@@ -1356,11 +1392,13 @@ public class InteractableArea : MonoBehaviour
                          || rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None && tm.tutorialProgress == 4)
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.green;
-                        
+                        this.gameObject.GetComponent<Outline>().enabled = true;
+
                     }
                     else
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.red;
+                        this.gameObject.GetComponent<Outline>().enabled = false;
                     }
                     break;
 
@@ -1368,10 +1406,12 @@ public class InteractableArea : MonoBehaviour
                     if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None && tm.tutorialProgress == 2)
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.green;
+                        this.gameObject.GetComponent<Outline>().enabled = true;
                     }
                     else
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.red;
+                        this.gameObject.GetComponent<Outline>().enabled = false;
                     }
                     break;
 
