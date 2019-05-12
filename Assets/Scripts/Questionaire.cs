@@ -151,7 +151,7 @@ public class Questionaire : MonoBehaviour {
                 chosenAnswer = answerDText.text;
 				break;
 			default:
-				Debug.Log("Error clicking button");
+				//Debug.Log("Error clicking button");
 				break;
 		}
 	}
@@ -244,7 +244,7 @@ public class Questionaire : MonoBehaviour {
         }
         else
         {
-            Debug.Log("Error cant find scene name to save total quiz score");
+            //Debug.Log("Error cant find scene name to save total quiz score");
         }
 
         JSONSave.SaveData(data, JSONSave.dataPath);
@@ -252,7 +252,7 @@ public class Questionaire : MonoBehaviour {
 
     void NextQuestion()
 	{
-        Debug.Log("The quiz is complete is" + QuizComplete);
+       // Debug.Log("The quiz is complete is" + QuizComplete);
         aButton.image.sprite = ButtonStates[0];
         bButton.image.sprite = ButtonStates[0];
         cButton.image.sprite = ButtonStates[0];
@@ -354,10 +354,10 @@ public class Questionaire : MonoBehaviour {
 
         foreach (Questions q in questionList)
         {
-            Debug.Log(q.question);
+            //Debug.Log(q.question);
             foreach (string s in q.answers)
             {
-                Debug.Log(s);
+                //Debug.Log(s);
             }
             Debug.Log("Correct: " + q.correctAnswer);
         }
@@ -409,7 +409,7 @@ public class Questionaire : MonoBehaviour {
             Debug.Log(q.question);
             foreach (string s in q.answers)
             {
-                Debug.Log(s);
+               // Debug.Log(s);
             }
             Debug.Log("Correct: " + q.correctAnswer);
         }

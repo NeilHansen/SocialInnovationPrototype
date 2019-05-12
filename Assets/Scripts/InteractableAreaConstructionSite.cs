@@ -606,10 +606,11 @@ public class InteractableAreaConstructionSite : MonoBehaviour
     }
     public void SetInteractorAndMove()
     {
-
+        if(rtsMover.ActiveUnit!=null && !isInteracting)
 
         UnitToMoveTo = rtsMover.ActiveUnit;
-        if (MovePoint != null)
+
+        if (MovePoint != null) 
         {
             rtsMover.MovePlayer(MovePoint);
         }
@@ -650,7 +651,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
 
                     break;
                 case AreaType.TrashCan:
-                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType != UnitTaskController.TaskType.None)
+                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType != UnitTaskController.TaskType.None&& !isInteracting)
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.green;
                     this.gameObject.GetComponent<Outline>().enabled = true;
@@ -664,7 +665,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                     break;
                 case AreaType.CuttingArea:
                     if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.LargeWood ||
-                        rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.LargePipe)
+                        rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.LargePipe&& !isInteracting)
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.green;
                     this.gameObject.GetComponent<Outline>().enabled = true;
@@ -677,7 +678,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                 }
                     break;
                 case AreaType.WoodPile:
-                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None)
+                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None&& !isInteracting)
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.green;
                     this.gameObject.GetComponent<Outline>().enabled = true;
@@ -690,7 +691,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                 }
                     break;
                 case AreaType.WoodRecipticalBin:
-                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None)
+                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None&& !isInteracting)
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.green;
                     this.gameObject.GetComponent<Outline>().enabled = true;
@@ -703,7 +704,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                 }
                     break;
                 case AreaType.PipeRecipticalBin:
-                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None)
+                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None&& !isInteracting)
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.green;
                     this.gameObject.GetComponent<Outline>().enabled = true;
@@ -716,7 +717,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                 }
                     break;
                 case AreaType.Counter:
-                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None)
+                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None&& !isInteracting)
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.green;
                     this.gameObject.GetComponent<Outline>().enabled = true;
@@ -729,7 +730,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                 }
                     break;
                 case AreaType.PipePile:
-                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None)
+                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None&& !isInteracting)
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.green;
                     this.gameObject.GetComponent<Outline>().enabled = true;
@@ -742,7 +743,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                 }
                     break;
                 case AreaType.NailsBin:
-                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None)
+                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None&& !isInteracting)
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.green;
                     this.gameObject.GetComponent<Outline>().enabled = true;
@@ -755,7 +756,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                 }
                     break;
                 case AreaType.PipeConnector:
-                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None)
+                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None&& !isInteracting)
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.green;
                     this.gameObject.GetComponent<Outline>().enabled = true;
@@ -771,7 +772,8 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                     if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.SmallWood
                         || rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.SmallPipe
                         || rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.Nails
-                        || rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.PipeConnector)
+                        || rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.PipeConnector
+                        && !isInteracting)
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.green;
                     this.gameObject.GetComponent<Outline>().enabled = true;
@@ -784,7 +786,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                 }
                     break;
                 case AreaType.FormanReturn:
-                    if ( rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.SmallWood
+                    if ( !isInteracting&&rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.SmallWood
                        || rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.SmallPipe
                        || rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.Nails
                        || rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.ComboPipe

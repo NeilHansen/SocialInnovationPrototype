@@ -48,6 +48,22 @@ public class UnitHighlight : MonoBehaviour {
           if (rtsMover.ActiveUnit != rtsMover.Unit1 || rtsMover.ActiveUnit == null)
             {
                rtsMover.Unit1.gameObject.GetComponent<UnitHighlight>().PossesUnit();
+                //Failsafe to make sure all other unit lights are off
+                if (numberOfUnits == 2)
+                {
+                    rtsMover.Unit2.GetComponent<Outline>().enabled = false;
+                }
+                
+                if (numberOfUnits == 3){
+                    rtsMover.Unit3.GetComponent<Outline>().enabled = false;
+                }
+
+                if(numberOfUnits == 4)
+                {
+                    rtsMover.Unit4.GetComponent<Outline>().enabled = false;
+                }
+                
+
             }
         }
 
@@ -57,7 +73,26 @@ public class UnitHighlight : MonoBehaviour {
             if (rtsMover.ActiveUnit != rtsMover.Unit2 || rtsMover.ActiveUnit == null)
             {
                 rtsMover.Unit2.gameObject.GetComponent<UnitHighlight>().PossesUnit();
+
+                //Failsafe to make sure all other unit lights are off
+
+                rtsMover.Unit1.GetComponent<Outline>().enabled = false;
+
+                if (numberOfUnits == 3)
+                {
+                    rtsMover.Unit3.GetComponent<Outline>().enabled = false;
+                }
+
+                if (numberOfUnits == 4)
+                {
+                    rtsMover.Unit4.GetComponent<Outline>().enabled = false;
+                }
             }
+
+           
+          
+
+          
         }
 
         if (numberOfUnits >= 3)
@@ -67,6 +102,19 @@ public class UnitHighlight : MonoBehaviour {
                 if (rtsMover.ActiveUnit != rtsMover.Unit3 || rtsMover.ActiveUnit == null)
                 {
                     rtsMover.Unit3.gameObject.GetComponent<UnitHighlight>().PossesUnit();
+
+                    //Failsafe to make sure all other unit lights are off
+                    rtsMover.Unit1.GetComponent<Outline>().enabled = false;
+                    rtsMover.Unit2.GetComponent<Outline>().enabled = false;
+
+                    if (numberOfUnits == 4)
+                    {
+                        rtsMover.Unit4.GetComponent<Outline>().enabled = false;
+                    }
+
+
+
+
                 }
             }
         }
@@ -78,6 +126,13 @@ public class UnitHighlight : MonoBehaviour {
                 if (rtsMover.ActiveUnit != rtsMover.Unit4 || rtsMover.ActiveUnit == null)
                 {
                     rtsMover.Unit4.gameObject.GetComponent<UnitHighlight>().PossesUnit();
+
+                    rtsMover.Unit1.GetComponent<Outline>().enabled = false;
+                    rtsMover.Unit2.GetComponent<Outline>().enabled = false;
+                    rtsMover.Unit3.GetComponent<Outline>().enabled = false;
+
+
+
                 }
                 else
                 {
