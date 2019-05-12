@@ -754,6 +754,8 @@ public class InteractableArea : MonoBehaviour
                 case AreaType.GiftBox:
                     if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
                     {
+
+                        //for picking Up the box
                         if (  this.gameObject.GetComponent<GiftboxSpawn>().giftboxPrefab.GetComponent<ToyOrders>().canPickUp)
                         {
                             if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None
@@ -769,9 +771,28 @@ public class InteractableArea : MonoBehaviour
                                 }
                             }
                         }
+
                         else //if (interactingUnit.gameObject.name != "Unit1")
                         {
-                            if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType != UnitTaskController.TaskType.None)
+                            objectPlayerHolding = interactingUnit.gameObject.GetComponent<UnitTaskController>().objectHolding;
+                            ToyOrders TO = FindObjectOfType<ToyOrders>();
+                            bool FoundItem = false;
+
+                            foreach(ToyOrders.ItemInfo Item in TO.finalItemList)
+                            {
+                                if (Item.toy.ToString() == objectPlayerHolding.ToString()&&Item.amount>0)
+                                {
+                                    FoundItem = true;
+                                    break;
+                                }
+                                else
+                                {
+                                    FoundItem = false;
+                                }
+                            }
+
+
+                            if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType != UnitTaskController.TaskType.None&& FoundItem)
                             {
                                 OnInteraction(interactingUnit);
                             }

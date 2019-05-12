@@ -15,7 +15,8 @@ public class TutorialManager : MonoBehaviour {
     public GameObject comp;
     public GameObject clothes;
     public GameObject tv;
-
+    public GameObject ConsolePanel;
+    public GameObject CharacterPanel;
 
     public GameObject console;
     public GameObject laptop;
@@ -45,6 +46,7 @@ public class TutorialManager : MonoBehaviour {
             comp.GetComponent<InteractableArea>().TutorialComplete = false;
             tv.GetComponent<InteractableArea>().TutorialComplete = false;
             clothes.GetComponent<InteractableArea>().TutorialComplete = false;
+            FinishTutorial();
             
         }
         //else if(tutorialProgress <= tutorialEnd)
@@ -142,6 +144,11 @@ public class TutorialManager : MonoBehaviour {
         {
             StartTutorial();
             TurnOffControls(true);
+        }
+
+        if(CharacterPanel.activeInHierarchy==true || ConsolePanel.activeInHierarchy==true)
+        {
+            FindObjectOfType<RtsMover>().ActiveUnit = null;
         }
 
         //switch(tutorialProgress)

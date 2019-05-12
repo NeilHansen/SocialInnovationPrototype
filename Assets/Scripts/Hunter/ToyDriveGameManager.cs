@@ -21,6 +21,7 @@ public class ToyDriveGameManager : MonoBehaviour {
     public float playerScore;
     public ToyTruck Truck;
     public  float PointsPerPackage = 25;
+    public int PackageAmount;
 
     //satisfaction visual Mods
     [SerializeField]
@@ -44,6 +45,7 @@ public class ToyDriveGameManager : MonoBehaviour {
     InteractableArea TruckInteractable;
     float TimeTruckStarted;
     bool GameComplete = false;
+
 
     //public float timerMultiplier = 0.1f;
 
@@ -73,7 +75,8 @@ public class ToyDriveGameManager : MonoBehaviour {
         timeValue -= 1 * Time.deltaTime;
         TimeRemaining.text =""+(int)timeValue ;
 
-        PackageCounter.text = "packages: " + Truck.packages + "/1";
+        PackageCounter.text = "packages  " + PackageAmount;
+
      
      
         if (timeValue <= 0&& !GameComplete)
@@ -107,7 +110,7 @@ public class ToyDriveGameManager : MonoBehaviour {
         hasTruck = false;
         Truck.Drive();
         float CurrentScoreValue = PointsPerPackage * Truck.packages;
-        
+        PackageAmount++;
 
         switch (Truck.packages)
         {
