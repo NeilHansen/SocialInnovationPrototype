@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class ConversationManager : MonoBehaviour {
 
@@ -37,9 +38,12 @@ public class ConversationManager : MonoBehaviour {
     private JSONPlayerSaver JSONSave;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         JSONSave = FindObjectOfType<JSONPlayerSaver>();
         NextConvoPeice();
+
+    
     }
 	
 	// Update is called once per frame

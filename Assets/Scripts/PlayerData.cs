@@ -18,4 +18,7 @@ public class PlayerData
     public int gameScoreToys;
     public int playerHead;
     public int playerBody;
+    public int cooksIntroProgress;
+    public int habitatIntroProgress;
+    public int toysIntroProgress;
 }

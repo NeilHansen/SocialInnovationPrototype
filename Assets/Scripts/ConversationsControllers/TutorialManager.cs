@@ -38,6 +38,7 @@ public class TutorialManager : MonoBehaviour {
 
         //tutorialProgress = PlayerPrefs.GetInt("tutorialProgress");
         tutorialProgress = JSONSave.LoadData(JSONSave.dataPath).progress;
+
         if (tutorialProgress == 0)
         {
             StartTutorial();
@@ -140,6 +141,7 @@ public class TutorialManager : MonoBehaviour {
         //tutorialProgress = PlayerPrefs.GetInt("tutorialProgress");
         Debug.Log(tutorialProgress);
         tutorialProgress = JSONSave.LoadData(JSONSave.dataPath).progress;
+
 
         if (tutorialProgress == 0)
         {
