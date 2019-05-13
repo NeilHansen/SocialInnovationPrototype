@@ -133,6 +133,7 @@ public class GameManager : MonoBehaviour {
         {
             data.gameScoreCooks = (int)playerScore;
             JSONSave.SaveData(data, JSONSave.dataPath);
+           
         }
     }
 

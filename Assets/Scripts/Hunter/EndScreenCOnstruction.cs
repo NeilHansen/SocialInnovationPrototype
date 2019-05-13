@@ -78,13 +78,13 @@ public class EndScreenCOnstruction : MonoBehaviour
         {
             int QS = QuizData.score;
 
-            if (QS >= 8)
+            if (QS >= 7)
             {
                 //Gold
                 Medal.sprite = MedalType[0];
             }
 
-            else if (QS >= 6)
+            else if (QS >= 4)
             {
                 //Silver
                 Medal.sprite = MedalType[1];
