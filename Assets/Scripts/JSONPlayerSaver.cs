@@ -37,6 +37,13 @@ public class JSONPlayerSaver : MonoBehaviour {
         }
     }
 
+    public void ResetData()
+    {
+        PlayerData data = new PlayerData();
+        dataPath = (Application.streamingAssetsPath + "/PlayerData.txt");
+        SaveData(data, dataPath);
+    }
+
 	// Update is called once per frame
 	void Update () {
 		
