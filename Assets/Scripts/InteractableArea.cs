@@ -1125,7 +1125,7 @@ public class InteractableArea : MonoBehaviour
 
                 else if (areaType == AreaType.GiftBox)
                 {
-                    if ((UnitToMoveTo.transform.position - transform.position).x >= 0)
+                    if ((UnitToMoveTo.transform.position - transform.parent.position).x >= 0)
                     {
                         rtsMover.MovePlayer(MovePoint2);
                     }
