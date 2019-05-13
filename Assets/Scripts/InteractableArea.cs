@@ -1290,7 +1290,7 @@ public class InteractableArea : MonoBehaviour
 
                 case AreaType.GiftBox:
                     if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType != UnitTaskController.TaskType.None ||
-                        rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None && rtsMover.ActiveUnit.gameObject.name == "Unit4"&& !isInteracting)
+                        rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None && !isInteracting)
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.green;
                         this.gameObject.GetComponent<Outline>().enabled = true;
