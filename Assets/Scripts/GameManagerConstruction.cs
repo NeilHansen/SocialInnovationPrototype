@@ -142,10 +142,10 @@ public class GameManagerConstruction : MonoBehaviour {
             timeValue = MaxTime;
         }
 
-        if (HouseAmount == 3)
-        {
-            EndGame();
-        }
+        //if (HouseAmount == 3)
+        //{
+        //    EndGame();
+        //}
         //ScoreAdded.text = "+" + currentFoodValue;
       
         //scoreText.text = "Score: " + (int)playerScore;

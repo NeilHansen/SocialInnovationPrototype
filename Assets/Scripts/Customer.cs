@@ -384,8 +384,9 @@ public class Customer : MonoBehaviour
         if (currentScenario.stage >= 2)
 		{
             Debug.Log("Finish");
-			Gm.isBonusMultiplierOn = true;
-            Gm.specialCustomerBonusMultiplier = positiveMultiplier;
+            //Gm.isBonusMultiplierOn = true;
+            //Gm.specialCustomerBonusMultiplier = positiveMultiplier;
+            Gm.SpecialCustomerScore();
             ChangeStatus(Attitude.BigSmile);
 		}
         else

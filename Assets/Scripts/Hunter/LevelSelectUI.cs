@@ -30,6 +30,8 @@ public class LevelSelectUI : MonoBehaviour {
        public TextMeshProUGUI QuizScore;
     }
 
+    public GameObject[] LevelButtons;
+
 
 
     [SerializeField]
@@ -82,11 +84,8 @@ public class LevelSelectUI : MonoBehaviour {
 
     public void HoverButton(int bn)
     {
-
-        MenuObjects.GameModes[bn].image.sprite = MenuObjects.HoverImages[bn];
-
-        MenuObjects.Anims[bn].SetBool("Hovered", true);
-
+        LevelButtons[bn].GetComponent<Animator>().SetBool("Hover", true);
+    
        // GameModes[Gamemode].image.sprite = HoverImages[Gamemode];
 
 
@@ -94,8 +93,7 @@ public class LevelSelectUI : MonoBehaviour {
 
     public void UnhoverButtons(int unhoverNum)
     {
-        MenuObjects.GameModes[unhoverNum].image.sprite = MenuObjects.NormalImages[unhoverNum];
-        MenuObjects.Anims[unhoverNum].SetBool("Hovered", false);
+        LevelButtons[unhoverNum].GetComponent<Animator>().SetBool("Hover", false);
     }
 
     public void ExitButtonHover()
@@ -333,4 +331,8 @@ public class LevelSelectUI : MonoBehaviour {
 
 
     }
+
+
+
+    
 }

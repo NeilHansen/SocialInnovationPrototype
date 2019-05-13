@@ -10,6 +10,8 @@ public class EndScreen : MonoBehaviour
     [SerializeField]
     Image[] Stars;
     [SerializeField]
+    Image[] StarsQuiz;
+    [SerializeField]
     TextMeshProUGUI ScoreText;
     [SerializeField]
     GameManager GM;
@@ -30,6 +32,7 @@ public class EndScreen : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI QuizScoreText;
     public Questionaire QuizData;
+    public Sprite FilledStar;
 
 
 
@@ -62,41 +65,58 @@ public class EndScreen : MonoBehaviour
             StarAmount = 2;
         }
 
-        else
+        else if(GM.playerScore>0)
         {
             StarAmount = 1;
         }
 
+        else
+        {
+            StarAmount = 0;
+        }
+
         for (int i = 0; i < StarAmount; i++)
         {
-            Stars[i].enabled = true;
+            Stars[i].sprite=FilledStar;
         }
-        ScoreText.text = "Your Score Is: " + GM.playerScore;
+        ScoreText.text = "Score:" + GM.playerScore;
 
         //Quiz Score Stuff
         if (QuizData != null)
         {
             int QS = QuizData.score;
+            int QuizStarAmount = 0;
 
             if (QS >= 7)
             {
                 //Gold
-                Medal.sprite = MedalType[0];
+                QuizStarAmount = 3;
             }
 
             else if (QS >= 4)
             {
                 //Silver
-                Medal.sprite = MedalType[1];
+                QuizStarAmount = 2;
+            }
+
+            else if(QS>0)
+            {
+                //Bronze
+                QuizStarAmount = 1;
             }
 
             else
             {
-                //Bronze
-                Medal.sprite = MedalType[2];
+                QuizStarAmount = 0;
             }
 
-            QuizScoreText.text = "Your Quiz Score Is: " + QS;
+
+            for(int q =0;  q <QuizStarAmount; q++)
+            {
+                StarsQuiz[q].sprite = FilledStar;
+            }
+
+            QuizScoreText.text = "Quiz:" + QS;
         }
 
     }

@@ -769,11 +769,11 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                 }
                     break;
                 case AreaType.CraftingStation:
-                    if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.SmallWood
+                    if (!isInteracting&&rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.SmallWood
                         || rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.SmallPipe
                         || rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.Nails
                         || rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.PipeConnector
-                        && !isInteracting)
+                        )
                     {
                         this.GetComponent<Outline>().OutlineColor = Color.green;
                     this.gameObject.GetComponent<Outline>().enabled = true;
