@@ -7,12 +7,14 @@ using TMPro;
 
 
 public class ToysEndGame : MonoBehaviour {
-
+    public ToyDriveGameManager GM;
     [SerializeField]
     Image[] Stars;
     [SerializeField]
+    Image[] StarsQuiz;
+    [SerializeField]
     TextMeshProUGUI ScoreText;
-    public ToyDriveGameManager GM;
+  
     [SerializeField]
     Button TryAgain;
     [SerializeField]
@@ -30,6 +32,7 @@ public class ToysEndGame : MonoBehaviour {
     [SerializeField]
     TextMeshProUGUI QuizScoreText;
     public Questionaire QuizData;
+    public Sprite FilledStar;
 
 
 
@@ -51,69 +54,97 @@ public class ToysEndGame : MonoBehaviour {
     {
         int StarAmount = 3;
 
-        if (GM.playerScore >= 400)
+        //Debug.Log("EndGameScreen" + GM.playerScore);
+        if (GM.playerScore >= 299)
         {
             StarAmount = 3;
         }
 
-        else if (GM.playerScore >= 150)
+        else if (GM.playerScore >= 200)
         {
             StarAmount = 2;
         }
 
-        else
+        else if (GM.playerScore > 0)
         {
             StarAmount = 1;
         }
 
-        for (int i = 0; i < StarAmount; i++)
+        else
         {
-            Stars[i].enabled = true;
+            StarAmount = 0;
         }
 
-        ScoreText.text = "Your Score Is: " + GM.playerScore;
+        for (int i = 0; i < StarAmount; i++)
+        {
+            Stars[i].sprite = FilledStar;
+        }
+        ScoreText.text = "Score:" + GM.playerScore;
 
+        //Quiz Score Stuff
         if (QuizData != null)
         {
             int QS = QuizData.score;
+            int QuizStarAmount = 0;
 
-            if (QS >= 8)
+            if (QS >= 7)
             {
                 //Gold
-                Medal.sprite = MedalType[0];
+                QuizStarAmount = 3;
             }
 
-            else if (QS >= 6)
+            else if (QS >= 4)
             {
                 //Silver
-                Medal.sprite = MedalType[1];
+                QuizStarAmount = 2;
+            }
+
+            else if (QS > 0)
+            {
+                //Bronze
+                QuizStarAmount = 1;
             }
 
             else
             {
-                //Bronze
-                Medal.sprite = MedalType[2];
+                QuizStarAmount = 0;
             }
 
-            QuizScoreText.text = "Your Quiz Score Is: " + QS;
+
+            for (int q = 0; q < QuizStarAmount; q++)
+            {
+                StarsQuiz[q].sprite = FilledStar;
+            }
+
+            QuizScoreText.text = "Quiz:" + QS;
         }
 
-
     }
+
+
+
+
+
+
+
+
+
+
+
 
 
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-
-    public void LoadDormRoom()
+    public void LoaddDorm()
     {
         SceneManager.LoadScene(1);
         Time.timeScale = 1;
     }
 
-    //Hover Methods
+
+
     public void ChangeRestartButton(bool Hover)
     {
         if (Hover)
@@ -136,6 +167,9 @@ public class ToysEndGame : MonoBehaviour {
         {
             ReturnToDorm.GetComponent<Image>().sprite = RTDSprite[0];
         }
+
+
+
     }
 
 }

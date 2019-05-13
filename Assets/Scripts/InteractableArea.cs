@@ -1122,6 +1122,20 @@ public class InteractableArea : MonoBehaviour
                         //MovePoint = null;
                     }
                 }
+
+                else if (areaType == AreaType.GiftBox)
+                {
+                    if ((UnitToMoveTo.transform.position - transform.position).x >= 0)
+                    {
+                        rtsMover.MovePlayer(MovePoint2);
+                    }
+
+                    else
+                    {
+                        rtsMover.MovePlayer(MovePoint);
+                    }
+                }
+
                 else
                 {
                     rtsMover.MovePlayer(MovePoint);
@@ -1129,6 +1143,7 @@ public class InteractableArea : MonoBehaviour
                 }
             }
 
+        
             else
             {
                 rtsMover.GroundMove();
