@@ -112,6 +112,8 @@ public class GameManagerConstruction : MonoBehaviour {
     {
         GameComplete = true;
         //Ending quiz screen
+        EndingScreen.GetComponent<Questionaire>().gameScoreText.text = playerScore.ToString();
+        EndingScreen.GetComponent<Questionaire>().isPostGameQuestionnaire = true;
         EndingScreen.GetComponent<Questionaire>().InitializeQuestionaire();
         //EndingScreen.GetComponent<EndScreenCOnstruction>().EndGame();
         Time.timeScale = 0f;

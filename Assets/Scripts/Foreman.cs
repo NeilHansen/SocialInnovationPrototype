@@ -19,6 +19,9 @@ public class Foreman : MonoBehaviour
         ComboWood,
         PipeConnector
     }
+
+    public Sprite[] ToolSprites;
+
     public class itemInfo
     {
         public ToolList tool;
@@ -29,9 +32,11 @@ public class Foreman : MonoBehaviour
             amount = a;
         }
     }
+
     public List<ToolList> defaultItemList;
     public List<itemInfo> finalItemList;
-    public Text item1Name, item2Name, item3Name;
+    public Image item1Image, item2Image, item3Image;
+    //public Text item1Name, item2Name, item3Name;
     public Text item1Quantity, item2Quantity, item3Quantity;
     private bool item1Received, item2Received, item3Received;
     private bool isCombo;
@@ -102,13 +107,13 @@ public class Foreman : MonoBehaviour
         if (isCombo)
         {
             item3Received = true;
-            item3Name.enabled = false;
+            item3Image.enabled = false;
             item3Quantity.enabled = false;
             switch (Random.Range(0, 2))
             {
                 case 0:
                     item2Received = true;
-                    item2Name.enabled = false;
+                    item2Image.enabled = false;
                     item2Quantity.enabled = false;
 
                     switch (Random.Range(0, 3))
@@ -126,13 +131,16 @@ public class Foreman : MonoBehaviour
                             Debug.Log("Error");
                             break;
                     }
-                    item1Name.text = finalItemList[0].tool.ToString();
+                    //item1Name.text = finalItemList[0].tool.ToString();
+                    item1Image.sprite = CheckSprite(finalItemList[0].tool);
                     break;
                 case 1:
                     finalItemList.Add(new itemInfo(ToolList.ComboWood, Random.Range(1, 1)));
                     finalItemList.Add(new itemInfo(ToolList.Nails, Random.Range(1, 2)));
-                    item1Name.text = finalItemList[0].tool.ToString();
-                    item2Name.text = finalItemList[1].tool.ToString();
+                    item1Image.sprite = CheckSprite(finalItemList[0].tool);
+                    item2Image.sprite = CheckSprite(finalItemList[1].tool);
+                    //item1Name.text = finalItemList[0].tool.ToString();
+                    //item2Name.text = finalItemList[1].tool.ToString();
                     break;
                 default:
                     Debug.Log("Error");
@@ -148,9 +156,32 @@ public class Foreman : MonoBehaviour
             finalItemList.Add(new itemInfo(shuffledList[1], Random.Range(1, 3)));
             finalItemList.Add(new itemInfo(shuffledList[2], Random.Range(1, 3)));
 
-            item1Name.text = finalItemList[0].tool.ToString();
-            item2Name.text = finalItemList[1].tool.ToString();
-            item3Name.text = finalItemList[2].tool.ToString();
+            item1Image.sprite = CheckSprite(finalItemList[0].tool);
+            item2Image.sprite = CheckSprite(finalItemList[1].tool);
+            item3Image.sprite = CheckSprite(finalItemList[2].tool);
+            //item1Name.text = finalItemList[0].tool.ToString();
+            //item2Name.text = finalItemList[1].tool.ToString();
+            //item3Name.text = finalItemList[2].tool.ToString();
+        }
+    }
+
+    private Sprite CheckSprite(ToolList tool)
+    {
+        if (tool == ToolList.Nails)
+            return ToolSprites[0];
+        else if (tool == ToolList.SmallPipe)
+            return ToolSprites[1];
+        else if (tool == ToolList.SmallWood)
+            return ToolSprites[2];
+        else if (tool == ToolList.ComboPipe)
+            return ToolSprites[3];
+        else if (tool == ToolList.ComboWood)
+            return ToolSprites[4];
+        else if (tool == ToolList.PipeConnector)
+            return ToolSprites[5];
+        else
+        {
+            return null;
         }
     }
 
