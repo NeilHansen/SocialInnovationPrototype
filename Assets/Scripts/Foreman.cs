@@ -39,6 +39,7 @@ public class Foreman : MonoBehaviour
     //public Text item1Name, item2Name, item3Name;
     public Text item1Quantity, item2Quantity, item3Quantity;
     private bool item1Received, item2Received, item3Received;
+    public GameObject check1, check2, check3;
     private bool isCombo;
     //private int item1Needed, item2Needed, item3Needed;
 
@@ -112,6 +113,9 @@ public class Foreman : MonoBehaviour
         item2Quantity.enabled = true;
         item3Image.enabled = true;
         item3Quantity.enabled = true;
+        check1.SetActive(false);
+        check2.SetActive(false);
+        check3.SetActive(false);
         GenerateItems();
     }
 
@@ -215,12 +219,18 @@ public class Foreman : MonoBehaviour
                     {
                         case 0:
                             item1Received = true;
+                            check1.SetActive(true);
+                            item1Quantity.enabled = false;
                             break;
                         case 1:
                             item2Received = true;
+                            check2.SetActive(true);
+                            item2Quantity.enabled = false;
                             break;
                         case 2:
                             item3Received = true;
+                            check3.SetActive(true);
+                            item3Quantity.enabled = false;
                             break;
                         default:
                             Debug.Log("Error");
