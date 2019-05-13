@@ -84,17 +84,12 @@ public class ToyDriveGameManager : MonoBehaviour {
             GameComplete = true;
             Time.timeScale = 0.0f;
             EndingScreen.SetActive(true);
+            EndingScreen.GetComponent<Questionaire>().isPostGameQuestionnaire = true;
             EndingScreen.GetComponent<Questionaire>().InitializeQuestionaire();
             SaveGameScore();
         }
 
         //TruckWaitMeter();
-
-
-
-
-
-
     }
 
     void SaveGameScore()
