@@ -17,7 +17,7 @@ public class ForemanSpawn : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        Instantiate(foremanPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
+        //Instantiate(foremanPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
         //customerCount = 1;
       //  gameManager = FindObjectOfType<GameManager>();
     }

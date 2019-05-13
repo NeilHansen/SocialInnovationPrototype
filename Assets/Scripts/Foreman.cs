@@ -45,7 +45,7 @@ public class Foreman : MonoBehaviour
     public bool isMoving;
     private float mass = 1.0f;
     private float speed = 3.0f;
-    private bool isLooping = false;
+    private bool isLooping = true;
     private float curSpeed;
     private int curPathIndex;
     private float pathLength;
@@ -81,7 +81,8 @@ public class Foreman : MonoBehaviour
             isMoving = true;
             //Destroy(gameObject);
             gameManager.AddScore();
-            Destroy(gameObject.transform.parent.gameObject);
+            //Destroy(gameObject.transform.parent.gameObject);
+            newOrder();
         }
 
 
@@ -98,6 +99,20 @@ public class Foreman : MonoBehaviour
             else
                 Destroy(gameObject.transform.parent.gameObject);
         }
+    }
+
+    void newOrder()
+    {
+        item1Received = false;
+        item2Received = false;
+        item3Received = false;
+        item1Image.enabled = true;
+        item1Quantity.enabled = true;
+        item2Image.enabled = true;
+        item2Quantity.enabled = true;
+        item3Image.enabled = true;
+        item3Quantity.enabled = true;
+        GenerateItems();
     }
 
     private void GenerateItems()
@@ -259,9 +274,7 @@ public class Foreman : MonoBehaviour
     {
         if (other.gameObject.tag == "CustomerWaitArea")
         {
-            //gameManager.StartNewCustomer();
-            //isMoving = false;
-            //Debug.Log("Stop");
+            
         }
     }
 
@@ -278,7 +291,7 @@ public class Foreman : MonoBehaviour
             if (curPathIndex < pathLength - 1)
             {
                 curPathIndex++;
-                if (curPathIndex == 2)
+                if (curPathIndex == 1)
                 {
                     isMoving = false;
                     return;
