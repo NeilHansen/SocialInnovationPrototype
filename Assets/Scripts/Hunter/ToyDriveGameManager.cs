@@ -84,22 +84,17 @@ public class ToyDriveGameManager : MonoBehaviour {
             GameComplete = true;
             Time.timeScale = 0.0f;
             EndingScreen.SetActive(true);
+            EndingScreen.GetComponent<Questionaire>().gameScoreText.text = playerScore.ToString();
+            EndingScreen.GetComponent<Questionaire>().isPostGameQuestionnaire = true;
             EndingScreen.GetComponent<Questionaire>().InitializeQuestionaire();
             SaveGameScore();
         }
 
         //TruckWaitMeter();
-
-
-
-
-
-
     }
 
     void SaveGameScore()
     {
-
         JSONSave = FindObjectOfType<JSONPlayerSaver>();
         PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
         if (playerScore > data.gameScoreToys)

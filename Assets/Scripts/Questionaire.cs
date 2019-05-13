@@ -21,6 +21,9 @@ public class Questionaire : MonoBehaviour {
     public Button dButton;
     public Button nextButton;
 
+    public Text gameScoreText;
+    public Text quizScoreText;
+
     private int questionIndex = 0;
     private string chosenAnswer = null;
     public int score = 0;
@@ -42,7 +45,9 @@ public class Questionaire : MonoBehaviour {
 
 
     JSONPlayerSaver JSONSave;
-
+    public bool isPostGameQuestionnaire;
+    public GameObject checkMark;
+    public GameObject xMark;
 
     public class Questions
     {
@@ -158,7 +163,10 @@ public class Questionaire : MonoBehaviour {
 
 	void DisplayQuestion()
 	{
-		questionText.text = "Q" + (questionIndex + 1).ToString() + ". " + questionList[questionIndex].question;
+        int questionNumber = 0;
+        if (isPostGameQuestionnaire)
+            questionNumber = 5;
+		questionText.text = "Q" + (questionIndex + 1 + questionNumber).ToString() + ". " + questionList[questionIndex].question;
 		answerAText.text = questionList[questionIndex].answers[0];
 		answerBText.text = questionList[questionIndex].answers[1];
 		answerCText.text = questionList[questionIndex].answers[2];
@@ -311,10 +319,33 @@ public class Questionaire : MonoBehaviour {
             //Only move to the next question if picked 1 answer
             if (chosenAnswer != null)
             {
+                GameObject question;
                 //Check if answer is correct
                 if (chosenAnswer == questionList[questionIndex].correctAnswer)
                 {
+                    //GameObject question;
 					score += 1;
+                    if(!isPostGameQuestionnaire)
+                    {
+                        question = GameObject.Find("Q" + (questionIndex + 1).ToString());
+                    }
+                    else
+                    {
+                        question = GameObject.Find("Q" + (questionIndex + 6).ToString());
+                    }
+                    Instantiate(checkMark, question.transform);
+                }
+                else
+                {
+                    if (!isPostGameQuestionnaire)
+                    {
+                        question = GameObject.Find("Q" + (questionIndex + 1).ToString());
+                    }
+                    else
+                    {
+                        question = GameObject.Find("Q" + (questionIndex + 6).ToString());
+                    }
+                    Instantiate(xMark, question.transform);
                 }
                 //Check if there're still question left
                 //if (questionIndex != questionList.Count - 1)
@@ -332,7 +363,7 @@ public class Questionaire : MonoBehaviour {
                 {
                     DisplayResult();
                 }
-				resultText.text = score + "/10";
+				quizScoreText.text = score + "/10";
             }
         }
 		
@@ -342,6 +373,7 @@ public class Questionaire : MonoBehaviour {
 
 	void Start()
     {
+
         JSONSave = FindObjectOfType<JSONPlayerSaver>();
 
         ReadTextFile(path);
