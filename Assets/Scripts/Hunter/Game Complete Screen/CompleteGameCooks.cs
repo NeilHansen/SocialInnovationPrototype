@@ -19,10 +19,20 @@ public class CompleteGameCooks : MonoBehaviour {
 
     public Sprite FilledStar;
 
+    public GameObject convoCanvas;
+    public GameObject scoreScreen;
+
+
+    private JSONPlayerSaver JSONSave;
+
+    private int progress;
+
     // Use this for initialization
     void Start()
     {
-
+        JSONSave = FindObjectOfType<JSONPlayerSaver>();
+        progress = JSONSave.LoadData(JSONSave.dataPath).cooksIntroProgress;
+        
     }
 
     // Update is called once per frame
@@ -70,7 +80,17 @@ public class CompleteGameCooks : MonoBehaviour {
     //YUK
     public void GoToStory()
     {
-       
+        if (progress >= Camera.main.GetComponent<CooksTutorialManager>().tutorialEnd)
+        {
+            convoCanvas.SetActive(true);
+            Camera.main.GetComponent<CooksTutorialManager>().NextTutorialPeice();
+            scoreScreen.SetActive(false);
+        }
+        else
+        {
+            scoreScreen.SetActive(false);
+            GM.GoToQuiz();
+        }
     }
 
 

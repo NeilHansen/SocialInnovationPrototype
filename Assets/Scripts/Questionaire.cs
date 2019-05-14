@@ -208,7 +208,7 @@ public class Questionaire : MonoBehaviour {
             }
             else
             {
-                Debug.Log("Error cant find scene name to save pre quiz score");
+              //  Debug.Log("Error cant find scene name to save pre quiz score");
             }
         }
         else
@@ -232,7 +232,7 @@ public class Questionaire : MonoBehaviour {
             }
             else
             {
-                Debug.Log("Error cant find scene name to save post quiz score");
+              //  Debug.Log("Error cant find scene name to save post quiz score");
             }
         }
 		//questionText.text = "You got " + score * 100 / 10 + "%";
@@ -391,7 +391,7 @@ public class Questionaire : MonoBehaviour {
             {
                 //Debug.Log(s);
             }
-            Debug.Log("Correct: " + q.correctAnswer);
+           // Debug.Log("Correct: " + q.correctAnswer);
         }
 
         aButton.onClick.AddListener(delegate { ChooseAnswer(0); });
@@ -443,7 +443,7 @@ public class Questionaire : MonoBehaviour {
             {
                // Debug.Log(s);
             }
-            Debug.Log("Correct: " + q.correctAnswer);
+          //  Debug.Log("Correct: " + q.correctAnswer);
         }
 
         aButton.onClick.AddListener(delegate { ChooseAnswer(0); });
