@@ -142,6 +142,8 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                     if (woodRecipticalBin.GetComponent<InteractableAreaConstructionSite>().numberOfBoards < 4)
                     {
                         woodRecipticalBin.GetComponent<InteractableAreaConstructionSite>().numberOfBoards += 2;
+                        if (woodRecipticalBin.GetComponent<InteractableAreaConstructionSite>().numberOfBoards > 4)
+                            woodRecipticalBin.GetComponent<InteractableAreaConstructionSite>().numberOfBoards = 4;
                     }
                     
                     // BenchHasWood = true;
@@ -154,6 +156,8 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                     if(pipeRecipticalBin.GetComponent<InteractableAreaConstructionSite>().numberOfPipes < 4)
                     {
                         pipeRecipticalBin.GetComponent<InteractableAreaConstructionSite>().numberOfPipes += 2;
+                        if (pipeRecipticalBin.GetComponent<InteractableAreaConstructionSite>().numberOfPipes > 4)
+                            pipeRecipticalBin.GetComponent<InteractableAreaConstructionSite>().numberOfPipes = 4;
                     }
                     
                     //BenchHasPipe = true;
@@ -321,19 +325,19 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                 case AreaType.CuttingArea:
                     if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
                     {
-                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.LargeWood && !BenchHasWood)
+                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.LargeWood && !BenchHasWood && woodRecipticalBin.GetComponent<InteractableAreaConstructionSite>().numberOfBoards < 4)
                         {
                             OnInteraction(interactingUnit);
                         }
-                        else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.LargePipe && !BenchHasPipe)
+                        else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.LargePipe && !BenchHasPipe && pipeRecipticalBin.GetComponent<InteractableAreaConstructionSite>().numberOfPipes < 4)
                         {
                             OnInteraction(interactingUnit);
                         }
-                        else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None && BenchHasWood)
+                        else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None && BenchHasWood && woodRecipticalBin.GetComponent<InteractableAreaConstructionSite>().numberOfBoards < 4)
                         {
                             OnInteraction(interactingUnit);
                         }
-                        else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None && BenchHasPipe)
+                        else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None && BenchHasPipe && pipeRecipticalBin.GetComponent<InteractableAreaConstructionSite>().numberOfPipes < 4)
                         {
                             OnInteraction(interactingUnit);
                         }
