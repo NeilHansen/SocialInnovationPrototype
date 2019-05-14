@@ -41,6 +41,8 @@ public class GameManagerConstruction : MonoBehaviour {
     [SerializeField]
     GameObject EndingScreen;
     [SerializeField]
+    GameObject QuizWidget;
+    [SerializeField]
     ConstructionUI HouseUI;
     [SerializeField]
     Image Fill;
@@ -112,10 +114,8 @@ public class GameManagerConstruction : MonoBehaviour {
     {
         GameComplete = true;
         //Ending quiz screen
-        EndingScreen.GetComponent<Questionaire>().gameScoreText.text = playerScore.ToString();
-        EndingScreen.GetComponent<Questionaire>().isPostGameQuestionnaire = true;
-        EndingScreen.GetComponent<Questionaire>().InitializeQuestionaire();
-        //EndingScreen.GetComponent<EndScreenCOnstruction>().EndGame();
+        EndingScreen.SetActive(true);
+        EndingScreen.GetComponent<CompleteScreenHabitats>().RoundComplete();
         Time.timeScale = 0f;
         SaveGameScore();
     }
@@ -182,6 +182,13 @@ public class GameManagerConstruction : MonoBehaviour {
         }
     }
 
+    public void QuizScreen()
+    {
+        QuizWidget.SetActive(true);
+        FindObjectOfType<Questionaire>().gameScoreText.text = playerScore.ToString();
+        FindObjectOfType<Questionaire>().isPostGameQuestionnaire = true;
+        FindObjectOfType<Questionaire>().InitializeQuestionaire();
+    }
 
 
 
