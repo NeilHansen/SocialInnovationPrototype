@@ -38,6 +38,9 @@ public class GameManager : MonoBehaviour {
     //endScreen
     [SerializeField]
     GameObject EndingScreen;
+    [SerializeField]
+    GameObject COMPLETESCREEN;
+    [SerializeField]
     bool EndGameInitiated=false;
 
     [SerializeField]
@@ -77,10 +80,14 @@ public class GameManager : MonoBehaviour {
         {
             EndGameInitiated = true;
             Time.timeScale = 0.0f;
+            COMPLETESCREEN.SetActive(true);
+            COMPLETESCREEN.GetComponent<CompleteGameCooks>().RoundComplete();
             //EndingScreen.SetActive(true);
-            EndingScreen.GetComponent<Questionaire>().gameScoreText.text = playerScore.ToString();
-            EndingScreen.GetComponent<Questionaire>().isPostGameQuestionnaire = true;
-            EndingScreen.GetComponent<Questionaire>().InitializeQuestionaire();
+            //EndingScreen.GetComponent<Questionaire>().gameScoreText.text = playerScore.ToString();
+            //EndingScreen.GetComponent<Questionaire>().isPostGameQuestionnaire = true;
+            //EndingScreen.GetComponent<Questionaire>().InitializeQuestionaire();
+            
+
             SaveGameScore();
         }
 
@@ -206,7 +213,12 @@ public class GameManager : MonoBehaviour {
     }
 
 
-
+    public void GoToQuiz()
+    {
+        EndingScreen.GetComponent<Questionaire>().gameScoreText.text = playerScore.ToString();
+        EndingScreen.GetComponent<Questionaire>().isPostGameQuestionnaire = true;
+        EndingScreen.GetComponent<Questionaire>().InitializeQuestionaire();
+    }
 
 
 }
