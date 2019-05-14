@@ -133,7 +133,7 @@ public class LevelSelectUI : MonoBehaviour {
 
         else
         {
-            CookStarAmount = 1;
+            CookStarAmount = 0;
         }
 
         for(int C = 0; C <CookStarAmount; C++)

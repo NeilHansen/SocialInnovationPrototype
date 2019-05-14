@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour {
     public Text scoreText;
     private float currentFoodValue;
     public float playerScore;
+    public Sprite StarFill;
+    public Image[] Star;
 
     //satisfaction visual Mods
     [SerializeField]
@@ -164,25 +166,56 @@ public class GameManager : MonoBehaviour {
         if (satisfactionMeter.value > 1.04f)
         {
             currentFoodValue = 100 * specialCustomerBonusMultiplier;
-            StartCoroutine(FlashScoreAdded(0));
+            //StartCoroutine(FlashScoreAdded(0));
         }
 
         else if (satisfactionMeter.value > .38f)
         {
             currentFoodValue = 50 * specialCustomerBonusMultiplier;
-            StartCoroutine(FlashScoreAdded(1));
+            //StartCoroutine(FlashScoreAdded(1));
         }
         else
         {
             currentFoodValue = 25 * specialCustomerBonusMultiplier;
-            StartCoroutine(FlashScoreAdded(2));
+           // StartCoroutine(FlashScoreAdded(2));
         }
 
         isBonusMultiplierOn = false;
 
-        ScoreAdded.text = "+" + currentFoodValue;
+        //ScoreAdded.text = "+" + currentFoodValue;
         playerScore += currentFoodValue;
         scoreText.text = "Score: " + (int)playerScore;
+
+
+        int StarAmount = 3;
+
+        //Debug.Log("EndGameScreen" + GM.playerScore);
+        if (playerScore >= 299)
+        {
+            StarAmount = 3;
+        }
+
+        else if (playerScore >= 200)
+        {
+            StarAmount = 2;
+        }
+
+        else if (playerScore > 0)
+        {
+            StarAmount = 1;
+        }
+
+        else
+        {
+            StarAmount = 0;
+        }
+
+        for (int sf = 0; sf < StarAmount; sf++)
+        {
+            Star[sf].sprite = StarFill;
+        }
+
+
     }
 
     public void SpecialCustomerScore()
