@@ -112,10 +112,11 @@ public class CooksTutorialManager : MonoBehaviour {
 
 
         yield return new WaitForSeconds(0.25f);
-
+        convoCanvas.GetComponent<Canvas>().sortingOrder = 0;
         NextTutorialPeice();
         StopCoroutine("DoOnce");
-        
+       
+
     }
 
     public IEnumerator Outro()
@@ -126,6 +127,7 @@ public class CooksTutorialManager : MonoBehaviour {
         // NextTutorialPeice();
         FinishTutorial();
         gm.GoToQuiz();
+        convoCanvas.GetComponent<Canvas>().sortingOrder = 1;
         StopCoroutine("Outro");
 
     }

@@ -80,7 +80,7 @@ public class CompleteGameCooks : MonoBehaviour {
     //YUK
     public void GoToStory()
     {
-        if (progress >= Camera.main.GetComponent<CooksTutorialManager>().tutorialEnd)
+        if (progress < Camera.main.GetComponent<CooksTutorialManager>().tutorialEnd)
         {
             convoCanvas.SetActive(true);
             Camera.main.GetComponent<CooksTutorialManager>().NextTutorialPeice();
