@@ -4253,6 +4253,24 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 216412398}
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &216412401 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114132466198618632, guid: 27ef9ab4b37f776409c2afae00c71d8f,
+    type: 2}
+  m_PrefabInternal: {fileID: 216412398}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &216412402 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114501297670703064, guid: 27ef9ab4b37f776409c2afae00c71d8f,
+    type: 2}
+  m_PrefabInternal: {fileID: 216412398}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &216412403 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114097570021173256, guid: 27ef9ab4b37f776409c2afae00c71d8f,
+    type: 2}
+  m_PrefabInternal: {fileID: 216412398}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &217731300
 Prefab:
   m_ObjectHideFlags: 0
@@ -6150,7 +6168,7 @@ Prefab:
       objectReference: {fileID: 1856723941}
     - target: {fileID: 1235507020963700, guid: 1ccd7db975fd3594c89f18b92f8fd771, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114714627478998698, guid: 1ccd7db975fd3594c89f18b92f8fd771, type: 2}
@@ -39632,7 +39650,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1777293202928142, guid: 61cbbf5553eac134db41be6e1e8238e4, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224221198415667122, guid: 61cbbf5553eac134db41be6e1e8238e4,
         type: 2}
@@ -41180,7 +41198,10 @@ MonoBehaviour:
   scoreText: {fileID: 216412400}
   playerScore: 0
   StarFill: {fileID: 21300000, guid: fd792a17ae11a2e4c83b51f1e8a9d0a4, type: 3}
-  Star: []
+  Star:
+  - {fileID: 216412403}
+  - {fileID: 216412402}
+  - {fileID: 216412401}
   Colors:
   - {r: 0.06894054, g: 0.8962264, b: 0, a: 1}
   - {r: 0.95149136, g: 1, b: 0, a: 1}

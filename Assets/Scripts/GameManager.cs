@@ -66,6 +66,7 @@ public class GameManager : MonoBehaviour {
         satisfactionMeter.maxValue = defautlSatisfactionLevel;
         //StartNewCustomer();
         specialCustomerBonusText.SetActive(false);
+        scoreText.text = "Score: " + (int)playerScore;
     }
 
 

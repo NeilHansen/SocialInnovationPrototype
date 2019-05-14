@@ -68,7 +68,8 @@ public class GameManagerConstruction : MonoBehaviour {
         timeValue = MaxTime;
         //HouseUI.AddToHouse(playerScore);
         SwapHouse();
-        AddScore();
+
+        scoreText.text = "Score:" + playerScore;
     }
 
     // Update is called once per frame
