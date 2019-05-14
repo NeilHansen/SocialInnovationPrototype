@@ -37,6 +37,9 @@ public class GameManagerConstruction : MonoBehaviour {
     Text SatisfactionText;
     [SerializeField]
     Text ScoreAdded;
+    public Sprite StarFill;
+    public Image[] Star;
+
     //endScreen
     [SerializeField]
     GameObject EndingScreen;
@@ -63,8 +66,9 @@ public class GameManagerConstruction : MonoBehaviour {
     // Use this for initialization
     void Start() {
         timeValue = MaxTime;
-        HouseUI.AddToHouse(playerScore);
+        //HouseUI.AddToHouse(playerScore);
         SwapHouse();
+        AddScore();
     }
 
     // Update is called once per frame
@@ -135,9 +139,10 @@ public class GameManagerConstruction : MonoBehaviour {
     {
         HouseAmount++;
         playerScore += 75;
-        SwapHouse();
+        scoreText.text = "Score:"+playerScore;
+        //SwapHouse();
 
-        HouseUI.AddToHouse(HouseAmount);
+        //HouseUI.AddToHouse(HouseAmount);
         timeValue = timeValue + 15;
         if (timeValue > MaxTime)
         {
@@ -149,8 +154,37 @@ public class GameManagerConstruction : MonoBehaviour {
         //    EndGame();
         //}
         //ScoreAdded.text = "+" + currentFoodValue;
-      
+
         //scoreText.text = "Score: " + (int)playerScore;
+
+
+        int StarAmount = 3;
+
+        //Debug.Log("EndGameScreen" + GM.playerScore);
+        if (playerScore >= 299)
+        {
+            StarAmount = 3;
+        }
+
+        else if (playerScore >= 200)
+        {
+            StarAmount = 2;
+        }
+
+        else if (playerScore > 0)
+        {
+            StarAmount = 1;
+        }
+
+        else
+        {
+            StarAmount = 0;
+        }
+
+        for (int sf = 0; sf < StarAmount; sf++)
+        {
+            Star[sf].sprite = StarFill;
+        }
     }
 
 

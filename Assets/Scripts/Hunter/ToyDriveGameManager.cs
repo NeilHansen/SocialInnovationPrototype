@@ -22,6 +22,9 @@ public class ToyDriveGameManager : MonoBehaviour {
     public ToyTruck Truck;
     public  float PointsPerPackage = 25;
     public int PackageAmount;
+    public Sprite StarFill;
+    public Image[] Stars;
+
 
     //satisfaction visual Mods
     [SerializeField]
@@ -62,8 +65,10 @@ public class ToyDriveGameManager : MonoBehaviour {
      
 
         satisfactionMeter.maxValue = 1;
-       
-      
+
+        scoreText.text = "Score: " + (int)playerScore;
+
+
     }
 
 
@@ -118,6 +123,9 @@ public class ToyDriveGameManager : MonoBehaviour {
         float CurrentScoreValue = PointsPerPackage * Truck.packages;
         PackageAmount++;
 
+
+
+
         switch (Truck.packages)
         {
              case 0:
@@ -149,6 +157,35 @@ public class ToyDriveGameManager : MonoBehaviour {
         //Debug.Log("the player score is" + playerScore);
 
         scoreText.text = "Score: " + (int)playerScore;
+
+
+        int StarAmount = 3;
+
+        //Debug.Log("EndGameScreen" + GM.playerScore);
+        if (playerScore >= 299)
+        {
+            StarAmount = 3;
+        }
+
+        else if (playerScore >= 200)
+        {
+            StarAmount = 2;
+        }
+
+        else if (playerScore > 0)
+        {
+            StarAmount = 1;
+        }
+
+        else
+        {
+            StarAmount = 0;
+        }
+
+        for (int sf = 0; sf < StarAmount; sf++)
+        {
+            Stars[sf].sprite = StarFill;
+        }
     }
 
 
