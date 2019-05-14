@@ -14,8 +14,12 @@ public class CooksTutorialManager : MonoBehaviour {
 
 
     private bool doOnce = false;
+    private bool doOnce1 = false;
 
     private JSONPlayerSaver JSONSave;
+
+
+    private GameManager gm;
 
 
     private void Awake()
@@ -26,6 +30,8 @@ public class CooksTutorialManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
         JSONSave = FindObjectOfType<JSONPlayerSaver>();
+
+        gm = FindObjectOfType<GameManager>();
 
         //tutorialProgress = PlayerPrefs.GetInt("tutorialProgress");
         tutorialProgress = JSONSave.LoadData(JSONSave.dataPath).cooksIntroProgress;
@@ -106,9 +112,11 @@ public class CooksTutorialManager : MonoBehaviour {
 
 
         yield return new WaitForSeconds(0.25f);
-
+        convoCanvas.GetComponent<Canvas>().sortingOrder = 0;
         NextTutorialPeice();
         StopCoroutine("DoOnce");
+       
+
     }
 
     public IEnumerator Outro()
@@ -116,7 +124,10 @@ public class CooksTutorialManager : MonoBehaviour {
 
         yield return new WaitForSeconds(0.25f);
 
-        NextTutorialPeice();
+        // NextTutorialPeice();
+        FinishTutorial();
+        gm.GoToQuiz();
+        convoCanvas.GetComponent<Canvas>().sortingOrder = 1;
         StopCoroutine("Outro");
 
     }
@@ -150,9 +161,9 @@ public class CooksTutorialManager : MonoBehaviour {
            // NextTutorialPeice();
         }
 
-        if (tutorialProgress == 2)
+        if (tutorialProgress == 3 && !doOnce1)
         {
-            doOnce = true;
+            doOnce1 = true;
             StartCoroutine("Outro");
             dormBG.SetActive(false);
 
