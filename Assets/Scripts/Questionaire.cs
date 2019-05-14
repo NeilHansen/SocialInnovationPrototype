@@ -30,7 +30,7 @@ public class Questionaire : MonoBehaviour {
     private bool QuizComplete = false;
     private bool StartedGame = false;
     [SerializeField]
-    GameObject QuizScreen;
+     public GameObject QuizScreen;
     [SerializeField]
     GameObject StartGameScreen;
     [SerializeField]
