@@ -10,6 +10,11 @@ public class CooksTutorialManager : MonoBehaviour {
     public int tutorialProgress;
     public int tutorialEnd = 0;
 
+    public GameObject dormBG;
+
+
+    private bool doOnce = false;
+
     private JSONPlayerSaver JSONSave;
 
 
@@ -47,6 +52,7 @@ public class CooksTutorialManager : MonoBehaviour {
         if (off)
         { 
             player.GetComponent<NavMeshAgent>().enabled = false;
+            
         }
         else
         {
@@ -74,7 +80,7 @@ public class CooksTutorialManager : MonoBehaviour {
     {
         //PlayerPrefs.SetInt("tutorialProgress", 4);
         PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
-        data.cooksIntroProgress = 4;
+        data.cooksIntroProgress = 3;
         JSONSave.SaveData(data, JSONSave.dataPath);
 
         TurnOffControls(false);
@@ -91,13 +97,38 @@ public class CooksTutorialManager : MonoBehaviour {
         convoCanvas.gameObject.SetActive(true);
         convoCanvas.GetComponent<CooksConversationManager>().NextTutorialPeice();
         Debug.Log("NextTutorialPeice");
+
     }
+
+    public IEnumerator DoOnce()
+    {
+       //fade panel here!!!
+
+
+        yield return new WaitForSeconds(0.25f);
+
+        NextTutorialPeice();
+        StopCoroutine("DoOnce");
+    }
+
+    public IEnumerator Outro()
+    {
+
+        yield return new WaitForSeconds(0.25f);
+
+        NextTutorialPeice();
+        StopCoroutine("Outro");
+
+    }
+
+
+
 
     // Update is called once per frame
     void Update()
     {
         //tutorialProgress = PlayerPrefs.GetInt("tutorialProgress");
-        Debug.Log(tutorialProgress);
+       // Debug.Log(tutorialProgress);
         tutorialProgress = JSONSave.LoadData(JSONSave.dataPath).cooksIntroProgress;
 
 
@@ -105,7 +136,30 @@ public class CooksTutorialManager : MonoBehaviour {
         {
             StartTutorial();
             TurnOffControls(true);
+            dormBG.SetActive(true);
+
         }
+
+
+        if(tutorialProgress == 1 && !doOnce)
+        {
+            doOnce = true;
+            StartCoroutine("DoOnce");
+            dormBG.SetActive(false);
+           
+           // NextTutorialPeice();
+        }
+
+        if (tutorialProgress == 2)
+        {
+            doOnce = true;
+            StartCoroutine("Outro");
+            dormBG.SetActive(false);
+
+            // NextTutorialPeice();
+        }
+
+
 
         if (convoCanvas.gameObject.activeSelf )
         {
