@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour {
         
         satisfactionMeter.maxValue = defautlSatisfactionLevel;
         //StartNewCustomer();
-        specialCustomerBonusText.SetActive(false);
+        //specialCustomerBonusText.SetActive(false);
         scoreText.text = "Score: " + (int)playerScore;
     }
 
@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour {
         //timerText.text = "" + (int)timeValue;
         //timerTextBG.text = "" + (int)timeValue;
         TimeText.text = "" + (int)timeValue;
-        specialCustomerBonusText.GetComponent<TextMeshProUGUI>().text = "x" + specialCustomerBonusMultiplier;
+        //specialCustomerBonusText.GetComponent<TextMeshProUGUI>().text = "x" + specialCustomerBonusMultiplier;
         if (timeValue <= 0&&!EndGameInitiated)
         {
             EndGameInitiated = true;
@@ -125,12 +125,12 @@ public class GameManager : MonoBehaviour {
 
         if (isBonusMultiplierOn)
         {
-            specialCustomerBonusText.SetActive(true);
+            //specialCustomerBonusText.SetActive(true);
             //specialCustomerBonusMultiplier = 2.0f;
         }
         else
         {
-            specialCustomerBonusText.SetActive(false);
+            //specialCustomerBonusText.SetActive(false);
             specialCustomerBonusMultiplier = 1.0f;
         }
 

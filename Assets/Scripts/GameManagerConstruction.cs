@@ -77,7 +77,7 @@ public class GameManagerConstruction : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            AddScore();
+           // AddScore();
             
         }
 
