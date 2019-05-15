@@ -61,19 +61,47 @@ public class LevelSelectUI : MonoBehaviour {
 
     PlayerData data;
 
+    //Buttons
+    public Button CooksButton;
+    public Button HabitatsButton;
+    public Button ToysButton;
+
+    public GameObject[] LockImage;
 
 
 
-	// Use this for initialization
-	void Start () {
+
+
+    // Use this for initialization
+    void Start () {
         //Load Player Data
         JSON= FindObjectOfType<JSONPlayerSaver>();
 
         data = JSON.LoadData(JSON.dataPath);
 
+        
+
         SetCooksScore();
         SetHabitatsScore();
         SetToysScore();
+
+        if (data.totalQuizScoreCooks > 3 && data.gameScoreCooks > 200)
+        {
+            //DisableButton
+            HabitatsButton.interactable = true;
+            LockImage[1].SetActive(false);
+           // SetHabitatsScore();
+        }
+        
+        if(data.totalQuizScoreHabitats>3 && data.totalQuizScoreHabitats>200)
+        {
+            //UnlockToys
+            ToysButton.interactable = true;
+            LockImage[2].SetActive(false);
+            
+        }
+
+        
 
     }
 	
@@ -84,7 +112,12 @@ public class LevelSelectUI : MonoBehaviour {
 
     public void HoverButton(int bn)
     {
-        LevelButtons[bn].GetComponent<Animator>().SetBool("Hover", true);
+        if (LevelButtons[bn].GetComponent<Button>().interactable == true)
+        {
+            LevelButtons[bn].GetComponent<Animator>().SetBool("Hover", true);
+        }
+        
+        
     
        // GameModes[Gamemode].image.sprite = HoverImages[Gamemode];
 
@@ -98,6 +131,7 @@ public class LevelSelectUI : MonoBehaviour {
 
     public void ExitButtonHover()
     {
+       
         ExitButton.image.sprite = ExitSprites[1];
     }
 
@@ -159,7 +193,7 @@ public class LevelSelectUI : MonoBehaviour {
             CookquizStarAmount = 2;
         }
 
-        else if (data.gameScoreCooks > 0)
+        else if (data.totalQuizScoreCooks> 0)
         {
             CookquizStarAmount = 1;
         }

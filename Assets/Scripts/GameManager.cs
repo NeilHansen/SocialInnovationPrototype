@@ -59,7 +59,8 @@ public class GameManager : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
-       // timerText.text = "" + (int)timeValue;
+        // timerText.text = "" + (int)timeValue;
+        Time.timeScale = 0;
        // timerTextBG.text = "" + (int)timeValue;
         TimeText.text =""+(int)timeValue;
         

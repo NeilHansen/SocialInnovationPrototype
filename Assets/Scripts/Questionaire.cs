@@ -65,6 +65,7 @@ public class Questionaire : MonoBehaviour {
     private void Awake()
     {
         path = Path.Combine(Application.streamingAssetsPath, "Questionaire Real.txt");
+       // Time.timeScale = 0;
     }
 
     void ReadTextFile(string file_path)
@@ -193,18 +194,19 @@ public class Questionaire : MonoBehaviour {
             
             if(sceneName.Contains("Cook"))
             {
-                if(score > data.preQuizScoreCooks)
-                    data.preQuizScoreCooks = score;
+                
+               // data.preQuizScoreCooks = score;
+                //Debug.Log("pre quiz score is" + data.preQuizScoreCooks);
             }
             else if(sceneName.Contains("Habitat"))
             {
-                if (score > data.preQuizScoreHabitats)
-                    data.preQuizScoreHabitats = score;
+                //if (score > data.preQuizScoreHabitats)
+                    //data.preQuizScoreHabitats = score;
             }
             else if(sceneName.Contains("Toy"))
             {
-                if (score > data.preQuizScoreToys)
-                    data.preQuizScoreToys = score;
+                //if (score > data.preQuizScoreToys)
+                    //data.preQuizScoreToys = score;
             }
             else
             {
@@ -217,8 +219,9 @@ public class Questionaire : MonoBehaviour {
 
             if (sceneName.Contains("Cook"))
             {
-                if(score > data.postQuizScoreCooks)
-                    data.postQuizScoreCooks = score;
+                
+                data.postQuizScoreCooks = score;
+                //Debug.Log("post quiz score is" + data.postQuizScoreCooks);
             }
             else if (sceneName.Contains("Habitat"))
             {
@@ -237,10 +240,11 @@ public class Questionaire : MonoBehaviour {
         }
 		//questionText.text = "You got " + score * 100 / 10 + "%";
         QuizComplete = true;
-
+        //THIS IS THE ISSUE
         if (sceneName.Contains("Cook"))
         {
             data.totalQuizScoreCooks = data.preQuizScoreCooks + data.postQuizScoreCooks;
+            Debug.Log("Total quiz score is" + data.totalQuizScoreCooks);
         }
         else if (sceneName.Contains("Habitat"))
         {
