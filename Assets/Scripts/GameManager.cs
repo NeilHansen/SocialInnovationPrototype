@@ -75,7 +75,10 @@ public class GameManager : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         //Game timer
-        timeValue -= 1 * Time.deltaTime;
+        if (timeValue > 0)
+        {
+            timeValue -= 1 * Time.deltaTime;
+        }
         //timerText.text = "" + (int)timeValue;
         //timerTextBG.text = "" + (int)timeValue;
         TimeText.text = "" + (int)timeValue;

@@ -15,6 +15,7 @@ public class CooksTutorialManager : MonoBehaviour {
 
     private bool doOnce = false;
     private bool doOnce1 = false;
+    private bool doOnce2 = false;
 
     private JSONPlayerSaver JSONSave;
 
@@ -58,11 +59,13 @@ public class CooksTutorialManager : MonoBehaviour {
         if (off)
         { 
             player.GetComponent<NavMeshAgent>().enabled = false;
-            
+            Time.timeScale = 0.0f;
+
         }
         else
         {
             player.GetComponent<NavMeshAgent>().enabled = true;
+            Time.timeScale = 1.0f;
         }
    
     }
@@ -179,10 +182,11 @@ public class CooksTutorialManager : MonoBehaviour {
             FindObjectOfType<RtsMover>().ActiveUnit = null;
             Time.timeScale = 0.0f;
         }
-        else
-        {
-            Time.timeScale = 1.0f;
-        }
+        //else if(doOnce2==false)
+        //{
+        //    Time.timeScale = 1.0f;
+        //    doOnce2 = true;
+        //}
 
        
         

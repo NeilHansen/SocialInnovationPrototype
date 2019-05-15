@@ -77,7 +77,10 @@ public class ToyDriveGameManager : MonoBehaviour {
     void Update()
     {
         //Game timer
-        timeValue -= 1 * Time.deltaTime;
+        if (timeValue > 0)
+        {
+            timeValue -= 1 * Time.deltaTime;
+        }
         TimeRemaining.text =""+(int)timeValue ;
 
         PackageCounter.text = "packages  " + PackageAmount;

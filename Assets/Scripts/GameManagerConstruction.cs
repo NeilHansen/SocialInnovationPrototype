@@ -82,7 +82,10 @@ public class GameManagerConstruction : MonoBehaviour {
         }
 
 
-        timeValue -= 1 * Time.deltaTime;
+        if (timeValue > 0)
+        {
+            timeValue -= 1 * Time.deltaTime;
+        }
         TimeLeft.text = "" + (int)timeValue;
         PreformanceMeter();
 

@@ -90,13 +90,16 @@ public class LevelSelectUI : MonoBehaviour {
             //DisableButton
             HabitatsButton.interactable = true;
             LockImage[1].SetActive(false);
-           // SetHabitatsScore();
+            // SetHabitatsScore();
         }
-        
-        if(data.totalQuizScoreHabitats>3 && data.totalQuizScoreHabitats>200)
+
+        //Debug.Log()
+        if (data.totalQuizScoreHabitats>3 && data.gameScoreHabitats>200)
         {
+            Debug.Log("UngateQuiz");
             //UnlockToys
             ToysButton.interactable = true;
+
             LockImage[2].SetActive(false);
             
         }
