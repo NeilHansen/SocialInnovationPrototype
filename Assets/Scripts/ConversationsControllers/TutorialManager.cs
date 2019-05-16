@@ -139,7 +139,7 @@ public class TutorialManager : MonoBehaviour {
     void Update()
     {
         //tutorialProgress = PlayerPrefs.GetInt("tutorialProgress");
-        Debug.Log(tutorialProgress);
+      //  Debug.Log(tutorialProgress);
         tutorialProgress = JSONSave.LoadData(JSONSave.dataPath).progress;
 
 

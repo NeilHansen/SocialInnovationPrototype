@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.5748171, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.574817, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -563,7 +563,7 @@ GameObject:
   - component: {fileID: 34197448}
   m_Layer: 5
   m_Name: UICanvas
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -644,11 +644,12 @@ RectTransform:
   - {fileID: 97617019}
   - {fileID: 2017396438}
   - {fileID: 1838060128}
+  - {fileID: 495987476}
   - {fileID: 1333780561}
   - {fileID: 1792555382}
   - {fileID: 655615849}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1622,7 +1623,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4280761596664872, guid: 997c540728dd4674fa2457f767602625, type: 2}
       propertyPath: m_RootOrder
-      value: 26
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 4280761596664872, guid: 997c540728dd4674fa2457f767602625, type: 2}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2364,7 +2365,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 111589751}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c2d384fd908f06e48ac28656ee888d4c, type: 3}
   m_Name: 
@@ -2372,7 +2373,11 @@ MonoBehaviour:
   player: {fileID: 1736763004}
   convoCanvas: {fileID: 1414531591}
   tutorialProgress: 0
-  tutorialEnd: 1
+  tutorialEnd: 4
+  dormBG: {fileID: 1112627523}
+  ui1: {fileID: 2084434524}
+  ui2: {fileID: 885942451}
+  ui3: {fileID: 1482784881}
 --- !u!1 &116615743
 GameObject:
   m_ObjectHideFlags: 0
@@ -2410,7 +2415,7 @@ Transform:
   - {fileID: 2109284078}
   - {fileID: 1387409220}
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &123837692
 Prefab:
@@ -4035,7 +4040,7 @@ Prefab:
     - target: {fileID: 224412598940311252, guid: 812f6bb2397b56d4fa805583683168a2,
         type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 224412598940311252, guid: 812f6bb2397b56d4fa805583683168a2,
         type: 2}
@@ -8027,7 +8032,7 @@ Transform:
   m_LocalScale: {x: 12.215554, y: 1, z: 0.123052955}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 34
+  m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: 0, y: -90.00001, z: 0}
 --- !u!1001 &383850701
 Prefab:
@@ -10173,6 +10178,75 @@ MonoBehaviour:
     - {x: 0.57735026, y: 0.57735026, z: 0.57735026}
     - {x: 0.57735026, y: -0.57735026, z: 0.57735026}
     - {x: 0.57735026, y: -0.57735026, z: -0.57735026}
+--- !u!1 &495987475
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 495987476}
+  - component: {fileID: 495987478}
+  - component: {fileID: 495987477}
+  m_Layer: 5
+  m_Name: Panel (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &495987476
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 495987475}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 34197451}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &495987477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 495987475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 3576e7e47d68f524c84b823fedb72cdc, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &495987478
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 495987475}
+  m_CullTransparentMesh: 0
 --- !u!1 &496100652
 GameObject:
   m_ObjectHideFlags: 0
@@ -10286,7 +10360,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4748063117296424, guid: 6d3436ea25b0e614e806f8a0598dd4b6, type: 2}
       propertyPath: m_RootOrder
-      value: 18
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 114197138787338814, guid: 6d3436ea25b0e614e806f8a0598dd4b6,
         type: 2}
@@ -11090,7 +11164,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4280761596664872, guid: 997c540728dd4674fa2457f767602625, type: 2}
       propertyPath: m_RootOrder
-      value: 25
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 4280761596664872, guid: 997c540728dd4674fa2457f767602625, type: 2}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -11365,7 +11439,7 @@ Transform:
   m_LocalScale: {x: 2.7237, y: 0.0532647, z: 1.384}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &544533287 stripped
 GameObject:
@@ -11426,7 +11500,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4280761596664872, guid: 997c540728dd4674fa2457f767602625, type: 2}
       propertyPath: m_RootOrder
-      value: 24
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 4280761596664872, guid: 997c540728dd4674fa2457f767602625, type: 2}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -11723,7 +11797,7 @@ Transform:
   m_LocalScale: {x: 19.218718, y: 1, z: 0.123052955}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 35
+  m_RootOrder: 34
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &554287418
 Prefab:
@@ -12127,7 +12201,7 @@ Transform:
   - {fileID: 1420810364}
   - {fileID: 597809583}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &585341081
 GameObject:
@@ -12903,7 +12977,7 @@ Transform:
   - {fileID: 870120532}
   - {fileID: 349122825}
   m_Father: {fileID: 0}
-  m_RootOrder: 29
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &625079149
 GameObject:
@@ -12937,7 +13011,7 @@ Transform:
   - {fileID: 1066994298}
   - {fileID: 761998511}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &629037195
 GameObject:
@@ -14968,7 +15042,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &748274258
 Prefab:
@@ -17197,7 +17271,7 @@ Transform:
   m_Children:
   - {fileID: 1494225357}
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &885353589
 GameObject:
@@ -17275,6 +17349,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 885353589}
   m_Mesh: {fileID: 4300000, guid: 8ecc735f7b984cb4791d6ecbe375fac7, type: 3}
+--- !u!1 &885942451 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1919196060122138, guid: 27ef9ab4b37f776409c2afae00c71d8f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1570554270}
 --- !u!1001 &890205806
 Prefab:
   m_ObjectHideFlags: 0
@@ -18068,7 +18147,7 @@ Transform:
   m_LocalScale: {x: 12.215554, y: 1, z: 0.123052955}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &925922540
 GameObject:
@@ -18615,7 +18694,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &945450904
 Prefab:
@@ -20135,7 +20214,7 @@ Transform:
   m_LocalScale: {x: 12.215554, y: 1, z: 0.123052955}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 33
+  m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: -90.00001, z: 0}
 --- !u!1 &1026312178
 GameObject:
@@ -21862,7 +21941,7 @@ Transform:
   - {fileID: 928738895}
   - {fileID: 2120749608}
   m_Father: {fileID: 0}
-  m_RootOrder: 27
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1089422048
 GameObject:
@@ -22123,6 +22202,75 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4541546456392520, guid: f35df0deea91e4f47ac818c288b3498e,
     type: 2}
   m_PrefabInternal: {fileID: 289598422}
+--- !u!1 &1112627523
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1112627524}
+  - component: {fileID: 1112627526}
+  - component: {fileID: 1112627525}
+  m_Layer: 5
+  m_Name: Panel (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1112627524
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1112627523}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1414531592}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -52.050293, y: 170.99994}
+  m_SizeDelta: {x: 734, y: 632.9}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1112627525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1112627523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 3576e7e47d68f524c84b823fedb72cdc, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1112627526
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1112627523}
+  m_CullTransparentMesh: 0
 --- !u!1 &1119787978
 GameObject:
   m_ObjectHideFlags: 0
@@ -23368,7 +23516,7 @@ Transform:
   - {fileID: 911248532}
   - {fileID: 47562044}
   m_Father: {fileID: 0}
-  m_RootOrder: 28
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1140260142 stripped
 GameObject:
@@ -24959,7 +25107,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4280761596664872, guid: 997c540728dd4674fa2457f767602625, type: 2}
       propertyPath: m_RootOrder
-      value: 21
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4280761596664872, guid: 997c540728dd4674fa2457f767602625, type: 2}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -25598,7 +25746,7 @@ Transform:
   m_Children:
   - {fileID: 2014955990}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1265334374 stripped
 GameObject:
@@ -26517,7 +26665,7 @@ Prefab:
     - target: {fileID: 224678295334903248, guid: 1ccd7db975fd3594c89f18b92f8fd771,
         type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 224678295334903248, guid: 1ccd7db975fd3594c89f18b92f8fd771,
         type: 2}
@@ -28383,6 +28531,11 @@ Prefab:
       propertyPath: Tutorial.Array.size
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 114263082974509704, guid: 3b9706c5be75ff94da264efe8565631b,
         type: 2}
       propertyPath: Tutorial.Array.data[3].convoParts.Array.size
@@ -28402,6 +28555,21 @@ Prefab:
         type: 2}
       propertyPath: Tutorial.Array.data[2].convoParts.Array.size
       value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[1].convoParts.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[2].convoParts.Array.size
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[0].convoParts.Array.size
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 224984426812234772, guid: 3b9706c5be75ff94da264efe8565631b,
         type: 2}
@@ -28907,12 +29075,469 @@ Prefab:
       value: You work pretty hard for a student you know. Thank you for coming out
         today and helping. It will probably mean a whole lot to these families.
       objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[1].convoParts.Array.data[0].Convo
+      value: Welcome everyone! Thank you all for joining us this weekend. We have
+        about ten more homes we would like to get done today.
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[1].convoParts.Array.data[1].Convo
+      value: As long as we can get the frames up and roofs on we should be able to
+        work inside right through December which means a few more families can have
+        a safe warm Christmas.
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[1].convoParts.Array.data[1].PlayerSpeaking
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[1].convoParts.Array.data[2].Convo
+      value: 'Wait, these homes are for charity? But how am I getting paid? '
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[1].convoParts.Array.data[2].PlayerSpeaking
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[1].convoEnd
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[2].convoParts.Array.data[0].Convo
+      value: "Hey there. You're Alex\u2019s friend aren\u2019t you?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[2].convoParts.Array.data[1].Convo
+      value: Uh, yeah hi! Thats right.
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[2].convoParts.Array.data[1].PlayerSpeaking
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[2].convoParts.Array.data[2].Convo
+      value: You work pretty hard for a student you know. Thank you for coming out
+        today and helping. It will probably mean a whole lot to these families.
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[2].convoParts.Array.data[2].PlayerSpeaking
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[2].convoEnd
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[3].Convo
+      value: "You don\u2019t have to spend a ton of money on the holidays. You could
+        just get simple gifts with the cash you have for those closest to you."
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[3].PlayerSpeaking
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[4].Convo
+      value: "... I don\u2019t have any cash."
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[4].PlayerSpeaking
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[5].Convo
+      value: "Well. Then I guess it\u2019s time to get a job you lazy bum."
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[5].PlayerSpeaking
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[0].Convo
+      value: Mmmmmphhh!
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[0].PlayerSpeaking
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[1].Convo
+      value: You know, your complaining does sound better when you muffle it with
+        a pillow like that...
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[1].PlayerSpeaking
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[2].Convo
+      value: Why do the holidays have to be so expensive? Who came up with this gift
+        giving idea anyways?
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[6].Convo
+      value: "Hey, that\u2019s not very nice. Besides, I have been spending all my
+        time studying. How am I supposed to find a job with no time to look?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[6].PlayerSpeaking
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[7].Convo
+      value: "Hmm, I guess that\u2019s true. Well, that\u2019s why you have great
+        friends like me around then."
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[7].PlayerSpeaking
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[8].Convo
+      value: Wait, but, what do you mean?
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[8].PlayerSpeaking
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[9].Convo
+      value: Just need to send this text and... done. You are now employed. Time to
+        get off your butt lazy butt.
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[9].PlayerSpeaking
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[10].Convo
+      value: "What!? I\u2019m employed? How?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[10].PlayerSpeaking
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[11].Convo
+      value: My brother in law, Luke, works construction. One of those Habitat for
+        Humanity style companies. They always need extra help this time of year to
+        try to get as many homes finished as possible before Christmas.
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[11].PlayerSpeaking
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[12].Convo
+      value: "Construction? I\u2019ve never worked construction though!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[12].PlayerSpeaking
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[13].Convo
+      value: "Settle down, you\u2019ll do fine, you always do. Besides, I doubt they
+        are going to let you drive the bulldozer on your first day anyways. You\u2019ll
+        probably be doing small tasks."
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[13].PlayerSpeaking
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[14].Convo
+      value: Well... Some extra cash for the holidays would be nice...
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[14].PlayerSpeaking
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[15].Convo
+      value: "See, that\u2019s the spirit. I am glad you like the idea. Because you
+        start tomorrow."
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[15].PlayerSpeaking
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[16].Convo
+      value: 'What!? '
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[16].PlayerSpeaking
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114263082974509704, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[0].convoEnd
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[0].convoEnd
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[1].convoParts.Array.data[3].Convo
+      value: We will be splitting you off into smaller groups, each group will have
+        a group leader who will assign tasks and oversee the work.
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[1].convoParts.Array.data[3].PlayerSpeaking
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[1].convoParts.Array.data[4].Convo
+      value: "The group on the left will go down the street, the group on the right
+        will go up the street. That means group in the middle, you\u2019re with me. "
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[1].convoParts.Array.data[4].PlayerSpeaking
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[1].convoParts.Array.data[5].Convo
+      value: "I\u2019m in the Boss\u2019 group? *gulp*"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[1].convoParts.Array.data[5].PlayerSpeaking
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[1].convoParts.Array.data[6].Convo
+      value: "We have a lot of tasks to get done today people. So work together, work
+        safe, and work hard. Let\u2019s get this done."
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[1].convoParts.Array.data[6].PlayerSpeaking
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[2].convoParts.Array.data[3].Convo
+      value: "Oh, yeah. Um, about that... I thought these homes were for charity.
+        So, how come we are being paid? If you don\u2019t mind me asking."
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[2].convoParts.Array.data[3].PlayerSpeaking
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[2].convoParts.Array.data[4].Convo
+      value: Oh! Not at all. True, these homes are for charity, but through our company
+        we are able to actually hire workers on in order to build them.
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[2].convoParts.Array.data[4].PlayerSpeaking
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[2].convoParts.Array.data[5].Convo
+      value: "Huh, I didn\u2019t know that kind of social innovation existed."
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[2].convoParts.Array.data[5].PlayerSpeaking
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[2].convoParts.Array.data[6].Convo
+      value: Mhmm. Though we call it social entrepreneurship. Social entrepreneurship
+        is a different kind of social innovation.
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[2].convoParts.Array.data[6].PlayerSpeaking
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[2].convoParts.Array.data[7].Convo
+      value: 'The company or organization does actually work for profit, however,
+        the services they provide as well as a large portion of their earnings usually
+        go right back into helping others. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[2].convoParts.Array.data[7].PlayerSpeaking
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[2].convoParts.Array.data[8].Convo
+      value: "Oh! So that\u2019s how you can afford to hire people."
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[2].convoParts.Array.data[8].PlayerSpeaking
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[2].convoParts.Array.data[9].Convo
+      value: You got it. Some jobs needed to help others are just to dangerous sometimes
+        or require skills that not just any volunteer can sign up with.
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[2].convoParts.Array.data[9].PlayerSpeaking
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[2].convoParts.Array.data[10].Convo
+      value: 'With social entrepreneurship we can still afford all these needed services
+        and help the parts of our community in need at the same time. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[2].convoParts.Array.data[10].PlayerSpeaking
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[2].convoParts.Array.data[11].Convo
+      value: 'I never knew that! So instead of working and then volunteering... '
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[2].convoParts.Array.data[11].PlayerSpeaking
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[2].convoParts.Array.data[12].Convo
+      value: "You can spend your full time helping others. It\u2019s a way to make
+        a difference in our communities while being able to make a living and support
+        yourself at the same time. Plenty of organizations out there do it today. "
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[2].convoParts.Array.data[12].PlayerSpeaking
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[2].convoParts.Array.data[13].Convo
+      value: Huh i see...
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[2].convoParts.Array.data[13].PlayerSpeaking
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[2].convoParts.Array.data[14].Convo
+      value: "Yep. It\u2019s certainly not for everyone, but you\u2019re a smart kid
+        and hard worker, perhaps you can pull it off one day yourself."
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[2].convoParts.Array.data[14].PlayerSpeaking
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[2].convoParts.Array.data[15].Convo
+      value: '...'
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286722104774, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: Tutorial.Array.data[2].convoParts.Array.data[15].PlayerSpeaking
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103036347750284, guid: 3b9706c5be75ff94da264efe8565631b, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224080745013850230, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 223948300249686212, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224813985926241398, guid: 3b9706c5be75ff94da264efe8565631b,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b9706c5be75ff94da264efe8565631b, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &1414531591 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1103036347750284, guid: 3b9706c5be75ff94da264efe8565631b,
+    type: 2}
+  m_PrefabInternal: {fileID: 1414531590}
+--- !u!224 &1414531592 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 224080745013850230, guid: 3b9706c5be75ff94da264efe8565631b,
     type: 2}
   m_PrefabInternal: {fileID: 1414531590}
 --- !u!1 &1420810363
@@ -30072,6 +30697,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: d46881881aa8cdb42aa07437ed0295c4,
     type: 3}
   m_PrefabInternal: {fileID: 1480824810}
+--- !u!1 &1482784881 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1602509107052002, guid: ba91885c88fb9a44aaa7e92d8ca642bd,
+    type: 2}
+  m_PrefabInternal: {fileID: 362457998}
 --- !u!4 &1484308589 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 413218, guid: 826b6a0b570e8460990010fa615b5a2a,
@@ -33348,7 +33978,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4228312020299752, guid: 6be6787a1ea598840b2a879d3ca22c65, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 1906416258266990, guid: 6be6787a1ea598840b2a879d3ca22c65, type: 2}
       propertyPath: m_IsActive
@@ -34254,7 +34884,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1569393922
 GameObject:
@@ -35652,7 +36282,7 @@ Prefab:
     - target: {fileID: 224617486288309302, guid: 67bce1e9cdf564d40a3806ccbfaa468d,
         type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 224617486288309302, guid: 67bce1e9cdf564d40a3806ccbfaa468d,
         type: 2}
@@ -35712,6 +36342,11 @@ Prefab:
     - target: {fileID: 1574659918306492, guid: 67bce1e9cdf564d40a3806ccbfaa468d, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224525341060710948, guid: 67bce1e9cdf564d40a3806ccbfaa468d,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -126.79883
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67bce1e9cdf564d40a3806ccbfaa468d, type: 2}
@@ -37291,7 +37926,7 @@ Transform:
   m_LocalScale: {x: 1, y: 0.095012, z: 8.414156}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 32
+  m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 0, y: -90.337006, z: 0}
 --- !u!1 &1714529414
 GameObject:
@@ -38770,7 +39405,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1830276526 stripped
 GameObject:
@@ -39984,7 +40619,7 @@ Transform:
   m_LocalScale: {x: 1, y: 0.095012, z: 5.9009395}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 31
+  m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: -0.337, z: 0}
 --- !u!1001 &1891655259
 Prefab:
@@ -42422,7 +43057,7 @@ Transform:
   - {fileID: 1476964962}
   - {fileID: 171506035}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 16.337, z: 0}
 --- !u!1001 &2047537436
 Prefab:
@@ -43252,6 +43887,11 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 440347890}
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!1 &2084434524 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1880056009705208, guid: 39c15745de3bb1d4c9538a62de7ccd49,
+    type: 2}
+  m_PrefabInternal: {fileID: 1286515129}
 --- !u!1 &2087765972
 GameObject:
   m_ObjectHideFlags: 0
@@ -45451,7 +46091,7 @@ Transform:
   - {fileID: 2013334681}
   - {fileID: 742580370}
   m_Father: {fileID: 0}
-  m_RootOrder: 30
+  m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2120749607
 GameObject:

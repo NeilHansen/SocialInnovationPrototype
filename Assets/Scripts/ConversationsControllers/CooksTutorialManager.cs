@@ -22,6 +22,11 @@ public class CooksTutorialManager : MonoBehaviour {
 
     private GameManager gm;
 
+    private GameObject UICanvas;
+
+    public GameObject ui1;
+    public GameObject ui2;
+    public GameObject ui3;
 
     private void Awake()
     {
@@ -34,8 +39,12 @@ public class CooksTutorialManager : MonoBehaviour {
 
         gm = FindObjectOfType<GameManager>();
 
+        UICanvas = GameObject.FindGameObjectWithTag("UI");
+
         //tutorialProgress = PlayerPrefs.GetInt("tutorialProgress");
         tutorialProgress = JSONSave.LoadData(JSONSave.dataPath).cooksIntroProgress;
+
+
 
         if (tutorialProgress == 0)
         {
@@ -60,12 +69,17 @@ public class CooksTutorialManager : MonoBehaviour {
         { 
             player.GetComponent<NavMeshAgent>().enabled = false;
             Time.timeScale = 0.0f;
-
+            //ui1.SetActive(false);
+            //ui2.SetActive(false);
+            //ui3.SetActive(false);
         }
         else
         {
             player.GetComponent<NavMeshAgent>().enabled = true;
             Time.timeScale = 1.0f;
+            ui1.SetActive(true);
+            ui2.SetActive(true);
+            ui3.SetActive(true);
         }
    
     }
@@ -102,7 +116,7 @@ public class CooksTutorialManager : MonoBehaviour {
 
     public void NextTutorialPeice()
     {
-        TurnOffControls(true);
+       // TurnOffControls(true);
         convoCanvas.gameObject.SetActive(true);
         convoCanvas.GetComponent<CooksConversationManager>().NextTutorialPeice();
         Debug.Log("NextTutorialPeice");
@@ -181,6 +195,10 @@ public class CooksTutorialManager : MonoBehaviour {
         {
             FindObjectOfType<RtsMover>().ActiveUnit = null;
             Time.timeScale = 0.0f;
+            TurnOffControls(true);
+            ui1.SetActive(false);
+            ui2.SetActive(false);
+            ui3.SetActive(false);
         }
         //else if(doOnce2==false)
         //{

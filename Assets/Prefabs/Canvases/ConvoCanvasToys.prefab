@@ -28,6 +28,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1096092259503330
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 224169593082965768}
+  - component: {fileID: 222730208121584794}
+  - component: {fileID: 114360556292861416}
+  m_Layer: 5
+  m_Name: Panel (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1157401812209124
 GameObject:
   m_ObjectHideFlags: 1
@@ -397,7 +414,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114651637435012692}
-        m_MethodName: NextTutorialPeice
+        m_MethodName: NextConvoPeice
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -409,6 +426,33 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114360556292861416
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1096092259503330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 3576e7e47d68f524c84b823fedb72cdc, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
 --- !u!114 &114383717234735962
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -457,8 +501,9 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: be0337a823beb9f4082afd21ab2e987c, type: 2}
+  m_sharedMaterial: {fileID: 21854191597589500, guid: be0337a823beb9f4082afd21ab2e987c,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -680,38 +725,106 @@ MonoBehaviour:
   tm: {fileID: 0}
   Tutorial:
   - convoParts:
-    - Convo: Hello Welcome
+    - Convo: "I can\u2019t believe what you did at that the job!"
       PlayerSpeaking: 0
-    - Convo: Hi, Thank you!
+    - Convo: What are you talking about? I worked hard and was able to buy gifts with
+        all the money I got.
       PlayerSpeaking: 1
-    - Convo: Looks Like you just got here, Do you need any help unpacking?
+    - Convo: "Yeah, thats exactly it! You worked too hard! Now every time I go help
+        out, Luke thinks I\u2019m slacking!"
       PlayerSpeaking: 0
-    - Convo: Sure Thanks!
+    - Convo: Well, maybe you should work harder; ya lazy bum.
       PlayerSpeaking: 1
-    - Convo: Might as well start with you conputer, Click on a your player or press
-        1 gain control of them. Then click on a object to send them to interact with
-        it
+    - Convo: One second. Got a text... Uh oh. Thats not good...
       PlayerSpeaking: 0
-    convoEnd: 6
+    - Convo: Everything ok?
+      PlayerSpeaking: 1
+    - Convo: 'Uh, not totally? Look, I know it is close to Christmas and I feel really
+        bad about asking, but would you be able to do me a huge, massive favor? '
+      PlayerSpeaking: 0
+    - Convo: "No problem, what\u2019s up?"
+      PlayerSpeaking: 1
+    - Convo: Well, you remember Sam right? She was gearing up to organize the annual
+        toy drive this weekend. Sign ups were done and plans were made, but then...
+      PlayerSpeaking: 0
+    - Convo: "Well, Sam slipped on some ice outside and hurt her back. So now she
+        isn\u2019t going to be able to help with the drive. She can barely walk. "
+      PlayerSpeaking: 0
+    - Convo: h no! Is she ok?
+      PlayerSpeaking: 1
+    - Convo: "Well, the fall didn\u2019t kill her, but the stress might. She is freaking
+        out now because she will be short handed come the toy drive."
+      PlayerSpeaking: 0
+    - Convo: No problem. So Sam needs me to help out again?
+      PlayerSpeaking: 1
+    - Convo: Well, not quite. Sam wants you running the show.
+      PlayerSpeaking: 0
+    convoEnd: 15
   - convoParts:
-    - Convo: Good job! Why don't you put away your clothes. next?
+    - Convo: "Just breathe deep ok? Don\u2019t panic and don\u2019t hyperventilate,
+        it\u2019s no good if we\u2019re both doing that."
       PlayerSpeaking: 0
-    - Convo: Yeah, Good idea!
+    - Convo: "Relax Sam, I\u2019ve got this."
       PlayerSpeaking: 1
-    convoEnd: 3
-  - convoParts:
-    - Convo: Wow you have alot of clothes, notice that some tasks take longer then
-        others.
+    - Convo: "I know you do. I\u2019m about as useful as a screen door on a submarine
+        tonight, but even if I can\u2019t work I will be here to support you."
       PlayerSpeaking: 0
-    - Convo: Let's set your Tv and game console up next.
-      PlayerSpeaking: 0
-    - Convo: Good Call.
+    - Convo: Thanks Sam.
       PlayerSpeaking: 1
-    convoEnd: 4
-  - convoParts:
-    - Convo: Awesome, Now that you have everthing set up. Go check out you game console
-        for access to mini games
+    - Convo: So are we going to sort some toys or are we just going to stand here
+        all night?
       PlayerSpeaking: 0
+    - Convo: Alex?
+      PlayerSpeaking: 1
+    - Convo: "What? You didn\u2019t think I was going to let you sort all these toys
+        by yourself did you? Besides, if you\u2019re going to get through tonight
+        you need the power of super Alex!"
+      PlayerSpeaking: 0
+    - Convo: "Yeah, he's right. There is no way we\u2019re letting you do this alone.
+        You already work too hard and we would look pretty bad if we didn\u2019t at
+        least pitch in."
+      PlayerSpeaking: 0
+    - Convo: You're here too Luke? Thank you.
+      PlayerSpeaking: 1
+    - Convo: No worries. When Alex told me you were taking this on I figured a little
+        extra volunteering outside of work might be in order. Besides, I want to see
+        how you do as the boss tonight. If you can motivate Alex I might have something
+        to learn from you!
+      PlayerSpeaking: 0
+    - Convo: Hey!
+      PlayerSpeaking: 0
+    - Convo: "You know, suddenly I\u2019m not worrying half as much. Seems like you
+        have everyone by your side and raring to go. So, what will it be leader?"
+      PlayerSpeaking: 0
+    - Convo: "Let\u2019s get charitable!"
+      PlayerSpeaking: 1
+    convoEnd: 14
+  - convoParts:
+    - Convo: "I can\u2019t believe we did it! There had to have been like a billion
+        presents in there! I\u2019m pooped. I think I'm going to go home and sleep
+        until new years."
+      PlayerSpeaking: 0
+    - Convo: "Thanks everyone. I couldn\u2019t have done it without you."
+      PlayerSpeaking: 1
+    - Convo: "I am pretty sure that\u2019s what I\u2019m supposed to be saying to
+        you! You rocked that toy drive. I can\u2019t thank you enough, for everything."
+      PlayerSpeaking: 0
+    - Convo: "Woah, I don\u2019t think I\u2019ve ever sweat half as much building
+        a house. If you are still looking for work in the new year, you give me a
+        call. Though, after that display, I think I\u2019ll take you on as a manager
+        this time."
+      PlayerSpeaking: 0
+    - Convo: I might have to take you up on that.
+      PlayerSpeaking: 1
+    - Convo: "Good job, I\u2019m proud of you. And to think it still feels like yesterday
+        I was teaching you to plug in a game console. You\u2019ve come far since then.
+        You still have about a year and a half of college to go. Any thoughts on what
+        you are going to do after that?"
+      PlayerSpeaking: 0
+    convoEnd: 7
+  - convoParts:
+    - Convo: I've got a few good ideas...
+      PlayerSpeaking: 1
     convoEnd: 2
   convoText: {fileID: 114388261582713696}
   playerImage: {fileID: 1241401575684038}
@@ -734,13 +847,105 @@ MonoBehaviour:
   tm: {fileID: 0}
   Tutorial:
   - convoParts:
-    - Convo: 546456
-      PlayerSpeaking: 1
-    - Convo: 4564654
+    - Convo: "I can\u2019t believe what you did at that the job!"
       PlayerSpeaking: 0
-    - Convo: 54654645
+    - Convo: What are you talking about? I worked hard and was able to buy gifts with
+        all the money I got.
       PlayerSpeaking: 1
-    convoEnd: 4
+    - Convo: "Yeah, thats exactly it! You worked too hard! Now every time I go help
+        out, Luke thinks I\u2019m slacking!"
+      PlayerSpeaking: 0
+    - Convo: Well, maybe you should work harder; ya lazy bum.
+      PlayerSpeaking: 1
+    - Convo: One second. Got a text... Uh oh. Thats not good...
+      PlayerSpeaking: 0
+    - Convo: Everything ok?
+      PlayerSpeaking: 1
+    - Convo: 'Uh, not totally? Look, I know it is close to Christmas and I feel really
+        bad about asking, but would you be able to do me a huge, massive favor? '
+      PlayerSpeaking: 0
+    - Convo: "No problem, what\u2019s up?"
+      PlayerSpeaking: 1
+    - Convo: Well, you remember Sam right? She was gearing up to organize the annual
+        toy drive this weekend. Sign ups were done and plans were made, but then...
+      PlayerSpeaking: 0
+    - Convo: "Well, Sam slipped on some ice outside and hurt her back. So now she
+        isn\u2019t going to be able to help with the drive. She can barely walk. "
+      PlayerSpeaking: 0
+    - Convo: h no! Is she ok?
+      PlayerSpeaking: 1
+    - Convo: "Well, the fall didn\u2019t kill her, but the stress might. She is freaking
+        out now because she will be short handed come the toy drive."
+      PlayerSpeaking: 0
+    - Convo: No problem. So Sam needs me to help out again?
+      PlayerSpeaking: 1
+    - Convo: Well, not quite. Sam wants you running the show.
+      PlayerSpeaking: 0
+    convoEnd: 15
+  - convoParts:
+    - Convo: "Just breathe deep ok? Don\u2019t panic and don\u2019t hyperventilate,
+        it\u2019s no good if we\u2019re both doing that."
+      PlayerSpeaking: 0
+    - Convo: "Relax Sam, I\u2019ve got this."
+      PlayerSpeaking: 1
+    - Convo: "I know you do. I\u2019m about as useful as a screen door on a submarine
+        tonight, but even if I can\u2019t work I will be here to support you."
+      PlayerSpeaking: 0
+    - Convo: Thanks Sam.
+      PlayerSpeaking: 1
+    - Convo: So are we going to sort some toys or are we just going to stand here
+        all night?
+      PlayerSpeaking: 0
+    - Convo: Alex?
+      PlayerSpeaking: 1
+    - Convo: "What? You didn\u2019t think I was going to let you sort all these toys
+        by yourself did you? Besides, if you\u2019re going to get through tonight
+        you need the power of super Alex!"
+      PlayerSpeaking: 0
+    - Convo: "Yeah, he's right. There is no way we\u2019re letting you do this alone.
+        You already work too hard and we would look pretty bad if we didn\u2019t at
+        least pitch in."
+      PlayerSpeaking: 0
+    - Convo: You're here too Luke? Thank you.
+      PlayerSpeaking: 1
+    - Convo: No worries. When Alex told me you were taking this on I figured a little
+        extra volunteering outside of work might be in order. Besides, I want to see
+        how you do as the boss tonight. If you can motivate Alex I might have something
+        to learn from you!
+      PlayerSpeaking: 0
+    - Convo: Hey!
+      PlayerSpeaking: 0
+    - Convo: "You know, suddenly I\u2019m not worrying half as much. Seems like you
+        have everyone by your side and raring to go. So, what will it be leader?"
+      PlayerSpeaking: 0
+    - Convo: "Let\u2019s get charitable!"
+      PlayerSpeaking: 1
+    convoEnd: 14
+  - convoParts:
+    - Convo: "I can\u2019t believe we did it! There had to have been like a billion
+        presents in there! I\u2019m pooped. I think I'm going to go home and sleep
+        until new years."
+      PlayerSpeaking: 0
+    - Convo: "Thanks everyone. I couldn\u2019t have done it without you."
+      PlayerSpeaking: 1
+    - Convo: "I am pretty sure that\u2019s what I\u2019m supposed to be saying to
+        you! You rocked that toy drive. I can\u2019t thank you enough, for everything."
+      PlayerSpeaking: 0
+    - Convo: "Woah, I don\u2019t think I\u2019ve ever sweat half as much building
+        a house. If you are still looking for work in the new year, you give me a
+        call. Though, after that display, I think I\u2019ll take you on as a manager
+        this time."
+      PlayerSpeaking: 0
+    - Convo: I might have to take you up on that.
+      PlayerSpeaking: 1
+    - Convo: "Good job, I\u2019m proud of you. And to think it still feels like yesterday
+        I was teaching you to plug in a game console. You\u2019ve come far since then.
+        You still have about a year and a half of college to go. Any thoughts on what
+        you are going to do after that?"
+      PlayerSpeaking: 0
+    - Convo: I've got a few good ideas...
+      PlayerSpeaking: 1
+    convoEnd: 8
   convoText: {fileID: 114388261582713696}
   playerImage: {fileID: 1241401575684038}
   NPCImage: {fileID: 1659056419468020}
@@ -906,6 +1111,13 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1492986293955328}
   m_CullTransparentMesh: 0
+--- !u!222 &222730208121584794
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1096092259503330}
+  m_CullTransparentMesh: 0
 --- !u!223 &223272314354315650
 Canvas:
   m_ObjectHideFlags: 1
@@ -938,7 +1150,7 @@ RectTransform:
   m_Children:
   - {fileID: 224305803736393862}
   m_Father: {fileID: 224629567590390788}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1000,6 +1212,24 @@ RectTransform:
   m_AnchoredPosition: {x: 421.95007, y: -9.599976}
   m_SizeDelta: {x: 342.1, y: 320.6}
   m_Pivot: {x: 0.5, y: 1}
+--- !u!224 &224169593082965768
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1096092259503330}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 224629567590390788}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224264922437887024
 RectTransform:
   m_ObjectHideFlags: 1
@@ -1126,6 +1356,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 224169593082965768}
   - {fileID: 224024962823017404}
   m_Father: {fileID: 0}
   m_RootOrder: 0

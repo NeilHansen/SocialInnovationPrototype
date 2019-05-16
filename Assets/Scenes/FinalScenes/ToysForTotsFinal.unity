@@ -379,7 +379,7 @@ GameObject:
   - component: {fileID: 34197448}
   m_Layer: 5
   m_Name: UICanvas
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -458,8 +458,9 @@ RectTransform:
   - {fileID: 1792555382}
   - {fileID: 440718196}
   - {fileID: 1702136139}
+  - {fileID: 598558931}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1049,7 +1050,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b26725067d11fe741951d0e02086cf79, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: b26725067d11fe741951d0e02086cf79, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1906,7 +1907,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4007559626434578, guid: e625c2e6c7db4534eb3ca95a96591e3f, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 114021090283490604, guid: e625c2e6c7db4534eb3ca95a96591e3f,
         type: 2}
@@ -2633,7 +2634,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1001 &171472061
 Prefab:
@@ -2672,7 +2673,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ec14bf7331863024f9a93249e855581f, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ec14bf7331863024f9a93249e855581f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4129,7 +4130,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400046, guid: 9eb38b671670bea43bc6da6fff1569f5, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2300046, guid: 9eb38b671670bea43bc6da6fff1569f5, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -6583,7 +6584,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 466186, guid: 0dd137872bec6e04aaaaa2b3e9f3c5a7, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 466186, guid: 0dd137872bec6e04aaaaa2b3e9f3c5a7, type: 2}
       propertyPath: m_LocalScale.x
@@ -7873,21 +7874,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[0].convoParts.Array.size
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[1].convoParts.Array.size
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[2].convoParts.Array.size
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 224629567590390788, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -7926,7 +7912,7 @@ Prefab:
     - target: {fileID: 224629567590390788, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
         type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 224629567590390788, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
         type: 2}
@@ -7983,336 +7969,9 @@ Prefab:
       propertyPath: tm
       value: 
       objectReference: {fileID: 1875669975}
-    - target: {fileID: 114296916710222008, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: NextConvoPeice
-      objectReference: {fileID: 0}
-    - target: {fileID: 114651637435012692, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: m_Enabled
+    - target: {fileID: 1096092259503330, guid: 1710c4dbbf1d2e54cb34244eeff7d95c, type: 2}
+      propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[3].convoParts.Array.data[0].PlayerSpeaking
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[3].convoParts.Array.data[0].Convo
-      value: I've got a few good ideas...
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[5].Convo
-      value: Everything ok?
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[6].Convo
-      value: 'Uh, not totally? Look, I know it is close to Christmas and I feel really
-        bad about asking, but would you be able to do me a huge, massive favor? '
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[7].Convo
-      value: "No problem, what\u2019s up?"
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[8].Convo
-      value: Well, you remember Sam right? She was gearing up to organize the annual
-        toy drive this weekend. Sign ups were done and plans were made, but then...
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[9].Convo
-      value: "Well, Sam slipped on some ice outside and hurt her back. So now she
-        isn\u2019t going to be able to help with the drive. She can barely walk. "
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[10].Convo
-      value: h no! Is she ok?
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[11].Convo
-      value: "Well, the fall didn\u2019t kill her, but the stress might. She is freaking
-        out now because she will be short handed come the toy drive."
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[12].Convo
-      value: No problem. So Sam needs me to help out again?
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[13].Convo
-      value: Well, not quite. Sam wants you running the show.
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[0].convoEnd
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[0].Convo
-      value: "I can\u2019t believe what you did at that the job!"
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[1].Convo
-      value: What are you talking about? I worked hard and was able to buy gifts with
-        all the money I got.
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[2].Convo
-      value: "Yeah, thats exactly it! You worked too hard! Now every time I go help
-        out, Luke thinks I\u2019m slacking!"
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[3].Convo
-      value: Well, maybe you should work harder; ya lazy bum.
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[4].Convo
-      value: One second. Got a text... Uh oh. Thats not good...
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[5].PlayerSpeaking
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[7].PlayerSpeaking
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[8].PlayerSpeaking
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[10].PlayerSpeaking
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[0].convoParts.Array.data[12].PlayerSpeaking
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[1].convoParts.Array.data[2].Convo
-      value: "I know you do. I\u2019m about as useful as a screen door on a submarine
-        tonight, but even if I can\u2019t work I will be here to support you."
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[1].convoParts.Array.data[2].PlayerSpeaking
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[1].convoParts.Array.data[3].Convo
-      value: Thanks Sam.
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[1].convoParts.Array.data[3].PlayerSpeaking
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[1].convoParts.Array.data[4].Convo
-      value: So are we going to sort some toys or are we just going to stand here
-        all night?
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[1].convoParts.Array.data[4].PlayerSpeaking
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[1].convoParts.Array.data[5].Convo
-      value: Alex?
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[1].convoParts.Array.data[5].PlayerSpeaking
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[1].convoParts.Array.data[6].Convo
-      value: "What? You didn\u2019t think I was going to let you sort all these toys
-        by yourself did you? Besides, if you\u2019re going to get through tonight
-        you need the power of super Alex!"
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[1].convoParts.Array.data[6].PlayerSpeaking
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[1].convoParts.Array.data[7].Convo
-      value: "Yeah, he's right. There is no way we\u2019re letting you do this alone.
-        You already work too hard and we would look pretty bad if we didn\u2019t at
-        least pitch in."
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[1].convoParts.Array.data[7].PlayerSpeaking
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[1].convoParts.Array.data[8].Convo
-      value: You're here too Luke? Thank you.
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[1].convoParts.Array.data[8].PlayerSpeaking
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[1].convoParts.Array.data[9].Convo
-      value: No worries. When Alex told me you were taking this on I figured a little
-        extra volunteering outside of work might be in order. Besides, I want to see
-        how you do as the boss tonight. If you can motivate Alex I might have something
-        to learn from you!
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[1].convoParts.Array.data[9].PlayerSpeaking
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[1].convoParts.Array.data[10].Convo
-      value: Hey!
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[1].convoParts.Array.data[10].PlayerSpeaking
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[1].convoParts.Array.data[11].Convo
-      value: "You know, suddenly I\u2019m not worrying half as much. Seems like you
-        have everyone by your side and raring to go. So, what will it be leader?"
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[1].convoParts.Array.data[11].PlayerSpeaking
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[1].convoParts.Array.data[12].Convo
-      value: "Let\u2019s get charitable!"
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[1].convoParts.Array.data[12].PlayerSpeaking
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[1].convoEnd
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[1].convoParts.Array.data[0].Convo
-      value: "Just breathe deep ok? Don\u2019t panic and don\u2019t hyperventilate,
-        it\u2019s no good if we\u2019re both doing that."
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[1].convoParts.Array.data[1].Convo
-      value: "Relax Sam, I\u2019ve got this."
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[2].convoParts.Array.data[3].Convo
-      value: "Woah, I don\u2019t think I\u2019ve ever sweat half as much building
-        a house. If you are still looking for work in the new year, you give me a
-        call. Though, after that display, I think I\u2019ll take you on as a manager
-        this time."
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[2].convoParts.Array.data[3].PlayerSpeaking
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[2].convoParts.Array.data[4].Convo
-      value: I might have to take you up on that.
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[2].convoParts.Array.data[4].PlayerSpeaking
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[2].convoParts.Array.data[5].Convo
-      value: "Good job, I\u2019m proud of you. And to think it still feels like yesterday
-        I was teaching you to plug in a game console. You\u2019ve come far since then.
-        You still have about a year and a half of college to go. Any thoughts on what
-        you are going to do after that?"
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[2].convoParts.Array.data[5].PlayerSpeaking
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[2].convoEnd
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[2].convoParts.Array.data[0].Convo
-      value: "I can\u2019t believe we did it! There had to have been like a billion
-        presents in there! I\u2019m pooped. I think I'm going to go home and sleep
-        until new years."
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[2].convoParts.Array.data[1].Convo
-      value: "Thanks everyone. I couldn\u2019t have done it without you."
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[2].convoParts.Array.data[1].PlayerSpeaking
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[2].convoParts.Array.data[2].PlayerSpeaking
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607495704841362, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
-        type: 2}
-      propertyPath: Tutorial.Array.data[2].convoParts.Array.data[2].Convo
-      value: "I am pretty sure that\u2019s what I\u2019m supposed to be saying to
-        you! You rocked that toy drive. I can\u2019t thank you enough, for everything."
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1710c4dbbf1d2e54cb34244eeff7d95c, type: 2}
@@ -8320,6 +7979,11 @@ Prefab:
 --- !u!1 &513396258 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1869437333166312, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
+    type: 2}
+  m_PrefabInternal: {fileID: 513396257}
+--- !u!1 &513396259 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1096092259503330, guid: 1710c4dbbf1d2e54cb34244eeff7d95c,
     type: 2}
   m_PrefabInternal: {fileID: 513396257}
 --- !u!1001 &513594248
@@ -9686,7 +9350,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 35.648003, y: 0, z: 0}
 --- !u!114 &534669906
 MonoBehaviour:
@@ -10295,7 +9959,7 @@ Transform:
   - {fileID: 158904373}
   - {fileID: 629037196}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &577893370
 GameObject:
@@ -10408,6 +10072,75 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 2c37bd4a9028833438131fc3acab78a2,
     type: 3}
   m_PrefabInternal: {fileID: 38539277}
+--- !u!1 &598558930
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 598558931}
+  - component: {fileID: 598558933}
+  - component: {fileID: 598558932}
+  m_Layer: 5
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &598558931
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 598558930}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 34197451}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &598558932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 598558930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 3576e7e47d68f524c84b823fedb72cdc, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &598558933
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 598558930}
+  m_CullTransparentMesh: 0
 --- !u!1001 &599628553
 Prefab:
   m_ObjectHideFlags: 0
@@ -10445,7 +10178,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e3fd348cfef47514aaa16ce42042be29, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e3fd348cfef47514aaa16ce42042be29, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -13445,7 +13178,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4900949017559990, guid: 2784792ca3807ad42baafd35e6b5c6a1, type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 114704326983718900, guid: 2784792ca3807ad42baafd35e6b5c6a1,
         type: 2}
@@ -13595,7 +13328,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4781174835316244, guid: b364c6c5073d110449214fc59224b699, type: 2}
       propertyPath: m_RootOrder
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 114096555013547446, guid: b364c6c5073d110449214fc59224b699,
         type: 2}
@@ -17032,7 +16765,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4373860997149412, guid: ef8fab0d4ac1af64ab6e24e5f5098833, type: 2}
       propertyPath: m_RootOrder
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 114323719930228250, guid: ef8fab0d4ac1af64ab6e24e5f5098833,
         type: 2}
@@ -17289,7 +17022,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 07f3e5a376b80cd48a8b2f2ab39821e0, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 07f3e5a376b80cd48a8b2f2ab39821e0, type: 3}
       propertyPath: m_LocalScale.x
@@ -18674,7 +18407,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6a2f7092e3a990e48a2b20d4c122d91f, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6a2f7092e3a990e48a2b20d4c122d91f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -18868,7 +18601,7 @@ Transform:
   m_LocalScale: {x: 1.8078172, y: 1.782008, z: 0.336365}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &1352465231
 GameObject:
@@ -20344,7 +20077,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 454940, guid: ab1d1bd8e5dd10b42bf2bca680cefaf2, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 454940, guid: ab1d1bd8e5dd10b42bf2bca680cefaf2, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -27410,7 +27143,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1875669971}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab1910eff852a2e4089875cc6380153c, type: 3}
   m_Name: 
@@ -27418,7 +27151,11 @@ MonoBehaviour:
   player: {fileID: 21415875}
   convoCanvas: {fileID: 513396258}
   tutorialProgress: 0
-  tutorialEnd: 1
+  tutorialEnd: 4
+  dormBG: {fileID: 513396259}
+  ui1: {fileID: 240110938}
+  ui2: {fileID: 1522686133}
+  ui3: {fileID: 973959401}
 --- !u!1 &1879550086 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100026, guid: 9eb38b671670bea43bc6da6fff1569f5,
