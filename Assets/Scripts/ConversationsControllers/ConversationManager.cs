@@ -61,6 +61,7 @@ public class ConversationManager : MonoBehaviour {
     {
         convoIndex = 0;
         NextConvoPeice();
+        ChangeNextButton(false);
     }
 
     public void NextConvoPeice()
