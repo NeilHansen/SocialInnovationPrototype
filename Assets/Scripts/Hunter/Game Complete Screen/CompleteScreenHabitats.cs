@@ -23,12 +23,13 @@ public class CompleteScreenHabitats : MonoBehaviour {
     public GameObject convoCanvas;
     public GameObject scoreScreen;
 
-
+    private JSONPlayerSaver JSONSave;
     private int progress;
     // Use this for initialization
     void Start () {
         TM = FindObjectOfType<HabitatTutorialManager>();
-
+        JSONSave = FindObjectOfType<JSONPlayerSaver>();
+        progress = JSONSave.LoadData(JSONSave.dataPath).habitatIntroProgress;
     }
 	
 	// Update is called once per frame
@@ -86,6 +87,7 @@ public class CompleteScreenHabitats : MonoBehaviour {
             convoCanvas.SetActive(true);
             TM.NextTutorialPeice();
             scoreScreen.SetActive(false);
+            Debug.Log("FUCKSSSSSS");
         }
         else
         {

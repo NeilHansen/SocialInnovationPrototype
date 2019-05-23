@@ -179,7 +179,7 @@ public class Questionaire : MonoBehaviour {
         PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
         string sceneName = SceneManager.GetActiveScene().name;
 
-        Debug.Log("DisplayResults");
+       // Debug.Log("DisplayResults");
 		aButton.gameObject.SetActive(false);
 		bButton.gameObject.SetActive(false);
 		cButton.gameObject.SetActive(false);
