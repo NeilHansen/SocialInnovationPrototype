@@ -358,10 +358,10 @@ public class Questionaire : MonoBehaviour {
                     questionIndex += 1;
                     DisplayQuestion();
                     chosenAnswer = null;
-                    aButton.image.color = Color.white;
-                    bButton.image.color = Color.white;
-                    cButton.image.color = Color.white;
-                    dButton.image.color = Color.white;
+                    //aButton.image.color = Color.white;
+                    //bButton.image.color = Color.white;
+                    //cButton.image.color = Color.white;
+                    //dButton.image.color = Color.white;
                 }
                 else
                 {
