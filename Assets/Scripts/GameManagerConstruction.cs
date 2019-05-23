@@ -49,6 +49,8 @@ public class GameManagerConstruction : MonoBehaviour {
     ConstructionUI HouseUI;
     [SerializeField]
     Image Fill;
+    [SerializeField]
+    GameObject COMPLETESCREEN;
 
     //HOUSECHANGE
     [SerializeField]
@@ -56,8 +58,7 @@ public class GameManagerConstruction : MonoBehaviour {
 
     bool GameComplete = false;
 
-
-    
+    private int progress;
 
     public float timerMultiplier = 0.1f;
 
@@ -65,6 +66,8 @@ public class GameManagerConstruction : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
+        JSONSave = FindObjectOfType<JSONPlayerSaver>();
+       
         timeValue = MaxTime;
         //HouseUI.AddToHouse(playerScore);
         SwapHouse();
@@ -80,34 +83,24 @@ public class GameManagerConstruction : MonoBehaviour {
            // AddScore();
             
         }
-
-
         if (timeValue > 0)
         {
             timeValue -= 1 * Time.deltaTime;
         }
         TimeLeft.text = "" + (int)timeValue;
-        PreformanceMeter();
+        //PreformanceMeter();
 
         if(timeValue<=0 && !GameComplete)
         {
-            
+           
             EndGame();
         }
-        
-
-       
-        
         //timerText.text = "" + (int)timeValue;
         //timerTextBG.text = "" + (int)timeValue;
-
-
-
     }
 
     void SaveGameScore()
     {
-        
         JSONSave = FindObjectOfType<JSONPlayerSaver>();
         PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
         if (playerScore > data.gameScoreHabitats)
@@ -120,10 +113,11 @@ public class GameManagerConstruction : MonoBehaviour {
 
     public void EndGame()
     {
+        Debug.Log("ENNNNND GAME");
         GameComplete = true;
         //Ending quiz screen
-        EndingScreen.SetActive(true);
-        EndingScreen.GetComponent<CompleteScreenHabitats>().RoundComplete();
+        COMPLETESCREEN.SetActive(true);
+        COMPLETESCREEN.GetComponent<CompleteScreenHabitats>().RoundComplete();
         Time.timeScale = 0f;
         SaveGameScore();
     }
@@ -271,6 +265,24 @@ public class GameManagerConstruction : MonoBehaviour {
                 HouseObject[2].SetActive(false);
                 HouseObject[3].SetActive(true);
                 break;
+        }
+    }
+
+    public void GoToQuiz()
+    {
+        progress = JSONSave.LoadData(JSONSave.dataPath).habitatIntroProgress;
+        if (progress == 4)
+        {
+            Debug.Log("FUCKER");
+            EndingScreen.GetComponent<Questionaire>().gameScoreText.text = playerScore.ToString();
+            EndingScreen.GetComponent<Questionaire>().isPostGameQuestionnaire = true;
+            EndingScreen.GetComponent<Questionaire>().InitializeQuestionaire();
+        }
+        else
+        {
+            EndingScreen.GetComponent<Questionaire>().gameScoreText.text = playerScore.ToString();
+            EndingScreen.GetComponent<Questionaire>().isPostGameQuestionnaire = false;
+            EndingScreen.GetComponent<Questionaire>().InitializeQuestionaire();
         }
     }
 

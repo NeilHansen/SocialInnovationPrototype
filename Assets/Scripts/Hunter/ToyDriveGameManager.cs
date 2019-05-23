@@ -253,6 +253,23 @@ public class ToyDriveGameManager : MonoBehaviour {
         StopCoroutine("FlashScoreAdded");
     }
 
+    public void GoToQuiz()
+    {
+        int progress = JSONSave.LoadData(JSONSave.dataPath).cooksIntroProgress;
+        if (progress != 0)
+        {
+            EndingScreen.GetComponent<Questionaire>().gameScoreText.text = playerScore.ToString();
+            EndingScreen.GetComponent<Questionaire>().isPostGameQuestionnaire = true;
+            EndingScreen.GetComponent<Questionaire>().InitializeQuestionaire();
+        }
+        else
+        {
+            EndingScreen.GetComponent<Questionaire>().gameScoreText.text = playerScore.ToString();
+            EndingScreen.GetComponent<Questionaire>().isPostGameQuestionnaire = false;
+            EndingScreen.GetComponent<Questionaire>().InitializeQuestionaire();
+        }
+    }
+
 
 
 

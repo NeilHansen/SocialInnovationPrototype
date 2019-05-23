@@ -21,7 +21,7 @@ public class HabitatTutorialManager : MonoBehaviour
     private JSONPlayerSaver JSONSave;
 
 
-    private GameManager gm;
+    private GameManagerConstruction gm;
 
     private GameObject UICanvas;
 
@@ -40,7 +40,7 @@ public class HabitatTutorialManager : MonoBehaviour
     {
         JSONSave = FindObjectOfType<JSONPlayerSaver>();
 
-        gm = FindObjectOfType<GameManager>();
+        gm = FindObjectOfType<GameManagerConstruction>();
 
         UICanvas = GameObject.FindGameObjectWithTag("UI");
 
@@ -52,7 +52,7 @@ public class HabitatTutorialManager : MonoBehaviour
             StartTutorial();
             TurnOffControls(true);
         }
-        else if (tutorialProgress == tutorialEnd)
+        else if (tutorialProgress >= tutorialEnd)
         {
             FinishTutorial();
         }
@@ -101,7 +101,7 @@ public class HabitatTutorialManager : MonoBehaviour
     {
         //PlayerPrefs.SetInt("tutorialProgress", 4);
         PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
-        data.habitatIntroProgress = 3;
+        data.habitatIntroProgress = 4;
         JSONSave.SaveData(data, JSONSave.dataPath);
 
         TurnOffControls(false);
@@ -145,6 +145,10 @@ public class HabitatTutorialManager : MonoBehaviour
         FinishTutorial();
         gm.GoToQuiz();
 
+        PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
+        data.habitatIntroProgress = 4;
+        JSONSave.SaveData(data, JSONSave.dataPath);
+
         StopCoroutine("Outro");
 
     }
@@ -183,6 +187,7 @@ public class HabitatTutorialManager : MonoBehaviour
             doOnce1 = true;
             StartCoroutine("Outro");
             dormBG.SetActive(false);
+            Debug.Log("Mother");
 
             // NextTutorialPeice();
         }
@@ -197,12 +202,7 @@ public class HabitatTutorialManager : MonoBehaviour
             ui2.SetActive(false);
             ui3.SetActive(false);
         }
-        //else if(doOnce2==false)
-        //{
-        //    Time.timeScale = 1.0f;
-        //    doOnce2 = true;
-        //}
-
+      
 
 
 

@@ -244,7 +244,7 @@ public class Questionaire : MonoBehaviour {
         if (sceneName.Contains("Cook"))
         {
             data.totalQuizScoreCooks = data.preQuizScoreCooks + data.postQuizScoreCooks;
-            Debug.Log("Total quiz score is" + data.totalQuizScoreCooks);
+          //  Debug.Log("Total quiz score is" + data.totalQuizScoreCooks);
         }
         else if (sceneName.Contains("Habitat"))
         {
@@ -442,7 +442,7 @@ public class Questionaire : MonoBehaviour {
 
         foreach (Questions q in questionList)
         {
-            Debug.Log(q.question);
+           // Debug.Log(q.question);
             foreach (string s in q.answers)
             {
                // Debug.Log(s);

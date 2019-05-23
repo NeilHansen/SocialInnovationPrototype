@@ -37,11 +37,18 @@ public class HabitatsConversationManager : MonoBehaviour {
 
     private JSONPlayerSaver JSONSave;
 
+    private int progress;
+
     // Use this for initialization
     void Start()
     {
         JSONSave = FindObjectOfType<JSONPlayerSaver>();
-        NextConvoPeice();
+        progress = JSONSave.LoadData(JSONSave.dataPath).habitatIntroProgress;
+        if (progress == 0)
+        {
+            NextConvoPeice();
+        }
+        
 
     
     }

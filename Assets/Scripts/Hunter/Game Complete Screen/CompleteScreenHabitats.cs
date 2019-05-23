@@ -10,6 +10,9 @@ public class CompleteScreenHabitats : MonoBehaviour {
     GameManagerConstruction GM;
 
     [SerializeField]
+    HabitatTutorialManager TM;
+
+    [SerializeField]
     Image[] Stars;
    
     [SerializeField]
@@ -17,10 +20,16 @@ public class CompleteScreenHabitats : MonoBehaviour {
 
     public Sprite FilledStar;
 
+    public GameObject convoCanvas;
+    public GameObject scoreScreen;
+
+
+    private int progress;
     // Use this for initialization
     void Start () {
-		
-	}
+        TM = FindObjectOfType<HabitatTutorialManager>();
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -64,14 +73,29 @@ public class CompleteScreenHabitats : MonoBehaviour {
 
     }
     //YUK
-    public void GoToQuiz()
+    //public void GoToQuiz()
+    //{
+    //    FindObjectOfType<GameManagerConstruction>().QuizScreen();
+    //    gameObject.SetActive(false);
+    //}
+
+    public void GoToStory()
     {
-        FindObjectOfType<GameManagerConstruction>().QuizScreen();
-        gameObject.SetActive(false);
+        if (progress < TM.tutorialEnd)
+        {
+            convoCanvas.SetActive(true);
+            TM.NextTutorialPeice();
+            scoreScreen.SetActive(false);
+        }
+        else
+        {
+            scoreScreen.SetActive(false);
+            GM.GoToQuiz();
+        }
     }
 
 
-    
+
 
 
 }
