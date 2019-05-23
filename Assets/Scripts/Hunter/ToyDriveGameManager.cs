@@ -48,6 +48,7 @@ public class ToyDriveGameManager : MonoBehaviour {
     InteractableArea TruckInteractable;
     float TimeTruckStarted;
     bool GameComplete = false;
+    public GameObject COMPLETESCREEN;
 
 
     //public float timerMultiplier = 0.1f;
@@ -92,9 +93,11 @@ public class ToyDriveGameManager : MonoBehaviour {
             GameComplete = true;
             Time.timeScale = 0.0f;
             EndingScreen.SetActive(true);
-            EndingScreen.GetComponent<Questionaire>().gameScoreText.text = playerScore.ToString();
-            EndingScreen.GetComponent<Questionaire>().isPostGameQuestionnaire = true;
-            EndingScreen.GetComponent<Questionaire>().InitializeQuestionaire();
+            //EndingScreen.GetComponent<Questionaire>().gameScoreText.text = playerScore.ToString();
+            //EndingScreen.GetComponent<Questionaire>().isPostGameQuestionnaire = true;
+            //EndingScreen.GetComponent<Questionaire>().InitializeQuestionaire();
+            COMPLETESCREEN.SetActive(true);
+            COMPLETESCREEN.GetComponent<CompleteScreenToys>().RoundComplete();
             SaveGameScore();
         }
 

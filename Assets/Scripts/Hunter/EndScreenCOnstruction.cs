@@ -26,6 +26,7 @@ public class EndScreenCOnstruction : MonoBehaviour
     [SerializeField]
     Sprite[] RTDSprite;
 
+
     //For quiz score stuff
     [SerializeField]
     Image Medal;

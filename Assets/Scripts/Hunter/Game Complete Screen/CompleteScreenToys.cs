@@ -4,17 +4,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class CompleteScreenHabitats : MonoBehaviour {
+public class CompleteScreenToys : MonoBehaviour {
+
 
     [SerializeField]
-    GameManagerConstruction GM;
+    ToyDriveGameManager GM;
 
     [SerializeField]
-    HabitatTutorialManager TM;
+    ToysTutorialManager TM;
 
     [SerializeField]
     Image[] Stars;
-   
+
     [SerializeField]
     TextMeshProUGUI ScoreText;
 
@@ -26,15 +27,17 @@ public class CompleteScreenHabitats : MonoBehaviour {
 
     private int progress;
     // Use this for initialization
-    void Start () {
-        TM = FindObjectOfType<HabitatTutorialManager>();
+    void Start()
+    {
+        TM = FindObjectOfType<ToysTutorialManager>();
 
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 
 
     public void RoundComplete()
@@ -81,7 +84,7 @@ public class CompleteScreenHabitats : MonoBehaviour {
 
     public void GoToStory()
     {
-        
+
         if (progress < TM.tutorialEnd)
         {
             convoCanvas.SetActive(true);
@@ -94,9 +97,4 @@ public class CompleteScreenHabitats : MonoBehaviour {
             GM.GoToQuiz();
         }
     }
-
-
-
-
-
 }
