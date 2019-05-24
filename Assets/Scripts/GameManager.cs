@@ -103,7 +103,7 @@ public class GameManager : MonoBehaviour {
             satisfactionMeter.value -= Time.deltaTime * timerMultiplier;
             if (satisfactionMeter.value > 0.991f)
             {
-                Fill.sprite = BarColors[0];
+                Fill.color = Colors[0];
                 SatisfactionFace.sprite = Satisfactionemojis[0];
                 //SatisfactionText.color = Colors[0];
 
@@ -111,7 +111,7 @@ public class GameManager : MonoBehaviour {
 
             else if (satisfactionMeter.value > .515f)
             {
-                Fill.sprite = BarColors[1];
+                Fill.color = Colors[1];
                 SatisfactionFace.sprite = Satisfactionemojis[1];
                 //SatisfactionText.color = Colors[1];
 
@@ -119,7 +119,7 @@ public class GameManager : MonoBehaviour {
 
             else
             {
-                Fill.sprite = BarColors[2];
+                Fill.color = Colors[2];
                 SatisfactionFace.sprite = Satisfactionemojis[2];
                 //SatisfactionText.color = Colors[2];
 

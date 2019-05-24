@@ -531,7 +531,7 @@ public class Questionaire : MonoBehaviour {
 
     public void SetNExtButton(int state)
     {
-        nextButton.image.sprite=NextButtonState[state];
+        //nextButton.image.sprite=NextButtonState[state];
     }
 
 }

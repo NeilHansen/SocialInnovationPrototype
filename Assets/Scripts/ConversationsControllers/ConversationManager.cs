@@ -113,12 +113,12 @@ public class ConversationManager : MonoBehaviour {
     {
         if (Hover)
         {
-            NextButton.image.sprite = NextStates[1];
+            //NextButton.image.sprite = NextStates[1];
         }
 
         else
         {
-            NextButton.image.sprite = NextStates[0];
+           // NextButton.image.sprite = NextStates[0];
         }
     }
 
