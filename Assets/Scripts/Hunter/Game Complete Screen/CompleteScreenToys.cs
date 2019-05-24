@@ -24,11 +24,14 @@ public class CompleteScreenToys : MonoBehaviour {
     public GameObject convoCanvas;
     public GameObject scoreScreen;
 
-
+    private JSONPlayerSaver JSONSave;
     private int progress;
     // Use this for initialization
     void Start()
     {
+
+        JSONSave = FindObjectOfType<JSONPlayerSaver>();
+        progress = JSONSave.LoadData(JSONSave.dataPath).toysIntroProgress;
         TM = FindObjectOfType<ToysTutorialManager>();
 
     }

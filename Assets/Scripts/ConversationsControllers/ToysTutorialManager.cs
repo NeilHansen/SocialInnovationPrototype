@@ -21,7 +21,7 @@ public class ToysTutorialManager : MonoBehaviour
     private JSONPlayerSaver JSONSave;
 
 
-    private GameManager gm;
+    private ToyDriveGameManager gm;
 
     private GameObject UICanvas;
 
@@ -39,7 +39,7 @@ public class ToysTutorialManager : MonoBehaviour
     {
         JSONSave = FindObjectOfType<JSONPlayerSaver>();
 
-        gm = FindObjectOfType<GameManager>();
+        gm = FindObjectOfType<ToyDriveGameManager>();
 
         UICanvas = GameObject.FindGameObjectWithTag("UI");
 
@@ -51,7 +51,7 @@ public class ToysTutorialManager : MonoBehaviour
             StartTutorial();
             TurnOffControls(true);
         }
-        else if (tutorialProgress == tutorialEnd)
+        else if (tutorialProgress >= tutorialEnd)
         {
             FinishTutorial();
         }
@@ -101,7 +101,7 @@ public class ToysTutorialManager : MonoBehaviour
     {
         //PlayerPrefs.SetInt("tutorialProgress", 4);
         PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
-        data.toysIntroProgress = 3;
+        data.toysIntroProgress = 4;
         JSONSave.SaveData(data, JSONSave.dataPath);
 
         TurnOffControls(false);

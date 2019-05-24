@@ -51,6 +51,8 @@ public class ToyDriveGameManager : MonoBehaviour {
     public GameObject COMPLETESCREEN;
 
 
+
+
     //public float timerMultiplier = 0.1f;
 
 
@@ -63,8 +65,8 @@ public class ToyDriveGameManager : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-     
 
+        JSONSave = FindObjectOfType<JSONPlayerSaver>();
         satisfactionMeter.maxValue = 1;
 
         scoreText.text = "Score: " + (int)playerScore;
@@ -258,8 +260,8 @@ public class ToyDriveGameManager : MonoBehaviour {
 
     public void GoToQuiz()
     {
-        int progress = JSONSave.LoadData(JSONSave.dataPath).cooksIntroProgress;
-        if (progress != 0)
+        int progress = JSONSave.LoadData(JSONSave.dataPath).toysIntroProgress;
+        if (progress == 4)
         {
             EndingScreen.GetComponent<Questionaire>().gameScoreText.text = playerScore.ToString();
             EndingScreen.GetComponent<Questionaire>().isPostGameQuestionnaire = true;

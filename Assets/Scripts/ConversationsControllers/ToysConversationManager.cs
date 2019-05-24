@@ -37,10 +37,12 @@ public class ToysConversationManager : MonoBehaviour {
 
     private JSONPlayerSaver JSONSave;
 
+
     // Use this for initialization
     void Start()
     {
         JSONSave = FindObjectOfType<JSONPlayerSaver>();
+        
         NextConvoPeice();
 
     
