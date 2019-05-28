@@ -225,8 +225,8 @@ public class GameManager : MonoBehaviour {
 
     public void SpecialCustomerScore()
     {
-        StartCoroutine(FlashScoreAdded(0));
-        ScoreAdded.text = "+" + 75;
+        //StartCoroutine(FlashScoreAdded(0));
+        //ScoreAdded.text = "+" + 75;
         playerScore += 75;
         scoreText.text = "Score: " + (int)playerScore;
     }
