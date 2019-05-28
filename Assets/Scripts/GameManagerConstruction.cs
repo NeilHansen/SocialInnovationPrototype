@@ -273,7 +273,6 @@ public class GameManagerConstruction : MonoBehaviour {
         progress = JSONSave.LoadData(JSONSave.dataPath).habitatIntroProgress;
         if (progress == 4)
         {
-            Debug.Log("FUCKER");
             EndingScreen.GetComponent<Questionaire>().gameScoreText.text = playerScore.ToString();
             EndingScreen.GetComponent<Questionaire>().isPostGameQuestionnaire = true;
             EndingScreen.GetComponent<Questionaire>().InitializeQuestionaire();

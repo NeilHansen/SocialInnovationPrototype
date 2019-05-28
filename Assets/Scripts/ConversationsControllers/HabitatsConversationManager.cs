@@ -74,43 +74,45 @@ public class HabitatsConversationManager : MonoBehaviour {
     {
         //int ii = PlayerPrefs.GetInt("tutorialProgress");
         int ii = JSONSave.LoadData(JSONSave.dataPath).habitatIntroProgress;
+        Debug.Log(ii);
         if(ii > tm.tutorialEnd)
         {
             Debug.Log("finishedTutorial");
         }
         convoIndex++;
         if (convoIndex >= Tutorial[ii].convoEnd)
-        {
-            this.gameObject.SetActive(false);
-            tm.TurnOffControls(false);
-            //PlayerPrefs.SetInt("tutorialProgress", ii+=1);
-
-            ii += 1;
-            JSONSave.playerData.habitatIntroProgress = ii;
-            PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
-            data.habitatIntroProgress = ii;
-            JSONSave.SaveData(data, JSONSave.dataPath);
-        }
-        else
-        {
-            for (int i = 0; i < convoIndex; i++)
             {
-                convoText.text = Tutorial[ii].convoParts[i].Convo;
-                if (Tutorial[ii].convoParts[i].PlayerSpeaking == true)
-                {
-                    playerImage.SetActive(true);
-                    NPCImage.SetActive(false);
-                    convoText.alignment = TMPro.TextAlignmentOptions.Left;
-                }
-                else
-                {
-                    playerImage.SetActive(false);
-                    NPCImage.SetActive(true);
-                    convoText.alignment = TMPro.TextAlignmentOptions.Right;
-                }
-            }
+                this.gameObject.SetActive(false);
+                tm.TurnOffControls(false);
+                //PlayerPrefs.SetInt("tutorialProgress", ii+=1);
 
-        } 
+                ii += 1;
+                JSONSave.playerData.habitatIntroProgress = ii;
+                PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
+                data.habitatIntroProgress = ii;
+                JSONSave.SaveData(data, JSONSave.dataPath);
+            }
+            else
+            {
+                for (int i = 0; i < convoIndex; i++)
+                {
+                    convoText.text = Tutorial[ii].convoParts[i].Convo;
+                    if (Tutorial[ii].convoParts[i].PlayerSpeaking == true)
+                    {
+                        playerImage.SetActive(true);
+                        NPCImage.SetActive(false);
+                        convoText.alignment = TMPro.TextAlignmentOptions.Left;
+                    }
+                    else
+                    {
+                        playerImage.SetActive(false);
+                        NPCImage.SetActive(true);
+                        convoText.alignment = TMPro.TextAlignmentOptions.Right;
+                    }
+                }
+
+            }
+        
         
     }
 

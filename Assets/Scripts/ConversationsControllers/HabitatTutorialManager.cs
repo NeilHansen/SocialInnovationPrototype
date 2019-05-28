@@ -139,9 +139,9 @@ public class HabitatTutorialManager : MonoBehaviour
     public IEnumerator Outro()
     {
 
-        PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
-        data.habitatIntroProgress = 4;
-        JSONSave.SaveData(data, JSONSave.dataPath);
+        //PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
+        //data.habitatIntroProgress = 4;
+        //JSONSave.SaveData(data, JSONSave.dataPath);
 
         yield return new WaitForSeconds(0.25f);
 
