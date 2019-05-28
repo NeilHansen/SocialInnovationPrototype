@@ -134,33 +134,33 @@ public class ToyDriveGameManager : MonoBehaviour {
 
 
 
-        switch (Truck.packages)
-        {
-             case 0:
-                StartCoroutine(FlashScoreAdded(2));
-                break;
+        //switch (Truck.packages)
+        //{
+        //     case 0:
+        //        StartCoroutine(FlashScoreAdded(2));
+        //        break;
 
-            case 1:
-                StartCoroutine(FlashScoreAdded(2));
-                break;
+        //    case 1:
+        //        StartCoroutine(FlashScoreAdded(2));
+        //        break;
 
-            case 2:
-                StartCoroutine(FlashScoreAdded(1));
-                break;
+        //    case 2:
+        //        StartCoroutine(FlashScoreAdded(1));
+        //        break;
 
-            case 3:
-                StartCoroutine(FlashScoreAdded(1));
-                break;
+        //    case 3:
+        //        StartCoroutine(FlashScoreAdded(1));
+        //        break;
 
-            case 4:
-                StartCoroutine(FlashScoreAdded(0));
-                break;
+        //    case 4:
+        //        StartCoroutine(FlashScoreAdded(0));
+        //        break;
 
 
-        }
+        //}
         
 
-        ScoreAdded.text = "+" + CurrentScoreValue;
+        //ScoreAdded.text = "+" + CurrentScoreValue;
         playerScore += CurrentScoreValue;
         //Debug.Log("the player score is" + playerScore);
 
@@ -251,8 +251,8 @@ public class ToyDriveGameManager : MonoBehaviour {
     IEnumerator FlashScoreAdded(int index)
     {
         
-        ScoreAdded.enabled = true;
-        ScoreAdded.color = Colors[index];
+        //ScoreAdded.enabled = true;
+        //ScoreAdded.color = Colors[index];
         yield return new WaitForSeconds(1);
         ScoreAdded.enabled = false;
         StopCoroutine("FlashScoreAdded");
