@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
-  m_LightingDataAsset: {fileID: 112000002, guid: 45f304d007b52cf4899bc8c4f96d792d,
+  m_LightingDataAsset: {fileID: 112000080, guid: 45f304d007b52cf4899bc8c4f96d792d,
     type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -131,7 +131,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4128454693003024, guid: 105ed60b4e62d8a44bf045a2005eb08f, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -43.94
+      value: -42.855
       objectReference: {fileID: 0}
     - target: {fileID: 4128454693003024, guid: 105ed60b4e62d8a44bf045a2005eb08f, type: 2}
       propertyPath: m_LocalRotation.x
@@ -723,6 +723,7 @@ MonoBehaviour:
   TutorialComplete: 0
   tv: {fileID: 0}
   comp: {fileID: 0}
+  closet: {fileID: 0}
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -1944,6 +1945,7 @@ MonoBehaviour:
   TutorialComplete: 0
   tv: {fileID: 0}
   comp: {fileID: 0}
+  closet: {fileID: 0}
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -2741,7 +2743,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4865414545535704, guid: 55d3b4f520a215a4fa11ec5ac6209833, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 10.98
+      value: 11.681
       objectReference: {fileID: 0}
     - target: {fileID: 4865414545535704, guid: 55d3b4f520a215a4fa11ec5ac6209833, type: 2}
       propertyPath: m_LocalPosition.y
@@ -14952,6 +14954,7 @@ MonoBehaviour:
   TutorialComplete: 0
   tv: {fileID: 0}
   comp: {fileID: 0}
+  closet: {fileID: 0}
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -16312,162 +16315,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &395365224
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 395365225}
-  - component: {fileID: 395365227}
-  - component: {fileID: 395365226}
-  m_Layer: 5
-  m_Name: TextMeshPro Text (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &395365225
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 395365224}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5751169, y: 1.5563427, z: 0.9233015}
-  m_Children: []
-  m_Father: {fileID: 1902715839}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 41.29998, y: -108}
-  m_SizeDelta: {x: 79.601, y: 27.4}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &395365226
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 395365224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Humanity
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ee50a6b112b89e6429ff733cbc24f836, type: 2}
-  m_sharedMaterial: {fileID: 21854191597589500, guid: ee50a6b112b89e6429ff733cbc24f836,
-    type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_outlineColor:
-    serializedVersion: 2
-    rgba: 4278190080
-  m_fontSize: 10
-  m_fontSizeBase: 10
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_textAlignment: 258
-  m_isAlignmentEnumConverted: 1
-  m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
-  m_linkedTextComponent: {fileID: 0}
-  m_isLinkedTextComponent: 0
-  m_isTextTruncated: 0
-  m_enableKerning: 1
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_ignoreRectMaskCulling: 0
-  m_ignoreCulling: 1
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_firstVisibleCharacter: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 6.411593, y: 0, z: -4.8085756, w: 0}
-  m_textInfo:
-    textComponent: {fileID: 395365226}
-    characterCount: 8
-    spriteCount: 0
-    spaceCount: 0
-    wordCount: 1
-    linkCount: 0
-    lineCount: 1
-    pageCount: 1
-    materialCount: 1
-  m_havePropertiesChanged: 0
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
-  m_inputSource: 0
-  m_hasFontAssetChanged: 0
-  m_subTextObjects:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &395365227
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 395365224}
-  m_CullTransparentMesh: 0
 --- !u!1 &397909778
 GameObject:
   m_ObjectHideFlags: 0
@@ -17833,7 +17680,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 257
+  m_textAlignment: 258
   m_isAlignmentEnumConverted: 1
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -18403,6 +18250,7 @@ MonoBehaviour:
   TutorialComplete: 0
   tv: {fileID: 0}
   comp: {fileID: 0}
+  closet: {fileID: 0}
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -19195,7 +19043,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 257
+  m_textAlignment: 258
   m_isAlignmentEnumConverted: 1
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -21965,6 +21813,7 @@ MonoBehaviour:
   TutorialComplete: 0
   tv: {fileID: 0}
   comp: {fileID: 0}
+  closet: {fileID: 704406434}
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -22223,6 +22072,92 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 709431433}
   m_Mesh: {fileID: 4300006, guid: 51ccdf1251814a243a9bcb491b594ba2, type: 3}
+--- !u!1 &728132457
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 728132461}
+  - component: {fileID: 728132460}
+  - component: {fileID: 728132459}
+  - component: {fileID: 728132458}
+  m_Layer: 0
+  m_Name: Capsule (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!136 &728132458
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 728132457}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &728132459
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 728132457}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 2100000, guid: 4ac032424d0af5f4c9d8975ef2515ccb, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &728132460
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 728132457}
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &728132461
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 728132457}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1.0000181}
+  m_LocalScale: {x: 0.8852099, y: 0.91831726, z: 0.8852104}
+  m_Children: []
+  m_Father: {fileID: 1363639069}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &732877023
 GameObject:
   m_ObjectHideFlags: 0
@@ -22547,7 +22482,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 257
+  m_textAlignment: 258
   m_isAlignmentEnumConverted: 1
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -23072,6 +23007,7 @@ MonoBehaviour:
   TutorialComplete: 0
   tv: {fileID: 0}
   comp: {fileID: 0}
+  closet: {fileID: 0}
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -25697,7 +25633,7 @@ Transform:
   m_LocalScale: {x: 1.012035, y: 1, z: 1.03632}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &924206969
 MonoBehaviour:
@@ -25811,7 +25747,7 @@ Transform:
   m_LocalScale: {x: 1.012035, y: 1, z: 1.03632}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &926624753 stripped
 RectTransform:
@@ -27317,6 +27253,7 @@ MonoBehaviour:
   TutorialComplete: 0
   tv: {fileID: 0}
   comp: {fileID: 0}
+  closet: {fileID: 0}
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -28499,6 +28436,7 @@ MonoBehaviour:
   TutorialComplete: 0
   tv: {fileID: 0}
   comp: {fileID: 0}
+  closet: {fileID: 0}
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -28918,7 +28856,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 257
+  m_textAlignment: 258
   m_isAlignmentEnumConverted: 1
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -29122,6 +29060,7 @@ MonoBehaviour:
   TutorialComplete: 0
   tv: {fileID: 0}
   comp: {fileID: 0}
+  closet: {fileID: 0}
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -29832,7 +29771,7 @@ Transform:
   m_LocalScale: {x: 1.012035, y: 1, z: 1.0241281}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1180498450
 MonoBehaviour:
@@ -30266,6 +30205,7 @@ MonoBehaviour:
   TutorialComplete: 0
   tv: {fileID: 0}
   comp: {fileID: 0}
+  closet: {fileID: 0}
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -30914,6 +30854,7 @@ MonoBehaviour:
   TutorialComplete: 0
   tv: {fileID: 0}
   comp: {fileID: 0}
+  closet: {fileID: 0}
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -31225,6 +31166,7 @@ MonoBehaviour:
   TutorialComplete: 0
   tv: {fileID: 0}
   comp: {fileID: 0}
+  closet: {fileID: 0}
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -31997,7 +31939,7 @@ Prefab:
     - target: {fileID: 224941627248224318, guid: 0666d571b567fc047b8789ea50eae791,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -11.92218
+      value: -11.922241
       objectReference: {fileID: 0}
     - target: {fileID: 1021888271893384, guid: 0666d571b567fc047b8789ea50eae791, type: 2}
       propertyPath: m_IsActive
@@ -32066,12 +32008,12 @@ Prefab:
     - target: {fileID: 224938730005159478, guid: 0666d571b567fc047b8789ea50eae791,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -25.314758
+      value: -25.314789
       objectReference: {fileID: 0}
     - target: {fileID: 224938730005159478, guid: 0666d571b567fc047b8789ea50eae791,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -25.36763
+      value: -25.367676
       objectReference: {fileID: 0}
     - target: {fileID: 224938730005159478, guid: 0666d571b567fc047b8789ea50eae791,
         type: 2}
@@ -32365,7 +32307,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50.20003, y: -87.48301}
+  m_AnchoredPosition: {x: 42.2, y: -87.48301}
   m_SizeDelta: {x: 79.601, y: 27.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1282725572
@@ -32387,7 +32329,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 'In Habitat For '
+  m_text: In Homes For Humanity
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ee50a6b112b89e6429ff733cbc24f836, type: 2}
   m_sharedMaterial: {fileID: 21854191597589500, guid: ee50a6b112b89e6429ff733cbc24f836,
@@ -32422,7 +32364,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 257
+  m_textAlignment: 258
   m_isAlignmentEnumConverted: 1
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -32456,12 +32398,12 @@ MonoBehaviour:
   m_margin: {x: 6.411593, y: 0, z: -4.8085756, w: 0}
   m_textInfo:
     textComponent: {fileID: 1282725572}
-    characterCount: 15
+    characterCount: 21
     spriteCount: 0
     spaceCount: 3
-    wordCount: 3
+    wordCount: 4
     linkCount: 0
-    lineCount: 1
+    lineCount: 2
     pageCount: 1
     materialCount: 1
   m_havePropertiesChanged: 0
@@ -32775,7 +32717,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4973893038799854, guid: ce7a6acc982ef3847a9d89ed0e0cdca3, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 15.119
+      value: 15.67
       objectReference: {fileID: 0}
     - target: {fileID: 4973893038799854, guid: ce7a6acc982ef3847a9d89ed0e0cdca3, type: 2}
       propertyPath: m_LocalPosition.y
@@ -33610,6 +33552,93 @@ Transform:
   m_Father: {fileID: 1933527129}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1363639065
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1363639069}
+  - component: {fileID: 1363639068}
+  - component: {fileID: 1363639067}
+  - component: {fileID: 1363639066}
+  m_Layer: 0
+  m_Name: Rug
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!136 &1363639066
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1363639065}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1363639067
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1363639065}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 2100000, guid: 5302b52bc0daf6f4781994cc6b3b413b, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1363639068
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1363639065}
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1363639069
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1363639065}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -9.317, y: 0.001, z: -0.471}
+  m_LocalScale: {x: 1.6656, y: 1.6656, z: 0.01}
+  m_Children:
+  - {fileID: 728132461}
+  m_Father: {fileID: 0}
+  m_RootOrder: 27
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1001 &1365563078
 Prefab:
   m_ObjectHideFlags: 0
@@ -35843,7 +35872,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1496569987}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -33.674, y: 0, z: -55.76}
+  m_LocalPosition: {x: -33.674, y: 0, z: -55.321}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1365563079}
@@ -35930,6 +35959,7 @@ MonoBehaviour:
   TutorialComplete: 0
   tv: {fileID: 733916103}
   comp: {fileID: 1128919236}
+  closet: {fileID: 704406434}
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -37641,7 +37671,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 257
+  m_textAlignment: 258
   m_isAlignmentEnumConverted: 1
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -39335,7 +39365,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Habitat For Humanity
+  m_text: Homes For Humanity
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ee50a6b112b89e6429ff733cbc24f836, type: 2}
   m_sharedMaterial: {fileID: 21854191597589500, guid: ee50a6b112b89e6429ff733cbc24f836,
@@ -39404,7 +39434,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1587479023}
-    characterCount: 20
+    characterCount: 18
     spriteCount: 0
     spaceCount: 2
     wordCount: 3
@@ -40145,7 +40175,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4328088999389114, guid: 2e7378e017a295944af0f18d29460603, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -48.31
+      value: -47.146
       objectReference: {fileID: 0}
     - target: {fileID: 4328088999389114, guid: 2e7378e017a295944af0f18d29460603, type: 2}
       propertyPath: m_LocalRotation.x
@@ -41269,7 +41299,7 @@ Transform:
   m_LocalScale: {x: 1.012035, y: 1, z: 1.016}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1714529419
 MonoBehaviour:
@@ -41672,7 +41702,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 257
+  m_textAlignment: 258
   m_isAlignmentEnumConverted: 1
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -41703,7 +41733,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 6.411593, y: 0, z: -4.8085756, w: 0}
+  m_margin: {x: 6.411593, y: 0, z: -3.5499802, w: 0}
   m_textInfo:
     textComponent: {fileID: 1754568577}
     characterCount: 9
@@ -42617,7 +42647,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1825926227
 GameObject:
@@ -43684,7 +43714,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1875669974
 MonoBehaviour:
@@ -44057,7 +44087,6 @@ RectTransform:
   - {fileID: 766471258}
   - {fileID: 1282725571}
   - {fileID: 829268557}
-  - {fileID: 395365225}
   m_Father: {fileID: 252999059}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -44470,6 +44499,7 @@ MonoBehaviour:
   TutorialComplete: 0
   tv: {fileID: 0}
   comp: {fileID: 0}
+  closet: {fileID: 0}
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -45665,7 +45695,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Toys For Tots
+  m_text: Toys Drive
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ee50a6b112b89e6429ff733cbc24f836, type: 2}
   m_sharedMaterial: {fileID: 21854191597589500, guid: ee50a6b112b89e6429ff733cbc24f836,
@@ -45700,7 +45730,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 257
+  m_textAlignment: 258
   m_isAlignmentEnumConverted: 1
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -45734,10 +45764,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1997910419}
-    characterCount: 13
+    characterCount: 10
     spriteCount: 0
-    spaceCount: 2
-    wordCount: 3
+    spaceCount: 1
+    wordCount: 2
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -46774,7 +46804,7 @@ Transform:
   m_LocalScale: {x: 1.012035, y: 1, z: 1.0302241}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2053872142
 MonoBehaviour:
@@ -47272,6 +47302,7 @@ MonoBehaviour:
   TutorialComplete: 0
   tv: {fileID: 0}
   comp: {fileID: 0}
+  closet: {fileID: 0}
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -47778,6 +47809,7 @@ MonoBehaviour:
   TutorialComplete: 0
   tv: {fileID: 0}
   comp: {fileID: 0}
+  closet: {fileID: 0}
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0
@@ -47977,7 +48009,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2102320961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47993,10 +48025,10 @@ MonoBehaviour:
   tm: {fileID: 1309621369}
   Tutorial:
   - convoParts:
-    - Convo: Hey there! You must be the new student moving in today. I'm Alex and
+    - Convo: Hey there! You must be the new student moving in today. I'm Alex, and
         I just started here in the summer.
       PlayerSpeaking: 0
-    - Convo: Hey there Alex. Thanks!
+    - Convo: Hey there, Alex. Thanks!
       PlayerSpeaking: 1
     - Convo: Looks like this is where you will be living during the semester with
         all of us. I know it may not look like much, but you would be amazed what
@@ -48023,15 +48055,15 @@ MonoBehaviour:
       PlayerSpeaking: 0
     - Convo: "Hey, that wasn\u2019t too hard at all!"
       PlayerSpeaking: 1
-    - Convo: "We are making good progress, but there is still a few things to do.
+    - Convo: "We are making good progress, but there are still a few things to do.
         Why not take some time and unpack your clothes next? While you\u2019re at
-        it you can pick a hoodie or something more comfortable to wear."
+        it, you can pick a hoodie or something more comfortable to wear."
       PlayerSpeaking: 0
     - Convo: Sure! I can handle that.
       PlayerSpeaking: 1
     - Convo: To start, click on yourself in the room just like before. Once you have
         yourself selected, click on the box with your clothes in it to go grab it.
-        Then over to the closet to put them away like before.
+        Then go over to the closet to put them away like before.
       PlayerSpeaking: 0
     convoEnd: 7
   - convoParts:
@@ -48046,14 +48078,14 @@ MonoBehaviour:
         It may seem daunting at first, but it is something you will get better and
         better at as you go."
       PlayerSpeaking: 0
-    - Convo: Time management huh?
+    - Convo: Time management, huh?
       PlayerSpeaking: 1
     - Convo: "Alright, looks like the only thing left is this game console. Seems
         simple, though I\u2019m not really good with games..."
       PlayerSpeaking: 0
     - Convo: "It\u2019s not too tough."
       PlayerSpeaking: 1
-    - Convo: I will leave it to you then. Try this one on your own.
+    - Convo: I will leave it to you, then. Try this one on your own.
       PlayerSpeaking: 0
     convoEnd: 8
   - convoParts:
@@ -48062,7 +48094,7 @@ MonoBehaviour:
         settled in.
       PlayerSpeaking: 0
     - Convo: "If you ever need any help with the basics or just want a refresh on
-        how to take care of tasks let me know by messaging me on your laptop. I\u2019d
+        how to take care of tasks, let me know by messaging me on your laptop. I\u2019d
         be happy to help."
       PlayerSpeaking: 0
     - Convo: Thanks for all the help.
@@ -48071,14 +48103,14 @@ MonoBehaviour:
         be connected to GBC Wifi. We have lots of additional learning modules online."
       PlayerSpeaking: 0
     - Convo: "If you want to research more about anything you\u2019ve learnt during
-        the semester just come back here to the dorm and surf away to your heart\u2019s
+        the semester, just come back here to the dorm and surf away to your heart\u2019s
         content."
       PlayerSpeaking: 0
     - Convo: That sounds handy!
       PlayerSpeaking: 1
-    - Convo: "It sounds like someone is looking for me, I\u2019ve got to run. It was
-        really nice meeting you. Welcome to George Brown College. I am sure we will
-        be seeing each other around!"
+    - Convo: "It sounds like someone is looking for me, so I\u2019ve got to run. It
+        was really nice meeting you. Welcome to George Brown College. I am sure we
+        will be seeing each other around!"
       PlayerSpeaking: 0
     convoEnd: 8
   convoText: {fileID: 84767119}
@@ -48161,7 +48193,7 @@ RectTransform:
   m_Children:
   - {fileID: 1105021303}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -48538,6 +48570,8 @@ MonoBehaviour:
   - {fileID: 1928985688}
   - {fileID: 1212598135}
   - {fileID: 1902715838}
+  gameScoreRequired: 0
+  quizStarsRequires: 0
 --- !u!114 &2116916932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48635,7 +48669,7 @@ RectTransform:
   - {fileID: 1155742678}
   - {fileID: 2104347698}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -48815,6 +48849,7 @@ MonoBehaviour:
   TutorialComplete: 0
   tv: {fileID: 0}
   comp: {fileID: 0}
+  closet: {fileID: 0}
   dirtyPlateOn: 0
   cleanPlateOn: 0
   filledPlateOn: 0

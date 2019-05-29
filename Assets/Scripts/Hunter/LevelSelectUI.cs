@@ -68,6 +68,9 @@ public class LevelSelectUI : MonoBehaviour {
 
     public GameObject[] LockImage;
 
+    public int gameScoreRequired = 0;
+    public int quizStarsRequires = 0;
+
 
 
 
@@ -85,7 +88,7 @@ public class LevelSelectUI : MonoBehaviour {
         SetHabitatsScore();
         SetToysScore();
 
-        if (data.totalQuizScoreCooks > 3 && data.gameScoreCooks > 200)
+        if (data.totalQuizScoreCooks >= quizStarsRequires && data.gameScoreCooks >= gameScoreRequired)
         {
             //DisableButton
             HabitatsButton.interactable = true;
@@ -94,7 +97,7 @@ public class LevelSelectUI : MonoBehaviour {
         }
 
         //Debug.Log()
-        if (data.totalQuizScoreHabitats>3 && data.gameScoreHabitats>200)
+        if (data.totalQuizScoreHabitats >= quizStarsRequires && data.gameScoreHabitats >= gameScoreRequired)
         {
             Debug.Log("UngateQuiz");
             //UnlockToys

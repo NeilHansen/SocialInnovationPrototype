@@ -63,6 +63,7 @@ public class InteractableArea : MonoBehaviour
     public bool TutorialComplete;
     public GameObject tv;
     public GameObject comp;
+    public GameObject closet;
 
     public enum AreaType
     {
@@ -124,9 +125,14 @@ public class InteractableArea : MonoBehaviour
             {
                 case AreaType.TvStand:
                     tv.SetActive(true);
+                    this.startTime = 0.0f;
                     break;
                 case AreaType.ComputerDesk:
                     comp.SetActive(true);
+                    this.startTime = 0.0f;
+                    break;
+                case AreaType.Closet:
+                    this.startTime = 0.0f;
                     break;
             }
         }else
@@ -135,9 +141,14 @@ public class InteractableArea : MonoBehaviour
             {
                 case AreaType.TvStand:
                     tv.SetActive(false);
+                    this.startTime = 2.0f;
                     break;
                 case AreaType.ComputerDesk:
                     comp.SetActive(false);
+                    this.startTime = 2.0f;
+                    break;
+                case AreaType.Closet:
+                    this.startTime = 2.0f;
                     break;
             }
         }
@@ -185,15 +196,45 @@ public class InteractableArea : MonoBehaviour
 
 
 
+        //if (TutorialComplete)
+        //{
+        //    switch (areaType)
+        //    {
+        //        case AreaType.TvStand:
+        //            tv.SetActive(true);
+        //            break;
+        //        case AreaType.ComputerDesk:
+        //            comp.SetActive(true);
+        //            break;
+        //    }
+        //}
+        //else
+        //{
+        //    switch (areaType)
+        //    {
+        //        case AreaType.TvStand:
+        //            tv.SetActive(false);
+        //            break;
+        //        case AreaType.ComputerDesk:
+        //            comp.SetActive(false);
+        //            break;
+        //    }
+        //}
+
         if (TutorialComplete)
         {
             switch (areaType)
             {
                 case AreaType.TvStand:
                     tv.SetActive(true);
+                    this.startTime = 0.0f;
                     break;
                 case AreaType.ComputerDesk:
                     comp.SetActive(true);
+                    this.startTime = 0.0f;
+                    break;
+                case AreaType.Closet:
+                    this.startTime = 0.0f;
                     break;
             }
         }
@@ -203,9 +244,14 @@ public class InteractableArea : MonoBehaviour
             {
                 case AreaType.TvStand:
                     tv.SetActive(false);
+                   this.startTime = 2.0f;
                     break;
                 case AreaType.ComputerDesk:
                     comp.SetActive(false);
+                   this.startTime = 2.0f;
+                    break;
+                case AreaType.Closet:
+                    this.startTime = 2.0f;
                     break;
             }
         }
@@ -334,16 +380,44 @@ public class InteractableArea : MonoBehaviour
                 }
                 break;
             case AreaType.DollBin:
-                interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.Doll;
+                if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Doll)
+                {
+                    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
+                }
+                else
+                {
+                    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.Doll;
+                }
                 break;
             case AreaType.BallBin:
-                interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.Ball;
+                if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Ball)
+                {
+                    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
+                }
+                else
+                {
+                    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.Ball;
+                }
                 break;
             case AreaType.RobotBin:
-                interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.Robot;
+                if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Robot)
+                {
+                    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
+                }
+                else
+                {
+                    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.Robot;
+                }
                 break;
             case AreaType.BaseballBatBin:
-                interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.BaseballBat;
+                if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.BaseballBat)
+                {
+                    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
+                }
+                else
+                {
+                    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.BaseballBat;
+                }
                 break;
             case AreaType.TvStand:
                 if(!hasCompleted && !TutorialComplete)
@@ -826,9 +900,10 @@ public class InteractableArea : MonoBehaviour
                     break;
 
                 case AreaType.DollBin:
-                    if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
+                    if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false )
                     {
-                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
+                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None ||
+                            interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Doll)
                         {
                             OnInteraction(interactingUnit);
                         }
@@ -845,7 +920,8 @@ public class InteractableArea : MonoBehaviour
                 case AreaType.BallBin:
                     if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
                     {
-                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
+                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None ||
+                            interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Ball)
                         {
                             OnInteraction(interactingUnit);
                         }
@@ -862,7 +938,8 @@ public class InteractableArea : MonoBehaviour
                 case AreaType.RobotBin:
                     if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
                     {
-                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
+                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None ||
+                            interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Robot)
                         {
                             OnInteraction(interactingUnit);
                         }
@@ -879,7 +956,8 @@ public class InteractableArea : MonoBehaviour
                 case AreaType.BaseballBatBin:
                     if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
                     {
-                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
+                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None ||
+                            interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.BaseballBat)
                         {
                             OnInteraction(interactingUnit);
                         }

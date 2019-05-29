@@ -58,6 +58,9 @@ public class InteractableAreaConstructionSite : MonoBehaviour
 
 
     public GameManager Gm;
+
+    public GameObject[] pipes;
+    public GameObject[] woods;
     public enum AreaType
     {
         None,
@@ -112,6 +115,67 @@ public class InteractableAreaConstructionSite : MonoBehaviour
         //else
         //    isOnCounter = false;
         OnMouseOver();
+        switch(areaType)
+        {
+            case AreaType.PipeRecipticalBin:
+                switch(numberOfPipes)
+                {
+                    case 1:
+                        pipes[0].SetActive(true);
+                        pipes[1].SetActive(false);
+                        pipes[2].SetActive(false);
+                        pipes[3].SetActive(false);
+                        break;
+                    case 2:
+                        pipes[0].SetActive(true);
+                        pipes[1].SetActive(true);
+                        pipes[2].SetActive(false);
+                        pipes[3].SetActive(false);
+                        break;
+                    case 3:
+                        pipes[0].SetActive(true);
+                        pipes[1].SetActive(true);
+                        pipes[2].SetActive(true);
+                        pipes[3].SetActive(false);
+                        break;
+                    case 4:
+                        pipes[0].SetActive(true);
+                        pipes[1].SetActive(true);
+                        pipes[2].SetActive(true);
+                        pipes[3].SetActive(true);
+                        break;
+                }
+                break;
+            case AreaType.WoodRecipticalBin:
+                switch (numberOfBoards)
+                {
+                    case 1:
+                        woods[0].SetActive(true);
+                        woods[1].SetActive(false);
+                        woods[2].SetActive(false);
+                        woods[3].SetActive(false);
+                        break;
+                    case 2:
+                        woods[0].SetActive(true);
+                        woods[1].SetActive(true);
+                        woods[2].SetActive(false);
+                        woods[3].SetActive(false);
+                        break;
+                    case 3:
+                        woods[0].SetActive(true);
+                        woods[1].SetActive(true);
+                        woods[2].SetActive(true);
+                        woods[3].SetActive(false);
+                        break;
+                    case 4:
+                        woods[0].SetActive(true);
+                        woods[1].SetActive(true);
+                        woods[2].SetActive(true);
+                        woods[3].SetActive(true);
+                        break;
+                }
+                break;
+        }
     }
 
 
