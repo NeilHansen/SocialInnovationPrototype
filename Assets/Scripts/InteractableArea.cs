@@ -57,6 +57,7 @@ public class InteractableArea : MonoBehaviour
     private bool hasCompleted = false;
     public GameObject ConsoleCanvas;
     public GameObject CharacterCreator;
+    public GameObject ComputerCanvas;
 
     public TutorialManager tm;
 
@@ -454,7 +455,7 @@ public class InteractableArea : MonoBehaviour
                 }
                 break;
             case AreaType.ComputerDesk:
-                if (!hasCompleted)
+                if (!hasCompleted && !TutorialComplete)
                 {
                     if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Computer)
                     {
@@ -469,7 +470,11 @@ public class InteractableArea : MonoBehaviour
                 }
                 else
                 {
-
+                    if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
+                    {
+                        ComputerCanvas.SetActive(true);
+                        ExitInteraction();
+                    }
                 }
                 break;
             case AreaType.ComputerBox:
@@ -1014,6 +1019,10 @@ public class InteractableArea : MonoBehaviour
                     if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
                     {
                         if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Computer || this.TutorialComplete)
+                        {
+                            OnInteraction(interactingUnit);
+                        }
+                        else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Computer)
                         {
                             OnInteraction(interactingUnit);
                         }
