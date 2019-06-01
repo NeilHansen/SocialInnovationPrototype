@@ -328,7 +328,7 @@ public class Questionaire : MonoBehaviour {
                 if (chosenAnswer == questionList[questionIndex].correctAnswer)
                 {
                     //GameObject question;
-					score += 1;
+					score += 50;
                     if(!isPostGameQuestionnaire)
                     {
                         question = GameObject.Find("Q" + (questionIndex + 1).ToString());
@@ -367,7 +367,7 @@ public class Questionaire : MonoBehaviour {
                 {
                     DisplayResult();
                 }
-				quizScoreText.text = score + "/10";
+				quizScoreText.text =""+score;
             }
         }
 		
@@ -458,7 +458,7 @@ public class Questionaire : MonoBehaviour {
 
 
         DisplayQuestion();
-        resultText.text = score + "/10";
+        resultText.text = ""+ score;
         Time.timeScale = 0;
     }
 

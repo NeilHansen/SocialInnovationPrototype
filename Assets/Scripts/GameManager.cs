@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour {
        // timerTextBG.text = "" + (int)timeValue;
         TimeText.text =""+(int)timeValue;
         
-        satisfactionMeter.maxValue = defautlSatisfactionLevel;
+        //satisfactionMeter.maxValue = defautlSatisfactionLevel;
         //StartNewCustomer();
         //specialCustomerBonusText.SetActive(false);
         scoreText.text = "Score: " + (int)playerScore;
@@ -98,45 +98,45 @@ public class GameManager : MonoBehaviour {
             SaveGameScore();
         }
 
-        if (hasCustomer)
-        {
-            satisfactionMeter.value -= Time.deltaTime * timerMultiplier;
-            if (satisfactionMeter.value > 0.991f)
-            {
-                Fill.color = Colors[0];
-                SatisfactionFace.sprite = Satisfactionemojis[0];
-                //SatisfactionText.color = Colors[0];
+        //if (hasCustomer)
+        //{
+        //    satisfactionMeter.value -= Time.deltaTime * timerMultiplier;
+        //    if (satisfactionMeter.value > 0.991f)
+        //    {
+        //        Fill.color = Colors[0];
+        //        SatisfactionFace.sprite = Satisfactionemojis[0];
+        //        //SatisfactionText.color = Colors[0];
 
-            }
+        //    }
 
-            else if (satisfactionMeter.value > .515f)
-            {
-                Fill.color = Colors[1];
-                SatisfactionFace.sprite = Satisfactionemojis[1];
-                //SatisfactionText.color = Colors[1];
+        //    else if (satisfactionMeter.value > .515f)
+        //    {
+        //        Fill.color = Colors[1];
+        //        SatisfactionFace.sprite = Satisfactionemojis[1];
+        //        //SatisfactionText.color = Colors[1];
 
-            }
+        //    }
 
-            else
-            {
-                Fill.color = Colors[2];
-                SatisfactionFace.sprite = Satisfactionemojis[2];
-                //SatisfactionText.color = Colors[2];
+        //    else
+        //    {
+        //        Fill.color = Colors[2];
+        //        SatisfactionFace.sprite = Satisfactionemojis[2];
+        //        //SatisfactionText.color = Colors[2];
 
-            }
+        //    }
 
-        }
+        //}
 
-        if (isBonusMultiplierOn)
-        {
-            //specialCustomerBonusText.SetActive(true);
-            //specialCustomerBonusMultiplier = 2.0f;
-        }
-        else
-        {
-            //specialCustomerBonusText.SetActive(false);
-            specialCustomerBonusMultiplier = 1.0f;
-        }
+        //if (isBonusMultiplierOn)
+        //{
+        //    //specialCustomerBonusText.SetActive(true);
+        //    //specialCustomerBonusMultiplier = 2.0f;
+        //}
+        //else
+        //{
+        //    //specialCustomerBonusText.SetActive(false);
+        //    specialCustomerBonusMultiplier = 1.0f;
+        //}
 
 
     }
@@ -160,7 +160,7 @@ public class GameManager : MonoBehaviour {
 
     public void StartNewCustomer()
     {
-        satisfactionMeter.value = defautlSatisfactionLevel;
+       // satisfactionMeter.value = defautlSatisfactionLevel;
         hasCustomer = true;
     }
 
@@ -168,24 +168,7 @@ public class GameManager : MonoBehaviour {
     {
         //currentFoodValue = defaultFoodValue * satisfactionMeter.value;
 
-        if (satisfactionMeter.value > 1.04f)
-        {
-            currentFoodValue = 100 * specialCustomerBonusMultiplier;
-            //StartCoroutine(FlashScoreAdded(0));
-        }
-
-        else if (satisfactionMeter.value > .38f)
-        {
-            currentFoodValue = 50 * specialCustomerBonusMultiplier;
-            //StartCoroutine(FlashScoreAdded(1));
-        }
-        else
-        {
-            currentFoodValue = 25 * specialCustomerBonusMultiplier;
-           // StartCoroutine(FlashScoreAdded(2));
-        }
-
-        isBonusMultiplierOn = false;
+        currentFoodValue = 50;
 
         //ScoreAdded.text = "+" + currentFoodValue;
         playerScore += currentFoodValue;

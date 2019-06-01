@@ -87,13 +87,13 @@ public class EndScreen : MonoBehaviour
             int QS = QuizData.score;
             int QuizStarAmount = 0;
 
-            if (QS >= 7)
+            if (QS >= 400)
             {
                 //Gold
                 QuizStarAmount = 3;
             }
 
-            else if (QS >= 4)
+            else if (QS >= 200)
             {
                 //Silver
                 QuizStarAmount = 2;

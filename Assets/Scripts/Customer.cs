@@ -578,7 +578,7 @@ public class Customer : MonoBehaviour
     {
         if (other.gameObject.tag == "CustomerWaitArea")
         {
-            if (gameManager.satisfactionMeter.value == gameManager.satisfactionMeter.minValue && leaveWhenMeterReachZero)
+            if (  leaveWhenMeterReachZero)
                 isMoving = true;
         }
     }
