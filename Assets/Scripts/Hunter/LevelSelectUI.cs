@@ -46,6 +46,10 @@ public class LevelSelectUI : MonoBehaviour {
     [SerializeField]
     GameModeTopScore toysScore;
 
+    public TextMeshProUGUI CooksTOTALSCORE;
+    public TextMeshProUGUI HabitatsTOTALSCORE;
+    public TextMeshProUGUI ToysTOTALSCORE;
+
 
 
     [SerializeField]
@@ -150,7 +154,7 @@ public class LevelSelectUI : MonoBehaviour {
     public void SetCooksScore()
     {
         //GameScore
-        CooksScore.ScoreText.text = "Score: " + data.gameScoreCooks;
+        CooksScore.ScoreText.text = "" + data.gameScoreCooks;
 
         //ScoreStars
         int CookStarAmount = 0;
@@ -184,17 +188,17 @@ public class LevelSelectUI : MonoBehaviour {
 
         //QuizScore
 
-        CooksScore.QuizScore.text = "Quiz: " + data.totalQuizScoreCooks;
+        CooksScore.QuizScore.text = "" + data.totalQuizScoreCooks;
 
         //ScoreStars
         int CookquizStarAmount = 0;
 
-        if (data.totalQuizScoreCooks>=7)
+        if (data.totalQuizScoreCooks>=400)
         {
             CookquizStarAmount = 3;
         }
 
-        else if (data.totalQuizScoreCooks >= 4)
+        else if (data.totalQuizScoreCooks >= 200)
         {
             CookquizStarAmount = 2;
         }
@@ -213,8 +217,8 @@ public class LevelSelectUI : MonoBehaviour {
         {
             CooksScore.StarsQuiz[CQ].sprite = FilledInStar;
         }
-
-
+        float CooksTotal= data.gameScoreCooks + data.totalQuizScoreCooks;
+        CooksTOTALSCORE.text = "" + CooksTotal;
 
 
 
@@ -226,7 +230,7 @@ public class LevelSelectUI : MonoBehaviour {
     public void SetHabitatsScore()
     {
         //GameScore
-       habitatScore.ScoreText.text = "Score: " + data.gameScoreHabitats;
+       habitatScore.ScoreText.text = "" + data.gameScoreHabitats;
 
         //ScoreStars
         int habitatStarAmount = 0;
@@ -260,17 +264,17 @@ public class LevelSelectUI : MonoBehaviour {
 
         //QuizScore
 
-        habitatScore.QuizScore.text = "Quiz: " + data.totalQuizScoreHabitats;
+        habitatScore.QuizScore.text = "" + data.totalQuizScoreHabitats;
 
         //ScoreStars
         int habitatquizStarAmount = 0;
 
-        if (data.totalQuizScoreHabitats >= 7)
+        if (data.totalQuizScoreHabitats >= 400)
         {
             habitatquizStarAmount = 3;
         }
 
-        else if (data.totalQuizScoreHabitats >= 4)
+        else if (data.totalQuizScoreHabitats >= 200)
         {
             habitatquizStarAmount = 2;
         }
@@ -289,7 +293,8 @@ public class LevelSelectUI : MonoBehaviour {
         {
             habitatScore.StarsQuiz[CQ].sprite = FilledInStar;
         }
-
+        float TotalHome = data.totalQuizScoreHabitats + data.gameScoreHabitats;
+        HabitatsTOTALSCORE.text = "" +TotalHome;
 
 
 
@@ -300,7 +305,7 @@ public class LevelSelectUI : MonoBehaviour {
     public void SetToysScore()
     {
         //GameScore
-        toysScore.ScoreText.text = "Score: " + data.gameScoreToys;
+        toysScore.ScoreText.text = "" + data.gameScoreToys;
 
         //ScoreStars
         int toysStarAmount = 0;
@@ -334,18 +339,18 @@ public class LevelSelectUI : MonoBehaviour {
 
         //QuizScore
 
-       toysScore.QuizScore.text = "Quiz: " + data.totalQuizScoreToys;
+       toysScore.QuizScore.text = "" + data.totalQuizScoreToys;
 
         //ScoreStars
         int toysquizStarAmount = 0;
 
-        if (data.totalQuizScoreToys >= 7)
+        if (data.totalQuizScoreToys >= 400)
         {
-            Debug.Log("3Star TOys");
+           
             toysquizStarAmount = 3;
         }
 
-        else if (data.totalQuizScoreToys >= 4)
+        else if (data.totalQuizScoreToys >= 200)
         {
             toysquizStarAmount = 2;
         }
@@ -366,8 +371,8 @@ public class LevelSelectUI : MonoBehaviour {
         }
 
 
-
-
+        float TotalToys= data.gameScoreToys + data.totalQuizScoreToys;
+        ToysTOTALSCORE.text = "" +TotalToys ;
 
 
     }
