@@ -138,7 +138,11 @@ public class GameManagerConstruction : MonoBehaviour {
         HouseAmount++;
         playerScore += 75;
         scoreText.text = "Score:"+playerScore;
-        //SwapHouse();
+        if (HouseAmount < 4)
+        {
+            SwapHouse();
+        }
+        
 
         //HouseUI.AddToHouse(HouseAmount);
         timeValue = timeValue + 15;

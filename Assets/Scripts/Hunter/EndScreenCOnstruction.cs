@@ -36,6 +36,7 @@ public class EndScreenCOnstruction : MonoBehaviour
     TextMeshProUGUI QuizScoreText;
     public Questionaire QuizData;
     public Sprite FilledStar;
+    public TextMeshProUGUI TotalScore;
 
 
 
@@ -82,7 +83,7 @@ public class EndScreenCOnstruction : MonoBehaviour
         {
             Stars[i].sprite = FilledStar;
         }
-        ScoreText.text = "Score:" + GM.playerScore;
+        ScoreText.text = "" + GM.playerScore;
 
         //Quiz Score Stuff
         if (QuizData != null)
@@ -90,13 +91,13 @@ public class EndScreenCOnstruction : MonoBehaviour
             int QS = QuizData.score;
             int QuizStarAmount = 0;
 
-            if (QS >= 7)
+            if (QS >= 400)
             {
                 //Gold
                 QuizStarAmount = 3;
             }
 
-            else if (QS >= 4)
+            else if (QS >= 200)
             {
                 //Silver
                 QuizStarAmount = 2;
@@ -119,7 +120,10 @@ public class EndScreenCOnstruction : MonoBehaviour
                 StarsQuiz[q].sprite = FilledStar;
             }
 
-            QuizScoreText.text = "Quiz:" + QS;
+            QuizScoreText.text = "" + QS;
+            float TS = QS + GM.playerScore;
+            TotalScore.text = "" + Mathf.RoundToInt(TS);
+
         }
 
     }

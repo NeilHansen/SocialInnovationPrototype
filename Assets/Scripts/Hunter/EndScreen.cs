@@ -33,6 +33,7 @@ public class EndScreen : MonoBehaviour
     TextMeshProUGUI QuizScoreText;
     public Questionaire QuizData;
     public Sprite FilledStar;
+    public TextMeshProUGUI TotalScore;
 
 
 
@@ -79,7 +80,7 @@ public class EndScreen : MonoBehaviour
         {
             Stars[i].sprite=FilledStar;
         }
-        ScoreText.text = "Score:" + GM.playerScore;
+        ScoreText.text = "" + GM.playerScore;
 
         //Quiz Score Stuff
         if (QuizData != null)
@@ -116,7 +117,9 @@ public class EndScreen : MonoBehaviour
                 StarsQuiz[q].sprite = FilledStar;
             }
 
-            QuizScoreText.text = "Quiz:" + QS;
+            QuizScoreText.text = "" + QS;
+            float TS = QS + GM.playerScore;
+            TotalScore.text = "" + Mathf.RoundToInt(TS);
         }
 
     }

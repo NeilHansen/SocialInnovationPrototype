@@ -212,6 +212,34 @@ public class GameManager : MonoBehaviour {
         //ScoreAdded.text = "+" + 75;
         playerScore += 75;
         scoreText.text = "Score: " + (int)playerScore;
+        int StarAmount = 3;
+
+        //Debug.Log("EndGameScreen" + GM.playerScore);
+        if (playerScore >= 299)
+        {
+            StarAmount = 3;
+        }
+
+        else if (playerScore >= 200)
+        {
+            StarAmount = 2;
+        }
+
+        else if (playerScore > 0)
+        {
+            StarAmount = 1;
+        }
+
+        else
+        {
+            StarAmount = 0;
+        }
+
+        for (int sf = 0; sf < StarAmount; sf++)
+        {
+            Star[sf].sprite = StarFill;
+        }
+
     }
 
 

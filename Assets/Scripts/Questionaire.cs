@@ -190,7 +190,7 @@ public class Questionaire : MonoBehaviour {
 		answerDText.gameObject.SetActive(false);
         if (!StartedGame)
         {
-            questionText.text = "Your current score is " + score * 100 / 10 + "%";
+            questionText.text = "Your current score is " + score ;
             
             if(sceneName.Contains("Cook"))
             {
@@ -215,7 +215,7 @@ public class Questionaire : MonoBehaviour {
         }
         else
         {
-            questionText.text = "Your final score is " + score * 100 / 10 + "%";
+            questionText.text = "Your final score is " + score ;
 
             if (sceneName.Contains("Cook"))
             {
