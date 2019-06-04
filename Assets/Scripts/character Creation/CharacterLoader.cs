@@ -19,6 +19,11 @@ public class CharacterLoader : MonoBehaviour {
     public GameObject head5;
     public GameObject head6;
     public GameObject head7;
+    public GameObject head8;
+    public GameObject head9;
+    public GameObject head10;
+    public GameObject head11;
+
 
     //player bods
     public GameObject body1;
@@ -44,6 +49,10 @@ public class CharacterLoader : MonoBehaviour {
                 head5.SetActive(false);
                 head6.SetActive(false);
                 head7.SetActive(false);
+                head8.SetActive(false);
+                head9.SetActive(false);
+                head10.SetActive(false);
+                head11.SetActive(false);
                 break;
             case 1:
                 head1.SetActive(false);
@@ -53,6 +62,10 @@ public class CharacterLoader : MonoBehaviour {
                 head5.SetActive(false);
                 head6.SetActive(false);
                 head7.SetActive(false);
+                head8.SetActive(false);
+                head9.SetActive(false);
+                head10.SetActive(false);
+                head11.SetActive(false);
                 break;
             case 2:
                 head1.SetActive(false);
@@ -62,6 +75,10 @@ public class CharacterLoader : MonoBehaviour {
                 head5.SetActive(false);
                 head6.SetActive(false);
                 head7.SetActive(false);
+                head8.SetActive(false);
+                head9.SetActive(false);
+                head10.SetActive(false);
+                head11.SetActive(false);
                 break;
             case 3:
                 head1.SetActive(false);
@@ -71,6 +88,10 @@ public class CharacterLoader : MonoBehaviour {
                 head5.SetActive(false);
                 head6.SetActive(false);
                 head7.SetActive(false);
+                head8.SetActive(false);
+                head9.SetActive(false);
+                head10.SetActive(false);
+                head11.SetActive(false);
                 break;
             case 4:
                 head1.SetActive(false);
@@ -80,6 +101,10 @@ public class CharacterLoader : MonoBehaviour {
                 head5.SetActive(true);
                 head6.SetActive(false);
                 head7.SetActive(false);
+                head8.SetActive(false);
+                head9.SetActive(false);
+                head10.SetActive(false);
+                head11.SetActive(false);
                 break;
             case 5:
                 head1.SetActive(false);
@@ -89,6 +114,10 @@ public class CharacterLoader : MonoBehaviour {
                 head5.SetActive(false);
                 head6.SetActive(true);
                 head7.SetActive(false);
+                head8.SetActive(false);
+                head9.SetActive(false);
+                head10.SetActive(false);
+                head11.SetActive(false);
                 break;
             case 6:
                 head1.SetActive(false);
@@ -98,7 +127,65 @@ public class CharacterLoader : MonoBehaviour {
                 head5.SetActive(false);
                 head6.SetActive(false);
                 head7.SetActive(true);
+                head8.SetActive(false);
+                head9.SetActive(false);
+                head10.SetActive(false);
+                head11.SetActive(false);
                 break;
+            case 7:
+                head1.SetActive(false);
+                head2.SetActive(false);
+                head3.SetActive(false);
+                head4.SetActive(false);
+                head5.SetActive(false);
+                head6.SetActive(false);
+                head7.SetActive(false);
+                head8.SetActive(true);
+                head9.SetActive(false);
+                head10.SetActive(false);
+                head11.SetActive(false);
+                break;
+            case 8:
+                head1.SetActive(false);
+                head2.SetActive(false);
+                head3.SetActive(false);
+                head4.SetActive(false);
+                head5.SetActive(false);
+                head6.SetActive(false);
+                head7.SetActive(false);
+                head8.SetActive(false);
+                head9.SetActive(true);
+                head10.SetActive(false);
+                head11.SetActive(false);
+                break;
+            case 9:
+                head1.SetActive(false);
+                head2.SetActive(false);
+                head3.SetActive(false);
+                head4.SetActive(false);
+                head5.SetActive(false);
+                head6.SetActive(false);
+                head7.SetActive(false);
+                head8.SetActive(false);
+                head9.SetActive(false);
+                head10.SetActive(true);
+                head11.SetActive(false);
+                break;
+            case 10:
+                head1.SetActive(false);
+                head2.SetActive(false);
+                head3.SetActive(false);
+                head4.SetActive(false);
+                head5.SetActive(false);
+                head6.SetActive(false);
+                head7.SetActive(false);
+                head8.SetActive(false);
+                head9.SetActive(false);
+                head10.SetActive(false);
+                head11.SetActive(true);
+                break;
+
+
         }
 
         switch (body)
