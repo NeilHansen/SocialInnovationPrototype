@@ -51,6 +51,13 @@ public class TutorialManager : MonoBehaviour {
             clothes.GetComponent<InteractableArea>().TutorialComplete = false;
             FinishTutorial();
         }
+
+        else if (tutorialProgress != tutorialEnd)
+        {
+            ResetTutorial();
+            StartTutorial();
+            TurnOffControls(true);
+        }
         //else if(tutorialProgress <= tutorialEnd)
         //{
         //    TurnOffControls(false);
