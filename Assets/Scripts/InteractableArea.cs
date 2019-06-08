@@ -722,7 +722,7 @@ public class InteractableArea : MonoBehaviour
                     break;
 
                 case AreaType.CookingArea:
-                    if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete==false)
+                    if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
                     {
                         if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.RawFood && foodServings < 3)
                         {
