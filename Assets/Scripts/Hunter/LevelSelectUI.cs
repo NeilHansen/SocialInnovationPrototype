@@ -76,6 +76,9 @@ public class LevelSelectUI : MonoBehaviour {
     public int quizStarsRequires = 0;
 
 
+    public GameObject[] LearnMoreButtons;
+
+
 
 
 
@@ -149,6 +152,21 @@ public class LevelSelectUI : MonoBehaviour {
     {
         ExitButton.image.sprite = ExitSprites[0];
     }
+
+
+    //Learn More Buttons
+
+    public void LearnMoreHover(int LH)
+    {
+        LearnMoreButtons[LH].GetComponent<Animator>().SetBool("Hover", true);
+    }
+
+    public void LearnMoreUnhover(int UH)
+    {
+        LearnMoreButtons[UH].GetComponent<Animator>().SetBool("Hover", false);
+    }
+
+
 
 
     public void SetCooksScore()
