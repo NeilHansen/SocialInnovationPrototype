@@ -20,7 +20,7 @@ public class ToyDriveGameManager : MonoBehaviour {
     private float currentFoodValue;
     public float playerScore;
     public ToyTruck Truck;
-    public  float PointsPerPackage = 25;
+    public  float PointsPerPackage = 100;
     public int PackageAmount;
     public Sprite StarFill;
     public Image[] Stars;
@@ -86,7 +86,7 @@ public class ToyDriveGameManager : MonoBehaviour {
         }
         TimeRemaining.text =""+(int)timeValue ;
 
-        PackageCounter.text = "packages  " + PackageAmount;
+        //PackageCounter.text = "packages  " + PackageAmount;
 
      
      

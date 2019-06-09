@@ -350,17 +350,31 @@ public class InteractableArea : MonoBehaviour
                     this.gameObject.GetComponent<GiftboxSpawn>().giftboxPrefab.GetComponent<ToyOrders>().ReceiveItem(ToyOrders.ToyList.BaseballBat);
                     Debug.Log("Added Robot!!");
                 }
-                else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
+               
+               if(this.gameObject.GetComponent<GiftboxSpawn>().giftboxPrefab.GetComponent<ToyOrders>().item1Received&&
+                  this.gameObject.GetComponent<GiftboxSpawn>().giftboxPrefab.GetComponent<ToyOrders>().item2Received&&
+                  this.gameObject.GetComponent<GiftboxSpawn>().giftboxPrefab.GetComponent<ToyOrders>().item3Received)
                 {
+                    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
                     interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.GiftBox;
                     //Destroy(this.gameObject.transform.GetChild(2).gameObject);
                     this.gameObject.GetComponent<GiftboxSpawn>().hasBox = false;
-                   // this.gameObject.SetActive(false);
+                    // this.gameObject.SetActive(false);
 
                     this.gameObject.GetComponent<GiftboxSpawn>().giftboxPrefab.SetActive(false);
-
-
                 }
+
+                //else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
+                //{
+                //    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.GiftBox;
+                //    //Destroy(this.gameObject.transform.GetChild(2).gameObject);
+                //    this.gameObject.GetComponent<GiftboxSpawn>().hasBox = false;
+                //   // this.gameObject.SetActive(false);
+
+                //    this.gameObject.GetComponent<GiftboxSpawn>().giftboxPrefab.SetActive(false);
+
+
+                //}
                 break;
 
             case AreaType.Truck:

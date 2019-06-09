@@ -52,7 +52,8 @@ public class CraftingStation : MonoBehaviour {
         //complete check
         if (areaManager.numberOfBoards == 2 && areaManager.numberOfNails == 1)
         {
-            woodCompleteButton.SetActive(true);
+            // woodCompleteButton.SetActive(true);
+            CompleteWood();
         }
 
 
@@ -81,7 +82,8 @@ public class CraftingStation : MonoBehaviour {
         //complete check
         if (areaManager.numberOfPipes == 2 && areaManager.numberOfConnectors == 1)
         {
-            pipeCompleteButton.SetActive(true);
+            //pipeCompleteButton.SetActive(true);
+            CompletePipe();
           
         }
 

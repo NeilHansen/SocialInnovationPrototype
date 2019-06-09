@@ -72,7 +72,7 @@ public class CompleteScreenToys : MonoBehaviour {
         {
             Stars[i].sprite = FilledStar;
         }
-        ScoreText.text = "Score:" + GM.playerScore;
+        ScoreText.text = "" + GM.playerScore;
 
 
 
