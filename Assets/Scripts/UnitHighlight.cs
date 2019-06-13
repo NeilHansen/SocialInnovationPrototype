@@ -259,8 +259,6 @@ public class UnitHighlight : MonoBehaviour {
             rtsMover.ActiveUnit = this.gameObject;
             this.GetComponent<NavMeshAgent>().enabled = true;
             this.GetComponent<NavMeshAgent>().isStopped = false;
-        
-        
     }
 
 

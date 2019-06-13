@@ -453,8 +453,10 @@ public class InteractableArea : MonoBehaviour
                 {
                     if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
                     {
-                    ConsoleCanvas.SetActive(true);
-                    ExitInteraction();
+                        ConsoleCanvas.SetActive(true);
+                        interactingUnit.gameObject.GetComponent<UnitHighlight>().isClicked = false;
+                        rtsMover.ActiveUnit = null;
+                        // ExitInteraction();
                     }
                 }
                 break;
@@ -487,7 +489,9 @@ public class InteractableArea : MonoBehaviour
                     if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
                     {
                         ComputerCanvas.SetActive(true);
-                        ExitInteraction();
+                        interactingUnit.gameObject.GetComponent<UnitHighlight>().isClicked = false;
+                        rtsMover.ActiveUnit = null;
+                        //ExitInteraction();
                     }
                 }
                 break;
@@ -503,20 +507,27 @@ public class InteractableArea : MonoBehaviour
                 }
                 break;
             case AreaType.Closet:
-                if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Clothes)
+                if (!hasCompleted && !TutorialComplete)
                 {
-                    interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
-                    tm.NextTutorialPeice();
-                    TutorialComplete = true;
-                    //this.gameObject.SetActive(false);
-                    Debug.Log("placed clothes!!");
+                    if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Clothes)
+                    {
+                        interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
+                        tm.NextTutorialPeice();
+                        TutorialComplete = true;
+                        hasCompleted = true;
+                        //this.gameObject.SetActive(false);
+                        Debug.Log("placed clothes!!");
+                    }
                 }
                 else
                 {
                     if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
                     {
                         CharacterCreator.SetActive(true);
-                        ExitInteraction();
+                        interactingUnit.gameObject.GetComponent<UnitHighlight>().isClicked = false;
+                        rtsMover.ActiveUnit = null;
+                        // rtsMover.ActiveUnit = null;
+                        // ExitInteraction();
                     }
                 }
                 break;
@@ -1285,6 +1296,7 @@ public class InteractableArea : MonoBehaviour
         if (rtsMover.ActiveUnit == null)
         {
             this.GetComponent<Outline>().OutlineColor = Color.red;
+            this.gameObject.GetComponent<Outline>().enabled = false;
         }
         else
         {
@@ -1293,7 +1305,7 @@ public class InteractableArea : MonoBehaviour
             switch (areaType)
             {
                 case AreaType.None:
-
+                   
                     break;
 
                 case AreaType.PreperationArea:
