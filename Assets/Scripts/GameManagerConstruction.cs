@@ -72,7 +72,7 @@ public class GameManagerConstruction : MonoBehaviour {
         //HouseUI.AddToHouse(playerScore);
         SwapHouse();
 
-        scoreText.text = "Score:" + playerScore;
+        scoreText.text = "SCORE:" + playerScore;
     }
 
     // Update is called once per frame
@@ -137,7 +137,7 @@ public class GameManagerConstruction : MonoBehaviour {
     {
         HouseAmount++;
         playerScore += 75;
-        scoreText.text = "Score:"+playerScore;
+        scoreText.text = "SCORE:"+playerScore;
         if (HouseAmount < 4)
         {
             SwapHouse();

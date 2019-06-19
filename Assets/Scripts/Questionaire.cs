@@ -49,6 +49,8 @@ public class Questionaire : MonoBehaviour {
     public GameObject checkMark;
     public GameObject xMark;
 
+    public string questionaireLocation;
+
     public class Questions
     {
         public string question;
@@ -64,7 +66,7 @@ public class Questionaire : MonoBehaviour {
 
     private void Awake()
     {
-        path = Path.Combine(Application.streamingAssetsPath, "Questionaire Real.txt");
+        path = Path.Combine(Application.streamingAssetsPath, questionaireLocation);
        // Time.timeScale = 0;
     }
 

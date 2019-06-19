@@ -69,7 +69,7 @@ public class ToyDriveGameManager : MonoBehaviour {
         JSONSave = FindObjectOfType<JSONPlayerSaver>();
         satisfactionMeter.maxValue = 1;
 
-        scoreText.text = "Score: " + (int)playerScore;
+        scoreText.text = "SCORE: " + (int)playerScore;
 
 
     }
@@ -164,7 +164,7 @@ public class ToyDriveGameManager : MonoBehaviour {
         playerScore += CurrentScoreValue;
         //Debug.Log("the player score is" + playerScore);
 
-        scoreText.text = "Score: " + (int)playerScore;
+        scoreText.text = "SCORE: " + (int)playerScore;
 
 
         int StarAmount = 3;

@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour {
         //satisfactionMeter.maxValue = defautlSatisfactionLevel;
         //StartNewCustomer();
         //specialCustomerBonusText.SetActive(false);
-        scoreText.text = "Score: " + (int)playerScore;
+        scoreText.text = "SCORE: " + (int)playerScore;
     }
 
 
@@ -172,7 +172,7 @@ public class GameManager : MonoBehaviour {
 
         //ScoreAdded.text = "+" + currentFoodValue;
         playerScore += currentFoodValue;
-        scoreText.text = "Score: " + (int)playerScore;
+        scoreText.text = "SCORE: " + (int)playerScore;
 
 
         int StarAmount = 3;
@@ -211,7 +211,7 @@ public class GameManager : MonoBehaviour {
         //StartCoroutine(FlashScoreAdded(0));
         //ScoreAdded.text = "+" + 75;
         playerScore += 75;
-        scoreText.text = "Score: " + (int)playerScore;
+        scoreText.text = "SCORE: " + (int)playerScore;
         int StarAmount = 3;
 
         //Debug.Log("EndGameScreen" + GM.playerScore);
