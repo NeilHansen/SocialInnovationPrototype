@@ -535,6 +535,16 @@ public class Questionaire : MonoBehaviour {
     {
         //nextButton.image.sprite=NextButtonState[state];
     }
+   
+    //Gets all the scores  of every quiz and add them up;
+    public int GetOverallQuizScore()
+    {
+        PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
+        int BadgeScore;
+        BadgeScore = data.totalQuizScoreCooks+data.totalQuizScoreHabitats+data.totalQuizScoreToys ;
+
+        return(BadgeScore);
+    }
 
 }
 

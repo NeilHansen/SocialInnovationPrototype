@@ -35,6 +35,14 @@ public class EndScreen : MonoBehaviour
     public Sprite FilledStar;
     public TextMeshProUGUI TotalScore;
 
+    
+
+    //BadgeScore Stuff
+    int CumulativeQuizScore;
+    int BadgeRequiredAmount = 1000;
+    public Slider BadgeBar;
+    public TextMeshProUGUI BadgeText;
+
 
 
     // Use this for initialization
@@ -53,6 +61,14 @@ public class EndScreen : MonoBehaviour
 
     public void EndGame()
     {
+
+         CumulativeQuizScore=QuizData.GetOverallQuizScore();
+        //Fill out Badge Progress info
+        BadgeBar.value = (float)CumulativeQuizScore/(float)BadgeRequiredAmount;
+        BadgeText.text =""+CumulativeQuizScore;
+
+
+
         int StarAmount = 3;
         
         //Debug.Log("EndGameScreen" + GM.playerScore);
