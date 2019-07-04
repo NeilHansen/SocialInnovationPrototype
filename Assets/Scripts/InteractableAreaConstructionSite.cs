@@ -61,6 +61,9 @@ public class InteractableAreaConstructionSite : MonoBehaviour
 
     public GameObject[] pipes;
     public GameObject[] woods;
+
+    public Color RightColor = Color.green;
+    public Color WrongColor = Color.red;
     public enum AreaType
     {
         None,
@@ -702,7 +705,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
 
         if (rtsMover.ActiveUnit == null)
         {
-            this.GetComponent<Outline>().OutlineColor = Color.red;
+            this.GetComponent<Outline>().OutlineColor = WrongColor;
             this.gameObject.GetComponent<Outline>().enabled = false;
         }
         else
@@ -717,13 +720,13 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                 case AreaType.TrashCan:
                     if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType != UnitTaskController.TaskType.None&& !isInteracting)
                     {
-                        this.GetComponent<Outline>().OutlineColor = Color.green;
+                        this.GetComponent<Outline>().OutlineColor = RightColor;
                     this.gameObject.GetComponent<Outline>().enabled = true;
                         this.gameObject.GetComponent<Outline>().OutlineWidth = 3;
                     }
                     else
                     {
-                        this.GetComponent<Outline>().OutlineColor = Color.red;
+                        this.GetComponent<Outline>().OutlineColor = WrongColor;
                     this.gameObject.GetComponent<Outline>().enabled = false;
                 }
                     break;
@@ -731,104 +734,104 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                     if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.LargeWood ||
                         rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.LargePipe&& !isInteracting)
                     {
-                        this.GetComponent<Outline>().OutlineColor = Color.green;
+                        this.GetComponent<Outline>().OutlineColor = RightColor;
                     this.gameObject.GetComponent<Outline>().enabled = true;
                         this.gameObject.GetComponent<Outline>().OutlineWidth = 3;
                     }
                     else
                     {
-                        this.GetComponent<Outline>().OutlineColor = Color.red;
+                        this.GetComponent<Outline>().OutlineColor = WrongColor;
                     this.gameObject.GetComponent<Outline>().enabled = false;
                 }
                     break;
                 case AreaType.WoodPile:
                     if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None&& !isInteracting)
                     {
-                        this.GetComponent<Outline>().OutlineColor = Color.green;
+                        this.GetComponent<Outline>().OutlineColor = RightColor;
                     this.gameObject.GetComponent<Outline>().enabled = true;
                         this.gameObject.GetComponent<Outline>().OutlineWidth = 3;
                     }
                     else
                     {
-                        this.GetComponent<Outline>().OutlineColor = Color.red;
+                        this.GetComponent<Outline>().OutlineColor = WrongColor;
                     this.gameObject.GetComponent<Outline>().enabled = false;
                 }
                     break;
                 case AreaType.WoodRecipticalBin:
                     if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None&& !isInteracting)
                     {
-                        this.GetComponent<Outline>().OutlineColor = Color.green;
+                        this.GetComponent<Outline>().OutlineColor = RightColor;
                     this.gameObject.GetComponent<Outline>().enabled = true;
                         this.gameObject.GetComponent<Outline>().OutlineWidth = 3;
                     }
                     else 
                     {
-                        this.GetComponent<Outline>().OutlineColor = Color.red;
+                        this.GetComponent<Outline>().OutlineColor = WrongColor;
                     this.gameObject.GetComponent<Outline>().enabled = false;
                 }
                     break;
                 case AreaType.PipeRecipticalBin:
                     if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None&& !isInteracting)
                     {
-                        this.GetComponent<Outline>().OutlineColor = Color.green;
+                        this.GetComponent<Outline>().OutlineColor = RightColor;
                     this.gameObject.GetComponent<Outline>().enabled = true;
                         this.gameObject.GetComponent<Outline>().OutlineWidth = 3;
                     }
                     else
                     {
-                        this.GetComponent<Outline>().OutlineColor = Color.red;
+                        this.GetComponent<Outline>().OutlineColor = WrongColor;
                     this.gameObject.GetComponent<Outline>().enabled = false;
                 }
                     break;
                 case AreaType.Counter:
                     if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None&& !isInteracting)
                     {
-                        this.GetComponent<Outline>().OutlineColor = Color.green;
+                        this.GetComponent<Outline>().OutlineColor = RightColor;
                     this.gameObject.GetComponent<Outline>().enabled = true;
                         this.gameObject.GetComponent<Outline>().OutlineWidth = 3;
                     }
                     else
                     {
-                        this.GetComponent<Outline>().OutlineColor = Color.red;
+                        this.GetComponent<Outline>().OutlineColor = WrongColor;
                     this.gameObject.GetComponent<Outline>().enabled = false;
                 }
                     break;
                 case AreaType.PipePile:
                     if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None&& !isInteracting)
                     {
-                        this.GetComponent<Outline>().OutlineColor = Color.green;
+                        this.GetComponent<Outline>().OutlineColor = RightColor;
                     this.gameObject.GetComponent<Outline>().enabled = true;
                         this.gameObject.GetComponent<Outline>().OutlineWidth = 3;
                     }
                     else
                     {
-                        this.GetComponent<Outline>().OutlineColor = Color.red;
+                        this.GetComponent<Outline>().OutlineColor = WrongColor;
                     this.gameObject.GetComponent<Outline>().enabled = false;
                 }
                     break;
                 case AreaType.NailsBin:
                     if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None&& !isInteracting)
                     {
-                        this.GetComponent<Outline>().OutlineColor = Color.green;
+                        this.GetComponent<Outline>().OutlineColor = RightColor;
                     this.gameObject.GetComponent<Outline>().enabled = true;
                         this.gameObject.GetComponent<Outline>().OutlineWidth = 3;
                     }
                     else
                     {
-                        this.GetComponent<Outline>().OutlineColor = Color.red;
+                        this.GetComponent<Outline>().OutlineColor = WrongColor;
                     this.gameObject.GetComponent<Outline>().enabled = false;
                 }
                     break;
                 case AreaType.PipeConnector:
                     if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None&& !isInteracting)
                     {
-                        this.GetComponent<Outline>().OutlineColor = Color.green;
+                        this.GetComponent<Outline>().OutlineColor = RightColor;
                     this.gameObject.GetComponent<Outline>().enabled = true;
                         this.gameObject.GetComponent<Outline>().OutlineWidth = 3;
                     }
                     else
                     {
-                        this.GetComponent<Outline>().OutlineColor = Color.red;
+                        this.GetComponent<Outline>().OutlineColor = WrongColor;
                     this.gameObject.GetComponent<Outline>().enabled = false;
                 }
                     break;
@@ -839,13 +842,13 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                         || rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.PipeConnector
                         )
                     {
-                        this.GetComponent<Outline>().OutlineColor = Color.green;
+                        this.GetComponent<Outline>().OutlineColor = RightColor;
                     this.gameObject.GetComponent<Outline>().enabled = true;
                         this.gameObject.GetComponent<Outline>().OutlineWidth = 3;
                     }
                     else
                     {
-                        this.GetComponent<Outline>().OutlineColor = Color.red;
+                        this.GetComponent<Outline>().OutlineColor = WrongColor;
                     this.gameObject.GetComponent<Outline>().enabled = false;
                 }
                     break;
@@ -856,13 +859,13 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                        || rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.ComboPipe
                        || rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.ComboWood)
                     {
-                        this.GetComponent<Outline>().OutlineColor = Color.green;
+                        this.GetComponent<Outline>().OutlineColor = RightColor;
                     this.gameObject.GetComponent<Outline>().enabled = true;
                         this.gameObject.GetComponent<Outline>().OutlineWidth = 3;
                     }
                     else
                     {
-                        this.GetComponent<Outline>().OutlineColor = Color.red;
+                        this.GetComponent<Outline>().OutlineColor = WrongColor;
                     this.gameObject.GetComponent<Outline>().enabled = false;
                 }
                     break;
