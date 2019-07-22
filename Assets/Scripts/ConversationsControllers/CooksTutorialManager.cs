@@ -41,8 +41,8 @@ public class CooksTutorialManager : MonoBehaviour {
 
         UICanvas = GameObject.FindGameObjectWithTag("UI");
 
-        //tutorialProgress = PlayerPrefs.GetInt("tutorialProgress");
-        tutorialProgress = JSONSave.LoadData(JSONSave.dataPath).cooksIntroProgress;
+        tutorialProgress = PlayerPrefs.GetInt("cooksIntroProgress");
+        //tutorialProgress = JSONSave.LoadData(JSONSave.dataPath).cooksIntroProgress;
 
 
 
@@ -93,11 +93,11 @@ public class CooksTutorialManager : MonoBehaviour {
 
     public void ResetTutorial()
     {
-        //PlayerPrefs.SetInt("tutorialProgress", 0);
+        PlayerPrefs.SetInt("cooksIntroProgress", 0);
         //PlayerData data = new PlayerData();
-        PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
-        data.cooksIntroProgress = 0;
-        JSONSave.SaveData(data, JSONSave.dataPath);
+        //PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
+        //data.cooksIntroProgress = 0;
+        //JSONSave.SaveData(data, JSONSave.dataPath);
 
         convoCanvas.GetComponent<CooksConversationManager>().RestartTutorial();
         Debug.Log("ResetTutorial");
@@ -108,10 +108,10 @@ public class CooksTutorialManager : MonoBehaviour {
 
     public void FinishTutorial()
     {
-        //PlayerPrefs.SetInt("tutorialProgress", 4);
-        PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
-        data.cooksIntroProgress = 3;
-        JSONSave.SaveData(data, JSONSave.dataPath);
+        PlayerPrefs.SetInt("cooksIntroProgress", 3);
+        //PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
+        //data.cooksIntroProgress = 3;
+        //JSONSave.SaveData(data, JSONSave.dataPath);
 
         TurnOffControls(false);
        
@@ -164,9 +164,9 @@ public class CooksTutorialManager : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        //tutorialProgress = PlayerPrefs.GetInt("tutorialProgress");
+        tutorialProgress = PlayerPrefs.GetInt("cooksIntroProgress");
        // Debug.Log(tutorialProgress);
-        tutorialProgress = JSONSave.LoadData(JSONSave.dataPath).cooksIntroProgress;
+        //tutorialProgress = JSONSave.LoadData(JSONSave.dataPath).cooksIntroProgress;
 
 
         if (tutorialProgress == 0)

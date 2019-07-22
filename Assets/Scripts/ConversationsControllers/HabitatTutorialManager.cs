@@ -44,8 +44,8 @@ public class HabitatTutorialManager : MonoBehaviour
 
         UICanvas = GameObject.FindGameObjectWithTag("UI");
 
-        //tutorialProgress = PlayerPrefs.GetInt("tutorialProgress");
-        tutorialProgress = JSONSave.LoadData(JSONSave.dataPath).habitatIntroProgress;
+        tutorialProgress = PlayerPrefs.GetInt("habitatIntroProgress");
+        //tutorialProgress = JSONSave.LoadData(JSONSave.dataPath).habitatIntroProgress;
 
         if (tutorialProgress == 0)
         {
@@ -84,11 +84,11 @@ public class HabitatTutorialManager : MonoBehaviour
 
     public void ResetTutorial()
     {
-        //PlayerPrefs.SetInt("tutorialProgress", 0);
+        PlayerPrefs.SetInt("habitatIntroProgress", 0);
         //PlayerData data = new PlayerData();
-        PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
-        data.habitatIntroProgress = 0;
-        JSONSave.SaveData(data, JSONSave.dataPath);
+        //PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
+       // data.habitatIntroProgress = 0;
+        //JSONSave.SaveData(data, JSONSave.dataPath);
 
         convoCanvas.GetComponent<HabitatsConversationManager>().RestartTutorial();
         Debug.Log("ResetTutorial");
@@ -99,10 +99,10 @@ public class HabitatTutorialManager : MonoBehaviour
 
     public void FinishTutorial()
     {
-        //PlayerPrefs.SetInt("tutorialProgress", 4);
-        PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
-        data.habitatIntroProgress = 4;
-        JSONSave.SaveData(data, JSONSave.dataPath);
+        PlayerPrefs.SetInt("habitatIntroProgress", 4);
+        //PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
+        //data.habitatIntroProgress = 4;
+        //JSONSave.SaveData(data, JSONSave.dataPath);
 
         TurnOffControls(false);
 
@@ -161,9 +161,9 @@ public class HabitatTutorialManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //tutorialProgress = PlayerPrefs.GetInt("tutorialProgress");
+        tutorialProgress = PlayerPrefs.GetInt("habitatIntroProgress");
         // Debug.Log(tutorialProgress);
-        tutorialProgress = JSONSave.LoadData(JSONSave.dataPath).habitatIntroProgress;
+       // tutorialProgress = JSONSave.LoadData(JSONSave.dataPath).habitatIntroProgress;
 
 
         if (tutorialProgress == 0)

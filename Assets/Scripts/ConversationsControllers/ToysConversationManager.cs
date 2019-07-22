@@ -67,8 +67,8 @@ public class ToysConversationManager : MonoBehaviour {
 
     public void NextConvoPeice()
     {
-        //int ii = PlayerPrefs.GetInt("tutorialProgress");
-        int ii = JSONSave.LoadData(JSONSave.dataPath).toysIntroProgress;
+        int ii = PlayerPrefs.GetInt("toysIntroProgress");
+        //int ii = JSONSave.LoadData(JSONSave.dataPath).toysIntroProgress;
         if(ii > tm.tutorialEnd)
         {
             Debug.Log("finishedTutorial");
@@ -78,13 +78,13 @@ public class ToysConversationManager : MonoBehaviour {
         {
             this.gameObject.SetActive(false);
             tm.TurnOffControls(false);
-            //PlayerPrefs.SetInt("tutorialProgress", ii+=1);
+            PlayerPrefs.SetInt("toysIntroProgress", ii+=1);
 
-            ii += 1;
-            JSONSave.playerData.toysIntroProgress = ii;
-            PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
-            data.toysIntroProgress = ii;
-            JSONSave.SaveData(data, JSONSave.dataPath);
+          //  ii += 1;
+           // JSONSave.playerData.toysIntroProgress = ii;
+          //  PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
+           // data.toysIntroProgress = ii;
+           // JSONSave.SaveData(data, JSONSave.dataPath);
         }
         else
         {

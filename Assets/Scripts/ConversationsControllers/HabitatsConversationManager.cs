@@ -43,7 +43,8 @@ public class HabitatsConversationManager : MonoBehaviour {
     void Start()
     {
         JSONSave = FindObjectOfType<JSONPlayerSaver>();
-        progress = JSONSave.LoadData(JSONSave.dataPath).habitatIntroProgress;
+        // progress = JSONSave.LoadData(JSONSave.dataPath).habitatIntroProgress;
+        PlayerPrefs.GetInt("habitatIntroProgress");
         if (progress == 0)
         {
             NextConvoPeice();
@@ -72,8 +73,8 @@ public class HabitatsConversationManager : MonoBehaviour {
 
     public void NextConvoPeice()
     {
-        //int ii = PlayerPrefs.GetInt("tutorialProgress");
-        int ii = JSONSave.LoadData(JSONSave.dataPath).habitatIntroProgress;
+        int ii = PlayerPrefs.GetInt("habitatIntroProgress");
+       // int ii = JSONSave.LoadData(JSONSave.dataPath).habitatIntroProgress;
         Debug.Log(ii);
         if(ii > tm.tutorialEnd)
         {
@@ -84,13 +85,13 @@ public class HabitatsConversationManager : MonoBehaviour {
             {
                 this.gameObject.SetActive(false);
                 tm.TurnOffControls(false);
-                //PlayerPrefs.SetInt("tutorialProgress", ii+=1);
+                PlayerPrefs.SetInt("habitatIntroProgress", ii+=1);
 
-                ii += 1;
-                JSONSave.playerData.habitatIntroProgress = ii;
-                PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
-                data.habitatIntroProgress = ii;
-                JSONSave.SaveData(data, JSONSave.dataPath);
+               // ii += 1;
+              //  JSONSave.playerData.habitatIntroProgress = ii;
+               // PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
+               // data.habitatIntroProgress = ii;
+               // JSONSave.SaveData(data, JSONSave.dataPath);
             }
             else
             {

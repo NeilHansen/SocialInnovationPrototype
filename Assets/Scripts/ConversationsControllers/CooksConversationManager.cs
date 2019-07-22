@@ -65,8 +65,8 @@ public class CooksConversationManager : MonoBehaviour {
 
     public void NextConvoPeice()
     {
-        //int ii = PlayerPrefs.GetInt("tutorialProgress");
-        int ii = JSONSave.LoadData(JSONSave.dataPath).cooksIntroProgress;
+        int ii = PlayerPrefs.GetInt("cooksIntroProgress");
+        //int ii = JSONSave.LoadData(JSONSave.dataPath).cooksIntroProgress;
         if(ii > tm.tutorialEnd)
         {
             Debug.Log("finishedTutorial");
@@ -76,13 +76,13 @@ public class CooksConversationManager : MonoBehaviour {
         {
             this.gameObject.SetActive(false);
             tm.TurnOffControls(false);
-            //PlayerPrefs.SetInt("tutorialProgress", ii+=1);
+            PlayerPrefs.SetInt("cooksIntroProgress", ii+=1);
 
-            ii += 1;
-            JSONSave.playerData.cooksIntroProgress = ii;
-            PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
-            data.cooksIntroProgress = ii;
-            JSONSave.SaveData(data, JSONSave.dataPath);
+           // ii += 1;
+           // JSONSave.playerData.cooksIntroProgress = ii;
+           // PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
+           // data.cooksIntroProgress = ii;
+           // JSONSave.SaveData(data, JSONSave.dataPath);
         }
         else
         {
