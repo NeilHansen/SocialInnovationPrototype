@@ -32,14 +32,18 @@ public class CharacterLoader : MonoBehaviour {
     // Use this for initialization
     void Start () {
         JSONSave = FindObjectOfType<JSONPlayerSaver>();
+        head = PlayerPrefs.GetInt("head");
+        body = PlayerPrefs.GetInt("body");
     }
 	
 	// Update is called once per frame
 	void Update () {
-        head = JSONSave.LoadData(JSONSave.dataPath).playerHead;
-        body = JSONSave.LoadData(JSONSave.dataPath).playerBody;
+        // head = JSONSave.LoadData(JSONSave.dataPath).playerHead;
+        // body = JSONSave.LoadData(JSONSave.dataPath).playerBody;.
+        head = PlayerPrefs.GetInt("head");
+        body = PlayerPrefs.GetInt("body");
 
-        switch(head)
+        switch (head)
         {
             case 0:
                 head1.SetActive(true);

@@ -36,8 +36,8 @@ public class TutorialManager : MonoBehaviour {
     void Start () {
         JSONSave = FindObjectOfType<JSONPlayerSaver>();
 
-        //tutorialProgress = PlayerPrefs.GetInt("tutorialProgress");
-        tutorialProgress = JSONSave.LoadData(JSONSave.dataPath).progress;
+        tutorialProgress = PlayerPrefs.GetInt("tutorialProgress");
+        //tutorialProgress = JSONSave.LoadData(JSONSave.dataPath).progress;
 
         if (tutorialProgress == 0)
         {
@@ -94,11 +94,11 @@ public class TutorialManager : MonoBehaviour {
 
     public void ResetTutorial()
     {
-        //PlayerPrefs.SetInt("tutorialProgress", 0);
-        //PlayerData data = new PlayerData();
-        PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
-        data.progress = 0;
-        JSONSave.SaveData(data, JSONSave.dataPath);
+        PlayerPrefs.SetInt("tutorialProgress", 0);
+        PlayerData data = new PlayerData();
+       // PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
+        //data.progress = 0;
+       // JSONSave.SaveData(data, JSONSave.dataPath);
 
         convoCanvas.GetComponent<ConversationManager>().RestartTutorial();
         Debug.Log("ResetTutorial");
@@ -114,10 +114,10 @@ public class TutorialManager : MonoBehaviour {
 
     public void FinishTutorial()
     {
-        //PlayerPrefs.SetInt("tutorialProgress", 4);
-        PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
-        data.progress = 4;
-        JSONSave.SaveData(data, JSONSave.dataPath);
+        PlayerPrefs.SetInt("tutorialProgress", 4);
+       // PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
+       // data.progress = 4;
+       // JSONSave.SaveData(data, JSONSave.dataPath);
 
         TurnOffControls(false);
         //Destroy(compBox);
@@ -145,9 +145,9 @@ public class TutorialManager : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        //tutorialProgress = PlayerPrefs.GetInt("tutorialProgress");
+        tutorialProgress = PlayerPrefs.GetInt("tutorialProgress");
       //  Debug.Log(tutorialProgress);
-        tutorialProgress = JSONSave.LoadData(JSONSave.dataPath).progress;
+      //  tutorialProgress = JSONSave.LoadData(JSONSave.dataPath).progress;
 
 
         if (tutorialProgress == 0)
