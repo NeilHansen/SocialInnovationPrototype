@@ -26,10 +26,12 @@ public class CharacterSaver : MonoBehaviour {
 
     public void SaveCharacter()
     {
-        
-        PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
-        data.playerHead = head;
-        data.playerBody = body;
-        JSONSave.SaveData(data, JSONSave.dataPath);
+
+        // PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
+        // data.playerHead = head;
+        // data.playerBody = body;
+        //  JSONSave.SaveData(data, JSONSave.dataPath);
+        PlayerPrefs.SetInt("head", head);
+        PlayerPrefs.SetInt("body", body);
     }
 }
