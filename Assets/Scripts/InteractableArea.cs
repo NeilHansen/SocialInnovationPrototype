@@ -6,13 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class InteractableArea : MonoBehaviour
 {
-
+    [HideInInspector]
+    public AudioManager AM;
     public float timer = 0;
     public float startTime = 4;
     public bool isInteracting;
     public bool isComplete;
     public AreaType areaType;
     public int foodServings;
+    string SoundName;
 
     private GameObject interactingUnit;
     private Customer[] customers;
@@ -102,6 +104,9 @@ public class InteractableArea : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        //Sets Audio Manager
+        AM=FindObjectOfType<AudioManager>();
+
         rtsMover = Camera.main.GetComponent<RtsMover>();
         Gm = GameObject.FindObjectOfType<GameManager>();
         counterSpace = gameObject.GetComponent<CounterSpace>();
@@ -282,6 +287,8 @@ public class InteractableArea : MonoBehaviour
 
             case AreaType.PreperationArea:
                 interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.RawFood;
+                AM.StopSound("chop");
+              
                 break;
 
             case AreaType.CookingArea:
@@ -291,23 +298,29 @@ public class InteractableArea : MonoBehaviour
                     interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
                     Debug.Log("Added Food!!");
                     foodServings += 1;
+                    AM.StopSound("cook");
+
 
                 }
                 else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.CleanPlate)
                 {
                     interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.CookedFood;
                     foodServings -= 1;
+                    AM.PlaySound("pour");
                 }
+                
                 break;
 
             case AreaType.SinkArea:
                 interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.CleanPlate;
+                AM.StopSound("dishes");
                 break;
 
             case AreaType.ServingArea:
                 Gm.AddScore();
                 Gm.StartNewCustomer();
                 interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
+                AM.PlaySound("serve");
                 foreach (Customer c in customers)
                 {
                     c.isMoving = true;
@@ -316,10 +329,12 @@ public class InteractableArea : MonoBehaviour
 
             case AreaType.DirtyDishReturn:
                 interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.DirtyPlate;
+                AM.PlaySound("dirty");
                 break;
 
             case AreaType.TrashCan:
                 interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
+                AM.StopSound("garbage");
                 break;
 
             case AreaType.GiftBox:
@@ -738,6 +753,9 @@ public class InteractableArea : MonoBehaviour
                         if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
                         {
                             OnInteraction(interactingUnit);
+                            //Sound
+                            AM.PlaySound("chop");
+                            SoundName = "chop";
                         }
                         else
                         {
@@ -746,6 +764,8 @@ public class InteractableArea : MonoBehaviour
                                 NegativeFeedback(other);
                             }
                         }
+                        
+                        
                     }
                     break;
 
@@ -755,9 +775,13 @@ public class InteractableArea : MonoBehaviour
                         if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.RawFood && foodServings < 3)
                         {
                             OnInteraction(interactingUnit);
+
+                            AM.PlaySound("cook");
+                            SoundName = "cook";
                         }
                         else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.CleanPlate && foodServings > 0)
                         {
+
                             OnInteraction(interactingUnit);
                         }
                         else
@@ -779,6 +803,8 @@ public class InteractableArea : MonoBehaviour
                             //isInteracting = true;
                             //interactingUnit.gameObject.GetComponent<UnitHighlight>().isInteracting = true;
                             //interactingUnit.gameObject.GetComponent<UnitTaskController>().isInteracting = true;
+                            AM.PlaySound("dishes");
+                            SoundName = "dishes";
                         }
                         else
                         {
@@ -834,6 +860,8 @@ public class InteractableArea : MonoBehaviour
                         {
                             OnInteraction(interactingUnit);
                             interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
+                            AM.PlaySound("garbage");
+                            SoundName = "garbage";
                         }
                         else
                         {
@@ -854,6 +882,7 @@ public class InteractableArea : MonoBehaviour
                         if (isOnCounter || objectPlayerHolding != UnitTaskController.ObjectHeld.None)
                         {
                             OnInteraction(interactingUnit);
+                            AM.PlaySound("counter");
                         }
                     }
                     break;
@@ -1176,6 +1205,7 @@ public class InteractableArea : MonoBehaviour
             isComplete = false;
             interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete = false;
             UnitToMoveTo = null;
+            AM.StopSound(SoundName);
             if (other.GetComponentInChildren<PlayerUI>())
             {
                 other.GetComponentInChildren<PlayerUI>().TurnOffUI();
