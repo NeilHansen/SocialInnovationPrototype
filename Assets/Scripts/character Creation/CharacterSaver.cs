@@ -7,14 +7,14 @@ public class CharacterSaver : MonoBehaviour {
     public GameObject headPanel;
     public GameObject bodyPanel;
 
-    private JSONPlayerSaver JSONSave;
+    //private JSONPlayerSaver JSONSave;
 
     public int head;
     public int body;
 
     // Use this for initialization
     void Start () {
-        JSONSave = FindObjectOfType<JSONPlayerSaver>();
+       // JSONSave = FindObjectOfType<JSONPlayerSaver>();
 
     }
 	

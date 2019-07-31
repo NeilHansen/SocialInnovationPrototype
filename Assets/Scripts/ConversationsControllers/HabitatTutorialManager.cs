@@ -18,7 +18,7 @@ public class HabitatTutorialManager : MonoBehaviour
     private bool doOnce1 = false;
     private bool doOnce2 = false;
 
-    private JSONPlayerSaver JSONSave;
+ //   private JSONPlayerSaver JSONSave;
 
 
     private GameManagerConstruction gm;
@@ -38,7 +38,7 @@ public class HabitatTutorialManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        JSONSave = FindObjectOfType<JSONPlayerSaver>();
+       // JSONSave = FindObjectOfType<JSONPlayerSaver>();
 
         gm = FindObjectOfType<GameManagerConstruction>();
 

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Questionaire : MonoBehaviour {
-
+  
     public Text questionText;
     public Text answerAText;
     public Text answerBText;
@@ -44,12 +44,13 @@ public class Questionaire : MonoBehaviour {
     Sprite[] NextButtonState;
 
 
-    JSONPlayerSaver JSONSave;
+   // JSONPlayerSaver JSONSave;
     public bool isPostGameQuestionnaire;
     public GameObject checkMark;
     public GameObject xMark;
 
     public string questionaireLocation;
+    public Text QuestionsforQuiz;
 
     public class Questions
     {
@@ -98,6 +99,48 @@ public class Questionaire : MonoBehaviour {
             {
                 Questions q = new Questions(questionTemp, answersTemp);
 				q.correctAnswer = answersTemp[0];
+                questionList.Add(q);
+                index = 0;
+                answersTemp = new List<string>();
+            }
+        }
+
+        inp_stm.Close();
+    }
+
+    void ReadFromTextField (string file_path)
+    {
+      
+        StringReader inp_stm = new StringReader(file_path);
+
+        questionList = new List<Questions>();
+
+        int index = 0;
+        List<string> answersTemp = new List<string>();
+        string questionTemp = null;
+
+        while (true)
+        {
+            string inp_ln = inp_stm.ReadLine();
+            if(inp_ln== null)
+            {
+                break;
+            }
+            string sub = inp_ln.Substring(6, inp_ln.Length - 7);
+
+            if (index == 0)
+            {
+                questionTemp = sub;
+            }
+            else
+            {
+                answersTemp.Add(sub);
+            }
+            index++;
+            if (index == 5)
+            {
+                Questions q = new Questions(questionTemp, answersTemp);
+                q.correctAnswer = answersTemp[0];
                 questionList.Add(q);
                 index = 0;
                 answersTemp = new List<string>();
@@ -178,7 +221,10 @@ public class Questionaire : MonoBehaviour {
 
     void DisplayResult()
 	{
-        PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
+       // PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
+        int postQuizScoreCooks = PlayerPrefs.GetInt("postQuizScoreCooks");
+        int postQuizScoreHabitats = PlayerPrefs.GetInt("postQuizScoreHabitats");
+        int postQuizScoreToys = PlayerPrefs.GetInt("postQuizScoreToys");
         string sceneName = SceneManager.GetActiveScene().name;
 
        // Debug.Log("DisplayResults");
@@ -222,18 +268,26 @@ public class Questionaire : MonoBehaviour {
             if (sceneName.Contains("Cook"))
             {
                 
-                data.postQuizScoreCooks = score;
+              // data.postQuizScoreCooks = score;
+                PlayerPrefs.SetInt("postQuizScoreCooks", score);
                 //Debug.Log("post quiz score is" + data.postQuizScoreCooks);
             }
             else if (sceneName.Contains("Habitat"))
             {
-                if (score > data.postQuizScoreHabitats)
-                    data.postQuizScoreHabitats = score;
+                if (score > postQuizScoreHabitats)
+                {
+                   // data.postQuizScoreHabitats = score;
+                    PlayerPrefs.SetInt("postQuizScoreHabitats", score);
+                }
             }
             else if (sceneName.Contains("Toy"))
             {
-                if (score > data.postQuizScoreToys)
-                    data.postQuizScoreToys = score;
+                if (score > postQuizScoreToys)
+                {
+                   // data.postQuizScoreToys = score;
+                    PlayerPrefs.SetInt("postQuizScoreToys", score);
+                }
+                
             }
             else
             {
@@ -245,23 +299,26 @@ public class Questionaire : MonoBehaviour {
         //THIS IS THE ISSUE
         if (sceneName.Contains("Cook"))
         {
-            data.totalQuizScoreCooks = data.preQuizScoreCooks + data.postQuizScoreCooks;
-          //  Debug.Log("Total quiz score is" + data.totalQuizScoreCooks);
+            // data.totalQuizScoreCooks = data.preQuizScoreCooks + data.postQuizScoreCooks;
+            PlayerPrefs.SetInt("totalQuizScoreCooks", postQuizScoreHabitats);
+            //  Debug.Log("Total quiz score is" + data.totalQuizScoreCooks);
         }
         else if (sceneName.Contains("Habitat"))
         {
-            data.totalQuizScoreHabitats = data.preQuizScoreHabitats + data.postQuizScoreHabitats;
+           // data.totalQuizScoreHabitats = data.preQuizScoreHabitats + data.postQuizScoreHabitats;
+            PlayerPrefs.SetInt("totalQuizScoreHabitats",  postQuizScoreHabitats);
         }
         else if (sceneName.Contains("Toy"))
         {
-            data.totalQuizScoreToys = data.preQuizScoreToys + data.postQuizScoreToys;
+            // data.totalQuizScoreToys = data.preQuizScoreToys + data.postQuizScoreToys;
+            PlayerPrefs.SetInt("totalQuizScoreToys", postQuizScoreHabitats);
         }
         else
         {
             //Debug.Log("Error cant find scene name to save total quiz score");
         }
 
-        JSONSave.SaveData(data, JSONSave.dataPath);
+        //JSONSave.SaveData(data, JSONSave.dataPath);
     }
 
     void NextQuestion()
@@ -380,10 +437,10 @@ public class Questionaire : MonoBehaviour {
 	void Start()
     {
 
-        JSONSave = FindObjectOfType<JSONPlayerSaver>();
+       // JSONSave = FindObjectOfType<JSONPlayerSaver>();
 
-        ReadTextFile(path);
-
+        // ReadTextFile(path);
+        ReadFromTextField(QuestionsforQuiz.text);
         ShuffleQuestionaire();
         foreach (Questions q in questionList)
         {
@@ -539,9 +596,9 @@ public class Questionaire : MonoBehaviour {
     //Gets all the scores  of every quiz and add them up;
     public int GetOverallQuizScore()
     {
-        PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
+        //PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
         int BadgeScore;
-        BadgeScore = data.totalQuizScoreCooks+data.totalQuizScoreHabitats+data.totalQuizScoreToys ;
+        BadgeScore = PlayerPrefs.GetInt("totalQuizScoreCooks")+ PlayerPrefs.GetInt("totalQuizScoreHabitats") + PlayerPrefs.GetInt("totalQuizScoreToys");
 
         return(BadgeScore);
     }

@@ -62,11 +62,11 @@ public class GameManagerConstruction : MonoBehaviour {
 
     public float timerMultiplier = 0.1f;
 
-    private JSONPlayerSaver JSONSave;
+   // private JSONPlayerSaver JSONSave;
 
     // Use this for initialization
     void Start() {
-        JSONSave = FindObjectOfType<JSONPlayerSaver>();
+       // JSONSave = FindObjectOfType<JSONPlayerSaver>();
        
         timeValue = MaxTime;
         //HouseUI.AddToHouse(playerScore);
@@ -101,12 +101,14 @@ public class GameManagerConstruction : MonoBehaviour {
 
     void SaveGameScore()
     {
-        JSONSave = FindObjectOfType<JSONPlayerSaver>();
-        PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
-        if (playerScore > data.gameScoreHabitats)
+        // JSONSave = FindObjectOfType<JSONPlayerSaver>();
+        // PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
+        int gameScoreHabitats = PlayerPrefs.GetInt("gameScoreHabitats");
+        if (playerScore > gameScoreHabitats)
         {
-            data.gameScoreHabitats = (int)playerScore;
-            JSONSave.SaveData(data, JSONSave.dataPath);
+            gameScoreHabitats = (int)playerScore;
+            PlayerPrefs.SetInt("gameScoreHabitats", gameScoreHabitats);
+            //  JSONSave.SaveData(data, JSONSave.dataPath);
         }
     }
 
@@ -274,7 +276,8 @@ public class GameManagerConstruction : MonoBehaviour {
 
     public void GoToQuiz()
     {
-        progress = JSONSave.LoadData(JSONSave.dataPath).habitatIntroProgress;
+        //progress = JSONSave.LoadData(JSONSave.dataPath).habitatIntroProgress;
+        progress = PlayerPrefs.GetInt("habitatIntroProgress");
         if (progress == 4)
         {
             EndingScreen.GetComponent<Questionaire>().gameScoreText.text = playerScore.ToString();

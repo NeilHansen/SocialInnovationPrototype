@@ -35,14 +35,14 @@ public class HabitatsConversationManager : MonoBehaviour {
     public Sprite[] NextStates;
     public Button NextButton;
 
-    private JSONPlayerSaver JSONSave;
+ //   private JSONPlayerSaver JSONSave;
 
     private int progress;
 
     // Use this for initialization
     void Start()
     {
-        JSONSave = FindObjectOfType<JSONPlayerSaver>();
+      //  JSONSave = FindObjectOfType<JSONPlayerSaver>();
         // progress = JSONSave.LoadData(JSONSave.dataPath).habitatIntroProgress;
         PlayerPrefs.GetInt("habitatIntroProgress");
         if (progress == 0)

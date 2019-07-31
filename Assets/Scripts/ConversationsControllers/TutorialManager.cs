@@ -24,7 +24,7 @@ public class TutorialManager : MonoBehaviour {
     public GameObject ConsolePanel;
 
 
-    private JSONPlayerSaver JSONSave;
+ //   private JSONPlayerSaver JSONSave;
 
 
     private void Awake()
@@ -34,7 +34,7 @@ public class TutorialManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        JSONSave = FindObjectOfType<JSONPlayerSaver>();
+    //    JSONSave = FindObjectOfType<JSONPlayerSaver>();
 
         tutorialProgress = PlayerPrefs.GetInt("tutorialProgress");
         //tutorialProgress = JSONSave.LoadData(JSONSave.dataPath).progress;
@@ -95,7 +95,7 @@ public class TutorialManager : MonoBehaviour {
     public void ResetTutorial()
     {
         PlayerPrefs.SetInt("tutorialProgress", 0);
-        PlayerData data = new PlayerData();
+       // PlayerData data = new PlayerData();
        // PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
         //data.progress = 0;
        // JSONSave.SaveData(data, JSONSave.dataPath);

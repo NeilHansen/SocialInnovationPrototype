@@ -18,7 +18,7 @@ public class ToysTutorialManager : MonoBehaviour
     private bool doOnce1 = false;
     private bool doOnce2 = false;
 
-    private JSONPlayerSaver JSONSave;
+ //   private JSONPlayerSaver JSONSave;
 
 
     private ToyDriveGameManager gm;
@@ -37,7 +37,7 @@ public class ToysTutorialManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        JSONSave = FindObjectOfType<JSONPlayerSaver>();
+      //  JSONSave = FindObjectOfType<JSONPlayerSaver>();
 
         gm = FindObjectOfType<ToyDriveGameManager>();
 

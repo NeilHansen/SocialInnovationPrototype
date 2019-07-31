@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour {
     public bool isBonusMultiplierOn = false;
 
 
-    private JSONPlayerSaver JSONSave;
+  //  private JSONPlayerSaver JSONSave;
 
     // Use this for initialization
     void Start() {
@@ -143,12 +143,14 @@ public class GameManager : MonoBehaviour {
 
     void SaveGameScore()
     {
-        JSONSave = FindObjectOfType<JSONPlayerSaver>();
-        PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
-        if (playerScore > data.gameScoreCooks)
+        //  JSONSave = FindObjectOfType<JSONPlayerSaver>();
+        //PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
+         int gameScoreCooks =  PlayerPrefs.GetInt("gameScoreCooks");
+        if (playerScore > gameScoreCooks)
         {
-            data.gameScoreCooks = (int)playerScore;
-            JSONSave.SaveData(data, JSONSave.dataPath);
+            gameScoreCooks = (int)playerScore;
+            PlayerPrefs.SetInt("gameScoreCooks", gameScoreCooks) ;
+            //JSONSave.SaveData(data, JSONSave.dataPath);
            
         }
     }
@@ -264,7 +266,8 @@ public class GameManager : MonoBehaviour {
 
     public void GoToQuiz()
     {
-        int progress = JSONSave.LoadData(JSONSave.dataPath).cooksIntroProgress;
+        //int progress = JSONSave.LoadData(JSONSave.dataPath).cooksIntroProgress;
+        int progress = PlayerPrefs.GetInt("cooksIntroProgress");
         if (progress != 0)
         {
             EndingScreen.GetComponent<Questionaire>().gameScoreText.text = playerScore.ToString();

@@ -23,13 +23,14 @@ public class CompleteScreenHabitats : MonoBehaviour {
     public GameObject convoCanvas;
     public GameObject scoreScreen;
 
-    private JSONPlayerSaver JSONSave;
+//    private JSONPlayerSaver JSONSave;
     private int progress;
     // Use this for initialization
     void Start () {
         TM = FindObjectOfType<HabitatTutorialManager>();
-        JSONSave = FindObjectOfType<JSONPlayerSaver>();
-        progress = JSONSave.LoadData(JSONSave.dataPath).habitatIntroProgress;
+    //    JSONSave = FindObjectOfType<JSONPlayerSaver>();
+        progress = PlayerPrefs.GetInt("habitatIntroProgress");
+        
     }
 	
 	// Update is called once per frame

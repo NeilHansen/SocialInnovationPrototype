@@ -6,7 +6,7 @@ public class CharacterLoader : MonoBehaviour {
 
 
 
-    private JSONPlayerSaver JSONSave;
+   // private JSONPlayerSaver JSONSave;
 
     public int head;
     public int body;
@@ -31,7 +31,7 @@ public class CharacterLoader : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        JSONSave = FindObjectOfType<JSONPlayerSaver>();
+       // JSONSave = FindObjectOfType<JSONPlayerSaver>();
         head = PlayerPrefs.GetInt("head");
         body = PlayerPrefs.GetInt("body");
     }

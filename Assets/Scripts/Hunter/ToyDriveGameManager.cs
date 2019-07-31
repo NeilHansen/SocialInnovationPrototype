@@ -60,13 +60,13 @@ public class ToyDriveGameManager : MonoBehaviour {
     public TextMeshProUGUI PackageCounter;
 
 
-    private JSONPlayerSaver JSONSave;
+ //   private JSONPlayerSaver JSONSave;
 
     // Use this for initialization
     void Start()
     {
 
-        JSONSave = FindObjectOfType<JSONPlayerSaver>();
+      //  JSONSave = FindObjectOfType<JSONPlayerSaver>();
         satisfactionMeter.maxValue = 1;
 
         scoreText.text = "SCORE: " + (int)playerScore;
@@ -108,12 +108,14 @@ public class ToyDriveGameManager : MonoBehaviour {
 
     void SaveGameScore()
     {
-        JSONSave = FindObjectOfType<JSONPlayerSaver>();
-        PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
-        if (playerScore > data.gameScoreToys)
+        //  JSONSave = FindObjectOfType<JSONPlayerSaver>();
+        //   PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
+        int gameScoreToys = PlayerPrefs.GetInt("gameScoreToys");
+        if (playerScore > gameScoreToys)
         {
-            data.gameScoreToys = (int)playerScore;
-            JSONSave.SaveData(data, JSONSave.dataPath);
+            gameScoreToys = (int)playerScore;
+            PlayerPrefs.SetInt("gameScoreToys", gameScoreToys);
+            //JSONSave.SaveData(data, JSONSave.dataPath);
         }
     }
 
@@ -260,7 +262,8 @@ public class ToyDriveGameManager : MonoBehaviour {
 
     public void GoToQuiz()
     {
-        int progress = JSONSave.LoadData(JSONSave.dataPath).toysIntroProgress;
+        // int progress = JSONSave.LoadData(JSONSave.dataPath).toysIntroProgress;
+        int progress = PlayerPrefs.GetInt("toysIntroProgress");
         if (progress == 4)
         {
             EndingScreen.GetComponent<Questionaire>().gameScoreText.text = playerScore.ToString();

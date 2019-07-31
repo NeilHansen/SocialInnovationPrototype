@@ -23,15 +23,15 @@ public class CompleteGameCooks : MonoBehaviour {
     public GameObject scoreScreen;
 
 
-    private JSONPlayerSaver JSONSave;
+  //  private JSONPlayerSaver JSONSave;
 
     private int progress;
 
     // Use this for initialization
     void Start()
     {
-        JSONSave = FindObjectOfType<JSONPlayerSaver>();
-        progress = JSONSave.LoadData(JSONSave.dataPath).cooksIntroProgress;
+      //  JSONSave = FindObjectOfType<JSONPlayerSaver>();
+        progress = PlayerPrefs.GetInt("cooksIntroProgress");
         
     }
 

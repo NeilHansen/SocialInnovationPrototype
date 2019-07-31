@@ -61,7 +61,7 @@ public class LevelSelectUI : MonoBehaviour {
    [SerializeField]
     GameModeButtons MenuObjects;
 
-    JSONPlayerSaver JSON;
+   // JSONPlayerSaver JSON;
 
     PlayerData data;
 
@@ -85,9 +85,9 @@ public class LevelSelectUI : MonoBehaviour {
     // Use this for initialization
     void Start () {
         //Load Player Data
-        JSON= FindObjectOfType<JSONPlayerSaver>();
+     //   JSON= FindObjectOfType<JSONPlayerSaver>();
 
-        data = JSON.LoadData(JSON.dataPath);
+      //  data = JSON.LoadData(JSON.dataPath);
 
         
 

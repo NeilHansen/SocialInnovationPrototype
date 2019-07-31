@@ -5,6 +5,7 @@ using System.IO;
 
 public class JSONPlayerSaver : MonoBehaviour {
 
+
     public PlayerData playerData;
     public string dataPath;
 

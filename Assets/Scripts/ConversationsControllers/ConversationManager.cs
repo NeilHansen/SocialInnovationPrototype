@@ -35,12 +35,12 @@ public class ConversationManager : MonoBehaviour {
     public Sprite[] NextStates;
     public Button NextButton;
 
-    private JSONPlayerSaver JSONSave;
+    //private JSONPlayerSaver JSONSave;
 
     // Use this for initialization
     void Start()
     {
-        JSONSave = FindObjectOfType<JSONPlayerSaver>();
+        //JSONSave = FindObjectOfType<JSONPlayerSaver>();
         NextConvoPeice();
 
     
