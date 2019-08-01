@@ -33,7 +33,9 @@ public class CraftingStation : MonoBehaviour {
             woodImage.SetActive(true);
             plusImage.SetActive(true);
             requiredText.SetActive(true);
+            connectorImage.SetActive(true);
             woodImage.GetComponent<Image>().sprite = images[0];
+            connectorImage.GetComponent<Image>().sprite = images[2];
             if (areaManager.numberOfBoards == 2)
             {
                 requiredText.SetActive(false);
@@ -43,11 +45,16 @@ public class CraftingStation : MonoBehaviour {
         {
             connectorImage.SetActive(true);
             connectorImage.GetComponent<Image>().sprite = images[2];
+            plusImage.SetActive(true);
+            woodImage.SetActive(true);
+            woodImage.GetComponent<Image>().sprite = images[0];
+            requiredText.SetActive(true);
             if (areaManager.numberOfBoards == 0)
             {
                 plusImage.SetActive(true);
             }
         }
+  
 
         //complete check
         if (areaManager.numberOfBoards == 2 && areaManager.numberOfNails == 1)
@@ -64,6 +71,8 @@ public class CraftingStation : MonoBehaviour {
             plusImage.SetActive(true);
             requiredText.SetActive(true);
             woodImage.GetComponent<Image>().sprite = images[1];
+            connectorImage.SetActive(true);
+            connectorImage.GetComponent<Image>().sprite = images[3];
             if (areaManager.numberOfPipes == 2)
             {
                 requiredText.SetActive(false);
@@ -71,6 +80,10 @@ public class CraftingStation : MonoBehaviour {
         }
         if (areaManager.numberOfConnectors >= 1 && areaManager.numberOfPipes >= 0)
         {
+            woodImage.SetActive(true);
+            plusImage.SetActive(true);
+            requiredText.SetActive(true);
+            woodImage.GetComponent<Image>().sprite = images[1];
             connectorImage.SetActive(true);
             connectorImage.GetComponent<Image>().sprite = images[3];
             if (areaManager.numberOfPipes == 0)

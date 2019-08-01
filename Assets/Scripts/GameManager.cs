@@ -245,7 +245,10 @@ public class GameManager : MonoBehaviour {
     }
 
 
-
+    public void ClickingSound()
+    {
+        FindObjectOfType<AudioManager>().PlaySound("click");
+    }
 
 
 

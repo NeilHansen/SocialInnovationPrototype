@@ -338,8 +338,8 @@ public class InteractableArea : MonoBehaviour
                 break;
 
             case AreaType.GiftBox:
-             
-                
+
+                AM.PlaySound("gift");
                 if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Doll)
                 {
                     interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
@@ -396,6 +396,7 @@ public class InteractableArea : MonoBehaviour
                 break;
 
             case AreaType.Truck:
+                AM.PlaySound("truck");
                 interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
                 //Add Score to truck
                 GetComponent<ToyTruck>().AddPackage();
@@ -413,6 +414,7 @@ public class InteractableArea : MonoBehaviour
                 }
                 break;
             case AreaType.DollBin:
+                AM.PlaySound("toy");
                 if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Doll)
                 {
                     interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
@@ -423,6 +425,7 @@ public class InteractableArea : MonoBehaviour
                 }
                 break;
             case AreaType.BallBin:
+                AM.PlaySound("toy");
                 if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Ball)
                 {
                     interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
@@ -433,6 +436,7 @@ public class InteractableArea : MonoBehaviour
                 }
                 break;
             case AreaType.RobotBin:
+                AM.PlaySound("toy");
                 if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Robot)
                 {
                     interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
@@ -443,6 +447,7 @@ public class InteractableArea : MonoBehaviour
                 }
                 break;
             case AreaType.BaseballBatBin:
+                AM.PlaySound("toy");
                 if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.BaseballBat)
                 {
                     interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
@@ -465,6 +470,7 @@ public class InteractableArea : MonoBehaviour
                         TutorialComplete = true;
                         tm.NextTutorialPeice();
                         ExitInteraction();
+                        AM.PlaySound("box");
                     }
                 }
                 else 
@@ -474,6 +480,7 @@ public class InteractableArea : MonoBehaviour
                         ConsoleCanvas.SetActive(true);
                         interactingUnit.gameObject.GetComponent<UnitHighlight>().isClicked = false;
                         rtsMover.ActiveUnit = null;
+                        AM.PlaySound("game");
                         // ExitInteraction();
                     }
                 }
@@ -481,6 +488,7 @@ public class InteractableArea : MonoBehaviour
             case AreaType.TvBox:
                 if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None )
                 {
+                    AM.PlaySound("grab");
                     interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.Console;
                     //Destroy(this.gameObject);
                     ExitInteraction();
@@ -493,6 +501,7 @@ public class InteractableArea : MonoBehaviour
                 {
                     if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Computer)
                     {
+                        AM.PlaySound("box");
                         interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
                         objectToplace.SetActive(true);
                         hasCompleted = true;
@@ -506,6 +515,7 @@ public class InteractableArea : MonoBehaviour
                 {
                     if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
                     {
+                        AM.PlaySound("computer");
                         ComputerCanvas.SetActive(true);
                         interactingUnit.gameObject.GetComponent<UnitHighlight>().isClicked = false;
                         rtsMover.ActiveUnit = null;
@@ -516,6 +526,7 @@ public class InteractableArea : MonoBehaviour
             case AreaType.ComputerBox:
                 if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None )
                 {
+                    AM.PlaySound("grab");
                     interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.Computer;
                        this.gameObject.SetActive(false);
                     ExitInteraction();
@@ -529,10 +540,12 @@ public class InteractableArea : MonoBehaviour
                 {
                     if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Clothes)
                     {
+                       
                         interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
                         tm.NextTutorialPeice();
                         TutorialComplete = true;
                         hasCompleted = true;
+                        AM.PlaySound("box");
                         //this.gameObject.SetActive(false);
                         Debug.Log("placed clothes!!");
                     }
@@ -541,6 +554,7 @@ public class InteractableArea : MonoBehaviour
                 {
                     if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None)
                     {
+                        AM.PlaySound("wardrobe");
                         CharacterCreator.SetActive(true);
                         interactingUnit.gameObject.GetComponent<UnitHighlight>().isClicked = false;
                         rtsMover.ActiveUnit = null;
@@ -552,6 +566,7 @@ public class InteractableArea : MonoBehaviour
             case AreaType.ClothesBox:
                 if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None )
                 {
+                    AM.PlaySound("grab");
                     interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.Clothes;
                     // Destroy(this.gameObject);
                     ExitInteraction();

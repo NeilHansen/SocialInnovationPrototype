@@ -396,6 +396,9 @@ public class LevelSelectUI : MonoBehaviour {
     }
 
 
-
+    public void clickSound()
+    {
+        FindObjectOfType<AudioManager>().PlaySound("click");
+    }
     
 }

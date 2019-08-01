@@ -5,12 +5,13 @@ using UnityEngine.UI;
 
 public class InteractableAreaConstructionSite : MonoBehaviour
 {
-
+    public AudioManager AM;
     public float timer = 0;
     public float startTime = 4;
     public bool isInteracting;
     public bool isComplete;
     public AreaType areaType;
+    string SoundName;
 
     public GameObject interactingUnit;
     public GameObject UnitToMoveTo;
@@ -89,6 +90,9 @@ public class InteractableAreaConstructionSite : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        //Sets Audio Manager
+        AM = FindObjectOfType<AudioManager>();
+
         rtsMover = Camera.main.GetComponent<RtsMover>();
         Gm = GameObject.FindObjectOfType<GameManager>();
         counterSpace = gameObject.GetComponent<CounterSpace>();
@@ -201,6 +205,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                 break;
 
             case AreaType.CuttingArea:
+                AM.PlaySound("cutting");
                 if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.LargeWood)
                 {
                     interactingUnit.GetComponent<UnitTaskController>().currentTaskType = UnitTaskController.TaskType.None;
@@ -244,28 +249,34 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                 break;
 
             case AreaType.WoodRecipticalBin:
+                AM.PlaySound("swood");
                 interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.SmallWood;
                 this.numberOfBoards -= 1;
                 break;
 
             case AreaType.PipeRecipticalBin:
+                AM.PlaySound("spipe");
                 interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.SmallPipe;
                 this.numberOfPipes -= 1;
                 break;
 
             case AreaType.PipeConnector:
+                AM.PlaySound("pipecon");
                 interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.PipeConnector;
                 break;
 
             case AreaType.WoodPile:
+                AM.PlaySound("lwood");
                 interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.LargeWood;
                 break;
 
             case AreaType.PipePile:
+                AM.PlaySound("lpipe");
                 interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.LargePipe;
                 break;  
 
             case AreaType.CraftingStation:
+                AM.PlaySound("craft");
                 if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.SmallWood)
                 {
                     numberOfBoards += 1;
@@ -289,10 +300,12 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                 break;
 
             case AreaType.NailsBin:
+                AM.PlaySound("nails");
                 interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.Nails;
                 break;
 
             case AreaType.FormanReturn:
+                AM.PlaySound("forem");
                 if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.SmallWood)
                 {
                     numberOfBoards += 1;
@@ -373,6 +386,7 @@ public class InteractableAreaConstructionSite : MonoBehaviour
                 case AreaType.TrashCan:
                     if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType != UnitTaskController.TaskType.None)
                     {
+                        AM.PlaySound("trash");
                         OnInteraction(interactingUnit);
                         interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
                     }

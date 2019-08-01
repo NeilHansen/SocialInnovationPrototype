@@ -122,4 +122,9 @@ public class ConversationManager : MonoBehaviour {
         }
     }
 
+    public void ClickSound()
+    {
+        FindObjectOfType<AudioManager>().PlaySound("click");
+    }
+
 }

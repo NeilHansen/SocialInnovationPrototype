@@ -280,6 +280,9 @@ public class ToyDriveGameManager : MonoBehaviour {
 
 
 
-
+    public void ClickingSound()
+    {
+        FindObjectOfType<AudioManager>().PlaySound("click");
+    }
 
 }
