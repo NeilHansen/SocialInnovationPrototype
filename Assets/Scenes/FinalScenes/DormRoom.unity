@@ -51651,7 +51651,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -12.030273, y: 460.71997}
+  m_AnchoredPosition: {x: -12.030212, y: 460.71997}
   m_SizeDelta: {x: -453.06, y: 339.54}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &973959403
@@ -66338,7 +66338,7 @@ Prefab:
     - target: {fileID: 114641663456407352, guid: 0666d571b567fc047b8789ea50eae791,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 224943982922724154, guid: 0666d571b567fc047b8789ea50eae791,
         type: 2}
@@ -66383,7 +66383,7 @@ Prefab:
     - target: {fileID: 224943982922724154, guid: 0666d571b567fc047b8789ea50eae791,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -21
+      value: -20.999878
       objectReference: {fileID: 0}
     - target: {fileID: 224943982922724154, guid: 0666d571b567fc047b8789ea50eae791,
         type: 2}
@@ -66517,7 +66517,7 @@ Prefab:
     - target: {fileID: 114641663456407352, guid: 0666d571b567fc047b8789ea50eae791,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: ClickSound
+      value: NextConvoPeice
       objectReference: {fileID: 0}
     - target: {fileID: 114641663456407352, guid: 0666d571b567fc047b8789ea50eae791,
         type: 2}
@@ -95331,9 +95331,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1819839837}
-        m_MethodName: SaveCharacter
-        m_Mode: 1
+      - m_Target: {fileID: 1819839832}
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
