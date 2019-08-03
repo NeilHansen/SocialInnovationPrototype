@@ -37,11 +37,15 @@ public class AudioManager : MonoBehaviour {
 
     public void StopSound(string name)
     {
-        Sound S = Array.Find(Sounds, sound => sound.Name == name);
-        if (S.Source != null)
+        if (name != null)
         {
-            S.Source.Stop();
+            Sound S = Array.Find(Sounds, sound => sound.Name == name);
+            if (S.Source != null)
+            {
+                S.Source.Stop();
+            }
         }
+       
 
     }
     // Use this for initialization

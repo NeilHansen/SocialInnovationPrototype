@@ -95,7 +95,7 @@ public class LevelSelectUI : MonoBehaviour {
         SetHabitatsScore();
         SetToysScore();
 
-        if (data.totalQuizScoreCooks >= quizStarsRequires && data.gameScoreCooks >= gameScoreRequired)
+        if (PlayerPrefs.GetInt("totalQuizScoreCooks") >= quizStarsRequires && PlayerPrefs.GetInt("gameScoreCooks") >= gameScoreRequired)
         {
             //DisableButton
             HabitatsButton.interactable = true;
@@ -104,7 +104,7 @@ public class LevelSelectUI : MonoBehaviour {
         }
 
         //Debug.Log()
-        if (data.totalQuizScoreHabitats >= quizStarsRequires && data.gameScoreHabitats >= gameScoreRequired)
+        if (PlayerPrefs.GetInt("totalQuizScoreHabitats") >= quizStarsRequires && PlayerPrefs.GetInt("gameScoreHabitats") >= gameScoreRequired)
         {
             Debug.Log("UngateQuiz");
             //UnlockToys
@@ -172,23 +172,25 @@ public class LevelSelectUI : MonoBehaviour {
     public void SetCooksScore()
     {
         //GameScore
-        CooksScore.ScoreText.text = "" + data.gameScoreCooks;
+        int GameCook = PlayerPrefs.GetInt("gameScoreCooks");
+        CooksScore.ScoreText.text = "" + GameCook;
+        
 
         //ScoreStars
         int CookStarAmount = 0;
 
-        if (data.gameScoreCooks >= 299)
+        if (GameCook >= 299)
         {
             
             CookStarAmount = 3;
         }
 
-        else if (data.gameScoreCooks >= 200)
+        else if (GameCook >= 200)
         {
             CookStarAmount = 2;
         }
 
-        else if(data.gameScoreCooks > 0)
+        else if(GameCook > 0)
         {
             CookStarAmount = 1;
         }
@@ -205,23 +207,23 @@ public class LevelSelectUI : MonoBehaviour {
 
 
         //QuizScore
-
-        CooksScore.QuizScore.text = "" + data.totalQuizScoreCooks;
+        int QuizCook = PlayerPrefs.GetInt("totalQuizScoreCooks");
+        CooksScore.QuizScore.text = "" + QuizCook;
 
         //ScoreStars
         int CookquizStarAmount = 0;
 
-        if (data.totalQuizScoreCooks>=400)
+        if (QuizCook >= 400)
         {
             CookquizStarAmount = 3;
         }
 
-        else if (data.totalQuizScoreCooks >= 200)
+        else if (QuizCook >= 200)
         {
             CookquizStarAmount = 2;
         }
 
-        else if (data.totalQuizScoreCooks> 0)
+        else if (QuizCook > 0)
         {
             CookquizStarAmount = 1;
         }
@@ -235,7 +237,7 @@ public class LevelSelectUI : MonoBehaviour {
         {
             CooksScore.StarsQuiz[CQ].sprite = FilledInStar;
         }
-        float CooksTotal= data.gameScoreCooks + data.totalQuizScoreCooks;
+        float CooksTotal= GameCook + QuizCook;
         CooksTOTALSCORE.text = "" + CooksTotal;
 
 
@@ -247,24 +249,25 @@ public class LevelSelectUI : MonoBehaviour {
 
     public void SetHabitatsScore()
     {
+        int GameHabitat = PlayerPrefs.GetInt("gameScoreHabitats");
         //GameScore
-       habitatScore.ScoreText.text = "" + data.gameScoreHabitats;
+       habitatScore.ScoreText.text = "" + GameHabitat;
 
         //ScoreStars
         int habitatStarAmount = 0;
 
-        if (data.gameScoreHabitats >= 299)
+        if (GameHabitat >= 299)
         {
            
             habitatStarAmount = 3;
         }
 
-        else if (data.gameScoreHabitats >= 200)
+        else if (GameHabitat >= 200)
         {
             habitatStarAmount = 2;
         }
 
-        else if (data.gameScoreHabitats > 0)
+        else if (GameHabitat> 0)
         {
             habitatStarAmount = 1;
         }
@@ -281,23 +284,23 @@ public class LevelSelectUI : MonoBehaviour {
 
 
         //QuizScore
-
-        habitatScore.QuizScore.text = "" + data.totalQuizScoreHabitats;
+        int QuizHabitat = PlayerPrefs.GetInt("totalQuizScoreHabitats");
+        habitatScore.QuizScore.text = "" + QuizHabitat;
 
         //ScoreStars
         int habitatquizStarAmount = 0;
 
-        if (data.totalQuizScoreHabitats >= 400)
+        if (QuizHabitat >= 400)
         {
             habitatquizStarAmount = 3;
         }
 
-        else if (data.totalQuizScoreHabitats >= 200)
+        else if (QuizHabitat>= 200)
         {
             habitatquizStarAmount = 2;
         }
 
-        else if (data.totalQuizScoreHabitats > 0)
+        else if (QuizHabitat > 0)
         {
             habitatquizStarAmount = 1;
         }
@@ -311,7 +314,7 @@ public class LevelSelectUI : MonoBehaviour {
         {
             habitatScore.StarsQuiz[CQ].sprite = FilledInStar;
         }
-        float TotalHome = data.totalQuizScoreHabitats + data.gameScoreHabitats;
+        float TotalHome = QuizHabitat+ GameHabitat;
         HabitatsTOTALSCORE.text = "" +TotalHome;
 
 
@@ -323,23 +326,25 @@ public class LevelSelectUI : MonoBehaviour {
     public void SetToysScore()
     {
         //GameScore
-        toysScore.ScoreText.text = "" + data.gameScoreToys;
+
+        int GameToys= PlayerPrefs.GetInt("gameScoreToys");
+        toysScore.ScoreText.text = "" + GameToys;
 
         //ScoreStars
         int toysStarAmount = 0;
 
-        if (data.gameScoreToys >= 299)
+        if (GameToys >= 299)
         {
             
             toysStarAmount = 3;
         }
 
-        else if (data.gameScoreToys >= 200)
+        else if (GameToys >= 200)
         {
             toysStarAmount = 2;
         }
 
-        else if (data.gameScoreToys > 0)
+        else if (GameToys > 0)
         {
             toysStarAmount = 1;
         }
@@ -356,24 +361,25 @@ public class LevelSelectUI : MonoBehaviour {
 
 
         //QuizScore
-
-       toysScore.QuizScore.text = "" + data.totalQuizScoreToys;
+        int QuizToys = PlayerPrefs.GetInt("totalQuizScoreToys");
+       toysScore.QuizScore.text = "" + QuizToys;
+        
 
         //ScoreStars
         int toysquizStarAmount = 0;
 
-        if (data.totalQuizScoreToys >= 400)
+        if (QuizToys >= 400)
         {
            
             toysquizStarAmount = 3;
         }
 
-        else if (data.totalQuizScoreToys >= 200)
+        else if (QuizToys >= 200)
         {
             toysquizStarAmount = 2;
         }
 
-        else if (data.totalQuizScoreToys > 0)
+        else if (QuizToys> 0)
         {
             toysquizStarAmount = 1;
         }
@@ -389,7 +395,7 @@ public class LevelSelectUI : MonoBehaviour {
         }
 
 
-        float TotalToys= data.gameScoreToys + data.totalQuizScoreToys;
+        float TotalToys= GameToys+ QuizToys;
         ToysTOTALSCORE.text = "" +TotalToys ;
 
 
