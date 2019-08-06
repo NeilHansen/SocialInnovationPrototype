@@ -56,6 +56,12 @@ public class HabitatTutorialManager : MonoBehaviour
         {
             FinishTutorial();
         }
+        if (tutorialProgress != tutorialEnd)
+        {
+            ResetTutorial();
+            StartTutorial();
+            TurnOffControls(true);
+        }
     }
 
     public void StartTutorial()

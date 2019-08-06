@@ -108,7 +108,7 @@ public class CooksTutorialManager : MonoBehaviour {
 
     public void FinishTutorial()
     {
-        PlayerPrefs.SetInt("cooksIntroProgress", 3);
+        PlayerPrefs.SetInt("cooksIntroProgress", 4);
         //PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
         //data.cooksIntroProgress = 3;
         //JSONSave.SaveData(data, JSONSave.dataPath);
