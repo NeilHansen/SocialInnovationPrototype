@@ -13,7 +13,7 @@ public class TokenClassName
 
 public class BlackboardLoader : MonoBehaviour {
 
-    public static string url = "https://bbgbctest.blackboard.com/learn/api/public/v1/oauth2/token" ;
+    public static string url = "https://bbgbctest.blackboard.com";
 
     // Use this for initialization
     void Start () {
@@ -34,17 +34,17 @@ public class BlackboardLoader : MonoBehaviour {
     {
         WWWForm form = new WWWForm();
 
-        form.AddField("redirect_uri", "uri");
-        form.AddField("response_type", "login-secret");
+        form.AddField("redirect_uri", "/learn/api/public/v1/oauth2/authorizationcode");
+        form.AddField("response_type", "ANuwg76VOV7aIA0KYqfv6KWIGOWEw0FX");
         form.AddField("client_id", "id");
         //Fill key and value
 
 
-        ///UnityWebRequest www = UnityWebRequest.Get(BlackboardLoader.url, form);
+       // UnityWebRequest www = UnityWebRequest.Get(BlackboardLoader.url);
         WWW www = new WWW(url, form);
 
         //Send request
-        yield return www.isDone;
+        yield return new WaitUntil(() => www.isDone == true);
 
         if (String.IsNullOrEmpty(www.error))
         {
