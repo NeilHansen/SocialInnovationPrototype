@@ -106,7 +106,7 @@ public class LevelSelectUI : MonoBehaviour {
         //Debug.Log()
         if (PlayerPrefs.GetInt("totalQuizScoreHabitats") >= quizStarsRequires && PlayerPrefs.GetInt("gameScoreHabitats") >= gameScoreRequired)
         {
-            Debug.Log("UngateQuiz");
+//            Debug.Log("UngateQuiz");
             //UnlockToys
             ToysButton.interactable = true;
 

@@ -54,13 +54,13 @@ public class RtsMover : MonoBehaviour {
             {
                 
                 originalPosition = hit.point;
-                Debug.DrawRay(ray.origin, ray.direction * 1000.0f, Color.green);
+              //  Debug.DrawRay(ray.origin, ray.direction * 1000.0f, Color.green);
               //  Debug.Log("HIIIIT" + hit.collider.name);
             }
             else
             {
             //    Debug.Log("not");
-                Debug.DrawRay(ray.origin, ray.direction * 1000.0f, Color.red);
+               // Debug.DrawRay(ray.origin, ray.direction * 1000.0f, Color.red);
             }
 
 
@@ -81,13 +81,13 @@ public class RtsMover : MonoBehaviour {
         {
 
             originalPosition = hit.point;
-            Debug.DrawRay(ray.origin, ray.direction * 1000.0f, Color.green);
-            Debug.Log("HIIIIT" + hit.collider.name);
+           // Debug.DrawRay(ray.origin, ray.direction * 1000.0f, Color.green);
+            //Debug.Log("HIIIIT" + hit.collider.name);
         }
         else
         {
-            Debug.Log("not");
-            Debug.DrawRay(ray.origin, ray.direction * 1000.0f, Color.red);
+           // Debug.Log("not");
+          //  Debug.DrawRay(ray.origin, ray.direction * 1000.0f, Color.red);
         }
 
 
