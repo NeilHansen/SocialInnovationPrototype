@@ -60,6 +60,10 @@ public class API : MonoBehaviour {
         LeaderBoardInfo.Clear();
     }
 
+    public void IncrementScore()
+    {
+        StartCoroutine(AddScore());
+    }
 
 
     IEnumerator GetLeaderBoardText()
@@ -95,6 +99,32 @@ public class API : MonoBehaviour {
             }
 
          //   responseText.text = temp;
+
+        }
+    }
+
+
+    IEnumerator AddScore()
+    {
+        string score = "1000000";
+        UnityWebRequest www = UnityWebRequest.Get("http://127.0.0.1:8000/addscore/100000");
+        yield return www.SendWebRequest();
+
+        if (www.isNetworkError || www.isHttpError)
+        {
+            Debug.Log(www.error);
+        }
+        else
+        {
+            // Show results as text
+            Debug.Log(www.downloadHandler.text);
+
+            // Or retrieve results as binary data
+            byte[] results = www.downloadHandler.data;
+
+            string temp = www.downloadHandler.text;
+
+           // responseText.text = temp;
 
         }
     }
