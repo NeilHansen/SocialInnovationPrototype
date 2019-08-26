@@ -14,8 +14,27 @@ public class OAuth2Token
     public string scope;
     public string user_id;
 }
+[System.Serializable]
+public class Fields
+{
+    public string UserName;
+    public string Score;
+    public string FirstName;
+    public string LastName; 
+}
+[System.Serializable]
+public class LeaderBoard
+{
+    public string model;
+    public int pk;
+    public Fields fields;
+}
+
+
 
 public class API : MonoBehaviour {
+
+    public List<string> LeaderBoardInfo;
 
     public string test;
     private const string BlackboardEndpoint = "https://bbgbctest.blackboard.com/learn/api/public/v1/oauth2/token";
@@ -25,23 +44,27 @@ public class API : MonoBehaviour {
     [SerializeField]
     private Text responseText;
 
-    public void Request()
+    private void Start()
     {
-        WWWForm form = new WWWForm();
-        form.AddField("grant_type", "client_credentials");
-       
-        UnityWebRequest request = UnityWebRequest.Post(BlackboardEndpoint, form);
-        request.SetRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        
-        string OAuthURI = "ce2cbd52-60e4-4e94-bb23-66099afe6d16:ANuwg76VOV7aIA0KYqfv6KWIGOWEw0FX";
-        
-        request.SetRequestHeader("Authorization","Basic "  + EncodeTo64(OAuthURI));
-     
-        StartCoroutine(OnResponse(request));
+        // Request();
+        //StartCoroutine(GetText());
     }
-    IEnumerator GetText()
+
+    public void LoadLeaderboard()
     {
-        UnityWebRequest www = UnityWebRequest.Get("http://127.0.0.1:8000/");
+        StartCoroutine(GetLeaderBoardText());
+    }
+
+    public void ClearLeaderboard()
+    {
+        LeaderBoardInfo.Clear();
+    }
+
+
+
+    IEnumerator GetLeaderBoardText()
+    {
+        UnityWebRequest www = UnityWebRequest.Get("http://127.0.0.1:8000/leaderboard/");
         yield return www.SendWebRequest();
 
         if (www.isNetworkError || www.isHttpError)
@@ -56,10 +79,51 @@ public class API : MonoBehaviour {
             // Or retrieve results as binary data
             byte[] results = www.downloadHandler.data;
 
-            responseText.text = "Token: " + www.downloadHandler.text + "Error Code: " + www.error;
+            string temp = www.downloadHandler.text;
+
+            LeaderBoard myObject = JsonUtility.FromJson<LeaderBoard>("{\"model\":" + temp + "}");
+
+            string[] stringarray = temp.Split('{', '}');
+
+            foreach(string token in stringarray)
+            {
+                if (token.Contains("UserName"))
+                {
+                   // Debug.Log(token);
+                    LeaderBoardInfo.Add(token);
+                }
+            }
+
+         //   responseText.text = temp;
+
         }
     }
 
+
+
+
+
+
+
+
+
+
+
+
+    public void Request()
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("grant_type", "client_credentials");
+
+        UnityWebRequest request = UnityWebRequest.Post(BlackboardEndpoint, form);
+        request.SetRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+        string OAuthURI = "ce2cbd52-60e4-4e94-bb23-66099afe6d16:ANuwg76VOV7aIA0KYqfv6KWIGOWEw0FX";
+
+        request.SetRequestHeader("Authorization", "Basic " + EncodeTo64(OAuthURI));
+
+        StartCoroutine(OnResponse(request));
+    }
     private IEnumerator OnResponse(UnityWebRequest req)
     {
         yield return req.SendWebRequest();
@@ -100,33 +164,7 @@ public class API : MonoBehaviour {
         return returnValue;
     }
 
-    private void Start()
-    {
-       // Request();
-        StartCoroutine(GetText());
-    }
-
-    //public IEnumerator rest(string token)
-    //{
-    //    WWWForm form = new WWWForm();
-    //    form.AddField("input", test);
-
-    //    UnityWebRequest request = UnityWebRequest.Post("https://bbgbctest.blackboard.com/learn/api/public/v1/announcements", form);
-    //    request.SetRequestHeader("Content-Type", "application/json");
-
-    //    // blah =  System.Text.Encoding.UTF8.GetBytes(blah);
-    //    request.SetRequestHeader("Authorization", "Bearer " + token);
-    //    //  request.SetRequestHeader("grant_type", "client_credentials");
-
-    //    yield return request.SendWebRequest();
-    //    if (request.isNetworkError)
-    //    {
-    //        Debug.Log("Error While Sending: " + request.error);
-    //    }
-    //    else
-    //    {
-    //        Debug.Log("Received: " + request.downloadHandler.text);
-    //    }
-    //}
+   
+   
 
 }
