@@ -3130,7 +3130,7 @@ Prefab:
     - target: {fileID: 224304810737890950, guid: 67bce1e9cdf564d40a3806ccbfaa468d,
         type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 224796516632484918, guid: 67bce1e9cdf564d40a3806ccbfaa468d,
         type: 2}
@@ -9706,6 +9706,7 @@ GameObject:
   - component: {fileID: 534669906}
   - component: {fileID: 534669907}
   - component: {fileID: 534669908}
+  - component: {fileID: 534669909}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -9831,6 +9832,29 @@ MonoBehaviour:
   ui1: {fileID: 60855518}
   ui2: {fileID: 502775485}
   ui3: {fileID: 635093945}
+--- !u!114 &534669909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 534669902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 422660858bfda2548bfb7c06e828ff62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerData: []
+  Username: 
+  Head: 0
+  Body: 0
+  Tutorial: 0
+  CooksScore: 0
+  CooksQuiz: 0
+  HomesScore: 0
+  HomesQuiz: 0
+  ToysScore: 0
+  ToysQuiz: 0
+  responseText: {fileID: 0}
 --- !u!1001 &543034445
 Prefab:
   m_ObjectHideFlags: 0
@@ -26686,11 +26710,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -27841,6 +27865,10 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1875669972}
+    - target: {fileID: 1235507020963700, guid: 1ccd7db975fd3594c89f18b92f8fd771, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ccd7db975fd3594c89f18b92f8fd771, type: 2}
   m_IsPrefabAsset: 0
@@ -40853,7 +40881,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1777293202928142, guid: 61cbbf5553eac134db41be6e1e8238e4, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224221198415667122, guid: 61cbbf5553eac134db41be6e1e8238e4,
         type: 2}

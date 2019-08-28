@@ -31,8 +31,8 @@ public class CompleteGameCooks : MonoBehaviour {
     void Start()
     {
       //  JSONSave = FindObjectOfType<JSONPlayerSaver>();
-        progress = PlayerPrefs.GetInt("cooksIntroProgress");
-        
+        progress = convoCanvas.GetComponent<CooksConversationManager>().Progress;
+
     }
 
     // Update is called once per frame

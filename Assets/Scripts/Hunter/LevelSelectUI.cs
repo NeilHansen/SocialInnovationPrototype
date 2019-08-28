@@ -32,6 +32,8 @@ public class LevelSelectUI : MonoBehaviour {
 
     public GameObject[] LevelButtons;
 
+    private LoadFromDjango ld;
+
 
 
     [SerializeField]
@@ -85,12 +87,12 @@ public class LevelSelectUI : MonoBehaviour {
     // Use this for initialization
     void Start () {
         //Load Player Data
-     //   JSON= FindObjectOfType<JSONPlayerSaver>();
+        //   JSON= FindObjectOfType<JSONPlayerSaver>();
 
-      //  data = JSON.LoadData(JSON.dataPath);
+        //  data = JSON.LoadData(JSON.dataPath);
 
-        
 
+        ld = GameObject.FindObjectOfType<LoadFromDjango>();
         SetCooksScore();
         SetHabitatsScore();
         SetToysScore();
@@ -172,7 +174,7 @@ public class LevelSelectUI : MonoBehaviour {
     public void SetCooksScore()
     {
         //GameScore
-        int GameCook = PlayerPrefs.GetInt("gameScoreCooks");
+        int GameCook = ld.CooksScore;
         CooksScore.ScoreText.text = "" + GameCook;
         
 
@@ -207,7 +209,7 @@ public class LevelSelectUI : MonoBehaviour {
 
 
         //QuizScore
-        int QuizCook = PlayerPrefs.GetInt("totalQuizScoreCooks");
+        int QuizCook = ld.CooksQuiz;
         CooksScore.QuizScore.text = "" + QuizCook;
 
         //ScoreStars
@@ -249,9 +251,9 @@ public class LevelSelectUI : MonoBehaviour {
 
     public void SetHabitatsScore()
     {
-        int GameHabitat = PlayerPrefs.GetInt("gameScoreHabitats");
+        int GameHabitat = ld.HomesScore;
         //GameScore
-       habitatScore.ScoreText.text = "" + GameHabitat;
+        habitatScore.ScoreText.text = "" + GameHabitat;
 
         //ScoreStars
         int habitatStarAmount = 0;
@@ -284,7 +286,7 @@ public class LevelSelectUI : MonoBehaviour {
 
 
         //QuizScore
-        int QuizHabitat = PlayerPrefs.GetInt("totalQuizScoreHabitats");
+        int QuizHabitat = ld.HomesQuiz;
         habitatScore.QuizScore.text = "" + QuizHabitat;
 
         //ScoreStars
@@ -327,7 +329,7 @@ public class LevelSelectUI : MonoBehaviour {
     {
         //GameScore
 
-        int GameToys= PlayerPrefs.GetInt("gameScoreToys");
+        int GameToys= ld.ToysScore;
         toysScore.ScoreText.text = "" + GameToys;
 
         //ScoreStars
@@ -361,8 +363,8 @@ public class LevelSelectUI : MonoBehaviour {
 
 
         //QuizScore
-        int QuizToys = PlayerPrefs.GetInt("totalQuizScoreToys");
-       toysScore.QuizScore.text = "" + QuizToys;
+        int QuizToys = ld.ToysQuiz;
+        toysScore.QuizScore.text = "" + QuizToys;
         
 
         //ScoreStars

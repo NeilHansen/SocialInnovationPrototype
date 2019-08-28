@@ -369,7 +369,7 @@ public class Customer : MonoBehaviour
 				break;
 
 			default:
-				Debug.Log("Error assigning button function");
+			//	Debug.Log("Error assigning button function");
 				break;
 		}
 	}
@@ -378,12 +378,12 @@ public class Customer : MonoBehaviour
 	{
         
 
-        Debug.Log("COrrect choice");
+      //  Debug.Log("COrrect choice");
         correctTimes += 1;
         currentScenario.stage += 1;
         if (currentScenario.stage >= 2)
 		{
-            Debug.Log("Finish");
+          //  Debug.Log("Finish");
             //Gm.isBonusMultiplierOn = true;
             //Gm.specialCustomerBonusMultiplier = positiveMultiplier;
             Gm.SpecialCustomerScore();
@@ -391,7 +391,7 @@ public class Customer : MonoBehaviour
 		}
         else
         {
-            Debug.Log("Reach Stage 2");
+           // Debug.Log("Reach Stage 2");
             currentAttitude = currentScenario.secondCustomerAttitude;
             ChangeStatus(currentAttitude);
             positiveRespond = currentScenario.secondCorrectAnswer;
@@ -420,7 +420,7 @@ public class Customer : MonoBehaviour
         {
             AssignButtonFunction(positiveRespond, negativeRespond, sC);
         }
-        Debug.Log("Generate new scenario number: " + rand);
+      //  Debug.Log("Generate new scenario number: " + rand);
     }
 
     void AssignButtonImage(Button button, Attitude a)
@@ -681,9 +681,9 @@ public class Customer : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.red;
-        Debug.DrawLine(origin, origin + direction * currentHitDistance);
-        Gizmos.DrawWireSphere(origin + direction * currentHitDistance, sphereRadius);
+       // Gizmos.color = Color.red;
+      //  Debug.DrawLine(origin, origin + direction * currentHitDistance);
+       // Gizmos.DrawWireSphere(origin + direction * currentHitDistance, sphereRadius);
     }
 
 

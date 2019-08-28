@@ -35,12 +35,17 @@ public class CooksConversationManager : MonoBehaviour {
     public Sprite[] NextStates;
     public Button NextButton;
 
-   // private JSONPlayerSaver JSONSave;
+   
+
+    public int Progress = 0;
+
+    // private JSONPlayerSaver JSONSave;
 
     // Use this for initialization
     void Start()
     {
-      //  JSONSave = FindObjectOfType<JSONPlayerSaver>();
+        
+        //  JSONSave = FindObjectOfType<JSONPlayerSaver>();
         NextConvoPeice();
 
     
@@ -54,6 +59,7 @@ public class CooksConversationManager : MonoBehaviour {
     public void RestartTutorial()
     {
         convoIndex = 0;
+        Progress = 0;
         NextConvoPeice();
     }
 
@@ -65,7 +71,7 @@ public class CooksConversationManager : MonoBehaviour {
 
     public void NextConvoPeice()
     {
-        int ii = PlayerPrefs.GetInt("cooksIntroProgress");
+        int ii = Progress;
         //int ii = JSONSave.LoadData(JSONSave.dataPath).cooksIntroProgress;
         if(ii > tm.tutorialEnd)
         {
@@ -76,7 +82,7 @@ public class CooksConversationManager : MonoBehaviour {
         {
             this.gameObject.SetActive(false);
             tm.TurnOffControls(false);
-            PlayerPrefs.SetInt("cooksIntroProgress", ii+=1);
+            Progress+=1;
 
            // ii += 1;
            // JSONSave.playerData.cooksIntroProgress = ii;

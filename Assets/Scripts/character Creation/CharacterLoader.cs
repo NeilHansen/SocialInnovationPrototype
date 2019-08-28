@@ -29,19 +29,27 @@ public class CharacterLoader : MonoBehaviour {
     public GameObject body1;
     public GameObject body2;
 
+
+    private LoadFromDjango ld;
+
     // Use this for initialization
     void Start () {
+        ld = GameObject.FindObjectOfType<LoadFromDjango>();
        // JSONSave = FindObjectOfType<JSONPlayerSaver>();
-        head = PlayerPrefs.GetInt("head");
-        body = PlayerPrefs.GetInt("body");
+       //player prefs
+       // head = PlayerPrefs.GetInt("head");
+       // body = PlayerPrefs.GetInt("body");
+
+        head = ld.Head; 
+        body = ld.Body;
     }
 	
 	// Update is called once per frame
 	void Update () {
         // head = JSONSave.LoadData(JSONSave.dataPath).playerHead;
         // body = JSONSave.LoadData(JSONSave.dataPath).playerBody;.
-        head = PlayerPrefs.GetInt("head");
-        body = PlayerPrefs.GetInt("body");
+        head = ld.Head; 
+        body = ld.Body;
 
         switch (head)
         {

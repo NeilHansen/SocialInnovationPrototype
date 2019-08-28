@@ -23,54 +23,66 @@ public class TutorialManager : MonoBehaviour {
     public GameObject CharecterCreationPanel;
     public GameObject ConsolePanel;
 
-
- //   private JSONPlayerSaver JSONSave;
+    private LoadFromDjango ld;
+    //   private JSONPlayerSaver JSONSave;
 
 
     private void Awake()
     {
         Time.timeScale = 1.0f;
+       
     }
 
     // Use this for initialization
     void Start () {
-    //    JSONSave = FindObjectOfType<JSONPlayerSaver>();
+        //    JSONSave = FindObjectOfType<JSONPlayerSaver>();
 
-        tutorialProgress = PlayerPrefs.GetInt("tutorialProgress");
         //tutorialProgress = JSONSave.LoadData(JSONSave.dataPath).progress;
+        ld = GameObject.FindObjectOfType<LoadFromDjango>();
+        tutorialProgress = PlayerPrefs.GetInt("tutorialProgress");
 
-        if (tutorialProgress == 0)
+        if (ld.Tutorial == 0)
         {
-            StartTutorial();
-            TurnOffControls(true);
+            StartCoroutine(afterLoad());
         }
-        else if (tutorialProgress == tutorialEnd)
+    }
+
+    IEnumerator afterLoad()
+
+    {
+        yield return new WaitForSeconds(0.01f);
+        if (ld.Tutorial == 1)
         {
             comp.GetComponent<InteractableArea>().TutorialComplete = false;
             tv.GetComponent<InteractableArea>().TutorialComplete = false;
             clothes.GetComponent<InteractableArea>().TutorialComplete = false;
             FinishTutorial();
+            StopCoroutine(afterLoad());
         }
-
-        else if (tutorialProgress != tutorialEnd)
+        else
         {
-            ResetTutorial();
-            StartTutorial();
-            TurnOffControls(true);
+            Debug.Log("FUCK shit" + ld.Tutorial);
+            if (tutorialProgress == 0)
+            {
+                StartTutorial();
+                TurnOffControls(true);
+            }
+            else if (tutorialProgress == tutorialEnd)
+            {
+                comp.GetComponent<InteractableArea>().TutorialComplete = false;
+                tv.GetComponent<InteractableArea>().TutorialComplete = false;
+                clothes.GetComponent<InteractableArea>().TutorialComplete = false;
+                FinishTutorial();
+            }
+            else if (tutorialProgress != tutorialEnd)
+            {
+                ResetTutorial();
+                StartTutorial();
+                TurnOffControls(true);
+            }
         }
-        //else if(tutorialProgress <= tutorialEnd)
-        //{
-        //    TurnOffControls(false);
-        //    convoCanvas.SetActive(false);
-        //    FinishTutorial();
-        //}
-        //else if (tutorialProgress != 0 && tutorialProgress <= 4)
-        //{
-        //    ResetTutorial();
-        //    TurnOffControls(true);
-        //}
-
-
+        
+       
     }
 
     public void StartTutorial()
@@ -150,11 +162,11 @@ public class TutorialManager : MonoBehaviour {
       //  tutorialProgress = JSONSave.LoadData(JSONSave.dataPath).progress;
 
 
-        if (tutorialProgress == 0)
-        {
-            StartTutorial();
-            TurnOffControls(true);
-        }
+        //if (tutorialProgress == 0)
+        //{
+        //    StartTutorial();
+        //    TurnOffControls(true);
+        //}
 
         if (CharecterCreationPanel.activeSelf || ConsolePanel.activeSelf)
         {
@@ -186,23 +198,23 @@ public class TutorialManager : MonoBehaviour {
         //}
         
 
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            ResetTutorial();
-        }
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            FinishTutorial();
-        }
+        //if (Input.GetKeyDown(KeyCode.R))
+        //{
+        //    ResetTutorial();
+        //}
+        //if (Input.GetKeyDown(KeyCode.F))
+        //{
+        //    FinishTutorial();
+        //}
 
-        if (tutorialProgress < tutorialEnd)
-        {
-            if (Input.GetKeyDown(KeyCode.N))
-            {
-                //PlayerPrefs.SetInt("tutorialProgress", tutorialProgress+=1);
-                NextTutorialPeice();
-            }
-        }
+        //if (tutorialProgress < tutorialEnd)
+        //{
+        //    if (Input.GetKeyDown(KeyCode.N))
+        //    {
+        //        //PlayerPrefs.SetInt("tutorialProgress", tutorialProgress+=1);
+        //        NextTutorialPeice();
+        //    }
+        //}
 
     }
 

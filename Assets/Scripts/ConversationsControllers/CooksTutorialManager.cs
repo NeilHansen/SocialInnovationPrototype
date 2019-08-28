@@ -27,7 +27,7 @@ public class CooksTutorialManager : MonoBehaviour {
     public GameObject ui1;
     public GameObject ui2;
     public GameObject ui3;
-
+    private LoadFromDjango ld;
     private void Awake()
     {
         Time.timeScale = 1.0f;
@@ -38,33 +38,56 @@ public class CooksTutorialManager : MonoBehaviour {
       //  JSONSave = FindObjectOfType<JSONPlayerSaver>();
 
         gm = FindObjectOfType<GameManager>();
-
+        ld = GameObject.FindObjectOfType<LoadFromDjango>();
         UICanvas = GameObject.FindGameObjectWithTag("UI");
 
-        tutorialProgress = PlayerPrefs.GetInt("cooksIntroProgress");
+       // tutorialProgress = PlayerPrefs.GetInt("cooksIntroProgress");
         //tutorialProgress = JSONSave.LoadData(JSONSave.dataPath).cooksIntroProgress;
 
+        
 
-
-        if (tutorialProgress == 0)
+        if (ld.CooksScore == 0)
         {
-            StartTutorial();
-            TurnOffControls(true);
+            StartCoroutine(afterLoad());
+           
         }
-        else if (tutorialProgress == tutorialEnd)
-        {
-            FinishTutorial();
-        }
-
-         if (tutorialProgress != tutorialEnd)
-        {
-            ResetTutorial();
-            StartTutorial();
-            TurnOffControls(true);
-        }
+       
     }
 
-    public void StartTutorial()
+
+    IEnumerator afterLoad()
+    {
+        yield return new WaitForSeconds(0.01f);
+        Debug.Log("fuck" + ld.CooksScore);
+        if (ld.CooksScore == 0)
+        {
+            FinishTutorial();
+            StopCoroutine(afterLoad());
+           
+        }
+        else
+        {
+            StartTutorial();
+            TurnOffControls(true);
+
+            //if (tutorialProgress == tutorialEnd)
+            //{
+            //    FinishTutorial();
+            //}
+
+            //if (tutorialProgress != tutorialEnd)
+            //{
+            //    ResetTutorial();
+            //    StartTutorial();
+            //    TurnOffControls(true);
+            //}
+        }
+
+           
+
+    }
+
+        public void StartTutorial()
     {
         convoCanvas.SetActive(true);
         TurnOffControls(true);
@@ -93,7 +116,8 @@ public class CooksTutorialManager : MonoBehaviour {
 
     public void ResetTutorial()
     {
-        PlayerPrefs.SetInt("cooksIntroProgress", 0);
+        convoCanvas.GetComponent<CooksConversationManager>().Progress = 0;
+        // PlayerPrefs.SetInt("cooksIntroProgress", 0);
         //PlayerData data = new PlayerData();
         //PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
         //data.cooksIntroProgress = 0;
@@ -108,7 +132,8 @@ public class CooksTutorialManager : MonoBehaviour {
 
     public void FinishTutorial()
     {
-        PlayerPrefs.SetInt("cooksIntroProgress", 4);
+        convoCanvas.GetComponent<CooksConversationManager>().Progress = 4;
+       // PlayerPrefs.SetInt("cooksIntroProgress", 4);
         //PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
         //data.cooksIntroProgress = 3;
         //JSONSave.SaveData(data, JSONSave.dataPath);
@@ -164,27 +189,27 @@ public class CooksTutorialManager : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        tutorialProgress = PlayerPrefs.GetInt("cooksIntroProgress");
-       // Debug.Log(tutorialProgress);
+        tutorialProgress = convoCanvas.GetComponent<CooksConversationManager>().Progress;
+        // Debug.Log(tutorialProgress);
         //tutorialProgress = JSONSave.LoadData(JSONSave.dataPath).cooksIntroProgress;
 
 
-        if (tutorialProgress == 0)
-        {
-            StartTutorial();
-            TurnOffControls(true);
-            dormBG.SetActive(true);
+        //if (tutorialProgress == 0)
+        //{
+        //    StartTutorial();
+        //    TurnOffControls(true);
+        //    dormBG.SetActive(true);
 
-        }
+        //}
 
 
-        if(tutorialProgress == 1 && !doOnce)
+        if (tutorialProgress == 1 && !doOnce)
         {
             doOnce = true;
             StartCoroutine("DoOnce");
             dormBG.SetActive(false);
-           
-           // NextTutorialPeice();
+
+            // NextTutorialPeice();
         }
 
         if (tutorialProgress == 3 && !doOnce1)
