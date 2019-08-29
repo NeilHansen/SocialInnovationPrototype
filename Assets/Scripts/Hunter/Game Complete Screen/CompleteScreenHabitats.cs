@@ -29,8 +29,8 @@ public class CompleteScreenHabitats : MonoBehaviour {
     void Start () {
         TM = FindObjectOfType<HabitatTutorialManager>();
     //    JSONSave = FindObjectOfType<JSONPlayerSaver>();
-        progress = PlayerPrefs.GetInt("habitatIntroProgress");
-        
+        progress = convoCanvas.GetComponent<HabitatsConversationManager>().progress;
+
     }
 	
 	// Update is called once per frame

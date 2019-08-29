@@ -50,7 +50,7 @@ public class TutorialManager : MonoBehaviour {
     IEnumerator afterLoad()
 
     {
-        yield return new WaitForSeconds(0.01f);
+        yield return new WaitForSeconds(0.001f);
         if (ld.Tutorial == 1)
         {
             comp.GetComponent<InteractableArea>().TutorialComplete = false;

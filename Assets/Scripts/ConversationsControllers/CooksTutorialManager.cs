@@ -57,9 +57,9 @@ public class CooksTutorialManager : MonoBehaviour {
 
     IEnumerator afterLoad()
     {
-        yield return new WaitForSeconds(0.01f);
-        Debug.Log("fuck" + ld.CooksScore);
-        if (ld.CooksScore == 0)
+        yield return new WaitForSeconds(0.001f);
+       
+        if (ld.CooksScore != 0)
         {
             FinishTutorial();
             StopCoroutine(afterLoad());
@@ -70,17 +70,7 @@ public class CooksTutorialManager : MonoBehaviour {
             StartTutorial();
             TurnOffControls(true);
 
-            //if (tutorialProgress == tutorialEnd)
-            //{
-            //    FinishTutorial();
-            //}
-
-            //if (tutorialProgress != tutorialEnd)
-            //{
-            //    ResetTutorial();
-            //    StartTutorial();
-            //    TurnOffControls(true);
-            //}
+           
         }
 
            
@@ -160,7 +150,7 @@ public class CooksTutorialManager : MonoBehaviour {
        //fade panel here!!!
 
 
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.001f);
 
      
 
@@ -173,7 +163,7 @@ public class CooksTutorialManager : MonoBehaviour {
     public IEnumerator Outro()
     {
 
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.001f);
 
         // NextTutorialPeice();
         FinishTutorial();

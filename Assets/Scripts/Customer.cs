@@ -352,7 +352,7 @@ public class Customer : MonoBehaviour
         
 		//Attitude correct = cAttitude.correctAnswer;
 		//Attitude wrong = cAttitude.wrongAnswer;
-		Debug.Log(correctTimes);
+		//Debug.Log(correctTimes);
         switch (Random.Range(0,2))
 		{
 			case 0:
@@ -645,15 +645,18 @@ public class Customer : MonoBehaviour
         //if (curPathIndex == pathLength - 1)
         //    velocity += Steer(targetPoint, true);
         //else
-            velocity += Steer(targetPoint);
+        velocity += Steer(targetPoint);
 
         //velocity += Steer(targetPoint);
         transform.position += velocity; //Move the vehicle according to the velocity
 
-        if(curPathIndex > 0)
+        if (curPathIndex > 0)
             playerDirection = movePath.GetPoint(curPathIndex) - movePath.GetPoint(curPathIndex - 1);
 
-        transform.rotation = Quaternion.LookRotation(playerDirection); //Rotate the vehicle towards the desired Velocity
+        if (playerDirection != Vector3.zero)
+        {
+            transform.rotation = Quaternion.LookRotation(playerDirection); //Rotate the vehicle towards the desired Velocity
+        }
     }
 
     //Steering algorithm to steer the vector towards the target

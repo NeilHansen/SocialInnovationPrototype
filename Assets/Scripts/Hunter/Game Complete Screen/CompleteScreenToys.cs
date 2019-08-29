@@ -30,8 +30,8 @@ public class CompleteScreenToys : MonoBehaviour {
     void Start()
     {
 
-    //    JSONSave = FindObjectOfType<JSONPlayerSaver>();
-        progress = PlayerPrefs.GetInt("toysIntroProgress");
+        //    JSONSave = FindObjectOfType<JSONPlayerSaver>();
+        progress = convoCanvas.GetComponent<ToysConversationManager>().progress;
         TM = FindObjectOfType<ToysTutorialManager>();
 
     }

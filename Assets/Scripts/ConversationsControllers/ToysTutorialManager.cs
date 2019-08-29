@@ -29,6 +29,8 @@ public class ToysTutorialManager : MonoBehaviour
     public GameObject ui2;
     public GameObject ui3;
 
+    private LoadFromDjango ld;
+
     private void Awake()
     {
         Time.timeScale = 1.0f;
@@ -40,20 +42,32 @@ public class ToysTutorialManager : MonoBehaviour
       //  JSONSave = FindObjectOfType<JSONPlayerSaver>();
 
         gm = FindObjectOfType<ToyDriveGameManager>();
-
+        ld = GameObject.FindObjectOfType<LoadFromDjango>();
         UICanvas = GameObject.FindGameObjectWithTag("UI");
 
-        tutorialProgress = PlayerPrefs.GetInt("toysIntroProgress");
+        // tutorialProgress = PlayerPrefs.GetInt("toysIntroProgress");
         //tutorialProgress = JSONSave.LoadData(JSONSave.dataPath).toysIntroProgress;
 
-        if (tutorialProgress == 0)
+        if (ld.ToysScore == 0)
+        {
+            StartCoroutine(afterLoad());
+
+        }
+    }
+
+    IEnumerator afterLoad()
+    {
+        yield return new WaitForSeconds(0.001f);
+        if (ld.ToysScore != 0)
+        {
+            FinishTutorial();
+            StopCoroutine(afterLoad());
+
+        }
+        else
         {
             StartTutorial();
             TurnOffControls(true);
-        }
-        else if (tutorialProgress >= tutorialEnd)
-        {
-            FinishTutorial();
         }
     }
 
@@ -84,7 +98,7 @@ public class ToysTutorialManager : MonoBehaviour
 
     public void ResetTutorial()
     {
-        PlayerPrefs.SetInt("toysIntroProgress", 0);
+        convoCanvas.GetComponent<ToysConversationManager>().progress = 0;
         //PlayerData data = new PlayerData();
         //PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
         //data.toysIntroProgress = 0;
@@ -99,7 +113,7 @@ public class ToysTutorialManager : MonoBehaviour
 
     public void FinishTutorial()
     {
-        PlayerPrefs.SetInt("toysIntroProgress", 4);
+        convoCanvas.GetComponent<ToysConversationManager>().progress = 4;
         //PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
         //data.toysIntroProgress = 4;
         //JSONSave.SaveData(data, JSONSave.dataPath);
@@ -126,7 +140,7 @@ public class ToysTutorialManager : MonoBehaviour
         //fade panel here!!!
 
 
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.001f);
 
 
 
@@ -139,7 +153,7 @@ public class ToysTutorialManager : MonoBehaviour
     public IEnumerator Outro()
     {
 
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.001f);
 
         // NextTutorialPeice();
         FinishTutorial();
@@ -155,18 +169,18 @@ public class ToysTutorialManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        tutorialProgress = PlayerPrefs.GetInt("toysIntroProgress");
+        tutorialProgress = convoCanvas.GetComponent<ToysConversationManager>().progress;
         // Debug.Log(tutorialProgress);
         //tutorialProgress = JSONSave.LoadData(JSONSave.dataPath).toysIntroProgress;
 
 
-        if (tutorialProgress == 0)
-        {
-            StartTutorial();
-            TurnOffControls(true);
-            dormBG.SetActive(true);
+        //if (tutorialProgress == 0)
+        //{
+        //    StartTutorial();
+        //    TurnOffControls(true);
+        //    dormBG.SetActive(true);
 
-        }
+        //}
 
 
         if (tutorialProgress == 1 && !doOnce)

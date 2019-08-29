@@ -37,18 +37,17 @@ public class HabitatsConversationManager : MonoBehaviour {
 
  //   private JSONPlayerSaver JSONSave;
 
-    private int progress;
+    public int progress =0;
 
     // Use this for initialization
     void Start()
     {
       //  JSONSave = FindObjectOfType<JSONPlayerSaver>();
         // progress = JSONSave.LoadData(JSONSave.dataPath).habitatIntroProgress;
-        PlayerPrefs.GetInt("habitatIntroProgress");
-        if (progress == 0)
-        {
+        //PlayerPrefs.GetInt("habitatIntroProgress");
+        
             NextConvoPeice();
-        }
+        
         
 
     
@@ -62,6 +61,7 @@ public class HabitatsConversationManager : MonoBehaviour {
     public void RestartTutorial()
     {
         convoIndex = 0;
+        progress = 0;
         NextConvoPeice();
     }
 
@@ -73,7 +73,7 @@ public class HabitatsConversationManager : MonoBehaviour {
 
     public void NextConvoPeice()
     {
-        int ii = PlayerPrefs.GetInt("habitatIntroProgress");
+        int ii = progress;
        // int ii = JSONSave.LoadData(JSONSave.dataPath).habitatIntroProgress;
         Debug.Log(ii);
         if(ii > tm.tutorialEnd)
@@ -85,8 +85,8 @@ public class HabitatsConversationManager : MonoBehaviour {
             {
                 this.gameObject.SetActive(false);
                 tm.TurnOffControls(false);
-                PlayerPrefs.SetInt("habitatIntroProgress", ii+=1);
-
+            // PlayerPrefs.SetInt("habitatIntroProgress", ii+=1);
+                 progress += 1;
                // ii += 1;
               //  JSONSave.playerData.habitatIntroProgress = ii;
                // PlayerData data = JSONSave.LoadData(JSONSave.dataPath);

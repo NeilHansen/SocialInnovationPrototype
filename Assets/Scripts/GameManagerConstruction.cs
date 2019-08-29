@@ -62,6 +62,8 @@ public class GameManagerConstruction : MonoBehaviour {
 
     public float timerMultiplier = 0.1f;
 
+    public GameObject convoCanvas;
+
    // private JSONPlayerSaver JSONSave;
 
     // Use this for initialization
@@ -115,7 +117,7 @@ public class GameManagerConstruction : MonoBehaviour {
 
     public void EndGame()
     {
-        Debug.Log("ENNNNND GAME");
+       // Debug.Log("ENNNNND GAME");
         GameComplete = true;
         //Ending quiz screen
         COMPLETESCREEN.SetActive(true);
@@ -126,7 +128,7 @@ public class GameManagerConstruction : MonoBehaviour {
 
     public void Test()
     {
-        Debug.Log("test");
+       // Debug.Log("test");
     }
 
     public void StartNewCustomer()
@@ -238,7 +240,7 @@ public class GameManagerConstruction : MonoBehaviour {
 
     IEnumerator FlashScoreAdded(int index)
     {
-        Debug.Log("COROUTINE");
+       // Debug.Log("COROUTINE");
         ScoreAdded.enabled = true;
         ScoreAdded.color = Colors[index];
         yield return new WaitForSeconds(1);
@@ -277,7 +279,7 @@ public class GameManagerConstruction : MonoBehaviour {
     public void GoToQuiz()
     {
         //progress = JSONSave.LoadData(JSONSave.dataPath).habitatIntroProgress;
-        progress = PlayerPrefs.GetInt("habitatIntroProgress");
+        progress = convoCanvas.GetComponent<HabitatsConversationManager>().progress;
         if (progress == 4)
         {
             EndingScreen.GetComponent<Questionaire>().gameScoreText.text = playerScore.ToString();

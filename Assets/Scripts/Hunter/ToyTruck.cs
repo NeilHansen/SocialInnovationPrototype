@@ -69,7 +69,7 @@ public class ToyTruck : MonoBehaviour {
 
             float perc = CurrentLerpTime / TotalLerpTime;
 
-            Debug.Log(MoveToPoints[0].transform);
+           // Debug.Log(MoveToPoints[0].transform);
             
            gameObject.transform.position= Vector3.Lerp (new Vector3 (MoveToPoints[0].position.x,transform.position.y, MoveToPoints[0].position.z), new Vector3( MoveToPoints[1].position.x, transform.position.y, MoveToPoints[1].position.z), perc);
 
@@ -86,7 +86,7 @@ public class ToyTruck : MonoBehaviour {
           
             float perc = CurrentLerpTime / TotalLerpTime;
 
-            Debug.Log(MoveToPoints[0].transform.position);
+            //Debug.Log(MoveToPoints[0].transform.position);
             gameObject. transform.position = Vector3.Lerp(new Vector3(MoveToPoints[1].position.x, transform.position.y, MoveToPoints[1].position.z), new Vector3(MoveToPoints[0].position.x, transform.position.y, MoveToPoints[0].position.z), perc);
         }
     }
@@ -131,7 +131,7 @@ public class ToyTruck : MonoBehaviour {
             while (transform.position.x > MoveToPoints[0].position.x)
             {
                 //DriveTruck In
-                Debug.Log("Lerp Truck");
+               // Debug.Log("Lerp Truck");
                 LerpTruck(false);
                 yield return new WaitForFixedUpdate();
             }

@@ -59,6 +59,7 @@ public class ToyDriveGameManager : MonoBehaviour {
     public bool isBonusMultiplierOn = false;
     public TextMeshProUGUI PackageCounter;
 
+    public GameObject convoCanvas;
 
  //   private JSONPlayerSaver JSONSave;
 
@@ -263,7 +264,7 @@ public class ToyDriveGameManager : MonoBehaviour {
     public void GoToQuiz()
     {
         // int progress = JSONSave.LoadData(JSONSave.dataPath).toysIntroProgress;
-        int progress = PlayerPrefs.GetInt("toysIntroProgress");
+        int progress = convoCanvas.GetComponent<ToysConversationManager>().progress;
         if (progress == 4)
         {
             EndingScreen.GetComponent<Questionaire>().gameScoreText.text = playerScore.ToString();

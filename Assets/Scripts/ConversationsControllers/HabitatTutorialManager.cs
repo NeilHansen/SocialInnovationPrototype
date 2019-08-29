@@ -29,6 +29,7 @@ public class HabitatTutorialManager : MonoBehaviour
     public GameObject ui2;
     public GameObject ui3;
 
+    private LoadFromDjango ld;
 
     private void Awake()
     {
@@ -41,28 +42,38 @@ public class HabitatTutorialManager : MonoBehaviour
        // JSONSave = FindObjectOfType<JSONPlayerSaver>();
 
         gm = FindObjectOfType<GameManagerConstruction>();
-
+        ld = GameObject.FindObjectOfType<LoadFromDjango>();
         UICanvas = GameObject.FindGameObjectWithTag("UI");
 
-        tutorialProgress = PlayerPrefs.GetInt("habitatIntroProgress");
+        //tutorialProgress = PlayerPrefs.GetInt("habitatIntroProgress");
         //tutorialProgress = JSONSave.LoadData(JSONSave.dataPath).habitatIntroProgress;
 
-        if (tutorialProgress == 0)
+
+        if (ld.HomesScore == 0)
         {
-            StartTutorial();
-            TurnOffControls(true);
+            StartCoroutine(afterLoad());
+
         }
-        else if (tutorialProgress >= tutorialEnd)
+
+       
+    }
+
+    IEnumerator afterLoad()
+    {
+        yield return new WaitForSeconds(0.001f);
+        if (ld.HomesScore != 0)
         {
             FinishTutorial();
+            StopCoroutine(afterLoad());
+
         }
-        if (tutorialProgress != tutorialEnd)
+        else
         {
-            ResetTutorial();
             StartTutorial();
             TurnOffControls(true);
         }
     }
+
 
     public void StartTutorial()
     {
@@ -90,13 +101,13 @@ public class HabitatTutorialManager : MonoBehaviour
 
     public void ResetTutorial()
     {
-        PlayerPrefs.SetInt("habitatIntroProgress", 0);
-        //PlayerData data = new PlayerData();
-        //PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
-       // data.habitatIntroProgress = 0;
-        //JSONSave.SaveData(data, JSONSave.dataPath);
+        convoCanvas.GetComponent<HabitatsConversationManager>().progress = 0;
+         //PlayerData data = new PlayerData();
+         //PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
+         // data.habitatIntroProgress = 0;
+         //JSONSave.SaveData(data, JSONSave.dataPath);
 
-        convoCanvas.GetComponent<HabitatsConversationManager>().RestartTutorial();
+         convoCanvas.GetComponent<HabitatsConversationManager>().RestartTutorial();
         Debug.Log("ResetTutorial");
         TurnOffControls(true);
 
@@ -105,7 +116,7 @@ public class HabitatTutorialManager : MonoBehaviour
 
     public void FinishTutorial()
     {
-        PlayerPrefs.SetInt("habitatIntroProgress", 4);
+        convoCanvas.GetComponent<HabitatsConversationManager>().progress = 4;
         //PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
         //data.habitatIntroProgress = 4;
         //JSONSave.SaveData(data, JSONSave.dataPath);
@@ -132,7 +143,7 @@ public class HabitatTutorialManager : MonoBehaviour
         //fade panel here!!!
 
 
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.001f);
 
 
 
@@ -149,7 +160,7 @@ public class HabitatTutorialManager : MonoBehaviour
         //data.habitatIntroProgress = 4;
         //JSONSave.SaveData(data, JSONSave.dataPath);
 
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.001f);
 
         // NextTutorialPeice();
         FinishTutorial();
@@ -167,18 +178,18 @@ public class HabitatTutorialManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        tutorialProgress = PlayerPrefs.GetInt("habitatIntroProgress");
+        tutorialProgress = convoCanvas.GetComponent<HabitatsConversationManager>().progress;
         // Debug.Log(tutorialProgress);
-       // tutorialProgress = JSONSave.LoadData(JSONSave.dataPath).habitatIntroProgress;
+        // tutorialProgress = JSONSave.LoadData(JSONSave.dataPath).habitatIntroProgress;
 
 
-        if (tutorialProgress == 0)
-        {
-            StartTutorial();
-            TurnOffControls(true);
-            dormBG.SetActive(true);
+        //if (tutorialProgress == 0)
+        //{
+        //    StartTutorial();
+        //    TurnOffControls(true);
+        //    dormBG.SetActive(true);
 
-        }
+        //}
 
 
         if (tutorialProgress == 1 && !doOnce)

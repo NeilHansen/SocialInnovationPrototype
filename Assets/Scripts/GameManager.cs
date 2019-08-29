@@ -54,8 +54,10 @@ public class GameManager : MonoBehaviour {
     public float specialCustomerBonusMultiplier = 1.0f;
     public bool isBonusMultiplierOn = false;
 
+    public GameObject convoCanvas;
 
-  //  private JSONPlayerSaver JSONSave;
+
+    //  private JSONPlayerSaver JSONSave;
 
     // Use this for initialization
     void Start() {
@@ -270,7 +272,7 @@ public class GameManager : MonoBehaviour {
     public void GoToQuiz()
     {
         //int progress = JSONSave.LoadData(JSONSave.dataPath).cooksIntroProgress;
-        int progress = PlayerPrefs.GetInt("cooksIntroProgress");
+        int progress = convoCanvas.GetComponent<CooksConversationManager>().Progress;
         if (progress != 0)
         {
             EndingScreen.GetComponent<Questionaire>().gameScoreText.text = playerScore.ToString();
