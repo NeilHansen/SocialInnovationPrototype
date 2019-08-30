@@ -4,6 +4,7 @@ using UnityEngine;
 using System.IO;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Networking;
 
 public class Questionaire : MonoBehaviour {
   
@@ -43,6 +44,8 @@ public class Questionaire : MonoBehaviour {
     [SerializeField]
     Sprite[] NextButtonState;
 
+    private LoadFromDjango ld;
+
 
    // JSONPlayerSaver JSONSave;
     public bool isPostGameQuestionnaire;
@@ -70,6 +73,9 @@ public class Questionaire : MonoBehaviour {
         path = Path.Combine(Application.streamingAssetsPath, questionaireLocation);
        // Time.timeScale = 0;
     }
+
+
+  
 
     void ReadTextFile(string file_path)
     {
@@ -221,10 +227,10 @@ public class Questionaire : MonoBehaviour {
 
     void DisplayResult()
 	{
-       // PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
-        int postQuizScoreCooks = PlayerPrefs.GetInt("postQuizScoreCooks");
-        int postQuizScoreHabitats = PlayerPrefs.GetInt("postQuizScoreHabitats");
-        int postQuizScoreToys = PlayerPrefs.GetInt("postQuizScoreToys");
+        // PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
+        int postQuizScoreCooks = ld.CooksQuiz;
+        int postQuizScoreHabitats = ld.HomesQuiz;
+        int postQuizScoreToys = ld.ToysQuiz;
         string sceneName = SceneManager.GetActiveScene().name;
 
        // Debug.Log("DisplayResults");
@@ -267,25 +273,36 @@ public class Questionaire : MonoBehaviour {
 
             if (sceneName.Contains("Cook"))
             {
-                
-              // data.postQuizScoreCooks = score;
-                PlayerPrefs.SetInt("postQuizScoreCooks", score);
-                //Debug.Log("post quiz score is" + data.postQuizScoreCooks);
+                if (score > postQuizScoreCooks)
+                {
+                    // data.postQuizScoreCooks = score;
+                    ld.CooksQuiz = score;
+                    StartCoroutine(SaveCooksQuiz());
+                    StartCoroutine(UpdateLeaderBoardScore());
+
+                    //Debug.Log("post quiz score is" + data.postQuizScoreCooks);
+                }
+
             }
             else if (sceneName.Contains("Habitat"))
             {
                 if (score > postQuizScoreHabitats)
                 {
-                   // data.postQuizScoreHabitats = score;
-                    PlayerPrefs.SetInt("postQuizScoreHabitats", score);
+                    ld.HomesQuiz = score;
+                    // data.postQuizScoreHabitats = score;
+                    StartCoroutine(SaveHomesQuiz());
+                    StartCoroutine(UpdateLeaderBoardScore());
+
                 }
             }
             else if (sceneName.Contains("Toy"))
             {
                 if (score > postQuizScoreToys)
                 {
-                   // data.postQuizScoreToys = score;
-                    PlayerPrefs.SetInt("postQuizScoreToys", score);
+                    ld.ToysQuiz = score;
+                    // data.postQuizScoreToys = score;
+                    StartCoroutine(SaveToysQuiz());
+                    StartCoroutine(UpdateLeaderBoardScore());
                 }
                 
             }
@@ -296,30 +313,139 @@ public class Questionaire : MonoBehaviour {
         }
 		//questionText.text = "You got " + score * 100 / 10 + "%";
         QuizComplete = true;
-        //THIS IS THE ISSUE
-        if (sceneName.Contains("Cook"))
+
+       
+    }
+
+    //Save QuizScores
+
+    IEnumerator SaveCooksQuiz()
+    {
+        //string score = "1000000";
+        UnityWebRequest www = UnityWebRequest.Get("http://127.0.0.1:8000/savecooksquiz/"+score+"/");
+
+        yield return www.SendWebRequest();
+
+        if (www.isNetworkError || www.isHttpError)
         {
-            // data.totalQuizScoreCooks = data.preQuizScoreCooks + data.postQuizScoreCooks;
-            PlayerPrefs.SetInt("totalQuizScoreCooks", postQuizScoreHabitats);
-            //  Debug.Log("Total quiz score is" + data.totalQuizScoreCooks);
-        }
-        else if (sceneName.Contains("Habitat"))
-        {
-           // data.totalQuizScoreHabitats = data.preQuizScoreHabitats + data.postQuizScoreHabitats;
-            PlayerPrefs.SetInt("totalQuizScoreHabitats",  postQuizScoreHabitats);
-        }
-        else if (sceneName.Contains("Toy"))
-        {
-            // data.totalQuizScoreToys = data.preQuizScoreToys + data.postQuizScoreToys;
-            PlayerPrefs.SetInt("totalQuizScoreToys", postQuizScoreHabitats);
+            Debug.Log(www.error);
         }
         else
         {
-            //Debug.Log("Error cant find scene name to save total quiz score");
-        }
 
-        //JSONSave.SaveData(data, JSONSave.dataPath);
+            // Show results as text
+            Debug.Log(www.downloadHandler.text);
+
+            // Or retrieve results as binary data
+            byte[] results = www.downloadHandler.data;
+
+            string temp = www.downloadHandler.text;
+
+            // responseText.text = temp;
+
+        }
     }
+
+
+
+    IEnumerator SaveHomesQuiz()
+    {
+        //string score = "1000000";
+        UnityWebRequest www = UnityWebRequest.Get("http://127.0.0.1:8000/savehomesquiz/" + score + "/");
+
+        yield return www.SendWebRequest();
+
+        if (www.isNetworkError || www.isHttpError)
+        {
+            Debug.Log(www.error);
+        }
+        else
+        {
+
+            // Show results as text
+            Debug.Log(www.downloadHandler.text);
+
+            // Or retrieve results as binary data
+            byte[] results = www.downloadHandler.data;
+
+            string temp = www.downloadHandler.text;
+
+            // responseText.text = temp;
+
+        }
+    }
+
+    IEnumerator SaveToysQuiz()
+    {
+        //string score = "1000000";
+        UnityWebRequest www = UnityWebRequest.Get("http://127.0.0.1:8000/savetoysquiz/" + score + "/");
+
+        yield return www.SendWebRequest();
+
+        if (www.isNetworkError || www.isHttpError)
+        {
+            Debug.Log(www.error);
+        }
+        else
+        {
+
+            // Show results as text
+            Debug.Log(www.downloadHandler.text);
+
+            // Or retrieve results as binary data
+            byte[] results = www.downloadHandler.data;
+
+            string temp = www.downloadHandler.text;
+
+            // responseText.text = temp;
+
+        }
+    }
+
+
+    IEnumerator UpdateLeaderBoardScore()
+    {
+        int NewScore = ld.GiveTotalScore();
+        //string score = "1000000";
+        UnityWebRequest www = UnityWebRequest.Get("http://127.0.0.1:8000/addscore/" + NewScore + "/");
+
+        yield return www.SendWebRequest();
+
+        if (www.isNetworkError || www.isHttpError)
+        {
+            Debug.Log(www.error);
+        }
+        else
+        {
+
+            // Show results as text
+            Debug.Log(www.downloadHandler.text);
+
+            // Or retrieve results as binary data
+            byte[] results = www.downloadHandler.data;
+
+            string temp = www.downloadHandler.text;
+
+            // responseText.text = temp;
+
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     void NextQuestion()
 	{
@@ -436,8 +562,8 @@ public class Questionaire : MonoBehaviour {
 
 	void Start()
     {
-
-       // JSONSave = FindObjectOfType<JSONPlayerSaver>();
+        ld = GameObject.FindObjectOfType<LoadFromDjango>();
+        // JSONSave = FindObjectOfType<JSONPlayerSaver>();
 
         // ReadTextFile(path);
         ReadFromTextField(QuestionsforQuiz.text);
@@ -598,7 +724,7 @@ public class Questionaire : MonoBehaviour {
     {
         //PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
         int BadgeScore;
-        BadgeScore = PlayerPrefs.GetInt("totalQuizScoreCooks")+ PlayerPrefs.GetInt("totalQuizScoreHabitats") + PlayerPrefs.GetInt("totalQuizScoreToys");
+        BadgeScore = ld.CooksQuiz+ ld.HomesQuiz + ld.ToysQuiz;
 
         return(BadgeScore);
     }

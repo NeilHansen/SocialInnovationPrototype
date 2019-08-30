@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using System.IO;
+using UnityEngine.Networking;
+
 
 public class TutorialManager : MonoBehaviour {
 
@@ -127,6 +130,7 @@ public class TutorialManager : MonoBehaviour {
     public void FinishTutorial()
     {
         PlayerPrefs.SetInt("tutorialProgress", 4);
+        StartCoroutine(SaveTutorialComplete());
        // PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
        // data.progress = 4;
        // JSONSave.SaveData(data, JSONSave.dataPath);
@@ -145,6 +149,39 @@ public class TutorialManager : MonoBehaviour {
         convoCanvas.SetActive(false);
 
     }
+
+    IEnumerator SaveTutorialComplete()
+    {
+        //string score = "1000000";
+        UnityWebRequest www = UnityWebRequest.Get("http://127.0.0.1:8000/savedorm/");
+
+        yield return www.SendWebRequest();
+
+        if (www.isNetworkError || www.isHttpError)
+        {
+            Debug.Log(www.error);
+        }
+        else
+        {
+           
+            // Show results as text
+            Debug.Log(www.downloadHandler.text);
+
+            // Or retrieve results as binary data
+            byte[] results = www.downloadHandler.data;
+
+            string temp = www.downloadHandler.text;
+
+            // responseText.text = temp;
+
+        }
+    }
+
+
+
+
+
+
 
     public void NextTutorialPeice()
     {

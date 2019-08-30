@@ -52,6 +52,12 @@ public class LoadFromDjango : MonoBehaviour {
         ToysQuiz = System.Convert.ToInt32(PlayerData[9]);
     }
 
+    public int GiveTotalScore()
+    {
+        int OverallScore = CooksScore + CooksQuiz + HomesQuiz + HomesScore + ToysQuiz + ToysScore;
+
+        return (OverallScore);
+    }
 
 
     IEnumerator GetPlayerDataFromSever()

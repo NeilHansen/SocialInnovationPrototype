@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Networking;
+using System.IO;
 
 public class GameManagerConstruction : MonoBehaviour {
 
@@ -64,12 +66,14 @@ public class GameManagerConstruction : MonoBehaviour {
 
     public GameObject convoCanvas;
 
+    private LoadFromDjango ld;
+
    // private JSONPlayerSaver JSONSave;
 
     // Use this for initialization
     void Start() {
        // JSONSave = FindObjectOfType<JSONPlayerSaver>();
-       
+       ld= GameObject.FindObjectOfType<LoadFromDjango>();
         timeValue = MaxTime;
         //HouseUI.AddToHouse(playerScore);
         SwapHouse();
@@ -105,14 +109,75 @@ public class GameManagerConstruction : MonoBehaviour {
     {
         // JSONSave = FindObjectOfType<JSONPlayerSaver>();
         // PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
-        int gameScoreHabitats = PlayerPrefs.GetInt("gameScoreHabitats");
+        int gameScoreHabitats = ld.HomesScore;
         if (playerScore > gameScoreHabitats)
         {
-            gameScoreHabitats = (int)playerScore;
-            PlayerPrefs.SetInt("gameScoreHabitats", gameScoreHabitats);
+            ld.HomesScore = (int)playerScore;
+            StartCoroutine(SaveHomesGame());
+            StartCoroutine(UpdateLeaderBoardScore());
+
+            //gameScoreHabitats = (int)playerScore;
+            //PlayerPrefs.SetInt("gameScoreHabitats", gameScoreHabitats);
             //  JSONSave.SaveData(data, JSONSave.dataPath);
         }
     }
+    IEnumerator SaveHomesGame()
+    {
+        //string score = "1000000";
+        UnityWebRequest www = UnityWebRequest.Get("http://127.0.0.1:8000/savehomesgame/" + (int)playerScore + "/");
+
+        yield return www.SendWebRequest();
+
+        if (www.isNetworkError || www.isHttpError)
+        {
+            Debug.Log(www.error);
+        }
+        else
+        {
+
+            // Show results as text
+            Debug.Log(www.downloadHandler.text);
+
+            // Or retrieve results as binary data
+            byte[] results = www.downloadHandler.data;
+
+            string temp = www.downloadHandler.text;
+
+            // responseText.text = temp;
+
+        }
+    }
+
+    IEnumerator UpdateLeaderBoardScore()
+    {
+        int NewScore = ld.GiveTotalScore();
+        //string score = "1000000";
+        UnityWebRequest www = UnityWebRequest.Get("http://127.0.0.1:8000/addscore/" + NewScore + "/");
+
+        yield return www.SendWebRequest();
+
+        if (www.isNetworkError || www.isHttpError)
+        {
+            Debug.Log(www.error);
+        }
+        else
+        {
+
+            // Show results as text
+            Debug.Log(www.downloadHandler.text);
+
+            // Or retrieve results as binary data
+            byte[] results = www.downloadHandler.data;
+
+            string temp = www.downloadHandler.text;
+
+            // responseText.text = temp;
+
+        }
+    }
+
+
+
 
 
     public void EndGame()

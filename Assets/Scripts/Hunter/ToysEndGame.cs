@@ -150,6 +150,7 @@ public class ToysEndGame : MonoBehaviour {
 
     public void RestartGame()
     {
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void LoaddDorm()
