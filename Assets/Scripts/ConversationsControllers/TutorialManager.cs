@@ -27,6 +27,7 @@ public class TutorialManager : MonoBehaviour {
     public GameObject ConsolePanel;
 
     private LoadFromDjango ld;
+    private bool DoOnce =false;
     //   private JSONPlayerSaver JSONSave;
 
 
@@ -39,10 +40,9 @@ public class TutorialManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
         //    JSONSave = FindObjectOfType<JSONPlayerSaver>();
-
         //tutorialProgress = JSONSave.LoadData(JSONSave.dataPath).progress;
         ld = GameObject.FindObjectOfType<LoadFromDjango>();
-        tutorialProgress = PlayerPrefs.GetInt("tutorialProgress");
+       // tutorialProgress = PlayerPrefs.GetInt("tutorialProgress");
 
         if (ld.Tutorial == 0)
         {
@@ -53,7 +53,7 @@ public class TutorialManager : MonoBehaviour {
     IEnumerator afterLoad()
 
     {
-        yield return new WaitForSeconds(0.001f);
+        yield return new WaitForSeconds(0.01f);
         if (ld.Tutorial == 1)
         {
             comp.GetComponent<InteractableArea>().TutorialComplete = false;
@@ -109,10 +109,10 @@ public class TutorialManager : MonoBehaviour {
 
     public void ResetTutorial()
     {
-        PlayerPrefs.SetInt("tutorialProgress", 0);
+        convoCanvas.GetComponent<ConversationManager>().progress = 0;
        // PlayerData data = new PlayerData();
        // PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
-        //data.progress = 0;
+       //data.progress = 0;
        // JSONSave.SaveData(data, JSONSave.dataPath);
 
         convoCanvas.GetComponent<ConversationManager>().RestartTutorial();
@@ -129,7 +129,7 @@ public class TutorialManager : MonoBehaviour {
 
     public void FinishTutorial()
     {
-        PlayerPrefs.SetInt("tutorialProgress", 4);
+        convoCanvas.GetComponent<ConversationManager>().progress = 4;
         StartCoroutine(SaveTutorialComplete());
        // PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
        // data.progress = 4;
@@ -152,6 +152,7 @@ public class TutorialManager : MonoBehaviour {
 
     IEnumerator SaveTutorialComplete()
     {
+       // Deb
         //string score = "1000000";
         UnityWebRequest www = UnityWebRequest.Get("http://127.0.0.1:8000/savedorm/");
 
@@ -194,16 +195,17 @@ public class TutorialManager : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        tutorialProgress = PlayerPrefs.GetInt("tutorialProgress");
-      //  Debug.Log(tutorialProgress);
-      //  tutorialProgress = JSONSave.LoadData(JSONSave.dataPath).progress;
+        tutorialProgress = convoCanvas.GetComponent<ConversationManager>().progress;
+        //  Debug.Log(tutorialProgress);
+        //  tutorialProgress = JSONSave.LoadData(JSONSave.dataPath).progress;
 
 
-        //if (tutorialProgress == 0)
-        //{
-        //    StartTutorial();
-        //    TurnOffControls(true);
-        //}
+        if (tutorialProgress == 4 && !DoOnce)
+        {
+            DoOnce = true; 
+            FinishTutorial();
+            TurnOffControls(false);
+        }
 
         if (CharecterCreationPanel.activeSelf || ConsolePanel.activeSelf)
         {

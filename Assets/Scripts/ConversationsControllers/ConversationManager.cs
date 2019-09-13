@@ -35,6 +35,8 @@ public class ConversationManager : MonoBehaviour {
     public Sprite[] NextStates;
     public Button NextButton;
 
+    public int progress =0;
+
     //private JSONPlayerSaver JSONSave;
 
     // Use this for initialization
@@ -66,7 +68,7 @@ public class ConversationManager : MonoBehaviour {
 
     public void NextConvoPeice()
     {
-        int ii = PlayerPrefs.GetInt("tutorialProgress");
+        int ii = progress;
        // int ii = JSONSave.LoadData(JSONSave.dataPath).progress;
         if(ii > tm.tutorialEnd)
         {
@@ -77,8 +79,8 @@ public class ConversationManager : MonoBehaviour {
         {
             this.gameObject.SetActive(false);
             tm.TurnOffControls(false);
-            PlayerPrefs.SetInt("tutorialProgress", ii+=1);
-
+            // PlayerPrefs.SetInt("tutorialProgress", ii+=1);
+            progress += 1;
             //ii += 1;
            // JSONSave.playerData.progress = ii;
             //PlayerData data = JSONSave.LoadData(JSONSave.dataPath);
