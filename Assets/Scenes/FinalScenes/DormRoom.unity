@@ -102493,6 +102493,11 @@ Prefab:
       propertyPath: m_Center.x
       value: 0.014342666
       objectReference: {fileID: 0}
+    - target: {fileID: 23439113362257916, guid: ef8fab0d4ac1af64ab6e24e5f5098833,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 319827989d71b9048a4cc8b9054b0f84, type: 2}
     m_RemovedComponents:
     - {fileID: 114594384909012306, guid: ef8fab0d4ac1af64ab6e24e5f5098833, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: ef8fab0d4ac1af64ab6e24e5f5098833, type: 2}
@@ -108100,7 +108105,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2102320961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108211,6 +108216,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 80443f8bd798cd643b4e781e90a5f2e0, type: 3}
   - {fileID: 21300000, guid: f2540b0ca67ad254da47a3e7c1dfa753, type: 3}
   NextButton: {fileID: 129634275}
+  progress: 0
 --- !u!114 &2102320962
 MonoBehaviour:
   m_ObjectHideFlags: 0
