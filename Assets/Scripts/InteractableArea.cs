@@ -334,7 +334,7 @@ public class InteractableArea : MonoBehaviour
 
             case AreaType.TrashCan:
                 interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
-                AM.StopSound("garbage");
+                AM.PlaySound("garbage");
                 break;
 
             case AreaType.GiftBox:
@@ -875,8 +875,8 @@ public class InteractableArea : MonoBehaviour
                         {
                             OnInteraction(interactingUnit);
                             interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType = UnitTaskController.TaskType.None;
-                            AM.PlaySound("garbage");
-                            SoundName = "garbage";
+                            
+                            //SoundName = "garbage";
                         }
                         else
                         {
