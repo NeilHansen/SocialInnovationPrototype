@@ -378,7 +378,7 @@ public class Questionaire : MonoBehaviour {
     IEnumerator SaveToysQuiz()
     {
         //string score = "1000000";
-        UnityWebRequest www = UnityWebRequest.Get("http://127.0.0.1:8000/savetoysquiz/" + score + "/");
+        UnityWebRequest www = UnityWebRequest.Get("http://127.0.0.1:8000/savetoyssquiz/" + score + "/");
 
         yield return www.SendWebRequest();
 
