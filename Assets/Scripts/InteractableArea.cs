@@ -1128,7 +1128,7 @@ public class InteractableArea : MonoBehaviour
                 case AreaType.Closet:
                     if (!isInteracting && interactingUnit.gameObject.GetComponent<UnitTaskController>().IsComplete == false)
                     {
-                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.None || this.TutorialComplete)
+                        if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Clothes || this.TutorialComplete)
                         {
                             OnInteraction(interactingUnit);
                         }
@@ -1139,10 +1139,10 @@ public class InteractableArea : MonoBehaviour
                         //        NegativeFeedback(other);
                         //    }
                         //}
-                         else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Clothes)
-                        {
-                            OnInteraction(interactingUnit);
-                        }
+                        // else if (interactingUnit.gameObject.GetComponent<UnitTaskController>().CurrentTaskType == UnitTaskController.TaskType.Clothes)
+                        //{
+                        //    OnInteraction(interactingUnit);
+                        //}
                         else
                         {
                             if (FeedBackFiredAlready == false)
@@ -1586,7 +1586,7 @@ public class InteractableArea : MonoBehaviour
 
                 case AreaType.Closet:
                     if (rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.Clothes && tm.tutorialProgress >= 2
-                         || rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None && tm.tutorialProgress == 4&& !isInteracting)
+                         || rtsMover.ActiveUnit.GetComponent<UnitTaskController>().currentTaskType == UnitTaskController.TaskType.None && tm.tutorialProgress == 4 && !isInteracting)
                     {
                         this.GetComponent<Outline>().OutlineColor = RightColor;
                         this.gameObject.GetComponent<Outline>().enabled = true;
