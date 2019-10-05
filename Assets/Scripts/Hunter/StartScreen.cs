@@ -25,7 +25,8 @@ public class StartScreen : MonoBehaviour {
     public void BeginGame()
     {
        gameObject.SetActive(false);
-        Time.timeScale = 1.0f;
+       Time.timeScale = 1.0f;
+       FindObjectOfType<AudioManager>().PlaySound("music");
     }
 
     public void SwitchContinueButton(bool Hovered)

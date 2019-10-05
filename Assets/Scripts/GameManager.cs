@@ -91,6 +91,7 @@ public class GameManager : MonoBehaviour {
         //specialCustomerBonusText.GetComponent<TextMeshProUGUI>().text = "x" + specialCustomerBonusMultiplier;
         if (timeValue <= 0&&!EndGameInitiated)
         {
+            FindObjectOfType<AudioManager>().StopSound("music");
             EndGameInitiated = true;
             Time.timeScale = 0.0f;
             COMPLETESCREEN.SetActive(true);

@@ -98,7 +98,7 @@ public class GameManagerConstruction : MonoBehaviour {
 
         if(timeValue<=0 && !GameComplete)
         {
-           
+            FindObjectOfType<AudioManager>().StopSound("music");
             EndGame();
         }
         //timerText.text = "" + (int)timeValue;

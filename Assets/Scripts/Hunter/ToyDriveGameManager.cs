@@ -105,6 +105,7 @@ public class ToyDriveGameManager : MonoBehaviour {
             //EndingScreen.GetComponent<Questionaire>().InitializeQuestionaire();
             COMPLETESCREEN.SetActive(true);
             COMPLETESCREEN.GetComponent<CompleteScreenToys>().RoundComplete();
+            FindObjectOfType<AudioManager>().StopSound("music");
             SaveGameScore();
         }
 
