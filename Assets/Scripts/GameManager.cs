@@ -167,7 +167,7 @@ public class GameManager : MonoBehaviour {
     IEnumerator SaveCooksGame()
     {
         //string score = "1000000";
-        UnityWebRequest www = UnityWebRequest.Get("http://127.0.0.1:8000/savecooksgame/" + (int)playerScore + "/");
+        UnityWebRequest www = UnityWebRequest.Get("http://startgbc.georgebrown.ca/savecooksgame/" + (int)playerScore + "/");
 
         yield return www.SendWebRequest();
 
@@ -195,7 +195,7 @@ public class GameManager : MonoBehaviour {
     {
         int NewScore = ld.GiveTotalScore();
         //string score = "1000000";
-        UnityWebRequest www = UnityWebRequest.Get("http://127.0.0.1:8000/addscore/" + NewScore + "/");
+        UnityWebRequest www = UnityWebRequest.Get("http://startgbc.georgebrown.ca/addscore/" + NewScore + "/");
 
         yield return www.SendWebRequest();
 

@@ -351,7 +351,7 @@ public class Questionaire : MonoBehaviour {
     IEnumerator SaveHomesQuiz()
     {
         //string score = "1000000";
-        UnityWebRequest www = UnityWebRequest.Get("http://127.0.0.1:8000/savehomesquiz/" + score + "/");
+        UnityWebRequest www = UnityWebRequest.Get("http://startgbc.georgebrown.ca/savehomesquiz/" + score + "/");
 
         yield return www.SendWebRequest();
 
@@ -378,7 +378,7 @@ public class Questionaire : MonoBehaviour {
     IEnumerator SaveToysQuiz()
     {
         //string score = "1000000";
-        UnityWebRequest www = UnityWebRequest.Get("http://127.0.0.1:8000/savetoyssquiz/" + score + "/");
+        UnityWebRequest www = UnityWebRequest.Get("http://startgbc.georgebrown.ca/savetoyssquiz/" + score + "/");
 
         yield return www.SendWebRequest();
 
@@ -407,7 +407,7 @@ public class Questionaire : MonoBehaviour {
     {
         int NewScore = ld.GiveTotalScore();
         //string score = "1000000";
-        UnityWebRequest www = UnityWebRequest.Get("http://127.0.0.1:8000/addscore/" + NewScore + "/");
+        UnityWebRequest www = UnityWebRequest.Get("http://startgbc.georgebrown.ca/addscore/" + NewScore + "/");
 
         yield return www.SendWebRequest();
 

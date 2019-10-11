@@ -124,7 +124,7 @@ public class GameManagerConstruction : MonoBehaviour {
     IEnumerator SaveHomesGame()
     {
         //string score = "1000000";
-        UnityWebRequest www = UnityWebRequest.Get("http://127.0.0.1:8000/savehomesgame/" + (int)playerScore + "/");
+        UnityWebRequest www = UnityWebRequest.Get("http://startgbc.georgebrown.ca/savehomesgame/" + (int)playerScore + "/");
 
         yield return www.SendWebRequest();
 
@@ -152,7 +152,7 @@ public class GameManagerConstruction : MonoBehaviour {
     {
         int NewScore = ld.GiveTotalScore();
         //string score = "1000000";
-        UnityWebRequest www = UnityWebRequest.Get("http://127.0.0.1:8000/addscore/" + NewScore + "/");
+        UnityWebRequest www = UnityWebRequest.Get("http://startgbc.georgebrown.ca/addscore/" + NewScore + "/");
 
         yield return www.SendWebRequest();
 
