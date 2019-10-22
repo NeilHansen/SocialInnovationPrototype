@@ -322,8 +322,8 @@ public class Questionaire : MonoBehaviour {
     IEnumerator SaveCooksQuiz()
     {
         //string score = "1000000";
-        UnityWebRequest www = UnityWebRequest.Get("http://127.0.0.1:8000/savecooksquiz/"+score+"/");
-
+        UnityWebRequest www = UnityWebRequest.Get("http://startgbc.georgebrown.ca/savecooksquiz/" + score+"/");
+        
         yield return www.SendWebRequest();
 
         if (www.isNetworkError || www.isHttpError)
