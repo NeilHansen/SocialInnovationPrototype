@@ -154,7 +154,7 @@ public class TutorialManager : MonoBehaviour {
     {
        // Deb
         //string score = "1000000";
-        UnityWebRequest www = UnityWebRequest.Get("http://startgbc.georgebrown.ca/savedorm/");
+        UnityWebRequest www = UnityWebRequest.Get(Endpoints.url + "savedorm/");
 
         yield return www.SendWebRequest();
 

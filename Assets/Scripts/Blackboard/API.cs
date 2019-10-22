@@ -68,7 +68,7 @@ public class API : MonoBehaviour {
 
     IEnumerator GetLeaderBoardText()
     {
-        UnityWebRequest www = UnityWebRequest.Get("http://startgbc.georgebrown.ca/leaderboard/");
+        UnityWebRequest www = UnityWebRequest.Get(Endpoints.url+"leaderboard/");
         yield return www.SendWebRequest();
 
         if (www.isNetworkError || www.isHttpError)
@@ -107,7 +107,7 @@ public class API : MonoBehaviour {
     IEnumerator AddScore()
     {
         string score = "1000000";
-        UnityWebRequest www = UnityWebRequest.Get("http://startgbc.georgebrown.ca/addscore/100000");
+        UnityWebRequest www = UnityWebRequest.Get(Endpoints.url+"addscore /100000");
         yield return www.SendWebRequest();
 
         if (www.isNetworkError || www.isHttpError)

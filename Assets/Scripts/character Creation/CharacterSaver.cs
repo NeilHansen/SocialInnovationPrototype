@@ -48,7 +48,7 @@ public class CharacterSaver : MonoBehaviour {
     IEnumerator SaveCharacterToServer()
     {
         //string score = "1000000";
-        UnityWebRequest www = UnityWebRequest.Get("http://startgbc.georgebrown.ca/savechar/" + head + "/" + body + "/");
+        UnityWebRequest www = UnityWebRequest.Get(Endpoints.url + "savechar/" + head + "/" + body + "/");
        
         yield return www.SendWebRequest();
 

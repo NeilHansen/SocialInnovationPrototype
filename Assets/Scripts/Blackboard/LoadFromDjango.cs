@@ -62,7 +62,7 @@ public class LoadFromDjango : MonoBehaviour {
 
     IEnumerator GetPlayerDataFromSever()
     {
-        UnityWebRequest www = UnityWebRequest.Get("http://startgbc.georgebrown.ca/loadplayerdata/");
+        UnityWebRequest www = UnityWebRequest.Get(Endpoints.url +"loadplayerdata/");
         yield return www.SendWebRequest();
 
         if (www.isNetworkError || www.isHttpError)
@@ -111,7 +111,7 @@ public class LoadFromDjango : MonoBehaviour {
     IEnumerator SetPlayerDataToServer()
     {
         string score = "1000000";
-        UnityWebRequest www = UnityWebRequest.Get("http://startgbc.georgebrown.ca/addscore/100000");
+        UnityWebRequest www = UnityWebRequest.Get(Endpoints.url + "addscore/100000");
         yield return www.SendWebRequest();
 
         if (www.isNetworkError || www.isHttpError)
